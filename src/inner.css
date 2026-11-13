@@ -1,26 +1,39 @@
 
 /* ================= Страница сборки ================= */
-.crumbs{padding-block:.5rem 1rem}
-.crumbs a{display:inline-flex;align-items:center;gap:.5rem;color:var(--muted);font-size:var(--fs-m);text-decoration:none}
-.crumbs svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.product{display:grid;gap:1.75rem;padding-block:0 3rem}
+.product{display:grid;gap:1.75rem;padding-block:.5rem 3rem}
 .product__info,.gallery{min-width:0}
 
-/* Галерея: листается пальцем или стрелками, точки появляются, когда фото больше одного */
-.gallery{position:relative}
-.gallery__track{display:flex;aspect-ratio:4/3;border:1px solid var(--line);border-radius:1.25rem;background:#15151a;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,40,180,.14)}
+/* Галерея: листается пальцем или стрелками, под ней миниатюры; по нажатию на фото открывается крупный просмотр */
+.gallery__stage{position:relative}
+.gallery__track{display:flex;aspect-ratio:4/3;border:1px solid var(--line);border-radius:1.25rem;background:#15151a;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:zoom-in;box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,40,180,.14)}
 .gallery__track::-webkit-scrollbar{display:none}
 .gallery__track li{flex:0 0 100%;scroll-snap-align:start}
 .gallery__track img{width:100%;height:100%;object-fit:cover}
-.gallery__nav{position:absolute;top:calc(50% - 1.5rem - .75rem);display:none;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
+.gallery__nav{position:absolute;top:calc(50% - 1.5rem);display:none;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
 .gallery__nav svg{width:1.125rem;height:1.125rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gallery__nav--prev{left:1rem}
 .gallery__nav--next{right:1rem}
 .gallery__nav:disabled{opacity:.35;cursor:default}
-.gallery__dots{display:flex;justify-content:center;gap:.25rem;height:1.5rem;margin-top:.75rem}
-.gallery__dots button{display:grid;place-items:center;width:1.5rem;height:1.5rem;padding:0;border:0;background:none;cursor:pointer}
-.gallery__dots button::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--cyan);opacity:.3;transition:opacity .2s,transform .2s}
-.gallery__dots button[aria-current="true"]::before{opacity:1;transform:scale(1.25)}
+.gallery__thumbs{display:flex;gap:.5rem;margin-top:.75rem;padding:1px;overflow-x:auto;scrollbar-width:none}
+.gallery__thumbs::-webkit-scrollbar{display:none}
+.gallery__thumbs button{flex:0 0 4.5rem;aspect-ratio:4/3;padding:0;border:1px solid var(--line);border-radius:.625rem;background:#15151a;overflow:hidden;opacity:.55;cursor:pointer;transition:opacity .2s,border-color .2s}
+.gallery__thumbs img{width:100%;height:100%;object-fit:cover}
+.gallery__thumbs button[aria-current="true"]{border-color:var(--cyan);opacity:1}
+
+/* Крупный просмотр фото */
+.lightbox{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(5,5,7,.96);color:var(--fg);overflow:hidden}
+.lightbox::backdrop{background:#000}
+.lightbox__img{--px:.5rem;--py:4.5rem;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:zoom-out}
+.lightbox__img picture{display:contents}
+.lightbox__img img{display:block;max-width:calc(100vw - 2*var(--px));max-height:calc(100dvh - 2*var(--py));width:auto;height:auto;border-radius:.75rem;object-fit:contain}
+.lightbox__btn{position:absolute;display:grid;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
+.lightbox__btn svg{width:1.125rem;height:1.125rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lightbox__btn:disabled{opacity:.35;cursor:default}
+.lightbox__close{top:calc(.75rem + env(safe-area-inset-top,0px));right:max(.75rem,env(safe-area-inset-right,0px))}
+.lightbox__prev,.lightbox__next{bottom:calc(.75rem + env(safe-area-inset-bottom,0px))}
+.lightbox__prev{right:calc(50% + 2.75rem)}
+.lightbox__next{left:calc(50% + 2.75rem)}
+.lightbox__count{position:absolute;left:0;right:0;bottom:calc(.75rem + env(safe-area-inset-bottom,0px));line-height:3rem;text-align:center;color:var(--muted);font-size:var(--fs-m);font-variant-numeric:lining-nums;pointer-events:none}
 
 .product__info{display:flex;flex-direction:column;align-items:center;text-align:center}
 .product__info h1{font-weight:600;font-size:var(--fs-h);line-height:1.18;text-transform:uppercase}
@@ -41,17 +54,23 @@
 .flex-note li::before{content:"";flex:none;width:.375rem;height:.375rem;margin-top:.5rem;border-radius:50%;background:var(--cyan)}
 
 @media (hover:hover){
-  .crumbs a:hover{color:var(--cyan)}
+  .gallery__thumbs button:hover,.lightbox__btn:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
   .gallery__nav:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
 }
 @media (min-width:64rem){
   .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:.75rem 2rem}
   .flex-note ul{grid-template-columns:repeat(2,minmax(0,1fr))}
   .gallery--many .gallery__nav{display:grid}
+  .gallery__thumbs{justify-content:center;gap:.75rem}
+  .gallery__thumbs button{flex-basis:6rem;border-radius:.875rem}
+  .lightbox__img{--px:5.5rem;--py:4rem}
+  .lightbox__prev,.lightbox__next{top:calc(50% - 1.5rem);bottom:auto}
+  .lightbox__prev{left:1.25rem;right:auto}
+  .lightbox__next{right:1.25rem;left:auto}
 }
 @media (min-width:64rem){
   /* галерея по центру; ширина подбирается так, чтобы фото 4:3 целиком помещалось в экран */
-  .gallery{width:min(100%,max(40rem,calc((100svh - 11rem)*4/3)));margin-inline:auto}
+  .gallery{width:min(100%,max(40rem,calc((100svh - 16.5rem)*4/3)));margin-inline:auto}
   .gallery__track{border-radius:1.875rem}
   .product{padding-block:.25rem 3.5rem}
 }

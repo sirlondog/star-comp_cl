@@ -228,27 +228,40 @@ html{scroll-behavior:smooth}
 }
 
 /* ================= Страница сборки ================= */
-.crumbs{padding-block:.5rem 1rem}
-.crumbs a{display:inline-flex;align-items:center;gap:.5rem;color:var(--muted);font-size:var(--fs-m);text-decoration:none}
-.crumbs svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.product{display:grid;gap:1.75rem;padding-block:0 3rem}
+.product{display:grid;gap:1.75rem;padding-block:.5rem 3rem}
 .product__info,.gallery{min-width:0}
 
-/* Галерея: листается пальцем или стрелками, точки появляются, когда фото больше одного */
-.gallery{position:relative}
-.gallery__track{display:flex;aspect-ratio:4/3;border:1px solid var(--line);border-radius:1.25rem;background:#15151a;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,40,180,.14)}
+/* Галерея: листается пальцем или стрелками, под ней миниатюры; по нажатию на фото открывается крупный просмотр */
+.gallery__stage{position:relative}
+.gallery__track{display:flex;aspect-ratio:4/3;border:1px solid var(--line);border-radius:1.25rem;background:#15151a;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:zoom-in;box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,40,180,.14)}
 .gallery__track::-webkit-scrollbar{display:none}
 .gallery__track li{flex:0 0 100%;scroll-snap-align:start}
 .gallery__track img{width:100%;height:100%;object-fit:cover}
-.gallery__nav{position:absolute;top:calc(50% - 1.5rem - .75rem);display:none;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
+.gallery__nav{position:absolute;top:calc(50% - 1.5rem);display:none;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
 .gallery__nav svg{width:1.125rem;height:1.125rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gallery__nav--prev{left:1rem}
 .gallery__nav--next{right:1rem}
 .gallery__nav:disabled{opacity:.35;cursor:default}
-.gallery__dots{display:flex;justify-content:center;gap:.25rem;height:1.5rem;margin-top:.75rem}
-.gallery__dots button{display:grid;place-items:center;width:1.5rem;height:1.5rem;padding:0;border:0;background:none;cursor:pointer}
-.gallery__dots button::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--cyan);opacity:.3;transition:opacity .2s,transform .2s}
-.gallery__dots button[aria-current="true"]::before{opacity:1;transform:scale(1.25)}
+.gallery__thumbs{display:flex;gap:.5rem;margin-top:.75rem;padding:1px;overflow-x:auto;scrollbar-width:none}
+.gallery__thumbs::-webkit-scrollbar{display:none}
+.gallery__thumbs button{flex:0 0 4.5rem;aspect-ratio:4/3;padding:0;border:1px solid var(--line);border-radius:.625rem;background:#15151a;overflow:hidden;opacity:.55;cursor:pointer;transition:opacity .2s,border-color .2s}
+.gallery__thumbs img{width:100%;height:100%;object-fit:cover}
+.gallery__thumbs button[aria-current="true"]{border-color:var(--cyan);opacity:1}
+
+/* Крупный просмотр фото */
+.lightbox{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(5,5,7,.96);color:var(--fg);overflow:hidden}
+.lightbox::backdrop{background:#000}
+.lightbox__img{--px:.5rem;--py:4.5rem;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:zoom-out}
+.lightbox__img picture{display:contents}
+.lightbox__img img{display:block;max-width:calc(100vw - 2*var(--px));max-height:calc(100dvh - 2*var(--py));width:auto;height:auto;border-radius:.75rem;object-fit:contain}
+.lightbox__btn{position:absolute;display:grid;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
+.lightbox__btn svg{width:1.125rem;height:1.125rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lightbox__btn:disabled{opacity:.35;cursor:default}
+.lightbox__close{top:calc(.75rem + env(safe-area-inset-top,0px));right:max(.75rem,env(safe-area-inset-right,0px))}
+.lightbox__prev,.lightbox__next{bottom:calc(.75rem + env(safe-area-inset-bottom,0px))}
+.lightbox__prev{right:calc(50% + 2.75rem)}
+.lightbox__next{left:calc(50% + 2.75rem)}
+.lightbox__count{position:absolute;left:0;right:0;bottom:calc(.75rem + env(safe-area-inset-bottom,0px));line-height:3rem;text-align:center;color:var(--muted);font-size:var(--fs-m);font-variant-numeric:lining-nums;pointer-events:none}
 
 .product__info{display:flex;flex-direction:column;align-items:center;text-align:center}
 .product__info h1{font-weight:600;font-size:var(--fs-h);line-height:1.18;text-transform:uppercase}
@@ -269,17 +282,23 @@ html{scroll-behavior:smooth}
 .flex-note li::before{content:"";flex:none;width:.375rem;height:.375rem;margin-top:.5rem;border-radius:50%;background:var(--cyan)}
 
 @media (hover:hover){
-  .crumbs a:hover{color:var(--cyan)}
+  .gallery__thumbs button:hover,.lightbox__btn:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
   .gallery__nav:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
 }
 @media (min-width:64rem){
   .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:.75rem 2rem}
   .flex-note ul{grid-template-columns:repeat(2,minmax(0,1fr))}
   .gallery--many .gallery__nav{display:grid}
+  .gallery__thumbs{justify-content:center;gap:.75rem}
+  .gallery__thumbs button{flex-basis:6rem;border-radius:.875rem}
+  .lightbox__img{--px:5.5rem;--py:4rem}
+  .lightbox__prev,.lightbox__next{top:calc(50% - 1.5rem);bottom:auto}
+  .lightbox__prev{left:1.25rem;right:auto}
+  .lightbox__next{right:1.25rem;left:auto}
 }
 @media (min-width:64rem){
   /* галерея по центру; ширина подбирается так, чтобы фото 4:3 целиком помещалось в экран */
-  .gallery{width:min(100%,max(40rem,calc((100svh - 11rem)*4/3)));margin-inline:auto}
+  .gallery{width:min(100%,max(40rem,calc((100svh - 16.5rem)*4/3)));margin-inline:auto}
   .gallery__track{border-radius:1.875rem}
   .product{padding-block:.25rem 3.5rem}
 }
@@ -324,59 +343,65 @@ html{scroll-behavior:smooth}
 
 
 <main>
-  <nav class="crumbs wrap" aria-label="Навигация">
-    <a href="index.html#konfiguracii"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7.5 3.5 3 8l4.5 4.5"/></svg>Все конфигурации</a>
-  </nav>
-
   <section class="product wrap">
     <div class="gallery" id="gallery">
-      <ul class="gallery__track" tabindex="0" aria-label="Фотографии сборки">
+      <div class="gallery__stage">
+      <ul class="gallery__track" tabindex="0" aria-label="Фотографии сборки. Нажмите, чтобы увеличить">
         <li>
           <picture>
-            <source type="image/avif" srcset="assets/solar-s1-1-640.avif 640w, assets/solar-s1-1-1024.avif 1024w, assets/solar-s1-1-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
-            <img src="assets/solar-s1-1-1024.webp" srcset="assets/solar-s1-1-640.webp 640w, assets/solar-s1-1-1024.webp 1024w, assets/solar-s1-1-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: общий вид компьютера в корпусе с панорамным стеклом и жёлтой подсветкой" fetchpriority="high" decoding="async">
+            <source type="image/avif" srcset="assets/solar-s1-1-640.avif 640w, assets/solar-s1-1-1024.avif 1024w, assets/solar-s1-1-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-1-1024.webp" srcset="assets/solar-s1-1-640.webp 640w, assets/solar-s1-1-1024.webp 1024w, assets/solar-s1-1-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: общий вид компьютера в корпусе с панорамным стеклом и жёлтой подсветкой" fetchpriority="high" decoding="async">
           </picture>
         </li>
         <li>
           <picture>
-            <source type="image/avif" srcset="assets/solar-s1-2-640.avif 640w, assets/solar-s1-2-1024.avif 1024w, assets/solar-s1-2-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
-            <img src="assets/solar-s1-2-1024.webp" srcset="assets/solar-s1-2-640.webp 640w, assets/solar-s1-2-1024.webp 1024w, assets/solar-s1-2-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: угол корпуса крупным планом" loading="lazy" decoding="async">
+            <source type="image/avif" srcset="assets/solar-s1-2-640.avif 640w, assets/solar-s1-2-1024.avif 1024w, assets/solar-s1-2-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-2-1024.webp" srcset="assets/solar-s1-2-640.webp 640w, assets/solar-s1-2-1024.webp 1024w, assets/solar-s1-2-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: угол корпуса крупным планом" loading="lazy" decoding="async">
           </picture>
         </li>
         <li>
           <picture>
-            <source type="image/avif" srcset="assets/solar-s1-3-640.avif 640w, assets/solar-s1-3-1024.avif 1024w, assets/solar-s1-3-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
-            <img src="assets/solar-s1-3-1024.webp" srcset="assets/solar-s1-3-640.webp 640w, assets/solar-s1-3-1024.webp 1024w, assets/solar-s1-3-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: башенный кулер и вентиляторы с подсветкой" loading="lazy" decoding="async">
+            <source type="image/avif" srcset="assets/solar-s1-3-640.avif 640w, assets/solar-s1-3-1024.avif 1024w, assets/solar-s1-3-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-3-1024.webp" srcset="assets/solar-s1-3-640.webp 640w, assets/solar-s1-3-1024.webp 1024w, assets/solar-s1-3-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: башенный кулер и вентиляторы с подсветкой" loading="lazy" decoding="async">
           </picture>
         </li>
         <li>
           <picture>
-            <source type="image/avif" srcset="assets/solar-s1-4-640.avif 640w, assets/solar-s1-4-1024.avif 1024w, assets/solar-s1-4-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
-            <img src="assets/solar-s1-4-1024.webp" srcset="assets/solar-s1-4-640.webp 640w, assets/solar-s1-4-1024.webp 1024w, assets/solar-s1-4-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: материнская плата и укладка кабелей" loading="lazy" decoding="async">
+            <source type="image/avif" srcset="assets/solar-s1-4-640.avif 640w, assets/solar-s1-4-1024.avif 1024w, assets/solar-s1-4-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-4-1024.webp" srcset="assets/solar-s1-4-640.webp 640w, assets/solar-s1-4-1024.webp 1024w, assets/solar-s1-4-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: материнская плата и укладка кабелей" loading="lazy" decoding="async">
           </picture>
         </li>
         <li>
           <picture>
-            <source type="image/avif" srcset="assets/solar-s1-5-640.avif 640w, assets/solar-s1-5-1024.avif 1024w, assets/solar-s1-5-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
-            <img src="assets/solar-s1-5-1024.webp" srcset="assets/solar-s1-5-640.webp 640w, assets/solar-s1-5-1024.webp 1024w, assets/solar-s1-5-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: вентилятор и кожух блока питания" loading="lazy" decoding="async">
+            <source type="image/avif" srcset="assets/solar-s1-5-640.avif 640w, assets/solar-s1-5-1024.avif 1024w, assets/solar-s1-5-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-5-1024.webp" srcset="assets/solar-s1-5-640.webp 640w, assets/solar-s1-5-1024.webp 1024w, assets/solar-s1-5-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: вентилятор и кожух блока питания" loading="lazy" decoding="async">
           </picture>
         </li>
         <li>
           <picture>
-            <source type="image/avif" srcset="assets/solar-s1-6-640.avif 640w, assets/solar-s1-6-1024.avif 1024w, assets/solar-s1-6-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
-            <img src="assets/solar-s1-6-1024.webp" srcset="assets/solar-s1-6-640.webp 640w, assets/solar-s1-6-1024.webp 1024w, assets/solar-s1-6-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: видеокарта GeForce RTX" loading="lazy" decoding="async">
+            <source type="image/avif" srcset="assets/solar-s1-6-640.avif 640w, assets/solar-s1-6-1024.avif 1024w, assets/solar-s1-6-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-6-1024.webp" srcset="assets/solar-s1-6-640.webp 640w, assets/solar-s1-6-1024.webp 1024w, assets/solar-s1-6-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: видеокарта GeForce RTX" loading="lazy" decoding="async">
           </picture>
         </li>
         <li>
           <picture>
-            <source type="image/avif" srcset="assets/solar-s1-7-640.avif 640w, assets/solar-s1-7-1024.avif 1024w, assets/solar-s1-7-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
-            <img src="assets/solar-s1-7-1024.webp" srcset="assets/solar-s1-7-640.webp 640w, assets/solar-s1-7-1024.webp 1024w, assets/solar-s1-7-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: кулер процессора крупным планом" loading="lazy" decoding="async">
+            <source type="image/avif" srcset="assets/solar-s1-7-640.avif 640w, assets/solar-s1-7-1024.avif 1024w, assets/solar-s1-7-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-7-1024.webp" srcset="assets/solar-s1-7-640.webp 640w, assets/solar-s1-7-1024.webp 1024w, assets/solar-s1-7-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: кулер процессора крупным планом" loading="lazy" decoding="async">
           </picture>
         </li>
       </ul>
       <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
       <button class="gallery__nav gallery__nav--next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
-      <div class="gallery__dots" hidden></div>
+      </div>
+      <div class="gallery__thumbs">
+        <button type="button" aria-label="Фото 1: общий вид компьютера в корпусе с панорамным стеклом и жёлтой подсветкой" aria-current="true"><picture><source type="image/avif" srcset="assets/solar-s1-1-240.avif"><img src="assets/solar-s1-1-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
+        <button type="button" aria-label="Фото 2: угол корпуса крупным планом"><picture><source type="image/avif" srcset="assets/solar-s1-2-240.avif"><img src="assets/solar-s1-2-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
+        <button type="button" aria-label="Фото 3: башенный кулер и вентиляторы с подсветкой"><picture><source type="image/avif" srcset="assets/solar-s1-3-240.avif"><img src="assets/solar-s1-3-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
+        <button type="button" aria-label="Фото 4: материнская плата и укладка кабелей"><picture><source type="image/avif" srcset="assets/solar-s1-4-240.avif"><img src="assets/solar-s1-4-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
+        <button type="button" aria-label="Фото 5: вентилятор и кожух блока питания"><picture><source type="image/avif" srcset="assets/solar-s1-5-240.avif"><img src="assets/solar-s1-5-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
+        <button type="button" aria-label="Фото 6: видеокарта GeForce RTX"><picture><source type="image/avif" srcset="assets/solar-s1-6-240.avif"><img src="assets/solar-s1-6-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
+        <button type="button" aria-label="Фото 7: кулер процессора крупным планом"><picture><source type="image/avif" srcset="assets/solar-s1-7-240.avif"><img src="assets/solar-s1-7-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
+      </div>
     </div>
 
     <div class="product__info">
@@ -455,36 +480,103 @@ html{scroll-behavior:smooth}
 
 <script>
 (function () {
-  // Галерея: точки и стрелки включаются сами, когда фото больше одного
+  // Галерея: стрелки, миниатюры и крупный просмотр по нажатию на фото
   var g = document.getElementById('gallery');
   if (!g) return;
   var track = g.querySelector('.gallery__track');
   var slides = track.children;
-  if (slides.length < 2) return;
-  var dots = g.querySelector('.gallery__dots');
+  var n = slides.length;
+  var thumbsBox = g.querySelector('.gallery__thumbs');
+  var thumbs = thumbsBox.children;
   var prev = g.querySelector('.gallery__nav--prev');
   var next = g.querySelector('.gallery__nav--next');
   var current = 0;
-  function go(i) { track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' }); }
+  function go(i, instant) {
+    i = Math.max(0, Math.min(n - 1, i));
+    track.scrollTo({ left: track.clientWidth * i, behavior: instant ? 'instant' : 'smooth' });
+  }
   function update() {
-    current = Math.round(track.scrollLeft / track.clientWidth);
-    for (var i = 0; i < dots.children.length; i++) dots.children[i].setAttribute('aria-current', String(i === current));
+    current = Math.max(0, Math.min(n - 1, Math.round(track.scrollLeft / track.clientWidth)));
+    for (var i = 0; i < thumbs.length; i++) thumbs[i].setAttribute('aria-current', String(i === current));
     prev.disabled = current === 0;
-    next.disabled = current === slides.length - 1;
+    next.disabled = current === n - 1;
+    // активная миниатюра всегда видна в ленте
+    var t = thumbs[current];
+    if (t) thumbsBox.scrollTo({ left: t.offsetLeft - thumbsBox.offsetLeft - (thumbsBox.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
   }
-  for (var i = 0; i < slides.length; i++) {
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.setAttribute('aria-label', 'Фото ' + (i + 1) + ' из ' + slides.length);
-    b.addEventListener('click', go.bind(null, i));
-    dots.appendChild(b);
-  }
-  dots.hidden = false;
-  g.classList.add('gallery--many');
+  if (n < 2) thumbsBox.hidden = true;
+  else g.classList.add('gallery--many');
+  for (var i = 0; i < thumbs.length; i++) thumbs[i].addEventListener('click', go.bind(null, i, false));
   prev.addEventListener('click', function () { go(current - 1); });
   next.addEventListener('click', function () { go(current + 1); });
   track.addEventListener('scroll', update, { passive: true });
   update();
+
+  // Крупный просмотр: окно создаётся только при первом нажатии
+  var box, holder, count, bPrev, bNext, shown = 0;
+  var arrow = function (d) { return '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="' + d + '"/></svg>'; };
+  function btn(cls, label, icon) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'lightbox__btn ' + cls;
+    b.setAttribute('aria-label', label);
+    b.innerHTML = arrow(icon);
+    box.appendChild(b);
+    return b;
+  }
+  function show(i) {
+    shown = Math.max(0, Math.min(n - 1, i));
+    var pic = slides[shown].querySelector('picture').cloneNode(true);
+    var parts = pic.querySelectorAll('source,img');
+    for (var k = 0; k < parts.length; k++) { parts[k].sizes = '100vw'; parts[k].removeAttribute('loading'); }
+    holder.innerHTML = '';
+    holder.appendChild(pic);
+    count.textContent = (shown + 1) + ' / ' + n;
+    bPrev.disabled = shown === 0;
+    bNext.disabled = shown === n - 1;
+  }
+  function build() {
+    box = document.createElement('dialog');
+    box.className = 'lightbox';
+    box.setAttribute('aria-label', 'Просмотр фотографий');
+    holder = document.createElement('div');
+    holder.className = 'lightbox__img';
+    box.appendChild(holder);
+    count = document.createElement('p');
+    count.className = 'lightbox__count';
+    box.appendChild(count);
+    bPrev = btn('lightbox__prev', 'Предыдущее фото', 'M10 3 5 8l5 5');
+    bNext = btn('lightbox__next', 'Следующее фото', 'm6 3 5 5-5 5');
+    var bClose = btn('lightbox__close', 'Закрыть', 'M3.5 3.5l9 9M12.5 3.5l-9 9');
+    if (n < 2) { bPrev.hidden = bNext.hidden = count.hidden = true; }
+    bPrev.addEventListener('click', function () { show(shown - 1); });
+    bNext.addEventListener('click', function () { show(shown + 1); });
+    bClose.addEventListener('click', function () { box.close(); });
+    holder.addEventListener('click', function () { box.close(); });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') show(shown - 1);
+      if (e.key === 'ArrowRight') show(shown + 1);
+    });
+    // листание пальцем
+    var x0 = null;
+    holder.addEventListener('touchstart', function (e) { x0 = e.touches.length === 1 ? e.touches[0].clientX : null; }, { passive: true });
+    holder.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 40) { e.preventDefault(); show(shown + (dx < 0 ? 1 : -1)); }
+    });
+    // после закрытия основная галерея стоит на том же фото
+    box.addEventListener('close', function () { go(shown, true); });
+    document.body.appendChild(box);
+  }
+  function open() {
+    if (!box) build();
+    show(current);
+    box.showModal();
+  }
+  track.addEventListener('click', open);
+  track.addEventListener('keydown', function (e) { if (e.key === 'Enter') open(); });
 })();
 
 (function () {
