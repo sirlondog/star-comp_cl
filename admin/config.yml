@@ -1,0 +1,147 @@
+# Настройки админки (Sveltia CMS). Открывается по адресу /admin/ на сайте.
+# Вход — по личному токену GitHub (кнопка «Войти с токеном»).
+backend:
+  name: github
+  repo: sirlondog/star-comp_cl
+  branch: main
+  auth_methods: [token]
+  commit_messages:
+    create: 'Админка: добавлена страница «{{slug}}»'
+    update: 'Админка: изменена страница «{{slug}}»'
+    delete: 'Админка: удалена страница «{{slug}}»'
+    uploadMedia: 'Админка: загружен файл {{path}}'
+    deleteMedia: 'Админка: удалён файл {{path}}'
+
+site_url: https://star-comp.ru
+app_title: STAR-COMP — управление сайтом
+
+# Куда складываются загруженные фото (исходники; нужные размеры сайт нарезает сам)
+media_folder: content/photos
+public_folder: /content/photos
+media_libraries:
+  default:
+    config:
+      max_file_size: 15000000
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 90
+          width: 2560
+          height: 2560
+
+collections:
+  - name: builds
+    label: Сборки
+    label_singular: сборку
+    description: Страницы компьютеров. Одна запись — одна страница сайта.
+    folder: content/builds
+    format: json
+    extension: json
+    create: true
+    identifier_field: name
+    slug: '{{fields.slug}}'
+    summary: '{{name}} — {{price}} ₽'
+    sortable_fields: [name, price]
+    editor:
+      preview: false
+    fields:
+      - name: name
+        label: Название
+        widget: string
+        hint: 'Крупный заголовок страницы. Например: SOLAR S1'
+      - name: subtitle
+        label: Строка под названием
+        widget: string
+        required: false
+        hint: 'Продолжение заголовка, читается поисковиком как одно целое с названием. Например: игровой компьютер на процессоре INTEL CORE i5-12400F и NVIDIA RTX 5050'
+      - name: slug
+        label: Адрес страницы
+        widget: string
+        pattern: ['^[a-z0-9][a-z0-9-]*$', 'Только латинские строчные буквы, цифры и дефис']
+        hint: 'Часть адреса после star-comp.ru/. Для страниц со старого сайта — точно как было, иначе страница потеряет позиции в поиске. После публикации не менять.'
+      - name: price
+        label: Цена, ₽
+        widget: number
+        value_type: int
+        min: 0
+        hint: 'Только число, без пробелов и знака рубля: 121000'
+      - name: note
+        label: Текст рядом с кнопкой
+        widget: text
+        required: false
+        hint: 'Два-три коротких предложения: что с компьютером и как его получить'
+      - name: photos
+        label: Фотографии
+        label_singular: фото
+        widget: list
+        min: 1
+        summary: '{{alt}}'
+        hint: 'Первое фото — главное: корпус целиком. Лучше горизонтальные 4:3, остальное сайт обрежет по центру.'
+        fields:
+          - name: image
+            label: Фото
+            widget: image
+          - name: alt
+            label: Что на фото
+            widget: string
+            hint: 'Коротко, без названия сборки: «видеокарта крупным планом». Нужно поисковикам и незрячим.'
+      - name: video
+        label: Видео (Kinescope)
+        widget: object
+        required: false
+        collapsed: true
+        hint: 'Если видео нет — оставьте пустым, блок на странице не появится'
+        fields:
+          - name: horizontal
+            label: Код горизонтального видео
+            widget: string
+            required: false
+            hint: 'Буквы и цифры из ссылки kinescope.io/… — показывается на компьютере'
+          - name: vertical
+            label: Код вертикального видео
+            widget: string
+            required: false
+            hint: 'Показывается на телефоне. Если его нет, будет горизонтальное'
+          - name: cover_h
+            label: Обложка горизонтальная (16:9)
+            widget: image
+            required: false
+          - name: cover_v
+            label: Обложка вертикальная (9:16)
+            widget: image
+            required: false
+      - name: lead
+        label: Описание сборки
+        widget: text
+        required: false
+        hint: 'Одно-три предложения: для чего этот компьютер. Стоит под заголовком «Конфигурация»'
+      - name: specs
+        label: Комплектующие
+        label_singular: строку
+        widget: list
+        summary: '{{label}}: {{value}}'
+        fields:
+          - name: label
+            label: Что
+            widget: string
+            hint: 'Процессор, Видеокарта, Корпус…'
+          - name: value
+            label: Модель
+            widget: string
+      - name: seo
+        label: Для поисковиков
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - name: title
+            label: Title — название вкладки и заголовок в поиске
+            widget: string
+            required: false
+            hint: 'До 70 знаков. Если пусто — соберётся из названия и строки под ним'
+          - name: description
+            label: Description — описание в поиске
+            widget: text
+            required: false
+            hint: '150–200 знаков: комплектующие, цена, город, чем удобно'

@@ -70,7 +70,141 @@ os.makedirs(os.path.join(ROOT,'.preview'),exist_ok=True)
 open(os.path.join(ROOT,'.preview','star-comp.html'),'w',encoding='utf-8').write(frag)
 print(len(full))
 
-# ---------- внутренняя страница сборки ----------
+# ---------- страницы сборок: по одной на каждый файл в content/builds/ ----------
+# Данные (название, цена, фото, видео, комплектующие) правятся в админке /admin или прямо в JSON.
+# Фото лежат в content/photos/ в исходном виде; нужные размеры AVIF/WebP сборщик нарезает сам в assets/.
+import json,glob,html
+from PIL import Image,ImageOps
+
+def esc(x): return html.escape(str(x or '').strip(),quote=True)
+def typo(x):
+    """Неразрывные пробелы после коротких предлогов и перед знаком рубля — чтобы строки не рвались некрасиво."""
+    x=re.sub(r'(?<![\w-])(в|на|и|с|к|о|у|а|за|из|по|от|до|для|или|не|но|под|при)\s+',lambda m:m.group(1)+'&nbsp;',x,flags=re.I)
+    x=re.sub(r'\s+(—|₽)',r'&nbsp;\1',x)
+    return x
+def txt(x): return typo(esc(x))
+def money(n): return f'{int(n):,}'.replace(',','&nbsp;')+'&nbsp;₽'
+
+def derive(src,widths,ratio):
+    """Нарезает фото под нужные ширины (обрезка по центру до ratio=ширина/высота). Возвращает (имя, [ширины], высота_на_ширину)."""
+    path=os.path.join(ROOT,src.lstrip('/'))
+    stem=os.path.splitext(os.path.basename(path))[0]
+    with Image.open(path) as im:
+        W,H=ImageOps.exif_transpose(im).size
+    W=min(W,int(H*ratio))  # ширина после обрезки
+    ws=[w for w in widths if w<=W] or [widths[0]]
+    todo=[w for w in ws if not all(os.path.exists(os.path.join(ROOT,'assets',f'{stem}-{w}.{e}')) for e in ('avif','webp'))]
+    if todo:
+        im=ImageOps.exif_transpose(Image.open(path)).convert('RGB')
+        for w in todo:
+            t=ImageOps.fit(im,(w,round(w/ratio)),Image.LANCZOS)
+            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=80,method=6)
+            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=60)
+    return stem,ws
+def og_image(src):
+    path=os.path.join(ROOT,src.lstrip('/'))
+    stem=os.path.splitext(os.path.basename(path))[0]
+    out=os.path.join(ROOT,'assets',f'{stem}-og.jpg')
+    if not os.path.exists(out):
+        ImageOps.fit(ImageOps.exif_transpose(Image.open(path)).convert('RGB'),(1200,630),Image.LANCZOS).save(out,quality=82,optimize=True,progressive=True)
+    return f'assets/{stem}-og.jpg'
+def srcset(stem,ws,ext): return ', '.join(f'assets/{stem}-{w}.{ext} {w}w' for w in ws)
+
+SIZES='(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)'
+ARROW_L='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>'
+ARROW_R='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg>'
+
+def gallery_html(d):
+    name=esc(d['name']); slides=[]; thumbs=[]
+    for n,ph in enumerate(d.get('photos') or []):
+        stem,ws=derive(ph['image'],[240,640,1024,1600],4/3)
+        big=[w for w in ws if w>=640] or ws
+        mid=1024 if 1024 in big else big[-1]
+        alt=esc(ph.get('alt')) or f'фото {n+1}'
+        load='fetchpriority="high"' if n==0 else 'loading="lazy"'
+        slides.append(f"""        <li>
+          <picture>
+            <source type="image/avif" srcset="{srcset(stem,big,'avif')}" sizes="{SIZES}">
+            <img src="assets/{stem}-{mid}.webp" srcset="{srcset(stem,big,'webp')}" sizes="{SIZES}" width="{mid}" height="{round(mid*3/4)}" alt="{name}: {alt}" {load} decoding="async">
+          </picture>
+        </li>""")
+        t=ws[0]
+        cur=' aria-current="true"' if n==0 else ''
+        thumbs.append(f'        <button type="button" aria-label="Фото {n+1}: {alt}"{cur}><picture><source type="image/avif" srcset="assets/{stem}-{t}.avif"><img src="assets/{stem}-{t}.webp" width="240" height="180" alt="" decoding="async"></picture></button>')
+    nl='\n'
+    return f"""    <div class="gallery" id="gallery">
+      <div class="gallery__stage">
+      <ul class="gallery__track" tabindex="0" aria-label="Фотографии сборки. Нажмите, чтобы увеличить">
+{nl.join(slides)}
+      </ul>
+      <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Предыдущее фото">{ARROW_L}</button>
+      <button class="gallery__nav gallery__nav--next" type="button" aria-label="Следующее фото">{ARROW_R}</button>
+      </div>
+      <div class="gallery__thumbs">
+{nl.join(thumbs)}
+      </div>
+    </div>"""
+
+def video_html(d):
+    v=d.get('video') or {}
+    h_id=(v.get('horizontal') or '').strip(); v_id=(v.get('vertical') or '').strip()
+    if not (h_id or v_id): return ''
+    first=(d.get('photos') or [{}])[0].get('image')
+    ch=v.get('cover_h') or v.get('cover_v') or first
+    cv=v.get('cover_v') or v.get('cover_h') or first
+    if not ch: return ''
+    hs,hw=derive(ch,[640,1280],16/9)
+    vs,vw=derive(cv,[480],9/16)
+    name=esc(d['name'])
+    return f"""
+  <section class="section wrap" aria-label="Видео">
+    <div class="video" id="video" data-h="{esc(h_id or v_id)}" data-v="{esc(v_id or h_id)}" data-title="Видео о сборке {name}">
+      <button class="video__play" type="button">
+        <picture>
+          <source media="(min-width: 1024px)" type="image/avif" srcset="{srcset(hs,hw,'avif')}" sizes="(min-width: 1240px) 1160px, 96vw">
+          <source media="(min-width: 1024px)" type="image/webp" srcset="{srcset(hs,hw,'webp')}" sizes="(min-width: 1240px) 1160px, 96vw">
+          <source type="image/avif" srcset="assets/{vs}-{vw[0]}.avif">
+          <img src="assets/{vs}-{vw[0]}.webp" width="480" height="853" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async">
+        </picture>
+        <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.500z"/></svg></span>
+      </button>
+    </div>
+  </section>
+"""
+
+def body_html(d):
+    name=esc(d['name'])
+    sub=f' <i class="sr-only">— </i><span>{txt(d["subtitle"])}</span>' if d.get('subtitle') else ''
+    note=f'\n      <p class="product__note">{txt(d["note"])}</p>' if d.get('note') else ''
+    lead=f'\n    <p class="section__lead">{txt(d["lead"])}</p>' if d.get('lead') else ''
+    specs='\n'.join(f'      <div><dt>{esc(x["label"]).rstrip(":")}:</dt><dd>{esc(x["value"])}</dd></div>' for x in d.get('specs') or [])
+    return f"""<main>
+  <section class="product wrap">
+{gallery_html(d)}
+
+    <div class="product__info">
+      <div class="product__row">
+      <h1>{name}{sub}</h1>
+      <div class="product__cost">
+        <p class="product__label">Стоимость на момент сборки:</p>
+        <p class="product__price">{money(d['price'])}</p>
+      </div>
+      </div>
+      <div class="product__row product__row--buy">{note}
+      <a class="btn" href="#podbor">Заказать компьютер</a>
+      </div>
+    </div>
+  </section>
+{video_html(d)}
+  <section class="section wrap" aria-labelledby="spec-title">
+    <h2 class="section__title" id="spec-title">Конфигурация {name}</h2>{lead}
+    <dl class="spec-grid">
+{specs}
+    </dl>
+{open('inner.flex-note.html',encoding='utf-8').read().rstrip()}
+  </section>
+</main>"""
+
 src=open('page.body.html',encoding='utf-8').read()
 header=src[:src.index('<main>')]
 menu=src[src.index('<dialog'):]
@@ -80,24 +214,36 @@ menu_i=re.sub(r'href="#(works|nal|ychit|lastvid|preim|proces|gift|otzivy|contakt
 menu_js=js[js.index("  var menu ="):]
 inner_js=open('inner.js',encoding='utf-8').read()
 css_i=css+open('inner.css',encoding='utf-8').read()
-inner=f"""<!doctype html>
+
+def page_html(d):
+    slug=d['slug'].strip().strip('/')
+    if not re.fullmatch(r'[a-z0-9][a-z0-9-]*',slug): raise SystemExit(f'Плохой адрес страницы: {slug!r} — только латиница, цифры и дефис')
+    seo=d.get('seo') or {}
+    name=d['name'].strip()
+    title=esc(seo.get('title') or (f"{name} — {d['subtitle']}" if d.get('subtitle') else name))
+    desc=esc(seo.get('description') or d.get('lead') or d.get('subtitle') or name)
+    url=f'https://star-comp.ru/{slug}'
+    photos=d.get('photos') or []
+    og=og_image(photos[0]['image']) if photos else 'assets/og-home.jpg'
+    ld={"@context":"https://schema.org","@type":"Product","name":name,"description":(d.get('lead') or d.get('subtitle') or name),"image":f"https://star-comp.ru/{og}","brand":{"@type":"Brand","name":"STAR-COMP"},"offers":{"@type":"Offer","url":url,"price":str(int(d['price'])),"priceCurrency":"RUB"}}
+    return f"""<!doctype html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SOLAR S1 — игровой компьютер на INTEL CORE i5-12400F и NVIDIA RTX 5050 8GB</title>
-<meta name="description" content="Игровой компьютер SOLAR S1: INTEL CORE i5-12400F, NVIDIA RTX 5050 8GB, 16GB DDR4, SSD M.2. Цена от 121 000 ₽. Сборка на заказ в Санкт-Петербурге: привезём, подключим и настроим, оплата после проверки.">
-<link rel="canonical" href="https://star-comp.ru/solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb">
-<meta property="og:url" content="https://star-comp.ru/solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb">
-<meta property="og:title" content="SOLAR S1 — игровой компьютер на INTEL CORE i5-12400F и NVIDIA RTX 5050 8GB">
-<meta property="og:description" content="Оптимальная сборка цена/качество для всех игр на высоких настройках.">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<link rel="canonical" href="{url}">
+<meta property="og:url" content="{url}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{esc(d.get('lead') or desc)}">
 <meta property="og:type" content="product">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:image" content="https://star-comp.ru/assets/og-solar-s1.jpg">
+<meta property="og:image" content="https://star-comp.ru/{og}">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Product","name":"SOLAR S1","description":"Оптимальная сборка цена/качество для всех игр на высоких настройках","image":"https://star-comp.ru/assets/og-solar-s1.jpg","brand":{{"@type":"Brand","name":"STAR-COMP"}},"offers":{{"@type":"Offer","url":"https://star-comp.ru/solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb","price":"121000","priceCurrency":"RUB"}}}}</script>
+<script type="application/ld+json">{json.dumps(ld,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')}</script>
 <link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -107,7 +253,8 @@ img{{max-width:100%}}
 </head>
 <body>
 {header_i}
-{open('inner.body.html',encoding='utf-8').read()}
+{body_html(d)}
+
 {menu_i}
 <script>
 {inner_js}
@@ -116,5 +263,10 @@ img{{max-width:100%}}
 </body>
 </html>
 """
-open(os.path.join(ROOT,'solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb.html'),'w',encoding='utf-8').write(inner)
-print('inner',len(inner))
+
+for f in sorted(glob.glob(os.path.join(ROOT,'content','builds','*.json'))):
+    d=json.load(open(f,encoding='utf-8'))
+    d.setdefault('slug',os.path.splitext(os.path.basename(f))[0])
+    out=page_html(d)
+    open(os.path.join(ROOT,d['slug']+'.html'),'w',encoding='utf-8').write(out)
+    print('сборка',d['slug'],len(out))

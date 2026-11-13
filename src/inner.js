@@ -107,7 +107,7 @@
     var id = window.matchMedia('(min-width:64rem)').matches ? v.dataset.h : v.dataset.v;
     var f = document.createElement('iframe');
     f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1';
-    f.title = 'Видео о сборке SOLAR S1';
+    f.title = v.dataset.title || 'Видео';
     f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
     f.allowFullscreen = true;
     v.innerHTML = '';
