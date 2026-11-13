@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SOLAR S1 — INTEL CORE i5-12400F, NVIDIA RTX 5060 8GB</title>
+<meta name="description" content="SOLAR S1 — оптимальная сборка цена/качество для всех игр на высоких настройках. INTEL CORE i5-12400F, 16GB DDR4, SSD M.2. Сборка на заказ в Санкт-Петербурге, доставка и подключение.">
+<link rel="canonical" href="https://star-comp.ru/solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb">
+<meta property="og:url" content="https://star-comp.ru/solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb">
+<meta property="og:title" content="SOLAR S1 — INTEL CORE i5-12400F, NVIDIA RTX 5060 8GB">
+<meta property="og:description" content="Оптимальная сборка цена/качество для всех игр на высоких настройках.">
+<meta property="og:type" content="product">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://star-comp.ru/assets/og-solar-s1.jpg">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"SOLAR S1","description":"Оптимальная сборка цена/качество для всех игр на высоких настройках","image":"https://star-comp.ru/assets/og-solar-s1.jpg","brand":{"@type":"Brand","name":"STAR-COMP"},"offers":{"@type":"Offer","url":"https://star-comp.ru/solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb","price":"121000","priceCurrency":"RUB"}}</script>
+<link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+/* Раскладка: «плавающая» шапка-пилюля + первый экран в две колонки (текст | фото 4:5),
+   на узких экранах всё складывается в одну колонку. Все размеры в rem —
+   на экранах шире 1920px корневой шрифт растёт, и блок масштабируется целиком. */
+@font-face{font-family:Gilroy;src:url(assets/gilroy-regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Gilroy;src:url(assets/gilroy-semibold.woff2) format("woff2");font-weight:600;font-display:swap}
+
+:root{
+  color-scheme:dark;
+  --bg:#0a0a0a;
+  --fg:#fff;
+  --muted:#808080;
+  --line:rgba(255,255,255,.1);
+  --panel:rgba(38,40,54,.3);
+  --cyan:#00d9ff;
+  --pink:#ff28b4;
+  --font:Gilroy,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  /* Шкала шрифтов: 2 заголовочных размера + 3 текстовых. Меньше 14px на сайте ничего нет. */
+  --fs-h:clamp(1.875rem,1.5rem + 1.6vw,2.375rem); /* 30–38px: заголовки блоков, цифры */
+  --fs-h3:1.5rem;                                  /* 24px: названия сборок, цены */
+  --fs-l:clamp(1.125rem,1.05rem + .35vw,1.25rem);  /* 18–20px: подзаголовки, кнопки, меню */
+  --fs-m:1rem;                                     /* 16px: основной текст */
+  --fs-s:.875rem;                                  /* 14px: подписи и сноски */
+  --container:72.5rem;
+  --gutter:max(1rem,env(safe-area-inset-left,0px));
+  --gutter-r:max(1rem,env(safe-area-inset-right,0px));
+  /* 16px до 1920px, дальше плавно растёт (2K, 4K) */
+  font-size:clamp(100%,.8333vw,150%);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.5 var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,p,ul,dl,figure{margin:0;padding:0}
+ul{list-style:none}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+.wrap{width:100%;max-width:calc(var(--container) + var(--gutter) + var(--gutter-r));margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+
+/* ---------- Шапка ---------- */
+.header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;padding-block:.75rem}
+.header__bar{display:flex;align-items:center;gap:1.25rem;height:3.75rem;padding:0 .5rem 0 .625rem;border-radius:1.875rem;background:var(--panel);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.logo{display:flex;align-items:center;gap:.875rem;margin-right:auto;text-decoration:none}
+.logo__icon{width:2.875rem;height:2.875rem}
+.logo__word{width:auto;height:1.0625rem}
+.header__socials{display:none;align-items:center;gap:1.5rem}
+.social{display:block;border-radius:50%;transition:transform .2s}
+.social svg{width:2.1875rem;height:2.1875rem}
+.header__phone{display:none;flex-direction:column;align-items:flex-end;gap:.25rem;line-height:1;white-space:nowrap}
+.header__phone a{font-weight:600;font-size:var(--fs-l);text-decoration:none}
+.header__phone span{font-size:var(--fs-s);color:var(--muted)}
+.burger{flex:none;display:grid;place-items:center;width:2.875rem;height:2.875rem;padding:0;border:0;border-radius:50%;background:#fff;cursor:pointer;transition:transform .2s}
+.burger i,.burger i::before,.burger i::after{display:block;width:1.25rem;height:1px;background:#000}
+.burger i{position:relative}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0}
+.burger i::before{top:-.25rem}
+.burger i::after{top:.25rem}
+
+/* ---------- Первый экран ---------- */
+.hero{display:grid;gap:1.875rem;padding-block:1.25rem 2rem}
+.hero__intro,.hero__meta{min-width:0}
+.badge{display:inline-flex;align-items:center;gap:.625rem;padding:.3125rem .75rem .3125rem .625rem;border:1px solid var(--line);border-radius:62.5rem;color:var(--muted);font-size:var(--fs-m);line-height:1.25}
+.badge::before{content:"";width:.375rem;height:.375rem;border-radius:50%;background:var(--cyan)}
+.hero h1{margin-top:.875rem;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero__lead{margin-top:.875rem;max-width:29rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+.btn{display:flex;align-items:center;justify-content:center;min-height:3.75rem;margin-top:1.75rem;padding:.5rem 2.125rem;border-radius:62.5rem;background:var(--cyan);color:#000;font-weight:600;font-size:var(--fs-l);text-align:center;text-decoration:none;box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:box-shadow .2s,transform .2s}
+
+.hero__media{position:relative;justify-self:center;width:100%;max-width:31.25rem;aspect-ratio:4/5;border:1px solid var(--line);border-radius:1.25rem;overflow:hidden;background:#17060f;box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,40,180,.18)}
+.hero__media img{width:100%;height:100%;object-fit:cover}
+.hero__media figcaption{position:absolute;left:1.25rem;bottom:1.25rem;max-width:min(16rem,calc(100% - 2.5rem));padding:.875rem 1.375rem;border:1px solid var(--line);border-radius:1.25rem;background:rgba(10,10,10,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:var(--fs-m);line-height:1.5}
+
+.facts{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;color:var(--muted);font-size:var(--fs-l);line-height:1.3}
+.facts li{display:flex;align-items:center;gap:.75rem}
+.facts svg{flex:none;width:1.5rem;height:1.5rem;fill:none;stroke:var(--cyan);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;gap:1rem;max-width:35rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.stats li{display:flex;flex-direction:column}
+.stats b{font-weight:600;font-size:var(--fs-h);line-height:1.2;font-variant-numeric:lining-nums tabular-nums}
+.stats span{color:var(--muted);font-size:var(--fs-m)}
+.note{margin-top:1rem;color:var(--muted);font-size:var(--fs-s)}
+.note a{text-underline-offset:.2em}
+
+/* ---------- Меню ---------- */
+.menu{width:min(100%,25rem);max-width:none;height:100%;max-height:none;margin:0 0 0 auto;padding:calc(1.25rem + env(safe-area-inset-top,0px)) max(1.5rem,env(safe-area-inset-right,0px)) 2rem 1.5rem;border:0;border-left:1px solid var(--line);background:#101014;color:var(--fg);overflow-y:auto}
+.menu::backdrop{background:rgba(0,0,0,.6)}
+.menu[open]{animation:menu-in .25s ease-out}
+@keyframes menu-in{from{transform:translateX(2rem);opacity:0}}
+.menu__close{display:grid;place-items:center;width:2.875rem;height:2.875rem;margin-left:auto;padding:0;border:1px solid var(--line);border-radius:50%;background:none;color:inherit;font:400 1.5rem/1 var(--font);cursor:pointer}
+.menu nav{display:flex;flex-direction:column;margin-top:.75rem}
+.menu nav a{padding:.6875rem 0;border-bottom:1px solid var(--line);font-size:var(--fs-l);text-decoration:none}
+.menu__contacts{display:flex;flex-direction:column;gap:.25rem;margin-top:1.5rem;color:var(--muted)}
+.menu__contacts a:first-child{color:var(--fg);font-weight:600;font-size:var(--fs-l);text-decoration:none}
+.menu__socials{display:flex;gap:1rem;margin-top:1.25rem}
+
+/* ---------- Адаптив ---------- */
+@media (hover:hover){
+  .btn:hover{box-shadow:0 0 1.5rem rgba(0,217,255,.6);transform:translateY(-1px)}
+  .burger:hover,.social:hover{transform:scale(1.07)}
+  .menu nav a:hover,.header__phone a:hover,.note a:hover{color:var(--cyan)}
+}
+@media (min-width:64rem){
+  :root{--gutter:max(1.5rem,env(safe-area-inset-left,0px));--gutter-r:max(1.5rem,env(safe-area-inset-right,0px))}
+  .header__socials,.header__phone{display:flex}
+  .header{padding-block:1.875rem .75rem}
+}
+@media (min-width:64rem){
+  .hero{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:clamp(2rem,5vw,4rem);row-gap:2.5rem;padding-block:.875rem 2.5rem}
+  .hero__intro{padding-top:1.25rem}
+  .hero__media{grid-column:2;grid-row:1/3;justify-self:end;align-self:start;border-radius:1.875rem;
+    /* на низких экранах (ноутбуки) фото не вылезает за первый экран */
+    max-height:max(26rem,calc(100svh - 9.5rem))}
+  .hero__media figcaption{left:auto;right:1.875rem;bottom:1.875rem}
+  .btn{margin-top:2.25rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+/* ---------- Популярные конфигурации ---------- */
+.section{padding-block:2.5rem 4rem}
+.section__title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
+.section__title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.section__lead{margin-top:.75rem;max-width:46rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+.cards{display:grid;gap:1rem;margin-top:2rem}
+.card{position:relative;display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:1.25rem;background:#0e0e10;overflow:hidden;transition:border-color .2s,transform .2s}
+.card__media{position:relative;aspect-ratio:4/3;background:#15151a}
+.card__media img{width:100%;height:100%;object-fit:cover}
+.card__tag{position:absolute;top:.875rem;right:.875rem;padding:.3125rem .75rem;border:1px solid var(--line);border-radius:62.5rem;background:rgba(10,10,10,.72);font-size:var(--fs-s);line-height:1.3}
+.card__body{display:flex;flex-direction:column;flex:1;gap:.75rem;padding:1.25rem 1.375rem 1.375rem}
+.card__name{margin:0;font-weight:600;font-size:var(--fs-h3);line-height:1.15;text-transform:uppercase}
+.card__name a{text-decoration:none}
+.card__name a::after{content:"";position:absolute;inset:0}
+.card__name a:focus-visible{outline:0}
+.card:has(a:focus-visible){outline:2px solid var(--cyan);outline-offset:3px}
+.specs{display:grid;gap:.5rem;margin:0}
+.specs dt,.card__price span{color:var(--muted);font-size:var(--fs-s);line-height:1.3}
+.specs dd{margin:0;font-weight:600;font-size:var(--fs-m);line-height:1.35}
+.card__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-top:auto;padding-top:.375rem}
+.card__price{display:flex;flex-direction:column}
+.card__price b{font-weight:600;font-size:var(--fs-h3);line-height:1.25;font-variant-numeric:lining-nums}
+.card__go{flex:none;display:grid;place-items:center;width:3rem;height:3rem;border-radius:50%;background:var(--cyan);box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:transform .2s}
+.card__go svg{width:1.25rem;height:1.25rem;fill:none;stroke:#000;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){
+  .card:hover{transform:translateY(-.125rem)}
+  .card:hover .card__go{transform:rotate(45deg)}
+}
+@media (min-width:64rem){
+  .section{padding-block:3rem 5rem}
+  .cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.875rem,2vw,1.5rem);margin-top:2.5rem}
+  .card__media{aspect-ratio:4/3}
+}
+@media (min-width:64rem){
+  .card__body{padding:1.5rem 1.5rem 1.5rem}
+}
+
+/* ---------- Доработки: подсветка карточек, подзаголовок, разделитель ---------- */
+.card{transition:border-color .3s,transform .3s,box-shadow .3s}
+@media (hover:hover){
+  .card:hover{border-color:rgba(255,40,180,.18);box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,40,180,.15)}
+}
+@media (min-width:64rem){
+  .section__lead{max-width:none;white-space:nowrap}
+}
+.divider{display:flex;align-items:center;gap:1rem}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.divider span{display:inline-flex;align-items:center;gap:.625rem;padding:.4375rem 1.25rem .4375rem .75rem;border:1px solid var(--line);border-radius:62.5rem;color:var(--muted);font-size:var(--fs-m);line-height:1.25;white-space:nowrap}
+.divider span::before{content:"";width:.375rem;height:.375rem;border-radius:50%;background:var(--cyan)}
+
+/* ---------- Кнопка «Показать ещё» ---------- */
+[hidden]{display:none!important}
+.more{display:flex;align-items:center;justify-content:center;width:100%;min-height:3.5rem;margin:1.5rem auto 0;padding:.5rem 2.5rem;border:1px solid var(--cyan);border-radius:62.5rem;background:none;color:var(--fg);font:600 var(--fs-l)/1.2 var(--font);cursor:pointer;transition:background-color .2s,color .2s,box-shadow .2s}
+.card--in{animation:card-in .45s ease-out both}
+.card--in:nth-child(3n+2){animation-delay:.07s}
+.card--in:nth-child(3n){animation-delay:.14s}
+@keyframes card-in{from{opacity:0;transform:translateY(1.25rem)}}
+@media (hover:hover){
+  .more:hover{color:var(--cyan);background:rgba(0,217,255,.08);box-shadow:0 0 1rem rgba(0,217,255,.4)}
+}
+.section{scroll-margin-top:5.5rem}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ---------- Преимущества под первым экраном ---------- */
+.perks{padding-block:0 3rem}
+.perks__list{display:grid;gap:1rem}
+.perk{min-width:0;padding:1.375rem 1.5rem 1.5rem;border:1px solid var(--line);border-radius:1.25rem;background:#0e0e10}
+.perk h2{display:flex;align-items:center;gap:.75rem;font-weight:600;font-size:var(--fs-l);line-height:1.25}
+.perk svg{flex:none;width:1.5rem;height:1.5rem;fill:none;stroke:#e0457b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.perk p{margin-top:.625rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+@media (min-width:64rem){
+  .perks{padding-block:0 4rem}
+  .perks__list{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.875rem,2vw,1.5rem)}
+}
+
+/* ---------- Две раскладки: мобильная (до 1024px) и десктопная ---------- */
+/* на планшетах мобильная колонка не растягивается на всю ширину, а стоит по центру */
+@media (max-width:63.99rem){
+  .wrap{max-width:calc(36rem + var(--gutter) + var(--gutter-r))}
+}
+@media (min-width:64rem){
+  .badge{padding:.4375rem 1.5rem .4375rem .75rem}
+  .btn{display:inline-flex}
+  .more{width:auto;margin-top:2rem}
+}
+
+/* ================= Страница сборки ================= */
+.crumbs{padding-block:.5rem 1rem}
+.crumbs a{display:inline-flex;align-items:center;gap:.5rem;color:var(--muted);font-size:var(--fs-m);text-decoration:none}
+.crumbs svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.product{display:grid;gap:1.75rem;padding-block:0 3rem}
+.product__info,.gallery{min-width:0}
+
+/* Галерея: листается пальцем или стрелками, точки появляются, когда фото больше одного */
+.gallery{position:relative}
+.gallery__track{display:flex;aspect-ratio:4/3;border:1px solid var(--line);border-radius:1.25rem;background:#15151a;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,40,180,.14)}
+.gallery__track::-webkit-scrollbar{display:none}
+.gallery__track li{flex:0 0 100%;scroll-snap-align:start}
+.gallery__track img{width:100%;height:100%;object-fit:cover}
+.gallery__nav{position:absolute;top:calc(50% - 1.5rem - .75rem);display:none;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
+.gallery__nav svg{width:1.125rem;height:1.125rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gallery__nav--prev{left:1rem}
+.gallery__nav--next{right:1rem}
+.gallery__nav:disabled{opacity:.35;cursor:default}
+.gallery__dots{display:flex;justify-content:center;gap:.25rem;height:1.5rem;margin-top:.75rem}
+.gallery__dots button{display:grid;place-items:center;width:1.5rem;height:1.5rem;padding:0;border:0;background:none;cursor:pointer}
+.gallery__dots button::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--cyan);opacity:.3;transition:opacity .2s,transform .2s}
+.gallery__dots button[aria-current="true"]::before{opacity:1;transform:scale(1.25)}
+
+.product__info{display:flex;flex-direction:column;align-items:center;text-align:center}
+.product__info h1{font-weight:600;font-size:var(--fs-h);line-height:1.18;text-transform:uppercase}
+.product__label{margin-top:1.25rem;color:var(--muted);font-size:var(--fs-s);line-height:1.3}
+.product__price{font-weight:600;font-size:var(--fs-h);line-height:1.2;font-variant-numeric:lining-nums}
+.product__lead{margin-top:.625rem;max-width:36rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+.product__info .btn{align-self:stretch}
+
+.spec-grid{display:grid;gap:.75rem;margin-top:2rem}
+.spec-grid div{min-width:0;padding:.875rem 1.25rem 1rem;border:1px solid var(--line);border-radius:.875rem;background:#0e0e10}
+.spec-grid dt{color:var(--muted);font-size:var(--fs-s);line-height:1.3}
+.spec-grid dd{margin:.25rem 0 0;font-weight:600;font-size:var(--fs-m);line-height:1.35}
+.spec-grid dd.todo{color:var(--muted);font-weight:400}
+.flex-note{margin-top:.75rem;padding:1.25rem 1.25rem 1.375rem;border:1px solid var(--line);border-radius:.875rem;background:#0e0e10}
+.flex-note p{font-size:var(--fs-m);line-height:1.45}
+.flex-note ul{display:grid;gap:.5rem 2rem;margin-top:.875rem}
+.flex-note li{display:flex;gap:.625rem;font-size:var(--fs-m);line-height:1.4}
+.flex-note li::before{content:"";flex:none;width:.375rem;height:.375rem;margin-top:.5rem;border-radius:50%;background:var(--cyan)}
+
+@media (hover:hover){
+  .crumbs a:hover{color:var(--cyan)}
+  .gallery__nav:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
+}
+@media (min-width:64rem){
+  .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:.75rem 2rem}
+  .flex-note ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gallery--many .gallery__nav{display:grid}
+}
+@media (min-width:64rem){
+  /* галерея по центру; ширина подбирается так, чтобы фото 4:3 целиком помещалось в экран */
+  .gallery{width:min(100%,max(40rem,calc((100svh - 11rem)*4/3)));margin-inline:auto}
+  .gallery__track{border-radius:1.875rem}
+  .product{padding-block:.25rem 3.5rem}
+}
+@media (min-width:64rem){
+  .product__info .btn{align-self:center}
+}
+
+/* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию */
+.video{position:relative;width:100%;max-width:24rem;margin:2rem auto 0;aspect-ratio:9/16;border:1px solid var(--line);border-radius:1.25rem;background:#000;overflow:hidden}
+.video__play{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer}
+.video__play img{width:100%;height:100%;object-fit:cover}
+.video__icon{position:absolute;inset:0;display:grid;place-items:center;width:4.5rem;height:4.5rem;margin:auto;border-radius:50%;background:var(--cyan);box-shadow:0 0 1.5rem rgba(0,217,255,.45);transition:transform .2s}
+.video__icon svg{width:1.75rem;height:1.75rem;fill:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (hover:hover){.video__play:hover .video__icon{transform:scale(1.08)}}
+@media (min-width:64rem){
+  .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem;margin-top:2.5rem}
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <div class="header__bar">
+      <a class="logo" href="index.html" aria-label="STAR-COMP — на главную">
+        <svg class="logo__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none"><path d="M30.4617 26.561L21.6962 11.5118C21.3662 10.938 20.7493 10.5793 20.075 10.5793C19.4151 10.5793 18.7982 10.938 18.4539 11.5118L9.6884 26.561C9.37279 27.0918 9.76014 27.7661 10.377 27.7661H10.8791C11.4099 27.7661 11.8977 27.4792 12.1559 27.0344L19.9459 13.6638C20.0033 13.5634 20.1468 13.5634 20.2042 13.6638L27.9941 27.0344C28.2667 27.4935 28.7545 27.7661 29.271 27.7661H29.7731C30.39 27.7661 30.7773 27.1062 30.4617 26.561Z" fill="white"/><path d="M24.006 25.4276C23.8195 25.112 23.4895 24.9111 23.1165 24.9111H20.0751H17.0337C16.6607 24.9111 16.3308 25.112 16.1443 25.4276L15.7426 26.1162C15.4987 26.5323 15.8 27.0487 16.2734 27.0487H20.0751H23.8769C24.3503 27.0487 24.6516 26.5323 24.4077 26.1162L24.006 25.4276Z" fill="white"/><path d="M29.0558 9.46029C28.9697 9.37421 28.7401 8.45605 28.7401 8.45605C28.7401 8.45605 28.5106 9.35986 28.4245 9.46029C28.3384 9.54637 27.3916 9.7759 27.3916 9.7759C27.3916 9.7759 28.3384 10.0054 28.4245 10.0915C28.5106 10.1776 28.7401 11.0958 28.7401 11.0958C28.7401 11.0958 28.9697 10.1919 29.0558 10.0915C29.1418 10.0054 30.0887 9.7759 30.0887 9.7759C30.0887 9.7759 29.1418 9.56071 29.0558 9.46029Z" fill="#00D9FF"/><path d="M13.2607 32.2421C13.1746 32.1561 12.9738 31.324 12.9738 31.324C12.9738 31.324 12.7729 32.1561 12.6868 32.2421C12.6008 32.3282 11.74 32.5291 11.74 32.5291C11.74 32.5291 12.6008 32.7299 12.6868 32.816C12.7729 32.9021 12.9738 33.7341 12.9738 33.7341C12.9738 33.7341 13.1746 32.9021 13.2607 32.816C13.3468 32.7299 14.2075 32.5291 14.2075 32.5291C14.2075 32.5291 13.3468 32.3282 13.2607 32.2421Z" fill="white"/><path d="M5.52806 24.1651C5.66276 24.1651 5.77195 24.0559 5.77195 23.9213C5.77195 23.7866 5.66276 23.6774 5.52806 23.6774C5.39337 23.6774 5.28418 23.7866 5.28418 23.9213C5.28418 24.0559 5.39337 24.1651 5.52806 24.1651Z" fill="white"/><path d="M6.14489 14.4098C6.27958 14.4098 6.38877 14.3006 6.38877 14.1659C6.38877 14.0312 6.27958 13.922 6.14489 13.922C6.01019 13.922 5.901 14.0312 5.901 14.1659C5.901 14.3006 6.01019 14.4098 6.14489 14.4098Z" fill="#00D9FF"/><path d="M24.7375 6.72019C24.8722 6.72019 24.9814 6.611 24.9814 6.47631C24.9814 6.34161 24.8722 6.23242 24.7375 6.23242C24.6028 6.23242 24.4937 6.34161 24.4937 6.47631C24.4937 6.611 24.6028 6.72019 24.7375 6.72019Z" fill="white"/><path d="M14.2792 6.79188C14.4535 6.79188 14.5949 6.65057 14.5949 6.47626C14.5949 6.30195 14.4535 6.16064 14.2792 6.16064C14.1049 6.16064 13.9636 6.30195 13.9636 6.47626C13.9636 6.65057 14.1049 6.79188 14.2792 6.79188Z" fill="white"/><path d="M33.6753 14.8974C33.81 14.8974 33.9192 14.7882 33.9192 14.6536C33.9192 14.5189 33.81 14.4097 33.6753 14.4097C33.5406 14.4097 33.4314 14.5189 33.4314 14.6536C33.4314 14.7882 33.5406 14.8974 33.6753 14.8974Z" fill="white"/><path d="M25.9857 32.9162C26.1204 32.9162 26.2296 32.807 26.2296 32.6723C26.2296 32.5377 26.1204 32.4285 25.9857 32.4285C25.851 32.4285 25.7418 32.5377 25.7418 32.6723C25.7418 32.807 25.851 32.9162 25.9857 32.9162Z" fill="#FF28B4"/><path d="M34.6078 23.6631C34.7425 23.6631 34.8517 23.5539 34.8517 23.4192C34.8517 23.2845 34.7425 23.1753 34.6078 23.1753C34.4731 23.1753 34.3639 23.2845 34.3639 23.4192C34.3639 23.5539 34.4731 23.6631 34.6078 23.6631Z" fill="white"/><path d="M35.9276 5.31422C35.2533 5.24249 34.5934 5.2138 34.5073 4.6543C34.4069 4.03741 34.1199 1.67029 34.1199 1.67029C34.1199 1.67029 33.833 4.03741 33.7326 4.6543C33.6465 5.2138 32.9866 5.24249 32.3123 5.31422C31.638 5.38595 30.2178 5.57245 30.2178 5.57245C30.2178 5.57245 31.638 5.7733 32.3123 5.83068C32.9866 5.90241 33.6465 5.93111 33.7326 6.49061C33.833 7.10749 34.1199 9.47462 34.1199 9.47462C34.1199 9.47462 34.4069 7.10749 34.5073 6.49061C34.5934 5.93111 35.2533 5.90241 35.9276 5.83068C36.6018 5.75895 38.0221 5.57245 38.0221 5.57245C38.0221 5.57245 36.6018 5.38595 35.9276 5.31422Z" fill="#FF28B4"/><path d="M35.3538 7.68133C35.3538 8.14041 35.4973 8.58514 35.7699 8.94379C38.1226 12.2434 39.4568 16.3034 39.3277 20.6646C39.0264 30.8648 30.7056 39.1138 20.5055 39.329C9.68848 39.5729 0.808187 30.8217 0.822534 20.0477C0.83688 9.56068 9.34417 0.952966 19.8312 0.82385C23.6904 0.780812 27.3056 1.87112 30.3326 3.79351C30.8204 4.09478 31.3656 4.26694 31.9394 4.26694H31.9968C32.1403 4.26694 32.1833 4.09478 32.0829 4.0087C28.6111 1.3977 24.2499 -0.108652 19.5587 0.00611706C8.89944 0.278695 0.234339 8.95814 0.0048001 19.6174C-0.239085 30.8791 8.84205 40.1324 20.0608 40.1324C31.2078 40.1324 40.1454 31.2091 40.1454 20.0621C40.1454 15.3135 38.4956 10.9523 35.7268 7.52352C35.612 7.3944 35.3538 7.48048 35.3538 7.68133Z" fill="#00D9FF"/></svg>
+        <svg class="logo__word" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="111" height="12" viewBox="0 0 111 12" fill="none"><path d="M2.22398 11.52C1.81864 11.52 1.44531 11.4187 1.10398 11.216C0.773311 11.0134 0.506644 10.7467 0.303978 10.416C0.101311 10.0747 -2.24113e-05 9.70135 -2.24113e-05 9.29602V8.41602H2.11198V9.20002C2.11198 9.25335 2.12798 9.30135 2.15998 9.34402C2.20264 9.37602 2.25064 9.39202 2.30398 9.39202H9.19998C9.25331 9.39202 9.29598 9.37602 9.32798 9.34402C9.37064 9.30135 9.39198 9.25335 9.39198 9.20002V7.00802C9.39198 6.95469 9.37064 6.91202 9.32798 6.88002C9.29598 6.84802 9.25331 6.83202 9.19998 6.83202H2.22398C1.81864 6.83202 1.44531 6.73069 1.10398 6.52802C0.773311 6.32535 0.506644 6.05869 0.303978 5.72802C0.101311 5.38669 -2.24113e-05 5.00802 -2.24113e-05 4.59202V2.22402C-2.24113e-05 1.81869 0.101311 1.45069 0.303978 1.12002C0.506644 0.778686 0.773311 0.506686 1.10398 0.304019C1.44531 0.101352 1.81864 1.90735e-05 2.22398 1.90735e-05H9.29598C9.70131 1.90735e-05 10.0693 0.101352 10.4 0.304019C10.7413 0.506686 11.0133 0.778686 11.216 1.12002C11.4186 1.45069 11.52 1.81869 11.52 2.22402V3.10402H9.39198V2.32002C9.39198 2.26669 9.37064 2.22402 9.32798 2.19202C9.29598 2.14935 9.25331 2.12802 9.19998 2.12802H2.30398C2.25064 2.12802 2.20264 2.14935 2.15998 2.19202C2.12798 2.22402 2.11198 2.26669 2.11198 2.32002V4.51202C2.11198 4.56535 2.12798 4.60802 2.15998 4.64002C2.20264 4.67202 2.25064 4.68802 2.30398 4.68802H9.29598C9.70131 4.68802 10.0693 4.78935 10.4 4.99202C10.7413 5.19469 11.0133 5.46669 11.216 5.80802C11.4186 6.13869 11.52 6.51202 11.52 6.92802V9.29602C11.52 9.70135 11.4186 10.0747 11.216 10.416C11.0133 10.7467 10.7413 11.0134 10.4 11.216C10.0693 11.4187 9.70131 11.52 9.29598 11.52H2.22398ZM17.3947 11.52V2.12802H12.6907V1.90735e-05H24.2107V2.12802H19.5227V11.52H17.3947ZM25.4394 11.52V2.22402C25.4394 1.81869 25.5407 1.45069 25.7434 1.12002C25.946 0.778686 26.2127 0.506686 26.5434 0.304019C26.8847 0.101352 27.258 1.90735e-05 27.6634 1.90735e-05H34.7194C35.1247 1.90735e-05 35.498 0.101352 35.8394 0.304019C36.1807 0.506686 36.4527 0.778686 36.6554 1.12002C36.858 1.45069 36.9594 1.81869 36.9594 2.22402V11.52H34.8314V7.64802H27.5514V11.52H25.4394ZM27.5514 5.53602H34.8314V2.32002C34.8314 2.26669 34.81 2.22402 34.7674 2.19202C34.7247 2.14935 34.6767 2.12802 34.6234 2.12802H27.7434C27.69 2.12802 27.642 2.14935 27.5994 2.19202C27.5674 2.22402 27.5514 2.26669 27.5514 2.32002V5.53602ZM47.9664 11.52L44.4944 7.37602H47.2624L50.2704 10.928V11.52H47.9664ZM38.7824 11.52V0.0160189H48.0624C48.4677 0.0160189 48.841 0.117352 49.1824 0.320019C49.5237 0.522685 49.7957 0.794685 49.9984 1.13602C50.201 1.46669 50.3024 1.83469 50.3024 2.24002V5.34402C50.3024 5.74935 50.201 6.12269 49.9984 6.46402C49.7957 6.80535 49.5237 7.07735 49.1824 7.28002C48.841 7.47202 48.4677 7.56802 48.0624 7.56802L40.8944 7.58402V11.52H38.7824ZM41.0864 5.44002H47.9664C48.0197 5.44002 48.0677 5.42402 48.1104 5.39202C48.153 5.36002 48.1744 5.31735 48.1744 5.26402V2.32002C48.1744 2.26669 48.153 2.22402 48.1104 2.19202C48.0677 2.14935 48.0197 2.12802 47.9664 2.12802H41.0864C41.033 2.12802 40.985 2.14935 40.9424 2.19202C40.9104 2.22402 40.8944 2.26669 40.8944 2.32002V5.26402C40.8944 5.31735 40.9104 5.36002 40.9424 5.39202C40.985 5.42402 41.033 5.44002 41.0864 5.44002ZM53.8575 6.83202C53.2815 6.83202 52.9935 6.54402 52.9935 5.96802V5.66402C52.9935 5.08802 53.2815 4.80002 53.8575 4.80002H54.2255C54.8121 4.80002 55.1055 5.08802 55.1055 5.66402V5.96802C55.1055 6.54402 54.8121 6.83202 54.2255 6.83202H53.8575ZM60.147 11.52C59.7416 11.52 59.3683 11.4187 59.027 11.216C58.6963 11.0134 58.4296 10.7467 58.227 10.416C58.0243 10.0747 57.923 9.70135 57.923 9.29602V2.22402C57.923 1.81869 58.0243 1.45069 58.227 1.12002C58.4296 0.778686 58.6963 0.506686 59.027 0.304019C59.3683 0.101352 59.7416 1.90735e-05 60.147 1.90735e-05H69.411V2.12802H60.595C60.4243 2.12802 60.2856 2.17602 60.179 2.27202C60.083 2.36802 60.035 2.50669 60.035 2.68802V8.83202C60.035 9.00269 60.083 9.14135 60.179 9.24802C60.2856 9.34402 60.4243 9.39202 60.595 9.39202H69.411V11.52H60.147ZM73.2712 11.52C72.8659 11.52 72.4926 11.4187 72.1512 11.216C71.8206 11.0134 71.5539 10.7467 71.3512 10.416C71.1486 10.0747 71.0472 9.70135 71.0472 9.29602V2.22402C71.0472 1.81869 71.1486 1.45069 71.3512 1.12002C71.5539 0.778686 71.8206 0.506686 72.1512 0.304019C72.4926 0.101352 72.8659 1.90735e-05 73.2712 1.90735e-05H80.3432C80.7486 1.90735e-05 81.1166 0.101352 81.4472 0.304019C81.7886 0.506686 82.0606 0.778686 82.2632 1.12002C82.4659 1.45069 82.5672 1.81869 82.5672 2.22402V9.29602C82.5672 9.70135 82.4659 10.0747 82.2632 10.416C82.0606 10.7467 81.7886 11.0134 81.4472 11.216C81.1166 11.4187 80.7486 11.52 80.3432 11.52H73.2712ZM73.3512 9.39202H80.2312C80.2846 9.39202 80.3326 9.37602 80.3752 9.34402C80.4179 9.30135 80.4392 9.25335 80.4392 9.20002V2.32002C80.4392 2.26669 80.4179 2.22402 80.3752 2.19202C80.3326 2.14935 80.2846 2.12802 80.2312 2.12802H73.3512C73.2979 2.12802 73.2499 2.14935 73.2072 2.19202C73.1752 2.22402 73.1592 2.26669 73.1592 2.32002V9.20002C73.1592 9.25335 73.1752 9.30135 73.2072 9.34402C73.2499 9.37602 73.2979 9.39202 73.3512 9.39202ZM84.3292 11.52V1.90735e-05H86.6492L90.8252 4.97602L94.9852 1.90735e-05H97.3212V11.52H95.1932V3.07202L90.8252 8.27202L86.4412 3.08802V11.52H84.3292ZM99.173 11.52V0.0160189H108.453C108.858 0.0160189 109.232 0.117352 109.573 0.320019C109.914 0.522685 110.186 0.794685 110.389 1.13602C110.592 1.46669 110.693 1.83469 110.693 2.24002V5.34402C110.693 5.74935 110.592 6.12269 110.389 6.46402C110.186 6.80535 109.914 7.07735 109.573 7.28002C109.232 7.47202 108.858 7.56802 108.453 7.56802L101.285 7.58402V11.52H99.173ZM101.477 5.44002H108.357C108.41 5.44002 108.458 5.42402 108.501 5.39202C108.544 5.36002 108.565 5.31735 108.565 5.26402V2.32002C108.565 2.26669 108.544 2.22402 108.501 2.19202C108.458 2.14935 108.41 2.12802 108.357 2.12802H101.477C101.424 2.12802 101.376 2.14935 101.333 2.19202C101.301 2.22402 101.285 2.26669 101.285 2.32002V5.26402C101.285 5.31735 101.301 5.36002 101.333 5.39202C101.376 5.42402 101.424 5.44002 101.477 5.44002Z" fill="white"/></svg>
+      </a>
+      <div class="header__socials">
+<a class="social" href="https://max.ru/u/f9LHodD0cOKrboX3imjyg3cBiLspEiRa0Yz4Pb8i89Zd2AoqQNLb-lqSCpU" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg width="35" height="35" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="mx-b"><stop offset="0" stop-color="#00f"/><stop offset="1" stop-opacity="0"/></linearGradient><linearGradient id="mx-a"><stop offset="0" stop-color="#4cf"/><stop offset=".662" stop-color="#53e"/><stop offset="1" stop-color="#93d"/></linearGradient><linearGradient id="mx-c" x1="117.847" x2="1000" y1="760.536" y2="500" gradientUnits="userSpaceOnUse" href="#mx-a"></linearGradient><radialGradient id="mx-d" cx="-87.392" cy="1166.116" r="500" fx="-87.392" fy="1166.116" gradientTransform="rotate(51.356 1551.478 559.3)scale(2.42703433 1)" gradientUnits="userSpaceOnUse" href="#mx-b"></radialGradient></defs><rect width="1000" height="1000" fill="url(#mx-c)" ry="249.681"/><rect width="1000" height="1000" fill="url(#mx-d)" ry="249.681"/><path fill="#fff" fill-rule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z" clip-rule="evenodd"/></svg></a>
+<a class="social" href="https://t.me/ST_COMP" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg width="35" height="35" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#fff"/><path fill="#29a9eb" fill-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50Zm21.977-68.056c.386-4.38-4.24-2.576-4.24-2.576-3.415 1.414-6.937 2.85-10.497 4.302-11.04 4.503-22.444 9.155-32.159 13.734-5.268 1.932-2.184 3.864-2.184 3.864l8.351 2.577c3.855 1.16 5.91-.129 5.91-.129l17.988-12.238c6.424-4.38 4.882-.773 3.34.773l-13.49 12.882c-2.056 1.804-1.028 3.35-.129 4.123 2.55 2.249 8.82 6.364 11.557 8.16.712.467 1.185.778 1.292.858.642.515 4.111 2.834 6.424 2.319 2.313-.516 2.57-3.479 2.57-3.479l3.083-20.226c.462-3.511.993-6.886 1.417-9.582.4-2.546.705-4.485.767-5.362Z"/></svg></a>
+<a class="social" href="https://vk.com/star_comp_spb" target="_blank" rel="noopener" aria-label="Группа ВКонтакте"><svg width="35" height="35" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><circle cx="512" cy="512" r="512" style="fill:#2787f5"/><path d="M585.83 271.5H438.17c-134.76 0-166.67 31.91-166.67 166.67v147.66c0 134.76 31.91 166.67 166.67 166.67h147.66c134.76 0 166.67-31.91 166.67-166.67V438.17c0-134.76-32.25-166.67-166.67-166.67zm74 343.18h-35c-13.24 0-17.31-10.52-41.07-34.62-20.71-20-29.87-22.74-35-22.74-7.13 0-9.17 2-9.17 11.88v31.57c0 8.49-2.72 13.58-25.12 13.58-37 0-78.07-22.4-106.93-64.16-43.45-61.1-55.33-106.93-55.33-116.43 0-5.09 2-9.84 11.88-9.84h35c8.83 0 12.22 4.07 15.61 13.58 17.31 49.9 46.17 93.69 58 93.69 4.41 0 6.45-2 6.45-13.24v-51.6c-1.36-23.76-13.92-25.8-13.92-34.28 0-4.07 3.39-8.15 8.83-8.15h55c7.47 0 10.18 4.07 10.18 12.9v69.58c0 7.47 3.39 10.18 5.43 10.18 4.41 0 8.15-2.72 16.29-10.86 25.12-28.17 43.11-71.62 43.11-71.62 2.38-5.09 6.45-9.84 15.28-9.84h35c10.52 0 12.9 5.43 10.52 12.9-4.41 20.37-47.18 80.79-47.18 80.79-3.73 6.11-5.09 8.83 0 15.61 3.73 5.09 16 15.61 24.1 25.12 14.94 17 26.48 31.23 29.53 41.07 3.45 9.84-1.65 14.93-11.49 14.93z" style="fill:#fff"/></svg></a>
+      </div>
+      <div class="header__phone">
+        <a href="tel:+79939845505">8 (993) 984-55-05</a>
+        <span>Без выходных, 11:00 до 19:00</span>
+      </div>
+      <button class="burger" id="menu-open" type="button" aria-label="Открыть меню" aria-haspopup="dialog"><i></i></button>
+    </div>
+  </div>
+</header>
+
+
+<main>
+  <nav class="crumbs wrap" aria-label="Навигация">
+    <a href="index.html#konfiguracii"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7.5 3.5 3 8l4.5 4.5"/></svg>Все конфигурации</a>
+  </nav>
+
+  <section class="product wrap">
+    <div class="gallery" id="gallery">
+      <ul class="gallery__track" tabindex="0" aria-label="Фотографии сборки">
+        <li>
+          <picture>
+            <source type="image/avif" srcset="assets/solar-s1-1-640.avif 640w, assets/solar-s1-1-1024.avif 1024w, assets/solar-s1-1-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-1-1024.webp" srcset="assets/solar-s1-1-640.webp 640w, assets/solar-s1-1-1024.webp 1024w, assets/solar-s1-1-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: общий вид компьютера в корпусе с панорамным стеклом и жёлтой подсветкой" fetchpriority="high" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source type="image/avif" srcset="assets/solar-s1-2-640.avif 640w, assets/solar-s1-2-1024.avif 1024w, assets/solar-s1-2-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-2-1024.webp" srcset="assets/solar-s1-2-640.webp 640w, assets/solar-s1-2-1024.webp 1024w, assets/solar-s1-2-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: угол корпуса крупным планом" loading="lazy" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source type="image/avif" srcset="assets/solar-s1-3-640.avif 640w, assets/solar-s1-3-1024.avif 1024w, assets/solar-s1-3-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-3-1024.webp" srcset="assets/solar-s1-3-640.webp 640w, assets/solar-s1-3-1024.webp 1024w, assets/solar-s1-3-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: башенный кулер и вентиляторы с подсветкой" loading="lazy" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source type="image/avif" srcset="assets/solar-s1-4-640.avif 640w, assets/solar-s1-4-1024.avif 1024w, assets/solar-s1-4-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-4-1024.webp" srcset="assets/solar-s1-4-640.webp 640w, assets/solar-s1-4-1024.webp 1024w, assets/solar-s1-4-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: материнская плата и укладка кабелей" loading="lazy" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source type="image/avif" srcset="assets/solar-s1-5-640.avif 640w, assets/solar-s1-5-1024.avif 1024w, assets/solar-s1-5-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-5-1024.webp" srcset="assets/solar-s1-5-640.webp 640w, assets/solar-s1-5-1024.webp 1024w, assets/solar-s1-5-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: вентилятор и кожух блока питания" loading="lazy" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source type="image/avif" srcset="assets/solar-s1-6-640.avif 640w, assets/solar-s1-6-1024.avif 1024w, assets/solar-s1-6-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-6-1024.webp" srcset="assets/solar-s1-6-640.webp 640w, assets/solar-s1-6-1024.webp 1024w, assets/solar-s1-6-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: видеокарта GeForce RTX" loading="lazy" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source type="image/avif" srcset="assets/solar-s1-7-640.avif 640w, assets/solar-s1-7-1024.avif 1024w, assets/solar-s1-7-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-7-1024.webp" srcset="assets/solar-s1-7-640.webp 640w, assets/solar-s1-7-1024.webp 1024w, assets/solar-s1-7-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 176px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="SOLAR S1: кулер процессора крупным планом" loading="lazy" decoding="async">
+          </picture>
+        </li>
+      </ul>
+      <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+      <button class="gallery__nav gallery__nav--next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+      <div class="gallery__dots" hidden></div>
+    </div>
+
+    <div class="product__info">
+      <h1>SOLAR S1</h1>
+      <p class="product__lead">Оптимальная сборка цена/качество для всех игр на высоких настройках</p>
+      <p class="product__label">Стоимость на момент сборки:</p>
+      <p class="product__price">121&nbsp;000&nbsp;₽</p>
+      <a class="btn" href="#podbor">Заказать компьютер</a>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="video-title">
+    <h2 class="section__title" id="video-title">Видео компьютера</h2>
+    <div class="video" id="video" data-h="n1TmwaddQRqe4BRXvLC95D" data-v="bp2312pYaexLVSokJALhvv">
+      <button class="video__play" type="button" aria-label="Смотреть видео о сборке SOLAR S1">
+        <picture>
+          <source media="(min-width: 1024px)" type="image/avif" srcset="assets/solar-s1-video-h-640.avif 640w, assets/solar-s1-video-h-1280.avif 1280w" sizes="(min-width: 1240px) 1160px, 96vw">
+          <source media="(min-width: 1024px)" type="image/webp" srcset="assets/solar-s1-video-h-640.webp 640w, assets/solar-s1-video-h-1280.webp 1280w" sizes="(min-width: 1240px) 1160px, 96vw">
+          <source type="image/avif" srcset="assets/solar-s1-video-v.avif">
+          <img src="assets/solar-s1-video-v.webp" width="480" height="853" alt="" loading="lazy" decoding="async">
+        </picture>
+        <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.500z"/></svg></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="spec-title">
+    <h2 class="section__title" id="spec-title">Конфигурация</h2>
+    <dl class="spec-grid">
+      <div><dt>Процессор:</dt><dd>INTEL CORE i5-12400F</dd></div>
+      <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5050 8GB ASUS DUAL</dd></div>
+      <div><dt>Оперативная память:</dt><dd>16GB DDR4 NETAC SHADOW III</dd></div>
+      <div><dt>Материнская плата:</dt><dd>MSI H610M-G PRO</dd></div>
+      <div><dt>Блок питания:</dt><dd>650W DEEPCOOL 80+ BRONZE</dd></div>
+      <div><dt>Охлаждение:</dt><dd>DEEPCOOL AG400</dd></div>
+      <div><dt>Накопитель:</dt><dd>SSD M.2 250GB NETAC NV3000</dd></div>
+      <div><dt>Корпус:</dt><dd>FORMULA</dd></div>
+    </dl>
+    <div class="flex-note">
+      <p>Любую конфигурацию можно изменить перед покупкой&nbsp;— адаптируем компьютер под ваши задачи и бюджет.</p>
+      <ul>
+        <li>Любой объём оперативной памяти</li>
+        <li>SSD любого объёма</li>
+        <li>Замена видеокарты и процессора</li>
+        <li>Настроим компьютер под ваши задачи и бюджет</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<dialog class="menu" id="menu" aria-label="Меню">
+  <button class="menu__close" type="button" aria-label="Закрыть меню">×</button>
+  <nav>
+    <a href="index.html#works">Последние проекты</a>
+    <a href="index.html#nal">Компьютеры в наличии</a>
+    <a href="/remont-kompyuterov-spb">Обслуживание</a>
+    <a href="index.html#ychit">Учитываем при сборке</a>
+    <a href="index.html#lastvid">Последние видео</a>
+    <a href="index.html#preim">Почему мы</a>
+    <a href="index.html#proces">Как мы работаем</a>
+    <a href="index.html#gift">Акции</a>
+    <a href="index.html#otzivy">Отзывы</a>
+    <a href="index.html#contakty">Контакты</a>
+  </nav>
+  <div class="menu__contacts">
+    <a href="tel:+79939845505">8 (993) 984-55-05</a>
+    <span>Пн-Вс, 11:00 до 19:00</span>
+    <a href="mailto:info@star-comp.ru">info@star-comp.ru</a>
+  </div>
+  <div class="menu__socials">
+<a class="social" href="https://max.ru/u/f9LHodD0cOKrboX3imjyg3cBiLspEiRa0Yz4Pb8i89Zd2AoqQNLb-lqSCpU" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg width="35" height="35" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="mxm-b"><stop offset="0" stop-color="#00f"/><stop offset="1" stop-opacity="0"/></linearGradient><linearGradient id="mxm-a"><stop offset="0" stop-color="#4cf"/><stop offset=".662" stop-color="#53e"/><stop offset="1" stop-color="#93d"/></linearGradient><linearGradient id="mxm-c" x1="117.847" x2="1000" y1="760.536" y2="500" gradientUnits="userSpaceOnUse" href="#mxm-a"></linearGradient><radialGradient id="mxm-d" cx="-87.392" cy="1166.116" r="500" fx="-87.392" fy="1166.116" gradientTransform="rotate(51.356 1551.478 559.3)scale(2.42703433 1)" gradientUnits="userSpaceOnUse" href="#mxm-b"></radialGradient></defs><rect width="1000" height="1000" fill="url(#mxm-c)" ry="249.681"/><rect width="1000" height="1000" fill="url(#mxm-d)" ry="249.681"/><path fill="#fff" fill-rule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z" clip-rule="evenodd"/></svg></a>
+<a class="social" href="https://t.me/ST_COMP" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg width="35" height="35" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#fff"/><path fill="#29a9eb" fill-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50Zm21.977-68.056c.386-4.38-4.24-2.576-4.24-2.576-3.415 1.414-6.937 2.85-10.497 4.302-11.04 4.503-22.444 9.155-32.159 13.734-5.268 1.932-2.184 3.864-2.184 3.864l8.351 2.577c3.855 1.16 5.91-.129 5.91-.129l17.988-12.238c6.424-4.38 4.882-.773 3.34.773l-13.49 12.882c-2.056 1.804-1.028 3.35-.129 4.123 2.55 2.249 8.82 6.364 11.557 8.16.712.467 1.185.778 1.292.858.642.515 4.111 2.834 6.424 2.319 2.313-.516 2.57-3.479 2.57-3.479l3.083-20.226c.462-3.511.993-6.886 1.417-9.582.4-2.546.705-4.485.767-5.362Z"/></svg></a>
+<a class="social" href="https://vk.com/star_comp_spb" target="_blank" rel="noopener" aria-label="Группа ВКонтакте"><svg width="35" height="35" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><circle cx="512" cy="512" r="512" style="fill:#2787f5"/><path d="M585.83 271.5H438.17c-134.76 0-166.67 31.91-166.67 166.67v147.66c0 134.76 31.91 166.67 166.67 166.67h147.66c134.76 0 166.67-31.91 166.67-166.67V438.17c0-134.76-32.25-166.67-166.67-166.67zm74 343.18h-35c-13.24 0-17.31-10.52-41.07-34.62-20.71-20-29.87-22.74-35-22.74-7.13 0-9.17 2-9.17 11.88v31.57c0 8.49-2.72 13.58-25.12 13.58-37 0-78.07-22.4-106.93-64.16-43.45-61.1-55.33-106.93-55.33-116.43 0-5.09 2-9.84 11.88-9.84h35c8.83 0 12.22 4.07 15.61 13.58 17.31 49.9 46.17 93.69 58 93.69 4.41 0 6.45-2 6.45-13.24v-51.6c-1.36-23.76-13.92-25.8-13.92-34.28 0-4.07 3.39-8.15 8.83-8.15h55c7.47 0 10.18 4.07 10.18 12.9v69.58c0 7.47 3.39 10.18 5.43 10.18 4.41 0 8.15-2.72 16.29-10.86 25.12-28.17 43.11-71.62 43.11-71.62 2.38-5.09 6.45-9.84 15.28-9.84h35c10.52 0 12.9 5.43 10.52 12.9-4.41 20.37-47.18 80.79-47.18 80.79-3.73 6.11-5.09 8.83 0 15.61 3.73 5.09 16 15.61 24.1 25.12 14.94 17 26.48 31.23 29.53 41.07 3.45 9.84-1.65 14.93-11.49 14.93z" style="fill:#fff"/></svg></a>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  // Галерея: точки и стрелки включаются сами, когда фото больше одного
+  var g = document.getElementById('gallery');
+  if (!g) return;
+  var track = g.querySelector('.gallery__track');
+  var slides = track.children;
+  if (slides.length < 2) return;
+  var dots = g.querySelector('.gallery__dots');
+  var prev = g.querySelector('.gallery__nav--prev');
+  var next = g.querySelector('.gallery__nav--next');
+  var current = 0;
+  function go(i) { track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' }); }
+  function update() {
+    current = Math.round(track.scrollLeft / track.clientWidth);
+    for (var i = 0; i < dots.children.length; i++) dots.children[i].setAttribute('aria-current', String(i === current));
+    prev.disabled = current === 0;
+    next.disabled = current === slides.length - 1;
+  }
+  for (var i = 0; i < slides.length; i++) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Фото ' + (i + 1) + ' из ' + slides.length);
+    b.addEventListener('click', go.bind(null, i));
+    dots.appendChild(b);
+  }
+  dots.hidden = false;
+  g.classList.add('gallery--many');
+  prev.addEventListener('click', function () { go(current - 1); });
+  next.addEventListener('click', function () { go(current + 1); });
+  track.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+(function () {
+  // Видео: плеер не грузится, пока человек не нажал на обложку.
+  // На десктопе берём горизонтальный ролик, на телефоне — вертикальный.
+  var v = document.getElementById('video');
+  if (!v) return;
+  v.querySelector('.video__play').addEventListener('click', function () {
+    var id = window.matchMedia('(min-width:64rem)').matches ? v.dataset.h : v.dataset.v;
+    var f = document.createElement('iframe');
+    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1';
+    f.title = 'Видео о сборке SOLAR S1';
+    f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+    f.allowFullscreen = true;
+    v.innerHTML = '';
+    v.appendChild(f);
+  });
+})();
+
+(function () {
+  var menu = document.getElementById('menu');
+  var open = document.getElementById('menu-open');
+  if (!menu || !menu.showModal) return;
+  open.addEventListener('click', function () { menu.showModal(); });
+  menu.addEventListener('click', function (e) {
+    // закрываем по клику на фон, на крестик и на любую ссылку меню
+    if (e.target === menu || e.target.closest('a, .menu__close')) menu.close();
+  });
+})();
+</script>
+</body>
+</html>
