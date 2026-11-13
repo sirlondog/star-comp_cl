@@ -266,6 +266,10 @@ html{scroll-behavior:smooth}
 .product__info{display:flex;flex-direction:column;align-items:center;text-align:center}
 /* жирнее, чем 600: начертания Bold у нас нет, поэтому буквы слегка утолщены обводкой */
 .product__info h1{margin-top:1rem;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-transform:uppercase;-webkit-text-stroke:.03em currentColor}
+/* вторая строка заголовка: то же h1, но обычным текстом */
+.product__info h1 span{display:block;margin-inline:auto;max-width:36rem;margin-top:.5rem;text-wrap:balance;font-weight:400;font-size:var(--fs-l);line-height:1.35;text-transform:none;-webkit-text-stroke:0}
+/* заголовок есть для поисковиков и экранных читалок, на экране не показывается */
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .product__label{margin-top:1.25rem;color:var(--muted);font-size:var(--fs-m);line-height:1.3}
 .product__price{font-weight:600;font-size:var(--fs-h);line-height:1.2;font-variant-numeric:lining-nums}
 .product__lead{margin-top:.625rem;max-width:36rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-m);line-height:1.4}
@@ -406,7 +410,7 @@ html{scroll-behavior:smooth}
     </div>
 
     <div class="product__info">
-      <h1>SOLAR S1</h1>
+      <h1>SOLAR S1 <i class="sr-only">— </i><span>игровой компьютер на&nbsp;процессоре INTEL CORE i5-12400F и&nbsp;NVIDIA RTX&nbsp;5050</span></h1>
       <p class="product__lead">Оптимальная сборка цена/качество для всех игр на высоких настройках</p>
       <p class="product__label">Стоимость на момент сборки:</p>
       <p class="product__price">121&nbsp;000&nbsp;₽</p>
@@ -414,7 +418,8 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
-  <section class="section wrap" aria-label="Видео компьютера">
+  <section class="section wrap" aria-labelledby="video-title">
+    <h2 class="sr-only" id="video-title">Видео компьютера SOLAR S1</h2>
     <div class="video" id="video" data-h="n1TmwaddQRqe4BRXvLC95D" data-v="bp2312pYaexLVSokJALhvv">
       <button class="video__play" type="button" aria-label="Смотреть видео о сборке SOLAR S1">
         <picture>
@@ -429,7 +434,7 @@ html{scroll-behavior:smooth}
   </section>
 
   <section class="section wrap" aria-labelledby="spec-title">
-    <h2 class="section__title" id="spec-title">Конфигурация</h2>
+    <h2 class="section__title" id="spec-title">Конфигурация SOLAR S1</h2>
     <dl class="spec-grid">
       <div><dt>Процессор:</dt><dd>INTEL CORE i5-12400F</dd></div>
       <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5050 8GB ASUS DUAL</dd></div>
