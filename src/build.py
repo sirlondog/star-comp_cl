@@ -85,11 +85,11 @@ inner=f"""<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SOLAR S1 — INTEL CORE i5-12400F, NVIDIA RTX 5060 8GB</title>
-<meta name="description" content="SOLAR S1 — оптимальная сборка цена/качество для всех игр на высоких настройках. INTEL CORE i5-12400F, 16GB DDR4, SSD M.2. Сборка на заказ в Санкт-Петербурге, доставка и подключение.">
+<title>SOLAR S1 — игровой компьютер на INTEL CORE i5-12400F и NVIDIA RTX 5050 8GB</title>
+<meta name="description" content="Игровой компьютер SOLAR S1: INTEL CORE i5-12400F, NVIDIA RTX 5050 8GB, 16GB DDR4, SSD M.2. Сборка на заказ в Санкт-Петербурге: привезём, подключим и настроим, оплата после проверки.">
 <link rel="canonical" href="https://star-comp.ru/solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb">
 <meta property="og:url" content="https://star-comp.ru/solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb">
-<meta property="og:title" content="SOLAR S1 — INTEL CORE i5-12400F, NVIDIA RTX 5060 8GB">
+<meta property="og:title" content="SOLAR S1 — игровой компьютер на INTEL CORE i5-12400F и NVIDIA RTX 5050 8GB">
 <meta property="og:description" content="Оптимальная сборка цена/качество для всех игр на высоких настройках.">
 <meta property="og:type" content="product">
 <meta property="og:locale" content="ru_RU">
