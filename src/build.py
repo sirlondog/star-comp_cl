@@ -413,7 +413,6 @@ def body_html(d):
         <p class="product__price">от&nbsp;{money(d['price'])}</p>
       </div>
       {note}
-      <a class="btn" href="#podbor">Консультация</a>
     </div>
   </section>
 {about_section}

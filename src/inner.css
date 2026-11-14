@@ -144,7 +144,7 @@
   .header__socials,.header__phone{display:none}
   /* бургер: 3 жирные белые полоски, без круга на фоне */
   .burger{display:grid;place-items:center;margin-left:auto;background:none;border:0;color:#fff}
-  .burger i,.burger i::before,.burger i::after{height:2px}
+  .burger i,.burger i::before,.burger i::after{height:2px;background:#fff}
   .burger i::before{top:-.3125rem}
   .burger i::after{top:.3125rem}
   .product{padding:0}
