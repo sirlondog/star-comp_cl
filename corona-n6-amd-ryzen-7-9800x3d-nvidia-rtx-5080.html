@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CORONA N6</title>
+<meta name="description" content="CORONA N6">
+<link rel="canonical" href="https://star-comp.ru/corona-n6-amd-ryzen-7-9800x3d-nvidia-rtx-5080">
+<meta property="og:url" content="https://star-comp.ru/corona-n6-amd-ryzen-7-9800x3d-nvidia-rtx-5080">
+<meta property="og:title" content="CORONA N6">
+<meta property="og:description" content="CORONA N6">
+<meta property="og:type" content="product">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://star-comp.ru/assets/1-копия-og.jpg">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"CORONA N6","description":"CORONA N6","image":"https://star-comp.ru/assets/1-копия-og.jpg","brand":{"@type":"Brand","name":"STAR-COMP"},"offers":{"@type":"Offer","url":"https://star-comp.ru/corona-n6-amd-ryzen-7-9800x3d-nvidia-rtx-5080","price":"343000","priceCurrency":"RUB"}}</script>
+<link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+/* Раскладка: «плавающая» шапка-пилюля + первый экран в две колонки (текст | фото 4:5),
+   на узких экранах всё складывается в одну колонку. Все размеры в rem —
+   на экранах шире 1920px корневой шрифт растёт, и блок масштабируется целиком. */
+@font-face{font-family:Gilroy;src:url(assets/gilroy-regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Gilroy;src:url(assets/gilroy-semibold.woff2) format("woff2");font-weight:600;font-display:swap}
+
+:root{
+  color-scheme:dark;
+  --bg:#0a0a0a;
+  --fg:#fff;
+  --muted:#808080;
+  --line:rgba(255,255,255,.1);
+  --panel:rgba(38,40,54,.3);
+  --cyan:#00d9ff;
+  --pink:#ff28b4;
+  --font:Gilroy,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  /* Шкала шрифтов: 4 размера — 16, 20, 24 и 38px. Меньше 16px на сайте ничего нет. */
+  --fs-h:clamp(1.875rem,1.5rem + 1.6vw,2.375rem); /* 30–38px: заголовки блоков, цифры */
+  --fs-h3:1.5rem;                                  /* 24px: названия сборок, цены */
+  --fs-l:clamp(1.125rem,1.05rem + .35vw,1.25rem);  /* 18–20px: подзаголовки, кнопки, меню */
+  --fs-m:1rem;                                     /* 16px: основной текст и подписи */
+  --container:72.5rem;
+  --gutter:max(1rem,env(safe-area-inset-left,0px));
+  --gutter-r:max(1rem,env(safe-area-inset-right,0px));
+  /* 16px до 1920px, дальше плавно растёт (2K, 4K) */
+  font-size:clamp(100%,.8333vw,150%);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.5 var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,p,ul,dl,figure{margin:0;padding:0}
+ul{list-style:none}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+.wrap{width:100%;max-width:calc(var(--container) + var(--gutter) + var(--gutter-r));margin-inline:auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+
+/* ---------- Шапка ---------- */
+.header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;padding-block:.75rem}
+.header__bar{display:flex;align-items:center;gap:1.25rem;height:3.75rem;padding:0 .5rem 0 .625rem;border-radius:1.875rem;background:var(--panel);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.logo{display:flex;align-items:center;gap:.875rem;margin-right:auto;text-decoration:none}
+.logo__icon{width:2.875rem;height:2.875rem}
+.logo__word{width:auto;height:1.0625rem}
+.header__socials{display:none;align-items:center;gap:1.5rem}
+.social{display:block;border-radius:50%;transition:transform .2s}
+.social svg{width:2.1875rem;height:2.1875rem}
+.header__phone{display:none;flex-direction:column;align-items:flex-end;gap:.25rem;line-height:1;white-space:nowrap}
+.header__phone a{font-weight:600;font-size:var(--fs-l);text-decoration:none}
+.header__phone span{font-size:var(--fs-m);color:var(--muted)}
+.burger{flex:none;display:grid;place-items:center;width:2.875rem;height:2.875rem;padding:0;border:0;border-radius:50%;background:#fff;cursor:pointer;transition:transform .2s}
+.burger i,.burger i::before,.burger i::after{display:block;width:1.25rem;height:1px;background:#000}
+.burger i{position:relative}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0}
+.burger i::before{top:-.25rem}
+.burger i::after{top:.25rem}
+
+/* ---------- Первый экран ---------- */
+.hero{display:grid;gap:1.875rem;padding-block:1.25rem 2rem}
+.hero__intro,.hero__meta{min-width:0}
+.badge{display:inline-flex;align-items:center;gap:.625rem;padding:.3125rem .75rem .3125rem .625rem;border:1px solid var(--line);border-radius:62.5rem;color:var(--muted);font-size:var(--fs-m);line-height:1.25}
+.badge::before{content:"";width:.375rem;height:.375rem;border-radius:50%;background:var(--cyan)}
+.hero h1{margin-top:.875rem;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero__lead{margin-top:.875rem;max-width:29rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+.btn{display:flex;align-items:center;justify-content:center;min-height:3.75rem;margin-top:1.75rem;padding:.5rem 2.125rem;border-radius:62.5rem;background:var(--cyan);color:#000;font-weight:600;font-size:var(--fs-l);text-align:center;text-decoration:none;box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:box-shadow .2s,transform .2s}
+
+.hero__media{position:relative;justify-self:center;width:100%;max-width:31.25rem;aspect-ratio:4/5;border:1px solid var(--line);border-radius:1.25rem;overflow:hidden;background:#17060f;box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,40,180,.18)}
+.hero__media img{width:100%;height:100%;object-fit:cover}
+.hero__media figcaption{position:absolute;left:1.25rem;bottom:1.25rem;max-width:min(16rem,calc(100% - 2.5rem));padding:.875rem 1.375rem;border:1px solid var(--line);border-radius:1.25rem;background:rgba(10,10,10,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:var(--fs-m);line-height:1.5}
+
+.facts{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;color:var(--muted);font-size:var(--fs-l);line-height:1.3}
+.facts li{display:flex;align-items:center;gap:.75rem}
+.facts svg{flex:none;width:1.5rem;height:1.5rem;fill:none;stroke:var(--cyan);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;gap:1rem;max-width:35rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.stats li{display:flex;flex-direction:column}
+.stats b{font-weight:600;font-size:var(--fs-h);line-height:1.2;font-variant-numeric:lining-nums tabular-nums}
+.stats span{color:var(--muted);font-size:var(--fs-m)}
+.note{margin-top:1rem;color:var(--muted);font-size:var(--fs-m)}
+.note a{text-underline-offset:.2em}
+
+/* ---------- Меню ---------- */
+.menu{width:min(100%,25rem);max-width:none;height:100%;max-height:none;margin:0 0 0 auto;padding:calc(1.25rem + env(safe-area-inset-top,0px)) max(1.5rem,env(safe-area-inset-right,0px)) 2rem 1.5rem;border:0;border-left:1px solid var(--line);background:#101014;color:var(--fg);overflow-y:auto}
+.menu::backdrop{background:rgba(0,0,0,.6)}
+.menu[open]{animation:menu-in .25s ease-out}
+@keyframes menu-in{from{transform:translateX(2rem);opacity:0}}
+.menu__close{display:grid;place-items:center;width:2.875rem;height:2.875rem;margin-left:auto;padding:0;border:1px solid var(--line);border-radius:50%;background:none;color:inherit;font:400 1.5rem/1 var(--font);cursor:pointer}
+.menu nav{display:flex;flex-direction:column;margin-top:.75rem}
+.menu nav a{padding:.6875rem 0;border-bottom:1px solid var(--line);font-size:var(--fs-l);text-decoration:none}
+.menu__contacts{display:flex;flex-direction:column;gap:.25rem;margin-top:1.5rem;color:var(--muted)}
+.menu__contacts a:first-child{color:var(--fg);font-weight:600;font-size:var(--fs-l);text-decoration:none}
+.menu__socials{display:flex;gap:1rem;margin-top:1.25rem}
+
+/* ---------- Адаптив ---------- */
+@media (hover:hover){
+  .btn:hover{box-shadow:0 0 1.5rem rgba(0,217,255,.6);transform:translateY(-1px)}
+  .burger:hover,.social:hover{transform:scale(1.07)}
+  .menu nav a:hover,.header__phone a:hover,.note a:hover{color:var(--cyan)}
+}
+@media (min-width:64rem){
+  :root{--gutter:max(1.5rem,env(safe-area-inset-left,0px));--gutter-r:max(1.5rem,env(safe-area-inset-right,0px))}
+  .header__socials,.header__phone{display:flex}
+  .header{padding-block:1.875rem .75rem}
+}
+@media (min-width:64rem){
+  .hero{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:clamp(2rem,5vw,4rem);row-gap:2.5rem;padding-block:.875rem 2.5rem}
+  .hero__intro{padding-top:1.25rem}
+  .hero__media{grid-column:2;grid-row:1/3;justify-self:end;align-self:start;border-radius:1.875rem;
+    /* на низких экранах (ноутбуки) фото не вылезает за первый экран */
+    max-height:max(26rem,calc(100svh - 9.5rem))}
+  .hero__media figcaption{left:auto;right:1.875rem;bottom:1.875rem}
+  .btn{margin-top:2.25rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+/* ---------- Популярные конфигурации ---------- */
+.section{padding-block:2.5rem 4rem}
+.section__title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
+.section__title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.section__lead{margin-top:.75rem;max-width:46rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+.cards{display:grid;gap:1rem;margin-top:2rem}
+.card{position:relative;display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:1.25rem;background:#0e0e10;overflow:hidden;transition:border-color .2s,transform .2s}
+.card__media{position:relative;aspect-ratio:4/3;background:#15151a}
+.card__media img{width:100%;height:100%;object-fit:cover}
+.card__tag{position:absolute;top:.875rem;right:.875rem;padding:.3125rem .75rem;border:1px solid var(--line);border-radius:62.5rem;background:rgba(10,10,10,.72);font-size:var(--fs-m);line-height:1.3}
+.card__body{display:flex;flex-direction:column;flex:1;gap:.75rem;padding:1.25rem 1.375rem 1.375rem}
+.card__name{margin:0;font-weight:600;font-size:var(--fs-h3);line-height:1.15;text-transform:uppercase}
+.card__name a{text-decoration:none}
+.card__name a::after{content:"";position:absolute;inset:0}
+.card__name a:focus-visible{outline:0}
+.card:has(a:focus-visible){outline:2px solid var(--cyan);outline-offset:3px}
+.specs{display:grid;gap:.5rem;margin:0}
+.specs dt,.card__price span{color:var(--muted);font-size:var(--fs-m);line-height:1.3}
+.specs dd{margin:0;font-weight:600;font-size:var(--fs-m);line-height:1.35}
+.card__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-top:auto;padding-top:.375rem}
+.card__price{display:flex;flex-direction:column}
+.card__price b{font-weight:600;font-size:var(--fs-h3);line-height:1.25;font-variant-numeric:lining-nums}
+.card__go{flex:none;display:grid;place-items:center;width:3rem;height:3rem;border-radius:50%;background:var(--cyan);box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:transform .2s}
+.card__go svg{width:1.25rem;height:1.25rem;fill:none;stroke:#000;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){
+  .card:hover{transform:translateY(-.125rem)}
+  .card:hover .card__go{transform:rotate(45deg)}
+}
+@media (min-width:64rem){
+  .section{padding-block:3rem 5rem}
+  .cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.875rem,2vw,1.5rem);margin-top:2.5rem}
+  .card__media{aspect-ratio:4/3}
+}
+@media (min-width:64rem){
+  .card__body{padding:1.5rem 1.5rem 1.5rem}
+}
+
+/* ---------- Доработки: подсветка карточек, подзаголовок, разделитель ---------- */
+.card{transition:border-color .3s,transform .3s,box-shadow .3s}
+@media (hover:hover){
+  .card:hover{border-color:rgba(255,40,180,.18);box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,40,180,.15)}
+}
+@media (min-width:64rem){
+  .section__lead{max-width:none;white-space:nowrap}
+}
+.divider{display:flex;align-items:center;gap:1rem}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.divider span{display:inline-flex;align-items:center;gap:.625rem;padding:.4375rem 1.25rem .4375rem .75rem;border:1px solid var(--line);border-radius:62.5rem;color:var(--muted);font-size:var(--fs-m);line-height:1.25;white-space:nowrap}
+.divider span::before{content:"";width:.375rem;height:.375rem;border-radius:50%;background:var(--cyan)}
+
+/* ---------- Кнопка «Показать ещё» ---------- */
+[hidden]{display:none!important}
+.more{display:flex;align-items:center;justify-content:center;width:100%;min-height:3.5rem;margin:1.5rem auto 0;padding:.5rem 2.5rem;border:1px solid var(--cyan);border-radius:62.5rem;background:none;color:var(--fg);font:600 var(--fs-l)/1.2 var(--font);cursor:pointer;transition:background-color .2s,color .2s,box-shadow .2s}
+.card--in{animation:card-in .45s ease-out both}
+.card--in:nth-child(3n+2){animation-delay:.07s}
+.card--in:nth-child(3n){animation-delay:.14s}
+@keyframes card-in{from{opacity:0;transform:translateY(1.25rem)}}
+@media (hover:hover){
+  .more:hover{color:var(--cyan);background:rgba(0,217,255,.08);box-shadow:0 0 1rem rgba(0,217,255,.4)}
+}
+.section{scroll-margin-top:5.5rem}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ---------- Преимущества под первым экраном ---------- */
+.perks{padding-block:0 3rem}
+.perks__list{display:grid;gap:1rem}
+.perk{min-width:0;padding:1.375rem 1.5rem 1.5rem;border:1px solid var(--line);border-radius:1.25rem;background:#0e0e10}
+.perk h2{display:flex;align-items:center;gap:.75rem;font-weight:600;font-size:var(--fs-l);line-height:1.25}
+.perk svg{flex:none;width:1.5rem;height:1.5rem;fill:none;stroke:#e0457b;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.perk p{margin-top:.625rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+@media (min-width:64rem){
+  .perks{padding-block:0 4rem}
+  .perks__list{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.875rem,2vw,1.5rem)}
+}
+
+/* ---------- Две раскладки: мобильная (до 1024px) и десктопная ---------- */
+/* на планшетах мобильная колонка не растягивается на всю ширину, а стоит по центру */
+@media (max-width:63.99rem){
+  .wrap{max-width:calc(36rem + var(--gutter) + var(--gutter-r))}
+}
+@media (min-width:64rem){
+  .badge{padding:.4375rem 1.5rem .4375rem .75rem}
+  .btn{display:inline-flex}
+  .more{width:auto;margin-top:2rem}
+}
+
+/* ================= Страница сборки ================= */
+/* на мобильных отступ после блока с кнопкой равен отступу галерея — заголовок (44 px) */
+.product{display:grid;gap:1.75rem;padding-block:.5rem 2.75rem}
+.product__info,.gallery{min-width:0}
+/* видео начинается сразу после блока с кнопкой, без своего верхнего отступа;
+   снизу тоже без отступа — заголовок конфигурации задаёт свой (44 px, как у галереи и заголовка) */
+.section[aria-label="Видео"]{padding-block:0}
+.section[aria-labelledby="spec-title"]{padding-top:2.75rem}
+/* «Другие конфигурации» сразу после примечания, в общем ритме страницы (44 px мобильный) */
+.section[aria-labelledby="other-title"]{padding-top:0}
+.section[aria-labelledby="spec-title"]{padding-bottom:2.75rem}
+
+/* Галерея: листается пальцем или стрелками, под ней миниатюры; по нажатию на фото открывается крупный просмотр */
+.gallery__stage{position:relative}
+.gallery__track{display:flex;aspect-ratio:4/3;border:1px solid var(--line);border-radius:1.25rem;background:#15151a;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:zoom-in}
+.gallery__track::-webkit-scrollbar{display:none}
+.gallery__track li{flex:0 0 100%;scroll-snap-align:start}
+.gallery__track img{width:100%;height:100%;object-fit:cover}
+.gallery__nav{position:absolute;top:calc(50% - 1.5rem);display:none;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
+.gallery__nav svg{width:1.125rem;height:1.125rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gallery__nav--prev{left:1rem}
+.gallery__nav--next{right:1rem}
+.gallery__nav:disabled{opacity:.35;cursor:default}
+/* Точки-переключатели под галереей (вместо миниатюр) */
+.gallery__dots{display:flex;justify-content:center;align-items:center;gap:.75rem;margin-top:.75rem;padding:1px 0}
+.gallery__dots button{flex:none;width:.625rem;height:.625rem;padding:0;border:0;border-radius:62.5rem;background:#33343c;cursor:pointer;transition:background-color .2s,transform .2s}
+.gallery__dots button[aria-current="true"]{background:var(--cyan);transform:scale(1.25)}
+
+/* Крупный просмотр фото */
+.lightbox{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(5,5,7,.96);color:var(--fg);overflow:hidden}
+.lightbox::backdrop{background:#000}
+.lightbox__img{--px:.5rem;--py:4.5rem;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:zoom-out}
+.lightbox__img picture{display:contents}
+.lightbox__img img{display:block;max-width:calc(100vw - 2*var(--px));max-height:calc(100dvh - 2*var(--py));width:auto;height:auto;border-radius:.75rem;object-fit:contain}
+.lightbox__btn{position:absolute;display:grid;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
+.lightbox__btn svg{width:1.125rem;height:1.125rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lightbox__btn:disabled{opacity:.35;cursor:default}
+.lightbox__close{top:calc(.75rem + env(safe-area-inset-top,0px));right:max(.75rem,env(safe-area-inset-right,0px))}
+.lightbox__prev,.lightbox__next{bottom:calc(.75rem + env(safe-area-inset-bottom,0px))}
+.lightbox__prev{right:calc(50% + 2.75rem)}
+.lightbox__next{left:calc(50% + 2.75rem)}
+.lightbox__count{position:absolute;left:0;right:0;bottom:calc(.75rem + env(safe-area-inset-bottom,0px));line-height:3rem;text-align:center;color:var(--muted);font-size:var(--fs-m);font-variant-numeric:lining-nums;pointer-events:none}
+
+/* Название, цена, текст и кнопка — все по центру, одна колонка */
+.product__info{display:flex;flex-direction:column;align-items:center;text-align:center}
+.product__cost{display:flex;flex-direction:column;align-items:center;min-width:0}
+/* жирнее, чем 600: начертания Bold у нас нет, поэтому буквы слегка утолщены обводкой */
+.product__info h1{margin-top:1rem;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-transform:uppercase;-webkit-text-stroke:.03em currentColor}
+/* вторая строка заголовка: то же h1, но обычным текстом */
+.product__info h1 span{display:block;margin-inline:auto;max-width:50rem;margin-top:.5rem;text-wrap:balance;font-weight:400;font-size:var(--fs-m);line-height:1.4;text-transform:none;-webkit-text-stroke:0}
+/* заголовок есть для поисковиков и экранных читалок, на экране не показывается */
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.product__label{margin-top:1.25rem;color:var(--muted);font-size:var(--fs-m);line-height:1.3}
+.product__price{font-weight:600;font-size:var(--fs-h);line-height:1.2;font-variant-numeric:lining-nums}
+/* разделитель между ценой и текстом с кнопкой */
+.product__note{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line);max-width:30rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-m);line-height:1.4}
+.product__info .btn{align-self:center;margin-top:1.5rem}
+
+.spec-grid{display:grid;gap:.75rem;margin-top:2rem}
+.spec-grid div{min-width:0;padding:.875rem 1.25rem 1rem;border:1px solid var(--line);border-radius:.875rem;background:#0e0e10}
+.spec-grid dt{color:var(--muted);font-size:var(--fs-m);line-height:1.3}
+.spec-grid dd{margin:.25rem 0 0;font-weight:600;font-size:var(--fs-m);line-height:1.35}
+.spec-grid dd.todo{color:var(--muted);font-weight:400}
+/* текст о сборке: после заголовка конфигурации, во всю ширину */
+.seo-text{margin-top:1.5rem}
+.seo-text p{color:var(--muted);font-size:var(--fs-m);line-height:1.5}
+.flex-note{margin-top:.75rem;padding:1.25rem 1.25rem 1.375rem;border:1px solid var(--line);border-radius:.875rem;background:#0e0e10}
+.flex-note p{font-size:var(--fs-m);line-height:1.45}
+.flex-note ul{display:grid;gap:.5rem 2rem;margin-top:.875rem}
+.flex-note li{display:flex;gap:.625rem;font-size:var(--fs-m);line-height:1.4}
+.flex-note li::before{content:"";flex:none;width:.375rem;height:.375rem;margin-top:.5rem;border-radius:50%;background:var(--cyan)}
+
+@media (hover:hover){
+  .gallery__dots button:hover{background:var(--cyan)}
+  .lightbox__btn:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
+  .gallery__nav:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
+}
+@media (min-width:64rem){
+  .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:.75rem 2rem}
+  .flex-note ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gallery--many .gallery__nav{display:grid}
+  .lightbox__img{--px:5.5rem;--py:4rem}
+  .lightbox__prev,.lightbox__next{top:calc(50% - 1.5rem);bottom:auto}
+  .lightbox__prev{left:1.25rem;right:auto}
+  .lightbox__next{right:1.25rem;left:auto}
+}
+@media (min-width:64rem){
+  /* одна колонка по центру: галерея, точки, название, цена, текст, кнопка */
+  .product{grid-template-columns:minmax(0,1fr);padding-block:2.5rem 3.25rem}
+  /* видео сразу после кнопки с тем же отступом, что шапка — галерея (52 px) */
+  .section[aria-label="Видео"]{padding-block:0 3.25rem}
+  /* заголовок конфигурации отстоит от видео на тот же отступ (52 px) */
+  .section[aria-labelledby="spec-title"]{padding-top:0;padding-bottom:3.25rem}
+  .gallery{width:100%}
+  .gallery__track{border-radius:1.875rem}
+  .product__info{margin-top:0}
+  .product__note{max-width:38rem;text-wrap:pretty}
+}
+
+/* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию.
+   Горизонтальное — во всю ширину, вертикальное (.video--vertical) — узкой колонкой по центру */
+.video{position:relative;width:100%;max-width:24rem;margin:0 auto;aspect-ratio:9/16;border:1px solid var(--line);border-radius:1.25rem;background:#000;overflow:hidden}
+.video__play{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer}
+.video__play img{width:100%;height:100%;object-fit:cover}
+.video__icon{position:absolute;inset:0;display:grid;place-items:center;width:4.5rem;height:4.5rem;margin:auto;border-radius:50%;background:var(--cyan);box-shadow:0 0 1.5rem rgba(0,217,255,.45);transition:transform .2s}
+.video__icon svg{width:1.75rem;height:1.75rem;fill:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (hover:hover){.video__play:hover .video__icon{transform:scale(1.08)}}
+@media (min-width:64rem){
+  .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
+  .video--vertical{max-width:24rem;aspect-ratio:9/16;border-radius:1.25rem}
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <div class="header__bar">
+      <a class="logo" href="index.html" aria-label="STAR-COMP — на главную">
+        <svg class="logo__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="41" height="41" fill="none" viewBox="0 0 41 41"><path fill="#fff" d="m30.462 26.561-8.766-15.05c-.33-.573-.947-.932-1.621-.932-.66 0-1.277.359-1.621.933L9.688 26.56c-.315.53.072 1.205.689 1.205h.502c.53 0 1.019-.287 1.277-.732l7.79-13.37c.057-.1.2-.1.258 0l7.79 13.37c.273.46.76.732 1.277.732h.502c.617 0 1.004-.66.689-1.205"/><path fill="#fff" d="M24.006 25.428c-.186-.316-.517-.517-.89-.517h-6.082c-.373 0-.703.201-.89.517l-.401.688c-.244.416.057.933.53.933h7.604c.473 0 .775-.517.53-.933z"/><path fill="#00D9FF" d="M29.056 9.46c-.086-.086-.316-1.004-.316-1.004s-.23.904-.316 1.004c-.086.086-1.032.316-1.032.316s.946.23 1.032.316.316 1.004.316 1.004.23-.904.316-1.005c.086-.086 1.033-.315 1.033-.315s-.947-.215-1.033-.316"/><path fill="#fff" d="M13.26 32.242c-.085-.086-.286-.918-.286-.918s-.201.832-.287.918-.947.287-.947.287.86.2.947.287.287.918.287.918.2-.832.287-.918.947-.287.947-.287-.861-.2-.947-.287m-7.733-8.077c.135 0 .244-.11.244-.244s-.11-.244-.244-.244c-.135 0-.244.11-.244.244 0 .135.11.244.244.244"/><path fill="#00D9FF" d="M6.145 14.41c.135 0 .244-.11.244-.244 0-.135-.11-.244-.244-.244-.135 0-.244.11-.244.244 0 .135.11.244.244.244"/><path fill="#fff" d="M24.738 6.72c.134 0 .243-.109.243-.244 0-.134-.109-.244-.244-.244-.134 0-.243.11-.243.244 0 .135.109.244.244.244m-10.458.072c.174 0 .315-.141.315-.316 0-.174-.142-.315-.316-.315s-.315.141-.315.315.14.316.315.316m19.396 8.105c.135 0 .244-.109.244-.243 0-.135-.109-.244-.244-.244-.134 0-.244.109-.244.244 0 .134.11.243.244.243"/><path fill="#FF28B4" d="M25.986 32.916c.134 0 .244-.109.244-.244 0-.134-.11-.243-.244-.243-.135 0-.244.109-.244.243 0 .135.109.244.244.244"/><path fill="#fff" d="M34.608 23.663c.135 0 .244-.11.244-.244s-.11-.244-.244-.244c-.135 0-.244.11-.244.244 0 .135.11.244.244.244"/><path fill="#FF28B4" d="M35.928 5.314c-.675-.072-1.335-.1-1.42-.66-.101-.617-.388-2.984-.388-2.984s-.287 2.367-.387 2.984c-.086.56-.746.588-1.42.66-.675.072-2.095.258-2.095.258s1.42.201 2.094.259c.675.071 1.335.1 1.42.66.101.616.388 2.984.388 2.984s.287-2.368.387-2.984c.086-.56.746-.589 1.42-.66.675-.072 2.095-.259 2.095-.259s-1.42-.186-2.094-.258"/><path fill="#00D9FF" d="M35.354 7.681c0 .46.143.904.416 1.263 2.353 3.3 3.687 7.36 3.558 11.72-.302 10.2-8.622 18.45-18.822 18.665C9.688 39.573.808 30.822.823 20.048.837 9.56 9.344.953 19.83.824c3.86-.043 7.475 1.047 10.502 2.97.487.3 1.033.473 1.606.473h.058c.143 0 .186-.172.086-.258C28.61 1.398 24.25-.11 19.559.006 8.899.28.234 8.958.005 19.617-.24 30.88 8.842 40.132 20.06 40.132c11.147 0 20.084-8.923 20.084-20.07 0-4.749-1.65-9.11-4.418-12.538-.115-.13-.373-.044-.373.157"/></svg>
+        <svg class="logo__word" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="111" height="12" fill="none" viewBox="0 0 111 12"><path fill="#fff" d="M2.22 11.52q-.6 0-1.12-.3-.5-.3-.8-.8Q0 9.9 0 9.3v-.88h2.11v.78q0 .08.05.14.07.05.14.05h6.9q.08 0 .13-.05t.06-.14V7q0-.07-.06-.12t-.13-.05H2.22q-.6 0-1.12-.3-.5-.3-.8-.8Q0 5.22 0 4.59V2.22q0-.6.3-1.1T1.1.3Q1.62 0 2.22 0H9.3q.6 0 1.1.3t.82.82q.3.5.3 1.1v.88H9.39v-.78q0-.08-.06-.13t-.13-.06H2.3q-.08 0-.14.06-.05.05-.05.13v2.2q0 .07.05.12.07.05.14.05h7q.6 0 1.1.3t.82.82q.3.5.3 1.12V9.3q0 .6-.3 1.12-.3.5-.82.8-.5.3-1.1.3zm15.17 0v-9.4h-4.7V0h11.52v2.13h-4.69v9.39zm8.05 0v-9.3q0-.6.3-1.1t.8-.82q.52-.3 1.12-.3h7.06q.6 0 1.12.3.5.3.82.82.3.5.3 1.1v9.3h-2.13V7.65h-7.28v3.87zm2.11-5.98h7.28V2.32q0-.08-.06-.13-.07-.06-.15-.06h-6.88q-.08 0-.14.06-.05.05-.05.13zm20.42 5.98-3.48-4.14h2.77l3.01 3.55v.59zm-9.19 0V.02h9.28q.6 0 1.12.3t.82.82q.3.5.3 1.1v3.1q0 .6-.3 1.12t-.82.82q-.5.3-1.12.29l-7.17.01v3.94zm2.3-6.08h6.89q.08 0 .14-.05.06-.04.06-.13V2.32q0-.08-.06-.13t-.14-.06h-6.88q-.08 0-.15.06-.05.05-.05.13v2.94q0 .09.05.13.07.05.15.05m12.78 1.4q-.87 0-.87-.87v-.3q0-.87.87-.87h.37q.88 0 .88.86v.3q0 .87-.88.87zm6.29 4.68q-.6 0-1.12-.3-.5-.3-.8-.8-.3-.52-.3-1.12V2.22q0-.6.3-1.1t.8-.82q.5-.3 1.12-.3h9.26v2.13H60.6q-.26 0-.42.14t-.15.42v6.14q0 .25.15.42.15.14.41.14h8.82v2.13zm13.12 0q-.6 0-1.12-.3-.5-.3-.8-.8-.3-.52-.3-1.12V2.22q0-.6.3-1.1t.8-.82q.52-.3 1.12-.3h7.07q.61 0 1.1.3.52.3.82.82.3.5.3 1.1V9.3q0 .6-.3 1.12-.3.5-.81.8-.5.3-1.1.3zm.08-2.13h6.88q.07 0 .15-.05.06-.06.06-.14V2.32q0-.08-.06-.13-.07-.06-.15-.06h-6.88q-.08 0-.14.06-.05.05-.05.13V9.2q0 .08.05.14.06.05.14.05m10.98 2.13V0h2.32l4.18 4.98L94.99 0h2.33v11.52H95.2V3.07l-4.36 5.2-4.39-5.18v8.43zm14.84 0V.02h9.28q.6 0 1.12.3t.82.82q.3.5.3 1.1v3.1q0 .6-.3 1.12t-.82.82q-.5.3-1.12.29l-7.17.01v3.94zm2.3-6.08h6.89q.08 0 .14-.05.06-.04.06-.13V2.32q0-.08-.06-.13t-.14-.06h-6.88q-.08 0-.15.06-.05.05-.05.13v2.94q0 .09.05.13.07.05.15.05"/></svg>
+      </a>
+      <div class="header__socials">
+<a class="social" href="https://max.ru/u/f9LHodD0cOKrboX3imjyg3cBiLspEiRa0Yz4Pb8i89Zd2AoqQNLb-lqSCpU" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg width="35" height="35" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="mx-b"><stop offset="0" stop-color="#00f"/><stop offset="1" stop-opacity="0"/></linearGradient><linearGradient id="mx-a"><stop offset="0" stop-color="#4cf"/><stop offset=".662" stop-color="#53e"/><stop offset="1" stop-color="#93d"/></linearGradient><linearGradient id="mx-c" x1="117.847" x2="1000" y1="760.536" y2="500" gradientUnits="userSpaceOnUse" href="#mx-a"></linearGradient><radialGradient id="mx-d" cx="-87.392" cy="1166.116" r="500" fx="-87.392" fy="1166.116" gradientTransform="rotate(51.356 1551.478 559.3)scale(2.42703433 1)" gradientUnits="userSpaceOnUse" href="#mx-b"></radialGradient></defs><rect width="1000" height="1000" fill="url(#mx-c)" ry="249.681"/><rect width="1000" height="1000" fill="url(#mx-d)" ry="249.681"/><path fill="#fff" fill-rule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z" clip-rule="evenodd"/></svg></a>
+<a class="social" href="https://t.me/ST_COMP" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg width="35" height="35" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#fff"/><path fill="#29a9eb" fill-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50Zm21.977-68.056c.386-4.38-4.24-2.576-4.24-2.576-3.415 1.414-6.937 2.85-10.497 4.302-11.04 4.503-22.444 9.155-32.159 13.734-5.268 1.932-2.184 3.864-2.184 3.864l8.351 2.577c3.855 1.16 5.91-.129 5.91-.129l17.988-12.238c6.424-4.38 4.882-.773 3.34.773l-13.49 12.882c-2.056 1.804-1.028 3.35-.129 4.123 2.55 2.249 8.82 6.364 11.557 8.16.712.467 1.185.778 1.292.858.642.515 4.111 2.834 6.424 2.319 2.313-.516 2.57-3.479 2.57-3.479l3.083-20.226c.462-3.511.993-6.886 1.417-9.582.4-2.546.705-4.485.767-5.362Z"/></svg></a>
+<a class="social" href="https://vk.com/star_comp_spb" target="_blank" rel="noopener" aria-label="Группа ВКонтакте"><svg width="35" height="35" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><circle cx="512" cy="512" r="512" style="fill:#2787f5"/><path d="M585.83 271.5H438.17c-134.76 0-166.67 31.91-166.67 166.67v147.66c0 134.76 31.91 166.67 166.67 166.67h147.66c134.76 0 166.67-31.91 166.67-166.67V438.17c0-134.76-32.25-166.67-166.67-166.67zm74 343.18h-35c-13.24 0-17.31-10.52-41.07-34.62-20.71-20-29.87-22.74-35-22.74-7.13 0-9.17 2-9.17 11.88v31.57c0 8.49-2.72 13.58-25.12 13.58-37 0-78.07-22.4-106.93-64.16-43.45-61.1-55.33-106.93-55.33-116.43 0-5.09 2-9.84 11.88-9.84h35c8.83 0 12.22 4.07 15.61 13.58 17.31 49.9 46.17 93.69 58 93.69 4.41 0 6.45-2 6.45-13.24v-51.6c-1.36-23.76-13.92-25.8-13.92-34.28 0-4.07 3.39-8.15 8.83-8.15h55c7.47 0 10.18 4.07 10.18 12.9v69.58c0 7.47 3.39 10.18 5.43 10.18 4.41 0 8.15-2.72 16.29-10.86 25.12-28.17 43.11-71.62 43.11-71.62 2.38-5.09 6.45-9.84 15.28-9.84h35c10.52 0 12.9 5.43 10.52 12.9-4.41 20.37-47.18 80.79-47.18 80.79-3.73 6.11-5.09 8.83 0 15.61 3.73 5.09 16 15.61 24.1 25.12 14.94 17 26.48 31.23 29.53 41.07 3.45 9.84-1.65 14.93-11.49 14.93z" style="fill:#fff"/></svg></a>
+      </div>
+      <div class="header__phone">
+        <a href="tel:+79939845505">8 (993) 984-55-05</a>
+        <span>Без выходных, 11:00 до&nbsp;19:00</span>
+      </div>
+      <button class="burger" id="menu-open" type="button" aria-label="Открыть меню" aria-haspopup="dialog"><i></i></button>
+    </div>
+  </div>
+</header>
+
+
+<main>
+  <section class="product wrap">
+    <div class="gallery" id="gallery">
+      <div class="gallery__stage">
+      <ul class="gallery__track" tabindex="0" aria-label="Фотографии сборки. Нажмите, чтобы увеличить">
+        <li>
+          <picture>
+            <source type="image/avif" srcset="assets/1-копия-640.avif 640w, assets/1-копия-1024.avif 1024w, assets/1-копия-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/1-копия-1024.webp" srcset="assets/1-копия-640.webp 640w, assets/1-копия-1024.webp 1024w, assets/1-копия-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="CORONA N6: Общий вид компьютера" fetchpriority="high" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source type="image/avif" srcset="assets/2-копия-640.avif 640w, assets/2-копия-1024.avif 1024w, assets/2-копия-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/2-копия-1024.webp" srcset="assets/2-копия-640.webp 640w, assets/2-копия-1024.webp 1024w, assets/2-копия-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="CORONA N6: Радиатор материнской платы и вентилятор" loading="lazy" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source type="image/avif" srcset="assets/3-копия-640.avif 640w, assets/3-копия-1024.avif 1024w, assets/3-копия-1600.avif 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/3-копия-1024.webp" srcset="assets/3-копия-640.webp 640w, assets/3-копия-1024.webp 1024w, assets/3-копия-1600.webp 1600w" sizes="(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)" width="1024" height="768" alt="CORONA N6: Видеокарта GIGABYTE NVIDIA RTX 5070 Ti 16GB" loading="lazy" decoding="async">
+          </picture>
+        </li>
+      </ul>
+      <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+      <button class="gallery__nav gallery__nav--next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+      </div>
+      <div class="gallery__dots">
+        <button type="button" aria-label="Фото 1: Общий вид компьютера" aria-current="true"></button>
+        <button type="button" aria-label="Фото 2: Радиатор материнской платы и вентилятор"></button>
+        <button type="button" aria-label="Фото 3: Видеокарта GIGABYTE NVIDIA RTX 5070 Ti 16GB"></button>
+      </div>
+    </div>
+
+    <div class="product__info">
+      <h1>CORONA N6</h1>
+      <div class="product__cost">
+        <p class="product__label">Стоимость на момент сборки:</p>
+        <p class="product__price">343&nbsp;000&nbsp;₽</p>
+      </div>
+      
+      <a class="btn" href="#podbor">Хочу похожий компьютер</a>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-label="Видео">
+    <div class=" video video--vertical" id="video" data-h="https://kinescope.io/hTPTpwowjGvSnw9wSQsYCp" data-v="https://kinescope.io/hTPTpwowjGvSnw9wSQsYCp" data-title="Видео о сборке CORONA N6">
+      <button class="video__play" type="button">
+        <picture>
+          <source type="image/avif" srcset="assets/1-копия-480.avif">
+          <img src="assets/1-копия-480.webp" width="480" height="853" alt="Смотреть видео о сборке CORONA N6" loading="lazy" decoding="async">
+        </picture>
+        <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.500z"/></svg></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="spec-title">
+    <h2 class="section__title" id="spec-title">Конфигурация CORONA N6</h2>
+    
+    <dl class="spec-grid">
+      <div><dt>Процессор:</dt><dd>AMD RYZEN 7 9800X3D</dd></div>
+    </dl>
+    <div class="flex-note">
+      <p>Любую конфигурацию можно изменить перед покупкой&nbsp;— адаптируем компьютер под ваши задачи и бюджет.</p>
+      <ul>
+        <li>Любой объём оперативной памяти</li>
+        <li>SSD любого объёма</li>
+        <li>Замена видеокарты и процессора</li>
+        <li>Настроим компьютер под ваши задачи и бюджет</li>
+      </ul>
+    </div>
+  </section>
+  <section class="section wrap" aria-labelledby="other-title">
+    <h2 class="section__title" id="other-title">Другие конфигурации</h2>
+    <p class="section__lead">Соберём под ваш бюджет и задачи</p>
+    <!-- Карточки собираются из content/cards.json — того же файла, что и «Популярные конфигурации» на главной -->
+    <ul class="cards">
+      <li class="card">
+        <div class="card__media">
+          <picture>
+            <source type="image/avif" srcset="assets/1-копия-f51x92-480.avif 480w, assets/1-копия-f51x92-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/1-копия-f51x92-480.webp" srcset="assets/1-копия-f51x92-480.webp 480w, assets/1-копия-f51x92-960.webp 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)" width="480" height="360" alt="Компьютер CORONA N6 с&nbsp;желтой подсветкой, черно-желтый корпус аквариум" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="card__body">
+          <h3 class="card__name"><a href="corona-n6-amd-ryzen-7-9800x3d-nvidia-rtx-5080">CORONA N6</a></h3>
+          <dl class="specs">
+          <div><dt>Процессор:</dt><dd>AMD RYZEN 7 9800X3D</dd></div>
+          <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5070 Ti 16GB</dd></div>
+          </dl>
+          <div class="card__foot">
+            <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;343&nbsp;000&nbsp;₽</b></p>
+            <span class="card__go" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span>
+          </div>
+        </div>
+      </li>
+      <li class="card">
+        <div class="card__media">
+          <picture>
+            <source type="image/avif" srcset="assets/solar-s1-1-f52x88-480.avif 480w, assets/solar-s1-1-f52x88-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/solar-s1-1-f52x88-480.webp" srcset="assets/solar-s1-1-f52x88-480.webp 480w, assets/solar-s1-1-f52x88-960.webp 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)" width="480" height="360" alt="Компьютер SOLAR S1 в&nbsp;чёрном корпусе аквариум с&nbsp;подсветкой и&nbsp;7 вентиляторами" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="card__body">
+          <h3 class="card__name"><a href="solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb.html">SOLAR S1</a></h3>
+          <dl class="specs">
+          <div><dt>Процессор:</dt><dd>INTEL CORE i5-12400F</dd></div>
+          <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5050 8GB</dd></div>
+          </dl>
+          <div class="card__foot">
+            <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;121&nbsp;000&nbsp;₽</b></p>
+            <span class="card__go" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span>
+          </div>
+        </div>
+      </li>
+      <li class="card">
+        <div class="card__media">
+          <picture>
+            <source type="image/avif" srcset="assets/1_-f51x72-480.avif 480w, assets/1_-f51x72-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/1_-f51x72-480.webp" srcset="assets/1_-f51x72-480.webp 480w, assets/1_-f51x72-960.webp 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)" width="480" height="360" alt="Компьютер TITAN R3 с&nbsp;голубой подсветкой в&nbsp;корпусе аквариум" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="card__body">
+          <h3 class="card__name"><a href="titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb_oc">TITAN R3</a></h3>
+          <dl class="specs">
+          <div><dt>Процессор:</dt><dd>AMD RYZEN 5 5500X3D</dd></div>
+          <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5060 8GB</dd></div>
+          </dl>
+          <div class="card__foot">
+            <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;184&nbsp;000&nbsp;₽</b></p>
+            <span class="card__go" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<dialog class="menu" id="menu" aria-label="Меню">
+  <button class="menu__close" type="button" aria-label="Закрыть меню">×</button>
+  <nav>
+    <a href="index.html#works">Последние проекты</a>
+    <a href="index.html#nal">Компьютеры в&nbsp;наличии</a>
+    <a href="remont-kompyuterov-spb.html">Обслуживание</a>
+    <a href="index.html#ychit">Учитываем при&nbsp;сборке</a>
+    <a href="index.html#lastvid">Последние видео</a>
+    <a href="index.html#preim">Почему мы</a>
+    <a href="index.html#proces">Как мы работаем</a>
+    <a href="index.html#gift">Акции</a>
+    <a href="index.html#otzivy">Отзывы</a>
+    <a href="index.html#contakty">Контакты</a>
+  </nav>
+  <div class="menu__contacts">
+    <a href="tel:+79939845505">8 (993) 984-55-05</a>
+    <span>Пн-Вс, 11:00 до&nbsp;19:00</span>
+    <a href="mailto:info@star-comp.ru">info@star-comp.ru</a>
+  </div>
+  <div class="menu__socials">
+<a class="social" href="https://max.ru/u/f9LHodD0cOKrboX3imjyg3cBiLspEiRa0Yz4Pb8i89Zd2AoqQNLb-lqSCpU" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg width="35" height="35" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="mxm-b"><stop offset="0" stop-color="#00f"/><stop offset="1" stop-opacity="0"/></linearGradient><linearGradient id="mxm-a"><stop offset="0" stop-color="#4cf"/><stop offset=".662" stop-color="#53e"/><stop offset="1" stop-color="#93d"/></linearGradient><linearGradient id="mxm-c" x1="117.847" x2="1000" y1="760.536" y2="500" gradientUnits="userSpaceOnUse" href="#mxm-a"></linearGradient><radialGradient id="mxm-d" cx="-87.392" cy="1166.116" r="500" fx="-87.392" fy="1166.116" gradientTransform="rotate(51.356 1551.478 559.3)scale(2.42703433 1)" gradientUnits="userSpaceOnUse" href="#mxm-b"></radialGradient></defs><rect width="1000" height="1000" fill="url(#mxm-c)" ry="249.681"/><rect width="1000" height="1000" fill="url(#mxm-d)" ry="249.681"/><path fill="#fff" fill-rule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z" clip-rule="evenodd"/></svg></a>
+<a class="social" href="https://t.me/ST_COMP" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg width="35" height="35" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#fff"/><path fill="#29a9eb" fill-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50Zm21.977-68.056c.386-4.38-4.24-2.576-4.24-2.576-3.415 1.414-6.937 2.85-10.497 4.302-11.04 4.503-22.444 9.155-32.159 13.734-5.268 1.932-2.184 3.864-2.184 3.864l8.351 2.577c3.855 1.16 5.91-.129 5.91-.129l17.988-12.238c6.424-4.38 4.882-.773 3.34.773l-13.49 12.882c-2.056 1.804-1.028 3.35-.129 4.123 2.55 2.249 8.82 6.364 11.557 8.16.712.467 1.185.778 1.292.858.642.515 4.111 2.834 6.424 2.319 2.313-.516 2.57-3.479 2.57-3.479l3.083-20.226c.462-3.511.993-6.886 1.417-9.582.4-2.546.705-4.485.767-5.362Z"/></svg></a>
+<a class="social" href="https://vk.com/star_comp_spb" target="_blank" rel="noopener" aria-label="Группа ВКонтакте"><svg width="35" height="35" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><circle cx="512" cy="512" r="512" style="fill:#2787f5"/><path d="M585.83 271.5H438.17c-134.76 0-166.67 31.91-166.67 166.67v147.66c0 134.76 31.91 166.67 166.67 166.67h147.66c134.76 0 166.67-31.91 166.67-166.67V438.17c0-134.76-32.25-166.67-166.67-166.67zm74 343.18h-35c-13.24 0-17.31-10.52-41.07-34.62-20.71-20-29.87-22.74-35-22.74-7.13 0-9.17 2-9.17 11.88v31.57c0 8.49-2.72 13.58-25.12 13.58-37 0-78.07-22.4-106.93-64.16-43.45-61.1-55.33-106.93-55.33-116.43 0-5.09 2-9.84 11.88-9.84h35c8.83 0 12.22 4.07 15.61 13.58 17.31 49.9 46.17 93.69 58 93.69 4.41 0 6.45-2 6.45-13.24v-51.6c-1.36-23.76-13.92-25.8-13.92-34.28 0-4.07 3.39-8.15 8.83-8.15h55c7.47 0 10.18 4.07 10.18 12.9v69.58c0 7.47 3.39 10.18 5.43 10.18 4.41 0 8.15-2.72 16.29-10.86 25.12-28.17 43.11-71.62 43.11-71.62 2.38-5.09 6.45-9.84 15.28-9.84h35c10.52 0 12.9 5.43 10.52 12.9-4.41 20.37-47.18 80.79-47.18 80.79-3.73 6.11-5.09 8.83 0 15.61 3.73 5.09 16 15.61 24.1 25.12 14.94 17 26.48 31.23 29.53 41.07 3.45 9.84-1.65 14.93-11.49 14.93z" style="fill:#fff"/></svg></a>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  // Галерея: стрелки, точки под фото и крупный просмотр по нажатию на фото
+  var g = document.getElementById('gallery');
+  if (!g) return;
+  var track = g.querySelector('.gallery__track');
+  var slides = track.children;
+  var n = slides.length;
+  var dotsBox = g.querySelector('.gallery__dots');
+  var dots = dotsBox.children;
+  var prev = g.querySelector('.gallery__nav--prev');
+  var next = g.querySelector('.gallery__nav--next');
+  var current = 0;
+  function go(i, instant) {
+    i = Math.max(0, Math.min(n - 1, i));
+    track.scrollTo({ left: track.clientWidth * i, behavior: instant ? 'instant' : 'smooth' });
+  }
+  function update() {
+    current = Math.max(0, Math.min(n - 1, Math.round(track.scrollLeft / track.clientWidth)));
+    for (var i = 0; i < dots.length; i++) dots[i].setAttribute('aria-current', String(i === current));
+    prev.disabled = current === 0;
+    next.disabled = current === n - 1;
+  }
+  if (n < 2) dotsBox.hidden = true;
+  else g.classList.add('gallery--many');
+  for (var i = 0; i < dots.length; i++) dots[i].addEventListener('click', go.bind(null, i, false));
+  prev.addEventListener('click', function () { go(current - 1); });
+  next.addEventListener('click', function () { go(current + 1); });
+  track.addEventListener('scroll', update, { passive: true });
+  update();
+
+  // Крупный просмотр: окно создаётся только при первом нажатии
+  var box, holder, count, bPrev, bNext, shown = 0;
+  var arrow = function (d) { return '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="' + d + '"/></svg>'; };
+  function btn(cls, label, icon) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'lightbox__btn ' + cls;
+    b.setAttribute('aria-label', label);
+    b.innerHTML = arrow(icon);
+    box.appendChild(b);
+    return b;
+  }
+  function show(i) {
+    shown = Math.max(0, Math.min(n - 1, i));
+    var pic = slides[shown].querySelector('picture').cloneNode(true);
+    var parts = pic.querySelectorAll('source,img');
+    for (var k = 0; k < parts.length; k++) { parts[k].sizes = '100vw'; parts[k].removeAttribute('loading'); }
+    holder.innerHTML = '';
+    holder.appendChild(pic);
+    count.textContent = (shown + 1) + ' / ' + n;
+    bPrev.disabled = shown === 0;
+    bNext.disabled = shown === n - 1;
+  }
+  function build() {
+    box = document.createElement('dialog');
+    box.className = 'lightbox';
+    box.setAttribute('aria-label', 'Просмотр фотографий');
+    holder = document.createElement('div');
+    holder.className = 'lightbox__img';
+    box.appendChild(holder);
+    count = document.createElement('p');
+    count.className = 'lightbox__count';
+    box.appendChild(count);
+    bPrev = btn('lightbox__prev', 'Предыдущее фото', 'M10 3 5 8l5 5');
+    bNext = btn('lightbox__next', 'Следующее фото', 'm6 3 5 5-5 5');
+    var bClose = btn('lightbox__close', 'Закрыть', 'M3.5 3.5l9 9M12.5 3.5l-9 9');
+    if (n < 2) { bPrev.hidden = bNext.hidden = count.hidden = true; }
+    bPrev.addEventListener('click', function () { show(shown - 1); });
+    bNext.addEventListener('click', function () { show(shown + 1); });
+    bClose.addEventListener('click', function () { box.close(); });
+    holder.addEventListener('click', function () { box.close(); });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') show(shown - 1);
+      if (e.key === 'ArrowRight') show(shown + 1);
+    });
+    // листание пальцем
+    var x0 = null;
+    holder.addEventListener('touchstart', function (e) { x0 = e.touches.length === 1 ? e.touches[0].clientX : null; }, { passive: true });
+    holder.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 40) { e.preventDefault(); show(shown + (dx < 0 ? 1 : -1)); }
+    });
+    // после закрытия основная галерея стоит на том же фото
+    box.addEventListener('close', function () { go(shown, true); });
+    document.body.appendChild(box);
+  }
+  function open() {
+    if (!box) build();
+    show(current);
+    box.showModal();
+  }
+  track.addEventListener('click', open);
+  track.addEventListener('keydown', function (e) { if (e.key === 'Enter') open(); });
+})();
+
+(function () {
+  // Видео: плеер не грузится, пока человек не нажал на обложку.
+  // Если ролик вертикальный (.video--vertical), он всегда вертикальный;
+  // иначе на десктопе горизонтальный, на телефоне вертикальный.
+  var v = document.getElementById('video');
+  if (!v) return;
+  var vertical = v.classList.contains('video--vertical');
+  v.querySelector('.video__play').addEventListener('click', function () {
+    var id = vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h;
+    var f = document.createElement('iframe');
+    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1';
+    f.title = v.dataset.title || 'Видео';
+    f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+    f.allowFullscreen = true;
+    v.innerHTML = '';
+    v.appendChild(f);
+  });
+})();
+
+(function () {
+  var menu = document.getElementById('menu');
+  var open = document.getElementById('menu-open');
+  if (!menu || !menu.showModal) return;
+  open.addEventListener('click', function () { menu.showModal(); });
+  menu.addEventListener('click', function (e) {
+    // закрываем по клику на фон, на крестик и на любую ссылку меню
+    if (e.target === menu || e.target.closest('a, .menu__close')) menu.close();
+  });
+})();
+</script>
+<script>
+window.replainSettings = { id: 'cc1583fa-0f2c-4999-b676-a43afc8ee57a' };
+(function(u){var s=document.createElement('script');s.async=true;s.src=u;
+var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+})('https://widget.replain.cc/dist/client.js');
+</script>
+</body>
+</html>
