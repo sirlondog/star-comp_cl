@@ -31,220 +31,215 @@ media_libraries:
           width: 2560
           height: 2560
 
-collections:
+# Одиночные страницы: показываются одной группой в сайдбаре, клик открывает редактор сразу
+singletons:
   - name: settings
     label: Настройки сайта
+    icon: settings
     description: Контакты, соцсети и цифры рейтинга. Эти данные показываются в шапке, меню и под фото на главной, а поисковики видят их в служебной разметке
-    files:
-      - name: settings
-        label: Контакты и соцсети
-        file: content/settings.json
-        format: json
+    file: content/settings.json
+    format: json
+    fields:
+      - name: phone_display
+        label: Телефон (как показывать)
+        widget: string
+        hint: 'Вид на сайте, например: 8 (993) 984-55-05'
+      - name: phone_tel
+        label: Телефон (ссылка набора)
+        widget: string
+        pattern: ['^\+?[0-9]{10,15}$', 'Только цифры, можно с плюсом в начале']
+        hint: 'То же число без пробелов и скобок: +79939845505. По нему звонят при клике'
+      - name: phone_schema
+        label: Телефон для поисковиков
+        widget: string
+        hint: 'Для поисковой разметки, например: +7-993-984-55-05'
+      - name: phone_note
+        label: Подпись под телефоном
+        widget: string
+        hint: 'Например: Без выходных, 11:00 до 19:00'
+      - name: menu_note
+        label: Расписание в меню
+        widget: string
+        hint: 'Строка под телефоном в мобильном меню, например: Пн-Вс, 11:00 до 19:00'
+      - name: schedule
+        label: Часы работы (на главной)
+        widget: string
+        hint: 'Например: Ежедневно, 11:00–19:00'
+      - name: email
+        label: Почта
+        widget: string
+      - name: address
+        label: Адрес (короткий, на главной)
+        widget: string
+        hint: 'Например: Заневский 65к5, ст. м. Ладожская'
+      - name: address_full
+        label: Адрес (полный, для поисковиков)
+        widget: string
+        hint: 'Например: Заневский пр., 65 к5, 2 этаж'
+      - name: opening_hours_schema
+        label: Часы работы для поисковиков
+        widget: string
+        hint: 'Формат: Mo-Su 11:00-19:00 (дни и время по международному стандарту)'
+      - name: socials
+        label: Соцсети
+        widget: object
         fields:
-          - name: phone_display
-            label: Телефон (как показывать)
+          - name: max
+            label: Макс (MAX messenger)
             widget: string
-            hint: 'Вид на сайте, например: 8 (993) 984-55-05'
-          - name: phone_tel
-            label: Телефон (ссылка набора)
+            required: false
+          - name: telegram
+            label: Telegram
             widget: string
-            pattern: ['^\+?[0-9]{10,15}$', 'Только цифры, можно с плюсом в начале']
-            hint: 'То же число без пробелов и скобок: +79939845505. По нему звонят при клике'
-          - name: phone_schema
-            label: Телефон для поисковиков
+            required: false
+          - name: vk
+            label: ВКонтакте
             widget: string
-            hint: 'Для поисковой разметки, например: +7-993-984-55-05'
-          - name: phone_note
-            label: Подпись под телефоном
+            required: false
+        hint: 'Полные ссылки на группы. Пустое поле = значок не показывается'
+      - name: stats
+        label: Цифры на главной
+        widget: object
+        fields:
+          - name: rating
+            label: Рейтинг
             widget: string
-            hint: 'Например: Без выходных, 11:00 до 19:00'
-          - name: menu_note
-            label: Расписание в меню
+            hint: 'Например: 5/5*'
+          - name: reviews
+            label: Отзывов
             widget: string
-            hint: 'Строка под телефоном в мобильном меню, например: Пн-Вс, 11:00 до 19:00'
-          - name: schedule
-            label: Часы работы (на главной)
+            hint: 'Например: 120+'
+          - name: experience
+            label: Лет опыта
             widget: string
-            hint: 'Например: Ежедневно, 11:00–19:00'
-          - name: email
-            label: Почта
+            hint: 'Например: 16+'
+          - name: maps_url
+            label: Ссылка на отзывы Яндекс Карт
             widget: string
-          - name: address
-            label: Адрес (короткий, на главной)
+            required: false
+          - name: maps_note
+            label: Пояснение к рейтингу
             widget: string
-            hint: 'Например: Заневский 65к5, ст. м. Ладожская'
-          - name: address_full
-            label: Адрес (полный, для поисковиков)
-            widget: string
-            hint: 'Например: Заневский пр., 65 к5, 2 этаж'
-          - name: opening_hours_schema
-            label: Часы работы для поисковиков
-            widget: string
-            hint: 'Формат: Mo-Su 11:00-19:00 (дни и время по международному стандарту)'
-          - name: socials
-            label: Соцсети
-            widget: object
-            fields:
-              - name: max
-                label: Макс (MAX messenger)
-                widget: string
-                required: false
-              - name: telegram
-                label: Telegram
-                widget: string
-                required: false
-              - name: vk
-                label: ВКонтакте
-                widget: string
-                required: false
-            hint: 'Полные ссылки на группы. Пустое поле = значок не показывается'
-          - name: stats
-            label: Цифры на главной
-            widget: object
-            fields:
-              - name: rating
-                label: Рейтинг
-                widget: string
-                hint: 'Например: 5/5*'
-              - name: reviews
-                label: Отзывов
-                widget: string
-                hint: 'Например: 120+'
-              - name: experience
-                label: Лет опыта
-                widget: string
-                hint: 'Например: 16+'
-              - name: maps_url
-                label: Ссылка на отзывы Яндекс Карт
-                widget: string
-                required: false
-              - name: maps_note
-                label: Пояснение к рейтингу
-                widget: string
-                required: false
-                hint: 'Например: *оценка организации на (слова «Яндекс картах» добавятся сами, как ссылка)'
+            required: false
+            hint: 'Например: *оценка организации на (слова «Яндекс картах» добавятся сами, как ссылка)'
 
   - name: home
     label: Главная страница
+    icon: home
     description: Тексты первого экрана и заголовков главной
-    files:
-      - name: home
-        label: Тексты главной
-        file: content/home.json
-        format: json
-        fields:
-          - name: badge
-            label: Бейдж над заголовком
-            widget: string
-            hint: 'Например: Профессиональная сборка'
-          - name: title_before
-            label: Заголовок (начало)
-            widget: string
-            hint: 'Начало заголовка до выделенного слова, например: Компьютер на заказ с'
-          - name: title_accent
-            label: Заголовок (выделенное слово)
-            widget: string
-            required: false
-            hint: 'Показывается цветным, например: гарантией. Пусто = без выделения'
-          - name: title_after
-            label: Заголовок (окончание)
-            widget: string
-            hint: 'Например: и запасом на 5 лет'
-          - name: lead
-            label: Подзаголовок
-            widget: text
-            hint: 'Одна строка под заголовком, например: Привезём, подключим и настроим у вас дома — оплата после проверки'
-          - name: button
-            label: Текст кнопки
-            widget: string
-            hint: 'Например: Подобрать компьютер'
-          - name: hero_caption
-            label: Подпись под фото
-            widget: string
-            hint: 'Например: Приезжайте посмотреть, как проходит сборка'
-          - name: hero_alt
-            label: Что на фото (для поисковиков)
-            widget: string
-            hint: 'Короткое описание фото первого экрана'
-          - name: hero_image
-            label: Своё фото первого экрана
-            widget: image
-            required: false
-            hint: 'Загрузи своё фото — сайт сам нарежет нужные размеры. Пусто = стандартное фото'
-          - name: cards_title
-            label: Заголовок над карточками
-            widget: string
-            hint: 'Например: Последние проекты нашей'
-          - name: cards_title_accent
-            label: Заголовок над карточками (выделенное слово)
-            widget: string
-            required: false
-            hint: 'Показывается цветным, например: мастерской. Пусто = без выделения'
-          - name: cards_lead
-            label: Описание над карточками
-            widget: text
-            hint: 'Например: Аккуратная сборка и внимание к каждой детали'
+    file: content/home.json
+    format: json
+    fields:
+      - name: badge
+        label: Бейдж над заголовком
+        widget: string
+        hint: 'Например: Профессиональная сборка'
+      - name: title_before
+        label: Заголовок (начало)
+        widget: string
+        hint: 'Начало заголовка до выделенного слова, например: Компьютер на заказ с'
+      - name: title_accent
+        label: Заголовок (выделенное слово)
+        widget: string
+        required: false
+        hint: 'Показывается цветным, например: гарантией. Пусто = без выделения'
+      - name: title_after
+        label: Заголовок (окончание)
+        widget: string
+        hint: 'Например: и запасом на 5 лет'
+      - name: lead
+        label: Подзаголовок
+        widget: text
+        hint: 'Одна строка под заголовком, например: Привезём, подключим и настроим у вас дома — оплата после проверки'
+      - name: button
+        label: Текст кнопки
+        widget: string
+        hint: 'Например: Подобрать компьютер'
+      - name: hero_caption
+        label: Подпись под фото
+        widget: string
+        hint: 'Например: Приезжайте посмотреть, как проходит сборка'
+      - name: hero_alt
+        label: Что на фото (для поисковиков)
+        widget: string
+        hint: 'Короткое описание фото первого экрана'
+      - name: hero_image
+        label: Своё фото первого экрана
+        widget: image
+        required: false
+        hint: 'Загрузи своё фото — сайт сам нарежет нужные размеры. Пусто = стандартное фото'
+      - name: cards_title
+        label: Заголовок над карточками
+        widget: string
+        hint: 'Например: Последние проекты нашей'
+      - name: cards_title_accent
+        label: Заголовок над карточками (выделенное слово)
+        widget: string
+        required: false
+        hint: 'Показывается цветным, например: мастерской. Пусто = без выделения'
+      - name: cards_lead
+        label: Описание над карточками
+        widget: text
+        hint: 'Например: Аккуратная сборка и внимание к каждой детали'
 
   - name: perks
     label: Наши преимущества
+    icon: workspace_premium
     description: Три (или сколько нужно) плитки под первым экраном главной
-    files:
+    file: content/perks.json
+    format: json
+    fields:
       - name: perks
         label: Плитки
-        file: content/perks.json
-        format: json
+        label_singular: плитку
+        widget: list
+        min: 1
+        summary: '{{title}}'
+        hint: 'Порядок в списке = порядок на странице'
         fields:
-          - name: perks
-            label: Плитки
-            label_singular: плитку
-            widget: list
-            min: 1
-            summary: '{{title}}'
-            hint: 'Порядок в списке = порядок на странице'
-            fields:
-              - name: icon
-                label: Значок
-                widget: select
-                options: [no-extra, warranty, price]
-                hint: 'no-extra — шестерёнка без переплат, warranty — щит с галочкой, price — прайс'
-              - name: title
-                label: Заголовок
-                widget: string
-                hint: 'Например: Честная цена'
-              - name: text
-                label: Описание
-                widget: text
-                hint: 'Одно короткое предложение'
+          - name: icon
+            label: Значок
+            widget: select
+            options: [no-extra, warranty, price]
+            hint: 'no-extra — шестерёнка без переплат, warranty — щит с галочкой, price — прайс'
+          - name: title
+            label: Заголовок
+            widget: string
+            hint: 'Например: Честная цена'
+          - name: text
+            label: Описание
+            widget: text
+            hint: 'Одно короткое предложение'
 
   - name: menu
     label: Боковое меню
+    icon: menu
     description: Пункты меню, которое открывается по кнопке с полосками в шапке. Показывается и на главной, и на страницах сборок
-    files:
-      - name: menu
-        label: Пункты меню
-        file: content/menu.json
-        format: json
+    file: content/menu.json
+    format: json
+    fields:
+      - name: links
+        label: Пункты
+        label_singular: пункт
+        widget: list
+        min: 1
+        add_to_top: false
+        summary: '{{label}} → {{url}}'
+        hint: 'Порядок в списке = порядок в меню. Кнопками вверх/вниз меняются местами, крестиком удаляются'
         fields:
-          - name: links
-            label: Пункты
-            label_singular: пункт
-            widget: list
-            min: 1
-            add_to_top: false
-            summary: '{{label}} → {{url}}'
-            hint: 'Порядок в списке = порядок в меню. Кнопками вверх/вниз меняются местами, крестиком удаляются'
-            fields:
-              - name: label
-                label: Название пункта
-                widget: string
-                hint: 'Например: Отзывы'
-              - name: url
-                label: Куда ведёт
-                widget: string
-                hint: 'Якорь на главной со решёткой (#otzivy) или адрес страницы (remont-kompyuterov-spb.html). На страницах сборок якоря автоматически ведут на главную'
+          - name: label
+            label: Название пункта
+            widget: string
+            hint: 'Например: Отзывы'
+          - name: url
+            label: Куда ведёт
+            widget: string
+            hint: 'Якорь на главной со решёткой (#otzivy) или адрес страницы (remont-kompyuterov-spb.html). На страницах сборок якоря автоматически ведут на главную'
 
+collections:
   - name: cards
-    label: Карточки сборок
+    label: Последние проекты нашей мастерской
+    icon: handiwork
     description: Компьютеры, которые показываются на главной в блоке «Последние проекты нашей мастерской» и внизу страниц сборок в блоке «Другие конфигурации»
     files:
       - name: cards
@@ -311,6 +306,7 @@ collections:
   - name: builds
     label: Сборки
     label_singular: сборку
+    icon: desktop_windows
     description: Страницы компьютеров. Одна запись — одна страница сайта.
     folder: content/builds
     format: json
