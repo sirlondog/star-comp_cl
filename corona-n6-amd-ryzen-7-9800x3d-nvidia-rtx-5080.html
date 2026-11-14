@@ -252,12 +252,14 @@ html{scroll-behavior:smooth}
 .gallery__dots button{flex:none;width:1.125rem;height:.25rem;padding:0;border:0;border-radius:62.5rem;background:rgba(255,255,255,.4);cursor:pointer;transition:background-color .2s}
 .gallery__dots button[aria-current="true"]{background:var(--cyan)}
 
-/* Крупный просмотр фото */
+/* Крупный просмотр фото: картинка вписана в экран, клик по ней — оригинальный размер */
 .lightbox{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(5,5,7,.96);color:var(--fg);overflow:hidden}
 .lightbox::backdrop{background:#000}
-.lightbox__img{--px:.5rem;--py:4.5rem;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:zoom-out}
+.lightbox__img{--px:.5rem;--py:4.5rem;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.lightbox__img.zoomed{cursor:zoom-out;overflow:auto}
 .lightbox__img picture{display:contents}
-.lightbox__img img{display:block;max-width:calc(100vw - 2*var(--px));max-height:calc(100dvh - 2*var(--py));width:auto;height:auto;border-radius:.75rem;object-fit:contain}
+.lightbox__img img{display:block;max-width:calc(100vw - 2*var(--px));max-height:calc(100dvh - 2*var(--py));width:auto;height:auto;object-fit:contain}
+.lightbox__img.zoomed img{max-width:none;max-height:none}
 .lightbox__btn{position:absolute;display:grid;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
 .lightbox__btn svg{width:1.125rem;height:1.125rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .lightbox__btn:disabled{opacity:.35;cursor:default}
@@ -313,7 +315,7 @@ html{scroll-behavior:smooth}
   .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:.75rem 2rem}
   .flex-note ul{grid-template-columns:repeat(2,minmax(0,1fr))}
   .gallery--many .gallery__nav{display:grid}
-  .lightbox__img{--px:5.5rem;--py:4rem}
+  .lightbox__img{--px:1rem;--py:3rem}
   .lightbox__prev,.lightbox__next{top:calc(50% - 1.5rem);bottom:auto}
   .lightbox__prev{left:1.25rem;right:auto}
   .lightbox__next{right:1.25rem;left:auto}
@@ -367,11 +369,11 @@ html{scroll-behavior:smooth}
   .logo{width:auto;justify-content:flex-start}
   .logo__word{display:inline-block}
   .header__socials,.header__phone{display:none}
-  /* бургер: 4 белые полоски, без круга на фоне */
+  /* бургер: 3 жирные белые полоски, без круга на фоне */
   .burger{display:grid;place-items:center;margin-left:auto;background:none;border:0;color:#fff}
-  .burger i{background:none;height:0}
-  .burger i::before{top:-.375rem;box-shadow:0 .25rem 0 currentColor}
-  .burger i::after{top:.125rem;box-shadow:0 .25rem 0 currentColor}
+  .burger i,.burger i::before,.burger i::after{height:2px}
+  .burger i::before{top:-.3125rem}
+  .burger i::after{top:.3125rem}
   .product{padding:0}
   .product__gallery{height:100svh}
 }
@@ -565,6 +567,7 @@ html{scroll-behavior:smooth}
   }
   function show(i) {
     shown = Math.max(0, Math.min(n - 1, i));
+    holder.classList.remove('zoomed');
     var pic = slides[shown].querySelector('picture').cloneNode(true);
     var parts = pic.querySelectorAll('source,img');
     for (var k = 0; k < parts.length; k++) { parts[k].sizes = '100vw'; parts[k].removeAttribute('loading'); }
@@ -591,7 +594,11 @@ html{scroll-behavior:smooth}
     bPrev.addEventListener('click', function () { show(shown - 1); });
     bNext.addEventListener('click', function () { show(shown + 1); });
     bClose.addEventListener('click', function () { box.close(); });
-    holder.addEventListener('click', function () { box.close(); });
+    // клик по фото: оригинальный размер ↔ вписанный; закрытие — крестик или Esc
+    holder.addEventListener('click', function (e) {
+      if (e.target.closest('.lightbox__btn')) return;
+      holder.classList.toggle('zoomed');
+    });
     box.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowLeft') show(shown - 1);
       if (e.key === 'ArrowRight') show(shown + 1);

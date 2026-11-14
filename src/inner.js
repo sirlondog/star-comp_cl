@@ -42,6 +42,7 @@
   }
   function show(i) {
     shown = Math.max(0, Math.min(n - 1, i));
+    holder.classList.remove('zoomed');
     var pic = slides[shown].querySelector('picture').cloneNode(true);
     var parts = pic.querySelectorAll('source,img');
     for (var k = 0; k < parts.length; k++) { parts[k].sizes = '100vw'; parts[k].removeAttribute('loading'); }
@@ -68,7 +69,11 @@
     bPrev.addEventListener('click', function () { show(shown - 1); });
     bNext.addEventListener('click', function () { show(shown + 1); });
     bClose.addEventListener('click', function () { box.close(); });
-    holder.addEventListener('click', function () { box.close(); });
+    // клик по фото: оригинальный размер ↔ вписанный; закрытие — крестик или Esc
+    holder.addEventListener('click', function (e) {
+      if (e.target.closest('.lightbox__btn')) return;
+      holder.classList.toggle('zoomed');
+    });
     box.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowLeft') show(shown - 1);
       if (e.key === 'ArrowRight') show(shown + 1);
