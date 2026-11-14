@@ -420,7 +420,7 @@ def body_html(d):
   </section>
 {about_section}
   <section class="section section--spec wrap" aria-labelledby="spec-title">
-    <h2 class="section__title" id="spec-title">Конфигурация {name}</h2>
+    <h2 class="section__title" id="spec-title">Конфигурация</h2>
     <dl class="spec-grid">
 {specs}
     </dl>

@@ -412,6 +412,8 @@ html{scroll-behavior:smooth}
 .about .about__video .video{width:100%;max-width:none;border:0;border-radius:0;aspect-ratio:9/16}
 .about .about__video .video iframe{width:calc(100% + 16px);height:calc(100% + 16px);left:-8px;top:-8px}
 .product__note{width:auto;margin-inline:0;margin-top:20px}
+/* заголовок «Конфигурация»: тот же размер и начертание, что у названия, заглавными */
+.section--spec .section__title{text-transform:uppercase;-webkit-text-stroke:.018em currentColor}
 }
 
 /* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию.
@@ -543,7 +545,7 @@ html{scroll-behavior:smooth}
     </div>
   </section>
   <section class="section section--spec wrap" aria-labelledby="spec-title">
-    <h2 class="section__title" id="spec-title">Конфигурация SOLAR S1</h2>
+    <h2 class="section__title" id="spec-title">Конфигурация</h2>
     <dl class="spec-grid">
       <div><dt>Процессор:</dt><dd>INTEL CORE i5-12400F</dd></div>
       <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5050 8GB ASUS DUAL</dd></div>
