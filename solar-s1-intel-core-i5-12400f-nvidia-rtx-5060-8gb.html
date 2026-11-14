@@ -340,11 +340,16 @@ html{scroll-behavior:smooth}
   .product__info{display:flex;flex-direction:column;justify-content:center;padding:81px 3.25rem 0;text-align:left}
   .product__info h1{margin-top:0;margin-inline:auto;width:380px;font-size:57px;line-height:1.21;font-weight:600;-webkit-text-stroke:.018em currentColor}
   .product__info h1 span{margin-inline:0;max-width:380px;text-align:left}
-  .product__cost{width:380px;margin-inline:auto;align-items:flex-start;text-align:left;margin-top:40px}
+  .product__cost{width:380px;margin-inline:auto;align-items:flex-start;text-align:left;margin-top:30px}
   .product__label{margin-top:0;font-size:19px;line-height:1.16;color:#808080}
   .product__price{margin-top:0;font-size:44px;line-height:1.22;font-weight:600;-webkit-text-stroke:.018em currentColor}
   .product__note{margin-inline:auto;width:380px;text-wrap:pretty;margin-top:30px;font-size:20px;line-height:1.18;color:#808080;-webkit-text-stroke:.012em currentColor}
-  .product__info .btn{width:380px;max-width:100%;align-self:center;margin-inline:auto;margin-top:40px;height:60px}
+  .product__info .btn{width:380px;max-width:100%;align-self:center;margin-inline:auto;margin-top:30px;height:60px}
+  /* на высоких экранах (2K) шаг между элементами больше — 40px */
+  @media (min-height:1200px){
+    .product__cost{margin-top:40px}
+    .product__info .btn{margin-top:40px}
+  }
   .section--about,.section--spec{padding-block:3.25rem 0}
   .section--other{padding-block:5rem 5rem}
   /* вертикальное видео слева, текст о сборке справа */
