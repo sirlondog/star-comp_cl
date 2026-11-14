@@ -1,0 +1,24 @@
+{
+  "phone_display": "8 (993) 984-55-05",
+  "phone_tel": "+79939845505",
+  "phone_schema": "+7-993-984-55-05",
+  "phone_note": "Без выходных, 11:00 до 19:00",
+  "menu_note": "Пн-Вс, 11:00 до 19:00",
+  "schedule": "Ежедневно, 11:00–19:00",
+  "email": "info@star-comp.ru",
+  "address": "Заневский 65к5, ст. м. Ладожская",
+  "address_full": "Заневский пр., 65 к5, 2 этаж",
+  "opening_hours_schema": "Mo-Su 11:00-19:00",
+  "socials": {
+    "max": "https://max.ru/u/f9LHodD0cOKrboX3imjyg3cBiLspEiRa0Yz4Pb8i89Zd2AoqQNLb-lqSCpU",
+    "telegram": "https://t.me/ST_COMP",
+    "vk": "https://vk.com/star_comp_spb"
+  },
+  "stats": {
+    "rating": "5/5*",
+    "reviews": "120+",
+    "experience": "16+",
+    "maps_url": "https://yandex.ru/maps/org/starcomp_igrovyye_kompyutery/141663119214/reviews/",
+    "maps_note": "*оценка организации на"
+  }
+}

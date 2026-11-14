@@ -17,18 +17,24 @@ logo_word=svg('logo2.svg','class="logo__word" aria-hidden="true"')
 max_svg=svg('MAX.svg','width="35" height="35" aria-hidden="true"').replace('id="a"','id="mx-a"').replace('id="b"','id="mx-b"').replace('id="c"','id="mx-c"').replace('id="d"','id="mx-d"').replace('href="#a"','href="#mx-a"').replace('href="#b"','href="#mx-b"').replace('url(#c)','url(#mx-c)').replace('url(#d)','url(#mx-d)')
 vk_svg=re.sub(r' width="800px" height="800px"','',svg('vk-v2-svgrepo-com.svg','width="35" height="35" aria-hidden="true"'))
 tg_svg='<svg width="35" height="35" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#fff"/><path fill="#29a9eb" fill-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50Zm21.977-68.056c.386-4.38-4.24-2.576-4.24-2.576-3.415 1.414-6.937 2.85-10.497 4.302-11.04 4.503-22.444 9.155-32.159 13.734-5.268 1.932-2.184 3.864-2.184 3.864l8.351 2.577c3.855 1.16 5.91-.129 5.91-.129l17.988-12.238c6.424-4.38 4.882-.773 3.34.773l-13.49 12.882c-2.056 1.804-1.028 3.35-.129 4.123 2.55 2.249 8.82 6.364 11.557 8.16.712.467 1.185.778 1.292.858.642.515 4.111 2.834 6.424 2.319 2.313-.516 2.57-3.479 2.57-3.479l3.083-20.226c.462-3.511.993-6.886 1.417-9.582.4-2.546.705-4.485.767-5.362Z"/></svg>'
-socials=f'''<a class="social" href="https://max.ru/u/f9LHodD0cOKrboX3imjyg3cBiLspEiRa0Yz4Pb8i89Zd2AoqQNLb-lqSCpU" target="_blank" rel="noopener" aria-label="Написать в MAX">{max_svg}</a>
-<a class="social" href="https://t.me/ST_COMP" target="_blank" rel="noopener" aria-label="Написать в Telegram">{tg_svg}</a>
-<a class="social" href="https://vk.com/star_comp_spb" target="_blank" rel="noopener" aria-label="Группа ВКонтакте">{vk_svg}</a>'''
 
-css=open('page.css',encoding='utf-8').read()
-body=open('page.body.html',encoding='utf-8').read()
-body=body.replace('{{LOGO_ICON}}',logo_icon).replace('{{LOGO_WORD}}',logo_word).replace('{{SOCIALS}}',socials).replace('{{SOCIALS_MENU}}',socials.replace('mx-','mxm-'))
-js=open('page.js',encoding='utf-8').read()
+# ---------- контент сайта из content/*.json: правится в админке /admin ----------
+import json as _json
+def load_content(name,default):
+    try:
+        return _json.load(open(os.path.join(ROOT,'content',name),encoding='utf-8'))
+    except FileNotFoundError:
+        return default
+S=load_content('settings.json',{})            # контакты, соцсети, цифры рейтинга
+H=load_content('home.json',{})                # тексты главной
+P=load_content('perks.json',{}).get('perks') or []  # блок «Наши преимущества»
+
+_css=open('page.css',encoding='utf-8').read()
+_body=open('page.body.html',encoding='utf-8').read()
+_js=open('page.js',encoding='utf-8').read()
 
 # ---------- карточки «Популярных конфигураций» из content/cards.json ----------
-import json as _json
-_cards=_json.load(open(os.path.join(ROOT,'content','cards.json'),encoding='utf-8'))['cards']
+_cards=load_content('cards.json',{}).get('cards') or []
 
 # ---------- страницы сборок: по одной на каждый файл в content/builds/ ----------
 # Данные (название, цена, фото, видео, комплектующие) правятся в админке /admin или прямо в JSON.
@@ -100,6 +106,81 @@ def og_image(src):
     return f'assets/{stem}-og.jpg'
 def srcset(stem,ws,ext): return ', '.join(f'assets/{stem}-{w}.{ext} {w}w' for w in ws)
 
+# ---------- контакты, соцсети и преимущества: из content/settings.json и perks.json ----------
+_soc=(S.get('socials') or {})
+_social_defs=[('max',max_svg,'Написать в MAX'),('telegram',tg_svg,'Написать в Telegram'),('vk',vk_svg,'Группа ВКонтакте')]
+socials='\n'.join(f'<a class="social" href="{esc(_soc.get(k,""))}" target="_blank" rel="noopener" aria-label="{label}">{ic}</a>'
+                  for k,ic,label in _social_defs if _soc.get(k))
+
+_perk_icons={
+ 'no-extra':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/><path d="M9 14l3-3 3 3"/></svg>',
+ 'warranty':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.4-2.9 8-7 9.5-4.1-1.5-7-5.1-7-9.5V6l7-3z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg>',
+ 'price':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h4M13 16.5l1.8 1.8 3.2-3.6"/></svg>',
+}
+perks_list='\n'.join(f'''      <li class="perk">
+        <h2>{_perk_icons.get(p.get('icon'),_perk_icons['no-extra'])}{txt(p.get('title'))}</h2>
+        <p>{txt(p.get('text'))}</p>
+      </li>''' for p in P)
+
+_st=S.get('stats') or {}
+stats_list='\n'.join(f'        <li><b>{esc(_st.get(k,""))}</b><span>{lbl}</span></li>'
+                     for k,lbl in (('rating','Рейтинг'),('reviews','Отзывов'),('experience','Лет опыта')) if _st.get(k))
+maps_note=''
+if _st.get('maps_url'):
+    maps_note=f'{txt(_st.get("maps_note") or "*оценка организации на")} <a href="{esc(_st["maps_url"])}" target="_blank" rel="noopener">Яндекс картах</a>'
+
+def hero_picture():
+    """Фото первого экрана: если в настройках задан hero_image — нарезаем его; иначе готовые размеры из assets."""
+    sizes='(min-width: 532px) 500px, calc(100vw - 32px)'
+    srcimg=(H.get('hero_image') or '').strip()
+    alt=esc(H.get('hero_alt') or 'Игровой компьютер STAR-COMP')
+    if srcimg:
+        stem,ws=derive(srcimg,[600,800,1000],0.8)
+        av=', '.join(f'assets/{stem}-{w}.avif {w}w' for w in ws)
+        wp=', '.join(f'assets/{stem}-{w}.webp {w}w' for w in ws)
+        w0=ws[0]
+        return (f'<source type="image/avif" srcset="{av}" sizes="{sizes}">'
+                f'<source type="image/webp" srcset="{wp}" sizes="{sizes}">'
+                f'<img src="assets/{stem}-{w0}.webp" width="{w0}" height="{round(w0*1.25)}" alt="{alt}" fetchpriority="high" decoding="async">')
+    return (f'<source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w, assets/hero-1000.avif 1000w" sizes="{sizes}">'
+            f'<source type="image/webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w, assets/hero-1000.webp 1000w" sizes="{sizes}">'
+            f'<img src="assets/hero-600.webp" width="600" height="750" alt="{alt}" fetchpriority="high" decoding="async">')
+
+def _title_html():
+    """Заголовок главной: обычная часть + выделенный акцент <em> + обычное окончание."""
+    h1=txt(H.get('title_before'))
+    if H.get('title_accent'): h1+=' <em>'+txt(H.get('title_accent'))+'</em>'
+    if H.get('title_after'): h1+=' '+txt(H.get('title_after'))
+    return re.sub(r'&nbsp; ',r'&nbsp;',h1)
+
+# Подстановки для шапки, меню и главной страницы
+FILLS={
+ '{{PHONE_TEL}}':esc(S.get('phone_tel') or '+79939845505'),
+ '{{PHONE_DISPLAY}}':txt(S.get('phone_display') or '8 (993) 984-55-05'),
+ '{{PHONE_NOTE}}':txt(S.get('phone_note') or 'Без выходных, 11:00 до 19:00'),
+ '{{MENU_NOTE}}':txt(S.get('menu_note') or 'Пн-Вс, 11:00 до 19:00'),
+ '{{EMAIL}}':esc(S.get('email') or 'info@star-comp.ru'),
+ '{{ADDRESS}}':txt(S.get('address') or 'Заневский 65к5, ст. м. Ладожская'),
+ '{{SCHEDULE}}':txt(S.get('schedule') or 'Ежедневно, 11:00–19:00'),
+ '{{STATS_LIST}}':stats_list,
+ '{{MAPS_NOTE}}':maps_note,
+ '{{PERKS_LIST}}':perks_list,
+ '{{BADGE}}':txt(H.get('badge') or 'Профессиональная сборка'),
+ '{{TITLE_HTML}}':_title_html(),
+ '{{HERO_LEAD}}':txt(H.get('lead') or ''),
+ '{{HERO_BUTTON}}':txt(H.get('button') or 'Подобрать компьютер'),
+ '{{HERO_CAPTION}}':txt(H.get('hero_caption') or ''),
+ '{{HERO_PICTURE}}':hero_picture(),
+ '{{CARDS_LEAD}}':txt(H.get('cards_lead') or ''),
+ '{{LOGO_ICON}}':logo_icon,
+ '{{LOGO_WORD}}':logo_word,
+ '{{SOCIALS}}':socials,
+ '{{SOCIALS_MENU}}':socials.replace('mx-','mxm-'),
+}
+def fill_text(x):
+    for k,v in FILLS.items(): x=x.replace(k,v)
+    return x
+
 SIZES='(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)'
 CARD_SIZES='(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)'
 ARROW_L='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>'
@@ -151,6 +232,8 @@ def other_builds_html(cards):
   </section>'''
 
 # ---------- главная страница ----------
+ld=json.dumps({"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":esc(S.get('phone_schema') or '+7-993-984-55-05'),"email":esc(S.get('email') or 'info@star-comp.ru'),"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":esc(S.get('address_full') or 'Заневский пр., 65 к5, 2 этаж'),"addressCountry":"RU"},"openingHours":esc(S.get('opening_hours_schema') or 'Mo-Su 11:00-19:00'),"sameAs":[v for v in (_soc.get('vk'),_soc.get('telegram')) if v]},ensure_ascii=False,separators=(',',':'))
+body=fill_text(_body)
 full=f'''<!doctype html>
 <html lang="ru">
 <head>
@@ -169,16 +252,16 @@ full=f'''<!doctype html>
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":"+7-993-984-55-05","email":"info@star-comp.ru","address":{{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":"Заневский пр., 65 к5, 2 этаж","addressCountry":"RU"}},"openingHours":"Mo-Su 11:00-19:00","sameAs":["https://vk.com/star_comp_spb","https://t.me/ST_COMP"]}}</script>
+<script type="application/ld+json">{ld.replace('</','<\\/')}</script>
 <link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-{css}</style>
+{_css}</style>
 </head>
 <body>
 {body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden')}
 <script>
-{js}</script>
+{_js}</script>
 </body>
 </html>
 '''
@@ -186,10 +269,10 @@ open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(full)
 frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
-{css}</style>
+{_css}</style>
 {body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden')}
 <script>
-{js}</script>
+{_js}</script>
 '''
 os.makedirs(os.path.join(ROOT,'.preview'),exist_ok=True)
 open(os.path.join(ROOT,'.preview','star-comp.html'),'w',encoding='utf-8').write(frag)
@@ -293,12 +376,12 @@ def body_html(d):
 src=open('page.body.html',encoding='utf-8').read()
 header=src[:src.index('<main>')]
 menu=src[src.index('<dialog'):]
-def fill(x): return x.replace('{{LOGO_ICON}}',logo_icon).replace('{{LOGO_WORD}}',logo_word).replace('{{SOCIALS}}',socials).replace('{{SOCIALS_MENU}}',socials.replace('mx-','mxm-'))
+def fill(x): return fill_text(x.replace('{{LOGO_ICON}}',logo_icon).replace('{{LOGO_WORD}}',logo_word).replace('{{SOCIALS}}',socials).replace('{{SOCIALS_MENU}}',socials.replace('mx-','mxm-')))
 header_i=fill(header).replace('<a class="logo" href="/"','<a class="logo" href="index.html"')
 menu_i=re.sub(r'href="#(works|nal|ychit|lastvid|preim|proces|gift|otzivy|contakty)"',r'href="index.html#\1"',fill(menu))
-menu_js=js[js.index("  var menu ="):]
+menu_js=_js[_js.index("  var menu ="):]
 inner_js=open('inner.js',encoding='utf-8').read()
-css_i=css+open('inner.css',encoding='utf-8').read()
+css_i=_css+open('inner.css',encoding='utf-8').read()
 
 def page_html(d):
     slug=d['slug'].strip().strip('/')

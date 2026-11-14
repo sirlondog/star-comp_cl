@@ -14,6 +14,7 @@ backend:
 
 site_url: https://star-comp.ru
 app_title: STAR-COMP — управление сайтом
+locale: ru
 
 # Куда складываются загруженные фото (исходники; нужные размеры сайт нарезает сам)
 media_folder: content/photos
@@ -31,6 +32,181 @@ media_libraries:
           height: 2560
 
 collections:
+  - name: settings
+    label: Настройки сайта
+    description: Контакты, соцсети и цифры рейтинга. Эти данные показываются в шапке, меню и под фото на главной, а поисковики видят их в служебной разметке
+    files:
+      - name: settings
+        label: Контакты и соцсети
+        file: content/settings.json
+        format: json
+        fields:
+          - name: phone_display
+            label: Телефон (как показывать)
+            widget: string
+            hint: 'Вид на сайте, например: 8 (993) 984-55-05'
+          - name: phone_tel
+            label: Телефон (ссылка набора)
+            widget: string
+            pattern: ['^\+?[0-9]{10,15}$', 'Только цифры, можно с плюсом в начале']
+            hint: 'То же число без пробелов и скобок: +79939845505. По нему звонят при клике'
+          - name: phone_schema
+            label: Телефон для поисковиков
+            widget: string
+            hint: 'Для поисковой разметки, например: +7-993-984-55-05'
+          - name: phone_note
+            label: Подпись под телефоном
+            widget: string
+            hint: 'Например: Без выходных, 11:00 до 19:00'
+          - name: menu_note
+            label: Расписание в меню
+            widget: string
+            hint: 'Строка под телефоном в мобильном меню, например: Пн-Вс, 11:00 до 19:00'
+          - name: schedule
+            label: Часы работы (на главной)
+            widget: string
+            hint: 'Например: Ежедневно, 11:00–19:00'
+          - name: email
+            label: Почта
+            widget: string
+          - name: address
+            label: Адрес (короткий, на главной)
+            widget: string
+            hint: 'Например: Заневский 65к5, ст. м. Ладожская'
+          - name: address_full
+            label: Адрес (полный, для поисковиков)
+            widget: string
+            hint: 'Например: Заневский пр., 65 к5, 2 этаж'
+          - name: opening_hours_schema
+            label: Часы работы для поисковиков
+            widget: string
+            hint: 'Формат: Mo-Su 11:00-19:00 (дни и время по международному стандарту)'
+          - name: socials
+            label: Соцсети
+            widget: object
+            fields:
+              - name: max
+                label: Макс (MAX messenger)
+                widget: string
+                required: false
+              - name: telegram
+                label: Telegram
+                widget: string
+                required: false
+              - name: vk
+                label: ВКонтакте
+                widget: string
+                required: false
+            hint: 'Полные ссылки на группы. Пустое поле = значок не показывается'
+          - name: stats
+            label: Цифры на главной
+            widget: object
+            fields:
+              - name: rating
+                label: Рейтинг
+                widget: string
+                hint: 'Например: 5/5*'
+              - name: reviews
+                label: Отзывов
+                widget: string
+                hint: 'Например: 120+'
+              - name: experience
+                label: Лет опыта
+                widget: string
+                hint: 'Например: 16+'
+              - name: maps_url
+                label: Ссылка на отзывы Яндекс Карт
+                widget: string
+                required: false
+              - name: maps_note
+                label: Пояснение к рейтингу
+                widget: string
+                required: false
+                hint: 'Например: *оценка организации на (слова «Яндекс картах» добавятся сами, как ссылка)'
+
+  - name: home
+    label: Главная страница
+    description: Тексты первого экрана и заголовков главной
+    files:
+      - name: home
+        label: Тексты главной
+        file: content/home.json
+        format: json
+        fields:
+          - name: badge
+            label: Бейдж над заголовком
+            widget: string
+            hint: 'Например: Профессиональная сборка'
+          - name: title_before
+            label: Заголовок (начало)
+            widget: string
+            hint: 'Начало заголовка до выделенного слова, например: Компьютер на заказ с'
+          - name: title_accent
+            label: Заголовок (выделенное слово)
+            widget: string
+            required: false
+            hint: 'Показывается цветным, например: гарантией. Пусто = без выделения'
+          - name: title_after
+            label: Заголовок (окончание)
+            widget: string
+            hint: 'Например: и запасом на 5 лет'
+          - name: lead
+            label: Подзаголовок
+            widget: text
+            hint: 'Одна строка под заголовком, например: Привезём, подключим и настроим у вас дома — оплата после проверки'
+          - name: button
+            label: Текст кнопки
+            widget: string
+            hint: 'Например: Подобрать компьютер'
+          - name: hero_caption
+            label: Подпись под фото
+            widget: string
+            hint: 'Например: Приезжайте посмотреть, как проходит сборка'
+          - name: hero_alt
+            label: Что на фото (для поисковиков)
+            widget: string
+            hint: 'Короткое описание фото первого экрана'
+          - name: hero_image
+            label: Своё фото первого экрана
+            widget: image
+            required: false
+            hint: 'Загрузи своё фото — сайт сам нарежет нужные размеры. Пусто = стандартное фото'
+          - name: cards_lead
+            label: Описание над карточками
+            widget: text
+            hint: 'Например: Оптимальные связки, можно изменить по вашему желанию'
+
+  - name: perks
+    label: Наши преимущества
+    description: Три (или сколько нужно) плитки под первым экраном главной
+    files:
+      - name: perks
+        label: Плитки
+        file: content/perks.json
+        format: json
+        fields:
+          - name: perks
+            label: Плитки
+            label_singular: плитку
+            widget: list
+            min: 1
+            summary: '{{title}}'
+            hint: 'Порядок в списке = порядок на странице'
+            fields:
+              - name: icon
+                label: Значок
+                widget: select
+                options: [no-extra, warranty, price]
+                hint: 'no-extra — шестерёнка без переплат, warranty — щит с галочкой, price — прайс'
+              - name: title
+                label: Заголовок
+                widget: string
+                hint: 'Например: Честная цена'
+              - name: text
+                label: Описание
+                widget: text
+                hint: 'Одно короткое предложение'
+
   - name: cards
     label: Популярные конфигурации
     description: Карточки в блоке «Популярные конфигурации» на главной странице. Те же карточки показываются внизу страниц сборок в блоке «Другие конфигурации»

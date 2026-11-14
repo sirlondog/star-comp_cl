@@ -9,8 +9,8 @@
 {{SOCIALS}}
       </div>
       <div class="header__phone">
-        <a href="tel:+79939845505">8 (993) 984-55-05</a>
-        <span>Без выходных, 11:00 до 19:00</span>
+        <a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a>
+        <span>{{PHONE_NOTE}}</span>
       </div>
       <button class="burger" id="menu-open" type="button" aria-label="Открыть меню" aria-haspopup="dialog"><i></i></button>
     </div>
@@ -20,49 +20,34 @@
 <main>
   <section class="hero wrap">
     <div class="hero__intro">
-      <p class="badge">Профессиональная сборка</p>
-      <h1>Компьютер на заказ с&nbsp;<em>гарантией</em> и&nbsp;запасом на&nbsp;5&nbsp;лет</h1>
-      <p class="hero__lead">Привезём, подключим и настроим у вас дома&nbsp;— оплата после проверки</p>
-      <a class="btn" href="#podbor">Подобрать компьютер</a>
+      <p class="badge">{{BADGE}}</p>
+      <h1>{{TITLE_HTML}}</h1>
+      <p class="hero__lead">{{HERO_LEAD}}</p>
+      <a class="btn" href="#podbor">{{HERO_BUTTON}}</a>
     </div>
 
     <figure class="hero__media">
       <picture>
-        <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w, assets/hero-1000.avif 1000w" sizes="(min-width: 532px) 500px, calc(100vw - 32px)">
-        <source type="image/webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w, assets/hero-1000.webp 1000w" sizes="(min-width: 532px) 500px, calc(100vw - 32px)">
-        <img src="assets/hero-600.webp" width="600" height="750" alt="Игровой компьютер с розовой подсветкой: память Corsair Dominator и водяное охлаждение" fetchpriority="high" decoding="async">
+{{HERO_PICTURE}}
       </picture>
-      <figcaption>Приезжайте посмотреть, как&nbsp;проходит сборка</figcaption>
+      <figcaption>{{HERO_CAPTION}}</figcaption>
     </figure>
 
     <div class="hero__meta">
       <ul class="facts">
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Заневский 65к5, ст.&nbsp;м.&nbsp;Ладожская</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Ежедневно, 11:00–19:00</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>{{ADDRESS}}</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>{{SCHEDULE}}</li>
       </ul>
       <ul class="stats">
-        <li><b>5/5*</b><span>Рейтинг</span></li>
-        <li><b>120+</b><span>Отзывов</span></li>
-        <li><b>16+</b><span>Лет опыта</span></li>
+{{STATS_LIST}}
       </ul>
-      <p class="note">*оценка организации на <a href="https://yandex.ru/maps/org/starcomp_igrovyye_kompyutery/141663119214/reviews/" target="_blank" rel="noopener">Яндекс картах</a></p>
+      <p class="note">{{MAPS_NOTE}}</p>
     </div>
   </section>
 
   <section class="perks wrap" aria-label="Наши преимущества">
     <ul class="perks__list">
-      <li class="perk">
-        <h2><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/><path d="M9 14l3-3 3 3"/></svg>Без переплаты за лишнее</h2>
-        <p>Подбираем комплектующие с&nbsp;запасом на несколько лет</p>
-      </li>
-      <li class="perk">
-        <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.4-2.9 8-7 9.5-4.1-1.5-7-5.1-7-9.5V6l7-3z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg>Документы и гарантия</h2>
-        <p>На сборку и комплектующие, гарантийный талон и договор</p>
-      </li>
-      <li class="perk">
-        <h2><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h4M13 16.5l1.8 1.8 3.2-3.6"/></svg>Честная цена</h2>
-        <p>Называем стоимость до начала сборки, без скрытых доплат</p>
-      </li>
+{{PERKS_LIST}}
     </ul>
   </section>
 
@@ -70,7 +55,7 @@
 
   <section class="section wrap" id="konfiguracii" aria-labelledby="cfg-title">
     <h2 class="section__title" id="cfg-title">Популярные <em>конфигурации</em></h2>
-    <p class="section__lead">Оптимальные связки, можно изменить по вашему желанию: добавить памяти, изменить корпус и&nbsp;т.&nbsp;д.</p>
+    <p class="section__lead">{{CARDS_LEAD}}</p>
     <ul class="cards" id="cards">
 {{CARDS_LIST}}
     </ul>
@@ -93,9 +78,9 @@
     <a href="#contakty">Контакты</a>
   </nav>
   <div class="menu__contacts">
-    <a href="tel:+79939845505">8 (993) 984-55-05</a>
-    <span>Пн-Вс, 11:00 до 19:00</span>
-    <a href="mailto:info@star-comp.ru">info@star-comp.ru</a>
+    <a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a>
+    <span>{{MENU_NOTE}}</span>
+    <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
   </div>
   <div class="menu__socials">
 {{SOCIALS_MENU}}
