@@ -289,9 +289,9 @@ html{scroll-behavior:smooth}
 .about__text{min-width:0}
 .about .section__lead{margin-top:0}
 
-/* Конфигурация: простые пункты без плашек — серая подпись сверху, значение крупнее под ней */
-.spec-grid{display:grid;gap:2rem;margin-top:2.75rem}
-.spec-grid div{min-width:0}
+/* Конфигурация: плашки с обводкой — серая подпись сверху, значение крупнее под ней */
+.spec-grid{display:grid;gap:.75rem;margin-top:2.75rem}
+.spec-grid div{min-width:0;padding:.875rem 1.25rem 1rem;border:1px solid var(--line);border-radius:.875rem;background:#0e0e10}
 .spec-grid dt{color:var(--muted);font-size:var(--fs-m);line-height:1.3}
 .spec-grid dd{margin:.25rem 0 0;font-weight:600;font-size:var(--fs-l);line-height:1.35;font-variant-numeric:lining-nums}
 .spec-grid dd.todo{color:var(--muted);font-weight:400}
@@ -309,8 +309,8 @@ html{scroll-behavior:smooth}
   .gallery__nav:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
 }
 @media (min-width:64rem){
-  /* сетка комплектующих по строкам: не ломается, если позиций больше восьми */
-  .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row;gap:.75rem 2rem;margin-top:2.75rem}
+  /* сетка комплектующих: колонки заполняются сверху вниз, как на Тильде */
+  .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:.75rem 2rem}
   .flex-note ul{grid-template-columns:repeat(2,minmax(0,1fr))}
   .gallery--many .gallery__nav{display:grid}
   .lightbox__img{--px:5.5rem;--py:4rem}
