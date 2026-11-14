@@ -359,18 +359,21 @@ def video_html(d):
     hs,hw=derive(ch,[640,1280],16/9)
     vs,vw=derive(cv,[480],9/16)
     name=esc(d['name'])
-    # Вертикальное видео — узкая колонка (на десктопе справа от текста); обложка тоже вертикальная
+    # Вертикальное видео — узкая колонка (на десктопе справа от текста); обложка тоже вертикальная.
+    # Обложка ставится фоном под плеером: пока кадр грузится, видна статичная картинка, а не белый экран.
     if v_id:
         cls=' video video--vertical'
+        poster=f"assets/{vs}-{vw[0]}.webp"
         cover=(f'<source type="image/avif" srcset="assets/{vs}-{vw[0]}.avif">'
-               f'\n          <img src="assets/{vs}-{vw[0]}.webp" width="{vw[0]}" height="{round(vw[0]*16/9)}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async">')
+               f'\n          <img src="{poster}" width="{vw[0]}" height="{round(vw[0]*16/9)}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async">')
     else:
         cls=' video'
         h0=hw[0]
+        poster=f"assets/{hs}-{h0}.webp"
         cover=(f'<source type="image/avif" srcset="{srcset(hs,hw,"avif")}" sizes="(min-width: 1024px) 1160px, 96vw">'
                f'\n          <img src="assets/{hs}-{h0}.webp" width="{h0}" height="{round(h0*9/16)}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async">')
     return f"""      <div class="about__video">
-        <div class="{cls}" id="video" data-h="{esc(h_id or v_id)}" data-v="{esc(v_id or h_id)}" data-title="Видео о сборке {name}">
+        <div class="{cls}" id="video" data-h="{esc(h_id or v_id)}" data-v="{esc(v_id or h_id)}" data-title="Видео о сборке {name}" style="background:#000 url('{poster}') center/cover no-repeat">
           <button class="video__play" type="button">
             <picture>
               {cover}
