@@ -31,9 +31,13 @@ P=load_content('perks.json',{}).get('perks') or []  # блок «Наши пре
 _codes=load_content('codes.json',{})          # коды счётчиков для всех страниц
 
 def inject_code(html):
-    """Вставляет коды из CMS: head_code — перед </head>, body_code — перед </body>."""
-    head=(_codes.get('head_code') or '').strip()
-    body=(_codes.get('body_code') or '').strip()
+    """Вставляет коды из CMS: head_code — перед </head>, body_code — перед </body>.
+    Значение может быть строкой или объектом {code, lang} (так сохраняет виджет кода)."""
+    def text(v):
+        if isinstance(v,dict): v=v.get('code') or ''
+        return (v or '').strip()
+    head=text(_codes.get('head_code'))
+    body=text(_codes.get('body_code'))
     if head: html=html.replace('</head>',head+'\n</head>')
     if body: html=html.replace('</body>',body+'\n</body>')
     return html

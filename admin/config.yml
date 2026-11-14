@@ -246,11 +246,13 @@ singletons:
       - name: head_code
         label: Код в <head> (служебная часть страницы)
         widget: code
+        output_code_only: true
         required: false
         hint: 'То, что сервис просит вставить «в тег head». Обычно это метатеги и favicon-коды. Оставьте пустым, если ничего не нужно'
       - name: body_code
         label: Код перед </body> (конец страницы)
         widget: code
+        output_code_only: true
         required: false
         hint: 'То, что сервис просит вставить «перед закрывающим body». Обычно сюда ставят Яндекс Метрику, Top.Mail.Ru и онлайн-чаты. Оставьте пустым, если ничего не нужно'
 
