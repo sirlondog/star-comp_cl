@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"SOLAR S1","description":"игровой компьютер на процессоре INTEL CORE i5-12400F и NVIDIA RTX 5050","image":"https://star-comp.ru/assets/solar-s1-1-og.jpg","brand":{"@type":"Brand","name":"STAR-COMP"},"offers":{"@type":"Offer","url":"https://star-comp.ru/solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb","price":"121000","priceCurrency":"RUB"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"SOLAR S1","description":"SOLAR S1","image":"https://star-comp.ru/assets/solar-s1-1-og.jpg","brand":{"@type":"Brand","name":"STAR-COMP"},"offers":{"@type":"Offer","url":"https://star-comp.ru/solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb","price":"121000","priceCurrency":"RUB"}}</script>
 <link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -246,12 +246,10 @@ html{scroll-behavior:smooth}
 .gallery__nav--prev{left:1rem}
 .gallery__nav--next{right:1rem}
 .gallery__nav:disabled{opacity:.35;cursor:default}
-/* Миниатюры под галереей: листаются пальцем, активная выделена рамкой */
-.gallery__thumbs{display:flex;gap:.5rem;margin-top:.75rem;padding:1px;overflow-x:auto;scrollbar-width:none}
-.gallery__thumbs::-webkit-scrollbar{display:none}
-.gallery__thumbs button{flex:0 0 4.5rem;aspect-ratio:16/9;padding:0;border:1px solid var(--line);border-radius:.625rem;background:#15151a;overflow:hidden;opacity:.55;cursor:pointer;transition:opacity .2s,border-color .2s}
-.gallery__thumbs img{width:100%;height:100%;object-fit:cover}
-.gallery__thumbs button[aria-current="true"]{border-color:var(--cyan);opacity:1}
+/* Точки-переключатели под галереей */
+.gallery__dots{display:flex;justify-content:center;align-items:center;gap:.75rem;margin-top:.75rem;padding:1px 0}
+.gallery__dots button{flex:none;width:.625rem;height:.625rem;padding:0;border:0;border-radius:62.5rem;background:#33343c;cursor:pointer;transition:background-color .2s,transform .2s}
+.gallery__dots button[aria-current="true"]{background:var(--cyan);transform:scale(1.25)}
 
 /* Крупный просмотр фото */
 .lightbox{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(5,5,7,.96);color:var(--fg);overflow:hidden}
@@ -305,7 +303,8 @@ html{scroll-behavior:smooth}
 .flex-note li::before{content:"";flex:none;width:.375rem;height:.375rem;margin-top:.5rem;border-radius:50%;background:var(--cyan)}
 
 @media (hover:hover){
-  .gallery__thumbs button:hover,.lightbox__btn:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
+  .gallery__dots button:hover{background:var(--cyan)}
+  .lightbox__btn:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
   .gallery__nav:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
 }
 @media (min-width:64rem){
@@ -323,8 +322,6 @@ html{scroll-behavior:smooth}
   .product{grid-template-columns:minmax(0,1fr);padding-block:2.5rem 0}
   .gallery{width:100%}
   .gallery__track{border-radius:1.875rem}
-  .gallery__thumbs{justify-content:center;gap:.75rem}
-  .gallery__thumbs button{flex:1 1 0;min-width:0;border-radius:.75rem}
   .product__info{margin-top:0}
   .section--about,.section--spec{padding-block:3.25rem 0}
   .section--other{padding-block:5rem 5rem}
@@ -423,19 +420,19 @@ html{scroll-behavior:smooth}
       <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
       <button class="gallery__nav gallery__nav--next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
       </div>
-      <div class="gallery__thumbs">
-        <button type="button" aria-label="Фото 1: общий вид компьютера в корпусе с панорамным стеклом и жёлтой подсветкой" aria-current="true"><picture><source type="image/avif" srcset="assets/solar-s1-1-240.avif"><img src="assets/solar-s1-1-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 2: угол корпуса крупным планом"><picture><source type="image/avif" srcset="assets/solar-s1-2-240.avif"><img src="assets/solar-s1-2-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 3: башенный кулер и вентиляторы с подсветкой"><picture><source type="image/avif" srcset="assets/solar-s1-3-240.avif"><img src="assets/solar-s1-3-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 4: материнская плата и укладка кабелей"><picture><source type="image/avif" srcset="assets/solar-s1-4-240.avif"><img src="assets/solar-s1-4-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 5: вентилятор и кожух блока питания"><picture><source type="image/avif" srcset="assets/solar-s1-5-240.avif"><img src="assets/solar-s1-5-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 6: видеокарта GeForce RTX"><picture><source type="image/avif" srcset="assets/solar-s1-6-240.avif"><img src="assets/solar-s1-6-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 7: кулер процессора крупным планом"><picture><source type="image/avif" srcset="assets/solar-s1-7-240.avif"><img src="assets/solar-s1-7-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
+      <div class="gallery__dots">
+        <button type="button" aria-label="Фото 1: общий вид компьютера в корпусе с панорамным стеклом и жёлтой подсветкой" aria-current="true"></button>
+        <button type="button" aria-label="Фото 2: угол корпуса крупным планом"></button>
+        <button type="button" aria-label="Фото 3: башенный кулер и вентиляторы с подсветкой"></button>
+        <button type="button" aria-label="Фото 4: материнская плата и укладка кабелей"></button>
+        <button type="button" aria-label="Фото 5: вентилятор и кожух блока питания"></button>
+        <button type="button" aria-label="Фото 6: видеокарта GeForce RTX"></button>
+        <button type="button" aria-label="Фото 7: кулер процессора крупным планом"></button>
       </div>
     </div>
 
     <div class="product__info">
-      <h1>SOLAR S1 <i class="sr-only">— </i><span>игровой компьютер на&nbsp;процессоре INTEL CORE i5-12400F и&nbsp;NVIDIA RTX 5050</span></h1>
+      <h1>SOLAR S1</h1>
       <div class="product__cost">
         <p class="product__label">Стоимость:</p>
         <p class="product__price">121&nbsp;т.р.</p>
@@ -578,14 +575,14 @@ html{scroll-behavior:smooth}
 
 <script>
 (function () {
-  // Галерея: стрелки, миниатюры и крупный просмотр по нажатию на фото
+  // Галерея: стрелки, точки под фото и крупный просмотр по нажатию на фото
   var g = document.getElementById('gallery');
   if (!g) return;
   var track = g.querySelector('.gallery__track');
   var slides = track.children;
   var n = slides.length;
-  var thumbsBox = g.querySelector('.gallery__thumbs');
-  var thumbs = thumbsBox.children;
+  var dotsBox = g.querySelector('.gallery__dots');
+  var dots = dotsBox.children;
   var prev = g.querySelector('.gallery__nav--prev');
   var next = g.querySelector('.gallery__nav--next');
   var current = 0;
@@ -595,16 +592,13 @@ html{scroll-behavior:smooth}
   }
   function update() {
     current = Math.max(0, Math.min(n - 1, Math.round(track.scrollLeft / track.clientWidth)));
-    for (var i = 0; i < thumbs.length; i++) thumbs[i].setAttribute('aria-current', String(i === current));
+    for (var i = 0; i < dots.length; i++) dots[i].setAttribute('aria-current', String(i === current));
     prev.disabled = current === 0;
     next.disabled = current === n - 1;
-    // активная миниатюра всегда видна в ленте
-    var t = thumbs[current];
-    if (t) thumbsBox.scrollTo({ left: t.offsetLeft - thumbsBox.offsetLeft - (thumbsBox.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
   }
-  if (n < 2) thumbsBox.hidden = true;
+  if (n < 2) dotsBox.hidden = true;
   else g.classList.add('gallery--many');
-  for (var i = 0; i < thumbs.length; i++) thumbs[i].addEventListener('click', go.bind(null, i, false));
+  for (var i = 0; i < dots.length; i++) dots[i].addEventListener('click', go.bind(null, i, false));
   prev.addEventListener('click', function () { go(current - 1); });
   next.addEventListener('click', function () { go(current + 1); });
   track.addEventListener('scroll', update, { passive: true });

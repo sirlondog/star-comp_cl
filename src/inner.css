@@ -19,12 +19,10 @@
 .gallery__nav--prev{left:1rem}
 .gallery__nav--next{right:1rem}
 .gallery__nav:disabled{opacity:.35;cursor:default}
-/* Миниатюры под галереей: листаются пальцем, активная выделена рамкой */
-.gallery__thumbs{display:flex;gap:.5rem;margin-top:.75rem;padding:1px;overflow-x:auto;scrollbar-width:none}
-.gallery__thumbs::-webkit-scrollbar{display:none}
-.gallery__thumbs button{flex:0 0 4.5rem;aspect-ratio:16/9;padding:0;border:1px solid var(--line);border-radius:.625rem;background:#15151a;overflow:hidden;opacity:.55;cursor:pointer;transition:opacity .2s,border-color .2s}
-.gallery__thumbs img{width:100%;height:100%;object-fit:cover}
-.gallery__thumbs button[aria-current="true"]{border-color:var(--cyan);opacity:1}
+/* Точки-переключатели под галереей */
+.gallery__dots{display:flex;justify-content:center;align-items:center;gap:.75rem;margin-top:.75rem;padding:1px 0}
+.gallery__dots button{flex:none;width:.625rem;height:.625rem;padding:0;border:0;border-radius:62.5rem;background:#33343c;cursor:pointer;transition:background-color .2s,transform .2s}
+.gallery__dots button[aria-current="true"]{background:var(--cyan);transform:scale(1.25)}
 
 /* Крупный просмотр фото */
 .lightbox{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(5,5,7,.96);color:var(--fg);overflow:hidden}
@@ -78,7 +76,8 @@
 .flex-note li::before{content:"";flex:none;width:.375rem;height:.375rem;margin-top:.5rem;border-radius:50%;background:var(--cyan)}
 
 @media (hover:hover){
-  .gallery__thumbs button:hover,.lightbox__btn:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
+  .gallery__dots button:hover{background:var(--cyan)}
+  .lightbox__btn:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
   .gallery__nav:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
 }
 @media (min-width:64rem){
@@ -96,8 +95,6 @@
   .product{grid-template-columns:minmax(0,1fr);padding-block:2.5rem 0}
   .gallery{width:100%}
   .gallery__track{border-radius:1.875rem}
-  .gallery__thumbs{justify-content:center;gap:.75rem}
-  .gallery__thumbs button{flex:1 1 0;min-width:0;border-radius:.75rem}
   .product__info{margin-top:0}
   .section--about,.section--spec{padding-block:3.25rem 0}
   .section--other{padding-block:5rem 5rem}
