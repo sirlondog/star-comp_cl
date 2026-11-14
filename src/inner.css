@@ -8,25 +8,6 @@
 .section--spec{padding-block:2.75rem 0}
 .section--other{padding-block:4rem 4rem}
 
-/* ============ Мобильная версия страницы сборки ============ */
-/* шапка: та же полоса — фиксированная, 80px, белая 5% + блюр 5px, обводка снизу 15%;
-   круглый лого слева (20px), бургер — 3 белые полоски справа; соцсети и телефон скрыты */
-.header{position:fixed;left:0;right:0;top:0;padding-block:0}
-.header .wrap{max-width:none;padding:0}
-.header__bar{height:80px;border-radius:0;justify-content:space-between;padding:0 1rem 0 1.25rem;background:rgba(255,255,255,.05);border:0;border-bottom:1px solid rgba(255,255,255,.15);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
-.logo__word{display:none}
-.header__socials,.header__phone{display:none}
-.burger{background:none;border:0;color:#fff;width:2.5rem;height:2.5rem}
-.burger i,.burger i::before,.burger i::after{height:2px;background:#fff}
-/* фото: во всю ширину и высоту экрана, заходит под полосу шапки */
-.product{gap:0;padding:0}
-.product__gallery{width:100%;height:100svh}
-/* инфо-блок под фото: во всю ширину, текст от левого края, шаг 20px */
-.product__info{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;padding:1.75rem var(--gutter) 2.75rem;text-align:left}
-.product__info h1{margin-top:0;margin-inline:0;max-width:none}
-.product__cost{width:auto;margin-inline:0;align-items:flex-start;margin-top:20px}
-.product__note{width:auto;margin-inline:0;margin-top:20px}
-
 /* Галерея: листается пальцем или стрелками, под ней миниатюры; по нажатию на фото открывается крупный просмотр */
 .gallery__stage{position:relative}
 .gallery__track{display:flex;aspect-ratio:4/3;border:1px solid var(--line);border-radius:1.25rem;background:#15151a;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:zoom-in}
@@ -168,6 +149,33 @@
   .burger i::after{top:.3125rem}
   .product{padding:0}
   .product__gallery{height:100svh}
+}
+
+/* ============ Мобильная версия страницы сборки (до 1023px) ============ */
+@media (max-width:63.99rem){
+/* шапка: та же полоса — фиксированная, 80px, белая 5% + блюр 5px, обводка снизу 15%;
+   круглый лого слева (20px), бургер — 3 белые полоски справа; соцсети и телефон скрыты */
+.header{position:fixed;left:0;right:0;top:0;padding-block:0}
+.header .wrap{max-width:none;padding:0}
+.header__bar{height:80px;border-radius:0;justify-content:space-between;padding:0 1rem 0 1.25rem;background:rgba(255,255,255,.05);border:0;border-bottom:1px solid rgba(255,255,255,.15);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+.logo__word{display:none}
+.header__socials,.header__phone{display:none}
+.burger{background:none;border:0;color:#fff;width:2.5rem;height:2.5rem}
+.burger i,.burger i::before,.burger i::after{height:2px;background:#fff}
+/* фото: половина экрана по высоте, во всю ширину, без скруглений, заходит под полосу шапки */
+.product{gap:0;padding:0}
+.product__gallery{width:100%;height:50svh;display:flex;flex-direction:column}
+.gallery{height:100%;display:flex;flex-direction:column}
+.gallery__stage{flex:1;min-height:0}
+.gallery__track{height:100%;width:100%;aspect-ratio:auto;border:0;border-radius:0}
+.gallery__dots{bottom:20px;gap:3px}
+.gallery__dots button{width:30px;height:2px;border-radius:0;background:#fff}
+.gallery__dots button[aria-current="true"]{background:var(--cyan)}
+/* инфо-блок под фото: отступ названия от галереи 24px, текст от левого края, шаг 20px */
+.product__info{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;padding:24px var(--gutter) 2.75rem;text-align:left}
+.product__info h1{margin-top:0;margin-inline:0;max-width:none;font-size:var(--fs-h)}
+.product__cost{width:auto;margin-inline:0;align-items:flex-start;margin-top:20px}
+.product__note{width:auto;margin-inline:0;margin-top:20px}
 }
 
 /* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию.
