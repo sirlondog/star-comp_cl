@@ -20,22 +20,22 @@
       "extra": false
     },
     {
-      "name": "ASTRA VX",
-      "image": "/content/photos/cfg-astra.webp",
-      "alt": "Компьютер ASTRA VX с фиолетовой подсветкой",
+      "name": "CRYO M1",
+      "image": "/content/photos/1_1x1_2000px.webp",
+      "alt": "Компьютер CRYO M1 с синей подсветкой, квадратный корпус аквариум с дисплеем",
       "tag": "",
       "specs": [
         {
           "label": "Процессор",
-          "value": "INTEL i5 / RYZEN 5"
+          "value": "AMD RYZEN 5 7500F"
         },
         {
           "label": "Видеокарта",
-          "value": "NVIDIA RTX 5060 Ti / AMD RX 9060"
+          "value": "NVIDIA RTX 5060 Ti 8GB"
         }
       ],
-      "price_from": 120600,
-      "page": "",
+      "price_from": 178000,
+      "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb_oc",
       "extra": false
     },
     {
