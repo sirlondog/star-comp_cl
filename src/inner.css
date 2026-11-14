@@ -77,8 +77,8 @@
   .lightbox__next{right:1.25rem;left:auto}
 }
 @media (min-width:64rem){
-  /* галерея по центру; ширина подбирается так, чтобы фото 4:3 целиком помещалось в экран */
-  .gallery,.product__info{width:min(100%,max(40rem,calc((100svh - 16.5rem)*4/3)));margin-inline:auto}
+  /* галерея и блок под ней — во всю ширину контента, как шапка (фото 4:3 растягивается по ширине) */
+  .gallery,.product__info{width:100%}
   .gallery__track{border-radius:1.875rem}
   .product{padding-block:.25rem 3.5rem}
 }
