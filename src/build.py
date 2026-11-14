@@ -64,25 +64,24 @@ def derive(src,widths,ratio):
 
 def focal_derive(src,widths,ratio,focal):
     """Обрезка фото вокруг фокусной точки. focal=(x,y) — проценты исходного фото (50/50 — центр).
-    Файлы сохраняются с суффиксом -f, чтобы не пересекаться с центральной обрезкой derive()."""
+    Имя файла включает точку фокуса: сменишь фокус в админке — сменится и файл, кэш не помешает.
+    Кадры пересоздаются при каждой сборке, потому что результат зависит от данных."""
     path=os.path.join(ROOT,src.lstrip('/'))
-    stem=os.path.splitext(os.path.basename(path))[0]+'-f'
+    X=int(round(max(0,min(100,focal[0]))))
+    Y=int(round(max(0,min(100,focal[1]))))
+    stem=os.path.splitext(os.path.basename(path))[0]+f'-f{X}x{Y}'
     with Image.open(path) as im:
         W,H=ImageOps.exif_transpose(im).size
     cw=min(W,int(H*ratio))  # ширина видимой области
     ch=round(cw/ratio)      # высота видимой области
-    fx=max(0,min(100,focal[0]))/100
-    fy=max(0,min(100,focal[1]))/100
-    left=min(max(round(fx*W-cw/2),0),W-cw)   # видимая область прижата к краям
-    top=min(max(round(fy*H-ch/2),0),H-ch)
+    left=min(max(round(X/100*W-cw/2),0),W-cw)   # видимая область прижата к краям
+    top=min(max(round(Y/100*H-ch/2),0),H-ch)
     ws=[w for w in widths if w<=cw] or [widths[0]]
-    todo=[w for w in ws if not all(os.path.exists(os.path.join(ROOT,'assets',f'{stem}-{w}.{e}')) for e in ('avif','webp'))]
-    if todo:
-        crop=ImageOps.exif_transpose(Image.open(path)).convert('RGB').crop((left,top,left+cw,top+ch))
-        for w in todo:
-            t=crop.resize((w,round(w/ratio)),Image.LANCZOS)
-            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=80,method=6)
-            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=60)
+    crop=ImageOps.exif_transpose(Image.open(path)).convert('RGB').crop((left,top,left+cw,top+ch))
+    for w in ws:
+        t=crop.resize((w,round(w/ratio)),Image.LANCZOS)
+        t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=80,method=6)
+        t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=60)
     return stem,ws
 
 def card_image(c):
