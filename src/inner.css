@@ -94,8 +94,8 @@
 @media (min-width:64rem){
   /* по макету Figma (Frame 121, 1400px): фото 844/1400 = 60.3% ширины, вся высота экрана
      минус шапка (81px); справа контент 380px — 94px от фото, шаг между элементами 30px */
-  .product{width:100%;max-width:none;padding:0;grid-template-columns:60.2857% minmax(0,1fr);gap:0;align-items:stretch}
-  .product__gallery{width:100%;height:calc(100svh - 81px);display:flex;flex-direction:column}
+  .product{width:100%;max-width:none;padding:0;grid-template-columns:66.6667% minmax(0,1fr);gap:0;align-items:stretch}
+  .product__gallery{width:100%;height:100svh;display:flex;flex-direction:column}
   .gallery{height:100%;display:flex;flex-direction:column}
   .gallery__stage{flex:1;min-height:0}
   .gallery__track{height:100%;width:100%;aspect-ratio:auto;border:0;border-radius:0}
@@ -131,7 +131,7 @@
   .header__bar::after{content:"";position:absolute;top:0;bottom:0;right:5.5rem;width:1px;background:rgba(255,255,255,.15)}
   .header__socials,.header__phone{display:none}
   .burger{background:none;border:0;width:2.5rem;height:2.5rem}
-  .product__gallery{height:100svh;width:60.2857%}
+  .product__gallery{height:100svh}
 }
 
 /* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию.
