@@ -1,29 +1,6 @@
 {
   "cards": [
     {
-      "name": "SOLAR S1",
-      "image": {
-        "path": "/content/photos/solar-s1-1.webp",
-        "x": 52,
-        "y": 88
-      },
-      "alt": "Компьютер SOLAR S1 в чёрном корпусе аквариум с подсветкой и 7 вентиляторами",
-      "tag": "",
-      "specs": [
-        {
-          "label": "Процессор",
-          "value": "INTEL CORE i5-12400F"
-        },
-        {
-          "label": "Видеокарта",
-          "value": "NVIDIA RTX 5050 8GB"
-        }
-      ],
-      "price_from": 121000,
-      "page": "solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb.html",
-      "extra": false
-    },
-    {
       "name": "CRYO M1",
       "image": {
         "path": "/content/photos/1_1x1_2000px.webp",
@@ -44,6 +21,29 @@
       ],
       "price_from": 178000,
       "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb_oc",
+      "extra": false
+    },
+    {
+      "name": "SOLAR S1",
+      "image": {
+        "path": "/content/photos/solar-s1-1.webp",
+        "x": 52,
+        "y": 88
+      },
+      "alt": "Компьютер SOLAR S1 в чёрном корпусе аквариум с подсветкой и 7 вентиляторами",
+      "tag": "",
+      "specs": [
+        {
+          "label": "Процессор",
+          "value": "INTEL CORE i5-12400F"
+        },
+        {
+          "label": "Видеокарта",
+          "value": "NVIDIA RTX 5050 8GB"
+        }
+      ],
+      "price_from": 121000,
+      "page": "solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb.html",
       "extra": false
     },
     {
