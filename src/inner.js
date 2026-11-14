@@ -104,13 +104,13 @@
   // Видео: плеер не грузится, пока человек не нажал на обложку.
   // Если ролик вертикальный (.video--vertical), он всегда вертикальный;
   // иначе на десктопе горизонтальный, на телефоне вертикальный.
-  // На телефоне вертикальное видео запускается сразу, без звука (автоплей).
+  // На телефоне вертикальное видео запускается сразу: без звука, в цикле, без кнопок.
   var v = document.getElementById('video');
   if (!v) return;
   var vertical = v.classList.contains('video--vertical');
-  function play(id, muted) {
+  function play(id, mobile) {
     var f = document.createElement('iframe');
-    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1' + (muted ? '&muted=1' : '');
+    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1&muted=1&loop=1&playsinline=1&transparent=1' + (mobile ? '&background=1&controls=0' : '');
     f.title = v.dataset.title || 'Видео';
     f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
     f.allowFullscreen = true;
