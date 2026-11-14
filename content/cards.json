@@ -3,7 +3,7 @@
     {
       "name": "CRYO M1",
       "image": {
-        "path": "/content/photos/1_1x1_2000px.webp",
+        "path": "/content/photos/cards/1_1x1_2000px.webp",
         "x": 49,
         "y": 99
       },
@@ -26,7 +26,7 @@
     {
       "name": "SOLAR S1",
       "image": {
-        "path": "/content/photos/solar-s1-1.webp",
+        "path": "/content/photos/solar-s1/solar-s1-1.webp",
         "x": 52,
         "y": 88
       },
@@ -49,7 +49,7 @@
     {
       "name": "TITAN R3",
       "image": {
-        "path": "/content/photos/1_.webp",
+        "path": "/content/photos/cards/1_.webp",
         "x": 51,
         "y": 72
       },

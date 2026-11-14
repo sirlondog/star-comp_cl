@@ -6,39 +6,39 @@
   "note": "Собран, настроен и протестирован. Можно изменить или дополнить конфигурацию. Забирайте сегодня или закажите доставку с подключением.",
   "photos": [
     {
-      "image": "/content/photos/solar-s1-1.webp",
+      "image": "/content/photos/solar-s1/solar-s1-1.webp",
       "alt": "общий вид компьютера в корпусе с панорамным стеклом и жёлтой подсветкой"
     },
     {
-      "image": "/content/photos/solar-s1-2.webp",
+      "image": "/content/photos/solar-s1/solar-s1-2.webp",
       "alt": "угол корпуса крупным планом"
     },
     {
-      "image": "/content/photos/solar-s1-3.webp",
+      "image": "/content/photos/solar-s1/solar-s1-3.webp",
       "alt": "башенный кулер и вентиляторы с подсветкой"
     },
     {
-      "image": "/content/photos/solar-s1-4.webp",
+      "image": "/content/photos/solar-s1/solar-s1-4.webp",
       "alt": "материнская плата и укладка кабелей"
     },
     {
-      "image": "/content/photos/solar-s1-5.webp",
+      "image": "/content/photos/solar-s1/solar-s1-5.webp",
       "alt": "вентилятор и кожух блока питания"
     },
     {
-      "image": "/content/photos/solar-s1-6.webp",
+      "image": "/content/photos/solar-s1/solar-s1-6.webp",
       "alt": "видеокарта GeForce RTX"
     },
     {
-      "image": "/content/photos/solar-s1-7.webp",
+      "image": "/content/photos/solar-s1/solar-s1-7.webp",
       "alt": "кулер процессора крупным планом"
     }
   ],
   "video": {
     "horizontal": "n1TmwaddQRqe4BRXvLC95D",
     "vertical": "bp2312pYaexLVSokJALhvv",
-    "cover_h": "/content/photos/solar-s1-video-h.webp",
-    "cover_v": "/content/photos/solar-s1-video-v.webp"
+    "cover_h": "/content/photos/solar-s1/solar-s1-video-h.webp",
+    "cover_v": "/content/photos/solar-s1/solar-s1-video-v.webp"
   },
   "lead": "Оптимальная сборка цена/качество для всех игр на высоких настройках",
   "specs": [
