@@ -7,6 +7,9 @@
    снизу тоже без отступа — заголовок конфигурации задаёт свой (44 px, как у галереи и заголовка) */
 .section[aria-label="Видео"]{padding-block:0}
 .section[aria-labelledby="spec-title"]{padding-top:2.75rem}
+/* «Другие конфигурации» сразу после примечания, в общем ритме страницы (44 px мобильный) */
+.section[aria-labelledby="other-title"]{padding-top:0}
+.section[aria-labelledby="spec-title"]{padding-bottom:2.75rem}
 
 /* Галерея: листается пальцем или стрелками, под ней миниатюры; по нажатию на фото открывается крупный просмотр */
 .gallery__stage{position:relative}
@@ -90,7 +93,7 @@
   /* видео начинается сразу после галереи с тем же отступом, что шапка — галерея (52 px) */
   .section[aria-label="Видео"]{padding-block:0 3.25rem}
   /* заголовок конфигурации отстоит от видео на тот же отступ (52 px) */
-  .section[aria-labelledby="spec-title"]{padding-top:0}
+  .section[aria-labelledby="spec-title"]{padding-top:0;padding-bottom:3.25rem}
   .gallery,.product__info{width:100%}
   .gallery__track{border-radius:1.875rem}
   /* миниатюры делят ширину колонки поровну, чтобы все семь помещались без прокрутки */

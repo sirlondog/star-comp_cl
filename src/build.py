@@ -203,6 +203,7 @@ def body_html(d):
     </dl>
 {open('inner.flex-note.html',encoding='utf-8').read().rstrip()}
   </section>
+{open('inner.other-builds.html',encoding='utf-8').read().rstrip()}
 </main>"""
 
 src=open('page.body.html',encoding='utf-8').read()
