@@ -357,14 +357,14 @@ html{scroll-behavior:smooth}
   .about--video-v .about__video{order:-1}
   /* горизонтальное видео — во всю ширину под текстом */
   .about--video-h .about__video .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
-  /* шапка по макету: вертикальная полоса 80px у левого края экрана — белая 5%,
-     обводка только справа 1px 50%; круглый логотип по центру сверху (20px),
-     надпись STAR•COMP и разделитель убраны; бургер и контакты скрыты */
-  .header{position:fixed;left:0;top:0;bottom:0;width:5rem;padding-block:0}
-  .header .wrap{max-width:none;padding:0;height:100%}
-  .header__bar{flex-direction:column;height:100%;width:100%;border-radius:0;justify-content:flex-start;padding:1.25rem 0 0;gap:0;background:rgba(255,255,255,.05);border:0;border-right:1px solid rgba(255,255,255,.15);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+  /* шапка по макету: горизонтальная полоса наверху, 80px высотой, фиксирована
+     и остаётся при скролле; белая 5% + блюр 5px, обводка только снизу 1px 15%;
+     круглый логотип слева (80px), надпись STAR•COMP и бургер убраны */
+  .header{position:fixed;left:0;right:0;top:0;padding-block:0}
+  .header .wrap{max-width:none;padding:0;height:auto}
+  .header__bar{position:relative;height:80px;width:100%;border-radius:0;justify-content:flex-start;padding:0 0 0 5rem;gap:0;background:rgba(255,255,255,.05);border:0;border-bottom:1px solid rgba(255,255,255,.15);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
   .header__bar::after{content:none}
-  .logo{width:100%;justify-content:center}
+  .logo{width:auto;justify-content:flex-start}
   .logo__word{display:none}
   .header__socials,.header__phone,.burger{display:none}
   .product{padding:0}
