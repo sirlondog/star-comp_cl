@@ -61,6 +61,37 @@ def derive(src,widths,ratio):
             t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=80,method=6)
             t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=60)
     return stem,ws
+
+def focal_derive(src,widths,ratio,focal):
+    """Обрезка фото вокруг фокусной точки. focal=(x,y) — проценты исходного фото (50/50 — центр).
+    Файлы сохраняются с суффиксом -f, чтобы не пересекаться с центральной обрезкой derive()."""
+    path=os.path.join(ROOT,src.lstrip('/'))
+    stem=os.path.splitext(os.path.basename(path))[0]+'-f'
+    with Image.open(path) as im:
+        W,H=ImageOps.exif_transpose(im).size
+    cw=min(W,int(H*ratio))  # ширина видимой области
+    ch=round(cw/ratio)      # высота видимой области
+    fx=max(0,min(100,focal[0]))/100
+    fy=max(0,min(100,focal[1]))/100
+    left=min(max(round(fx*W-cw/2),0),W-cw)   # видимая область прижата к краям
+    top=min(max(round(fy*H-ch/2),0),H-ch)
+    ws=[w for w in widths if w<=cw] or [widths[0]]
+    todo=[w for w in ws if not all(os.path.exists(os.path.join(ROOT,'assets',f'{stem}-{w}.{e}')) for e in ('avif','webp'))]
+    if todo:
+        crop=ImageOps.exif_transpose(Image.open(path)).convert('RGB').crop((left,top,left+cw,top+ch))
+        for w in todo:
+            t=crop.resize((w,round(w/ratio)),Image.LANCZOS)
+            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=80,method=6)
+            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=60)
+    return stem,ws
+
+def card_image(c):
+    """Картинка карточки: либо строка-путь (центральная обрезка), либо объект {path,x,y} (обрезка по фокусу)."""
+    img=c.get('image')
+    if isinstance(img,dict):
+        return focal_derive(img.get('path',''),[480,960],4/3,(img.get('x',50) or 50,img.get('y',50) or 50))
+    return derive(img or '',[480,960],4/3)
+
 def og_image(src):
     path=os.path.join(ROOT,src.lstrip('/'))
     stem=os.path.splitext(os.path.basename(path))[0]
@@ -78,7 +109,7 @@ ARROW_R='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></s
 def card_html(c,hidden=False):
     """Одна карточка конфигурации для главной и для блока «Другие конфигурации»."""
     name=esc(c['name'])
-    stem,ws=derive(c['image'],[480,960],4/3)
+    stem,ws=card_image(c)
     w0=ws[0]; h0=round(w0*3/4)
     alt=txt(c.get('alt') or c['name'])
     tag=f'\n          <span class="card__tag">{txt(c["tag"])}</span>' if c.get('tag') else ''

@@ -21,7 +21,11 @@
     },
     {
       "name": "CRYO M1",
-      "image": "/content/photos/1_1x1_2000px.webp",
+      "image": {
+        "path": "/content/photos/1_1x1_2000px.webp",
+        "x": 50,
+        "y": 0
+      },
       "alt": "Компьютер CRYO M1 с синей подсветкой, квадратный корпус аквариум с дисплеем",
       "tag": "",
       "specs": [
