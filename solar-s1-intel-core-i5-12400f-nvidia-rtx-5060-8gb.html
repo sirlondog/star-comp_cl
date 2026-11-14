@@ -294,6 +294,9 @@ html{scroll-behavior:smooth}
 .spec-grid dt{color:var(--muted);font-size:var(--fs-s);line-height:1.3}
 .spec-grid dd{margin:.25rem 0 0;font-weight:600;font-size:var(--fs-m);line-height:1.35}
 .spec-grid dd.todo{color:var(--muted);font-weight:400}
+/* текст о сборке: после заголовка конфигурации, во всю ширину */
+.seo-text{margin-top:1.5rem}
+.seo-text p{color:var(--muted);font-size:var(--fs-m);line-height:1.5}
 .flex-note{margin-top:.75rem;padding:1.25rem 1.25rem 1.375rem;border:1px solid var(--line);border-radius:.875rem;background:#0e0e10}
 .flex-note p{font-size:var(--fs-m);line-height:1.45}
 .flex-note ul{display:grid;gap:.5rem 2rem;margin-top:.875rem}
@@ -468,6 +471,8 @@ html{scroll-behavior:smooth}
   <section class="section wrap" aria-labelledby="spec-title">
     <h2 class="section__title" id="spec-title">Конфигурация SOLAR S1</h2>
     <p class="section__lead">Оптимальная сборка цена/качество для&nbsp;всех игр на&nbsp;высоких настройках</p>
+    
+    <div class="seo-text"><p>Здесь будет текст о&nbsp;том, для&nbsp;каких игр и&nbsp;задач подходит сборка: на&nbsp;каких настройках идёт, чего ждать от&nbsp;процессора INTEL CORE i5-12400F и&nbsp;видеокарты NVIDIA RTX 5050 8GB, кому подойдёт 16GB памяти.</p></div>
     <dl class="spec-grid">
       <div><dt>Процессор:</dt><dd>INTEL CORE i5-12400F</dd></div>
       <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5050 8GB ASUS DUAL</dd></div>

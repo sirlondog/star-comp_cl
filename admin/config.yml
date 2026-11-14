@@ -116,6 +116,11 @@ collections:
         widget: text
         required: false
         hint: 'Одно-три предложения: для чего этот компьютер. Стоит под заголовком «Конфигурация»'
+      - name: about
+        label: Текст о сборке
+        widget: text
+        required: false
+        hint: 'Абзац после описания сборки: на каких настройках идёт, кому подойдёт. Разворачивается на всю ширину'
       - name: specs
         label: Комплектующие
         label_singular: строку

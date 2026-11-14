@@ -177,6 +177,7 @@ def body_html(d):
     sub=f' <i class="sr-only">— </i><span>{txt(d["subtitle"])}</span>' if d.get('subtitle') else ''
     note=f'\n      <p class="product__note">{txt(d["note"])}</p>' if d.get('note') else ''
     lead=f'\n    <p class="section__lead">{txt(d["lead"])}</p>' if d.get('lead') else ''
+    about=f'\n    <div class="seo-text"><p>{txt(d["about"])}</p></div>' if d.get('about') else ''
     specs='\n'.join(f'      <div><dt>{esc(x["label"]).rstrip(":")}:</dt><dd>{esc(x["value"])}</dd></div>' for x in d.get('specs') or [])
     return f"""<main>
   <section class="product wrap">
@@ -198,6 +199,7 @@ def body_html(d):
 {video_html(d)}
   <section class="section wrap" aria-labelledby="spec-title">
     <h2 class="section__title" id="spec-title">Конфигурация {name}</h2>{lead}
+    {about}
     <dl class="spec-grid">
 {specs}
     </dl>
