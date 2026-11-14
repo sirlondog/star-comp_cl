@@ -2,7 +2,11 @@
   "cards": [
     {
       "name": "SOLAR S1",
-      "image": "/content/photos/solar-s1-1.webp",
+      "image": {
+        "path": "/content/photos/solar-s1-1.webp",
+        "x": 50,
+        "y": 57
+      },
       "alt": "Компьютер SOLAR S1 в чёрном корпусе аквариум с подсветкой и 7 вентиляторами",
       "tag": "",
       "specs": [
@@ -23,8 +27,8 @@
       "name": "CRYO M1",
       "image": {
         "path": "/content/photos/1_1x1_2000px.webp",
-        "x": 50,
-        "y": 0
+        "x": 49,
+        "y": 96
       },
       "alt": "Компьютер CRYO M1 с синей подсветкой, квадратный корпус аквариум с дисплеем",
       "tag": "",
