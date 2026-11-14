@@ -319,21 +319,29 @@ html{scroll-behavior:smooth}
   .lightbox__next{right:1.25rem;left:auto}
 }
 @media (min-width:64rem){
-  /* в духе Bork: галерея прижата к левому краю экрана и подстроена под высоту окна
-     (102px — высота шапки), ширина окна вытекает из пропорции фото 4:3;
-     точки лежат внутри фото; справа — название, стоимость, текст и кнопка */
-  .product{width:100%;max-width:none;padding:0;grid-template-columns:auto minmax(0,1fr);gap:3.25rem;align-items:stretch}
-  .product__gallery{width:calc((100svh - 102px)*1.3333);height:calc(100svh - 102px);display:flex;flex-direction:column}
-  .gallery{height:100%}
+  /* по макету Figma (Frame 121, 1400px): фото 844/1400 = 60.3% ширины, вся высота экрана
+     минус шапка (81px); справа контент 380px — 94px от фото, шаг между элементами 30px */
+  .product{width:100%;max-width:none;padding:0;grid-template-columns:60.2857% minmax(0,1fr);gap:0;align-items:stretch}
+  .product__gallery{width:100%;height:calc(100svh - 81px);display:flex;flex-direction:column}
+  .gallery{height:100%;display:flex;flex-direction:column}
   .gallery__stage{flex:1;min-height:0}
   .gallery__track{height:100%;width:100%;aspect-ratio:auto;border:0;border-radius:0}
-  .product__info{padding:4rem var(--gutter-r) 3rem 0}
-  .product__info{text-align:left}
-  .product__info h1 span{margin-inline:0;max-width:30rem;text-align:left}
-  .product__cost{align-items:flex-start;text-align:left;margin-top:1.5rem}
-  .product__label{margin-top:0}
-  .product__note{margin-inline:0;max-width:26rem;text-wrap:pretty;margin-top:0}
-  .product__info .btn{width:auto;align-self:stretch;margin-top:2rem}
+  /* стрелка: круг 73px с обводкой 10%, за 48px до правого края фото */
+  .gallery__nav{width:4.5625rem;height:4.5625rem;background:transparent;border-color:rgba(255,255,255,.1)}
+  .gallery__nav--next{right:3rem}
+  .gallery__nav:disabled{opacity:0}
+  .gallery__dots{bottom:20px;gap:3px}
+  .gallery__dots button{width:30px;height:2px;border-radius:0;background:#fff}
+  .gallery__dots button[aria-current="true"]{background:var(--cyan)}
+  /* правая колонка: 94px от фото, контент 380px, сверху 49px (130px в макете минус шапка 81px) */
+  .product__info{padding:3rem var(--gutter-r) 3rem 5.875rem;text-align:left}
+  .product__info h1{margin-top:0;font-size:57px;line-height:1.21;font-weight:600;-webkit-text-stroke:.018em currentColor}
+  .product__info h1 span{margin-inline:0;max-width:380px;text-align:left}
+  .product__cost{align-items:flex-start;text-align:left;margin-top:30px}
+  .product__label{margin-top:0;font-size:19px;line-height:1.16;color:#808080}
+  .product__price{margin-top:0;font-size:44px;line-height:1.22;font-weight:600;-webkit-text-stroke:.018em currentColor}
+  .product__note{margin-inline:0;max-width:380px;text-wrap:pretty;margin-top:30px;font-size:20px;line-height:1.18;color:#808080}
+  .product__info .btn{width:380px;max-width:100%;align-self:flex-start;margin-top:30px;height:60px}
   .section--about,.section--spec{padding-block:3.25rem 0}
   .section--other{padding-block:5rem 5rem}
   /* вертикальное видео слева, текст о сборке справа */
@@ -341,6 +349,13 @@ html{scroll-behavior:smooth}
   .about--video-v .about__video{order:-1}
   /* горизонтальное видео — во всю ширину под текстом */
   .about--video-h .about__video .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
+  /* шапка по макету: полупрозрачная белая полоса 81px во всю ширину,
+     логотип слева (80px), справа бургер за вертикальной чертой; соцсети и телефон скрыты */
+  .header{padding-block:0}
+  .header__bar{position:relative;height:81px;border-radius:0;justify-content:space-between;padding:0 1.5625rem 0 5rem;gap:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15)}
+  .header__bar::after{content:"";position:absolute;top:0;bottom:0;right:5.5rem;width:1px;background:rgba(255,255,255,.15)}
+  .header__socials,.header__phone{display:none}
+  .burger{width:2.5rem;height:2.5rem}
 }
 
 /* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию.
