@@ -1,7 +1,4 @@
 {
   "head_code": "",
-  "body_code": {
-    "code": "<script>\nwindow.replainSettings = { id: 'cc1583fa-0f2c-4999-b676-a43afc8ee57a' };\n(function(u){var s=document.createElement('script');s.async=true;s.src=u;\nvar x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);\n})('https://widget.replain.cc/dist/client.js');\n</script>",
-    "lang": "plain"
-  }
+  "body_code": ""
 }
