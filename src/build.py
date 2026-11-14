@@ -26,49 +26,9 @@ body=open('page.body.html',encoding='utf-8').read()
 body=body.replace('{{LOGO_ICON}}',logo_icon).replace('{{LOGO_WORD}}',logo_word).replace('{{SOCIALS}}',socials).replace('{{SOCIALS_MENU}}',socials.replace('mx-','mxm-'))
 js=open('page.js',encoding='utf-8').read()
 
-full=f'''<!doctype html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>STAR-COMP - сборка компьютеров на заказ</title>
-<meta name="description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">
-<link rel="canonical" href="https://star-comp.ru">
-<meta name="yandex-verification" content="968cf8204a45d4a7">
-<meta property="og:url" content="https://star-comp.ru">
-<meta property="og:title" content="STAR-COMP - сборка компьютеров на заказ">
-<meta property="og:description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ru_RU">
-<meta property="og:image" content="https://star-comp.ru/assets/og-home.jpg">
-<meta name="theme-color" content="#0a0a0a">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="apple-touch-icon" href="assets/icon-192.png">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":"+7-993-984-55-05","email":"info@star-comp.ru","address":{{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":"Заневский пр., 65 к5, 2 этаж","addressCountry":"RU"}},"openingHours":"Mo-Su 11:00-19:00","sameAs":["https://vk.com/star_comp_spb","https://t.me/ST_COMP"]}}</script>
-<link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-{css}</style>
-</head>
-<body>
-{body}
-<script>
-{js}</script>
-</body>
-</html>
-'''
-open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(full)
-frag=f'''<title>STAR-COMP</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<style>
-{css}</style>
-{body}
-<script>
-{js}</script>
-'''
-os.makedirs(os.path.join(ROOT,'.preview'),exist_ok=True)
-open(os.path.join(ROOT,'.preview','star-comp.html'),'w',encoding='utf-8').write(frag)
-print(len(full))
+# ---------- карточки «Популярных конфигураций» из content/cards.json ----------
+import json as _json
+_cards=_json.load(open(os.path.join(ROOT,'content','cards.json'),encoding='utf-8'))['cards']
 
 # ---------- страницы сборок: по одной на каждый файл в content/builds/ ----------
 # Данные (название, цена, фото, видео, комплектующие) правятся в админке /admin или прямо в JSON.
@@ -111,8 +71,100 @@ def og_image(src):
 def srcset(stem,ws,ext): return ', '.join(f'assets/{stem}-{w}.{ext} {w}w' for w in ws)
 
 SIZES='(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)'
+CARD_SIZES='(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)'
 ARROW_L='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>'
 ARROW_R='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg>'
+
+def card_html(c,hidden=False):
+    """Одна карточка конфигурации для главной и для блока «Другие конфигурации»."""
+    name=esc(c['name'])
+    stem,ws=derive(c['image'],[480,960],4/3)
+    w0=ws[0]; h0=round(w0*3/4)
+    alt=txt(c.get('alt') or c['name'])
+    tag=f'\n          <span class="card__tag">{txt(c["tag"])}</span>' if c.get('tag') else ''
+    specs='\n'.join(f'          <div><dt>{esc(s["label"]).rstrip(":")}:</dt><dd>{esc(s["value"])}</dd></div>' for s in c.get('specs') or [])
+    href=esc(c.get('page') or '') or '#podbor'
+    extra=' hidden' if hidden else ''
+    return f'''      <li class="card"{extra}>
+        <div class="card__media">
+          <picture>
+            <source type="image/avif" srcset="{srcset(stem,ws,'avif')}" sizes="{CARD_SIZES}">
+            <img src="assets/{stem}-{w0}.webp" srcset="{srcset(stem,ws,'webp')}" sizes="{CARD_SIZES}" width="{w0}" height="{h0}" alt="{alt}" loading="lazy" decoding="async">
+          </picture>{tag}
+        </div>
+        <div class="card__body">
+          <h3 class="card__name"><a href="{href}">{name}</a></h3>
+          <dl class="specs">
+{specs}
+          </dl>
+          <div class="card__foot">
+            <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;{money(c['price_from'])}</b></p>
+            <span class="card__go" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span>
+          </div>
+        </div>
+      </li>'''
+
+def cards_html(cards,with_hidden=False):
+    """Список карточек; with_hidden включает флаг «показывать только по кнопке "Показать ещё"»."""
+    return '\n'.join(card_html(c,c.get('extra') and with_hidden) for c in cards)
+
+def other_builds_html(cards):
+    """Блок «Другие конфигурации» внизу страниц сборок — из тех же данных, что и главная."""
+    items='\n'.join(card_html(c) for c in cards)
+    return f'''  <section class="section wrap" aria-labelledby="other-title">
+    <h2 class="section__title" id="other-title">Другие конфигурации</h2>
+    <p class="section__lead">Соберём под ваш бюджет и задачи</p>
+    <!-- Карточки собираются из content/cards.json — того же файла, что и «Популярные конфигурации» на главной -->
+    <ul class="cards">
+{items}
+    </ul>
+  </section>'''
+
+# ---------- главная страница ----------
+full=f'''<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>STAR-COMP - сборка компьютеров на заказ</title>
+<meta name="description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">
+<link rel="canonical" href="https://star-comp.ru">
+<meta name="yandex-verification" content="968cf8204a45d4a7">
+<meta property="og:url" content="https://star-comp.ru">
+<meta property="og:title" content="STAR-COMP - сборка компьютеров на заказ">
+<meta property="og:description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://star-comp.ru/assets/og-home.jpg">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":"+7-993-984-55-05","email":"info@star-comp.ru","address":{{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":"Заневский пр., 65 к5, 2 этаж","addressCountry":"RU"}},"openingHours":"Mo-Su 11:00-19:00","sameAs":["https://vk.com/star_comp_spb","https://t.me/ST_COMP"]}}</script>
+<link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+{css}</style>
+</head>
+<body>
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden')}
+<script>
+{js}</script>
+</body>
+</html>
+'''
+open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(full)
+frag=f'''<title>STAR-COMP</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+{css}</style>
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden')}
+<script>
+{js}</script>
+'''
+os.makedirs(os.path.join(ROOT,'.preview'),exist_ok=True)
+open(os.path.join(ROOT,'.preview','star-comp.html'),'w',encoding='utf-8').write(frag)
+print(len(full))
+
 
 def gallery_html(d):
     name=esc(d['name']); slides=[]; thumbs=[]
@@ -205,7 +257,7 @@ def body_html(d):
     </dl>
 {open('inner.flex-note.html',encoding='utf-8').read().rstrip()}
   </section>
-{open('inner.other-builds.html',encoding='utf-8').read().rstrip()}
+{other_builds_html(_cards)}
 </main>"""
 
 src=open('page.body.html',encoding='utf-8').read()

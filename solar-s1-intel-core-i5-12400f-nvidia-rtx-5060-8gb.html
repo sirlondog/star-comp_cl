@@ -496,18 +496,20 @@ html{scroll-behavior:smooth}
   <section class="section wrap" aria-labelledby="other-title">
     <h2 class="section__title" id="other-title">Другие конфигурации</h2>
     <p class="section__lead">Соберём под ваш бюджет и задачи</p>
-    <!-- Пока карточки ведут на главную: свои страницы у NOVA X1, ASTRA VX и VOID EX ещё не собраны.
-         Когда появятся страницы из content/builds/*.json — заменить ссылки на них. -->
+    <!-- Карточки собираются из content/cards.json — того же файла, что и «Популярные конфигурации» на главной -->
     <ul class="cards">
       <li class="card">
         <div class="card__media">
-          <img src="assets/cfg-nova-480.webp" width="480" height="360" alt="Компьютер NOVA X1 в чёрном корпусе с деревянной передней панелью" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/avif" srcset="assets/cfg-nova-480.avif 480w, assets/cfg-nova-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/cfg-nova-480.webp" srcset="assets/cfg-nova-480.webp 480w, assets/cfg-nova-960.webp 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)" width="480" height="360" alt="Компьютер NOVA X1 в&nbsp;чёрном корпусе с&nbsp;деревянной передней панелью" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="card__body">
-          <h3 class="card__name"><a href="index.html#nal">NOVA X1</a></h3>
+          <h3 class="card__name"><a href="solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb.html">NOVA X1</a></h3>
           <dl class="specs">
-            <div><dt>Процессор:</dt><dd>INTEL i5 / RYZEN 5</dd></div>
-            <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5060 / AMD RX 5600</dd></div>
+          <div><dt>Процессор:</dt><dd>INTEL i5 / RYZEN 5</dd></div>
+          <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5060 / AMD RX 5600</dd></div>
           </dl>
           <div class="card__foot">
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;99&nbsp;800&nbsp;₽</b></p>
@@ -517,13 +519,16 @@ html{scroll-behavior:smooth}
       </li>
       <li class="card">
         <div class="card__media">
-          <img src="assets/cfg-astra.webp" width="568" height="426" alt="Компьютер ASTRA VX с фиолетовой подсветкой" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/avif" srcset="assets/cfg-astra-480.avif 480w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/cfg-astra-480.webp" srcset="assets/cfg-astra-480.webp 480w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)" width="480" height="360" alt="Компьютер ASTRA VX с&nbsp;фиолетовой подсветкой" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="card__body">
-          <h3 class="card__name"><a href="index.html#nal">ASTRA VX</a></h3>
+          <h3 class="card__name"><a href="#podbor">ASTRA VX</a></h3>
           <dl class="specs">
-            <div><dt>Процессор:</dt><dd>INTEL i5 / RYZEN 5</dd></div>
-            <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5060 Ti / AMD RX 9060</dd></div>
+          <div><dt>Процессор:</dt><dd>INTEL i5 / RYZEN 5</dd></div>
+          <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5060 Ti / AMD RX 9060</dd></div>
           </dl>
           <div class="card__foot">
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;120&nbsp;600&nbsp;₽</b></p>
@@ -533,13 +538,16 @@ html{scroll-behavior:smooth}
       </li>
       <li class="card">
         <div class="card__media">
-          <img src="assets/cfg-void.webp" width="568" height="426" alt="Компьютер VOID EX с голубой подсветкой" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/avif" srcset="assets/cfg-void-480.avif 480w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
+            <img src="assets/cfg-void-480.webp" srcset="assets/cfg-void-480.webp 480w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)" width="480" height="360" alt="Компьютер VOID EX с&nbsp;голубой подсветкой" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="card__body">
-          <h3 class="card__name"><a href="index.html#nal">VOID EX</a></h3>
+          <h3 class="card__name"><a href="#podbor">VOID EX</a></h3>
           <dl class="specs">
-            <div><dt>Процессор:</dt><dd>INTEL i7 / RYZEN 7</dd></div>
-            <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5070 / AMD RX 9070</dd></div>
+          <div><dt>Процессор:</dt><dd>INTEL i7 / RYZEN 7</dd></div>
+          <div><dt>Видеокарта:</dt><dd>NVIDIA RTX 5070 / AMD RX 9070</dd></div>
           </dl>
           <div class="card__foot">
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;140&nbsp;600&nbsp;₽</b></p>

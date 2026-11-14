@@ -31,6 +31,71 @@ media_libraries:
           height: 2560
 
 collections:
+  - name: cards
+    label: Популярные конфигурации
+    description: Карточки в блоке «Популярные конфигурации» на главной странице. Те же карточки показываются внизу страниц сборок в блоке «Другие конфигурации»
+    files:
+      - name: cards
+        label: Карточки
+        file: content/cards.json
+        format: json
+        fields:
+          - name: cards
+            label: Карточки
+            label_singular: карточку
+            widget: list
+            min: 1
+            add_to_top: false
+            summary: '{{name}} — от {{price_from}} ₽'
+            hint: 'Порядок в списке = порядок на странице. Кнопками вверх/вниз можно менять карточки местами'
+            fields:
+              - name: name
+                label: Название
+                widget: string
+                hint: 'Например: NOVA X1'
+              - name: image
+                label: Фото
+                widget: image
+                hint: 'Лучше горизонтальное 4:3, крупное. Сборщик сам нарежет нужные размеры'
+              - name: alt
+                label: Что на фото
+                widget: string
+                hint: 'Коротко: «компьютер в чёрном корпусе с деревянной панелью». Нужно поисковикам и незрячим'
+              - name: tag
+                label: Подпись в углу фото
+                widget: string
+                required: false
+                hint: 'Например: 2k gaming. Оставьте пустым, если подпись не нужна'
+              - name: specs
+                label: Комплектующие (кратко)
+                label_singular: строку
+                widget: list
+                summary: '{{label}}: {{value}}'
+                hint: 'Две-три главные строки: Процессор, Видеокарта…'
+                fields:
+                  - name: label
+                    label: Что
+                    widget: string
+                  - name: value
+                    label: Модель
+                    widget: string
+              - name: price_from
+                label: Цена от, ₽
+                widget: number
+                value_type: int
+                min: 0
+                hint: 'Только число, без пробелов: 99800'
+              - name: page
+                label: Ссылка на страницу сборки
+                widget: string
+                required: false
+                hint: 'Имя файла страницы, например solar-s1-....html. Если пусто, карточка ведёт на блок подбора на главной'
+              - name: extra
+                label: Скрывать до нажатия «Показать ещё»
+                widget: boolean
+                required: false
+                default: false
+
   - name: builds
     label: Сборки
     label_singular: сборку
