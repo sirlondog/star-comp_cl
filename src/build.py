@@ -410,7 +410,7 @@ def body_html(d):
       <h1>{name}{sub}</h1>
       <div class="product__cost">
         <p class="product__label">Стоимость:</p>
-        <p class="product__price">{money_tr(d['price'])}</p>
+        <p class="product__price">от&nbsp;{money(d['price'])}</p>
       </div>
       {note}
       <a class="btn" href="#podbor">Консультация</a>

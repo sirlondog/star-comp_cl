@@ -19,10 +19,11 @@
 .gallery__nav--prev{left:1rem}
 .gallery__nav--next{right:1rem}
 .gallery__nav:disabled{opacity:.35;cursor:default}
-/* Точки-переключатели под галереей */
-.gallery__dots{display:flex;justify-content:center;align-items:center;gap:.75rem;margin-top:.75rem;padding:1px 0}
-.gallery__dots button{flex:none;width:.625rem;height:.625rem;padding:0;border:0;border-radius:62.5rem;background:#33343c;cursor:pointer;transition:background-color .2s,transform .2s}
-.gallery__dots button[aria-current="true"]{background:var(--cyan);transform:scale(1.25)}
+/* Точки-чёрточки внутри фото, внизу по центру */
+.gallery{position:relative}
+.gallery__dots{position:absolute;bottom:1rem;left:0;right:0;z-index:2;display:flex;justify-content:center;align-items:center;gap:.5rem}
+.gallery__dots button{flex:none;width:1.125rem;height:.25rem;padding:0;border:0;border-radius:62.5rem;background:rgba(255,255,255,.4);cursor:pointer;transition:background-color .2s}
+.gallery__dots button[aria-current="true"]{background:var(--cyan)}
 
 /* Крупный просмотр фото */
 .lightbox{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(5,5,7,.96);color:var(--fg);overflow:hidden}
@@ -92,21 +93,20 @@
 }
 @media (min-width:64rem){
   /* в духе Bork: галерея прижата к левому краю экрана и подстроена под высоту окна
-     (160px — шапка, точки и воздух), ширина окна вытекает из пропорции фото 4:3;
-     справа — название, стоимость, текст и кнопка */
-  .product{width:100%;max-width:none;padding:0;grid-template-columns:auto minmax(0,1fr);gap:3.25rem;align-items:start}
-  .product__gallery{width:calc((100svh - 160px)*1.3333);height:calc(100svh - 160px);display:flex;flex-direction:column}
+     (102px — высота шапки), ширина окна вытекает из пропорции фото 4:3;
+     точки лежат внутри фото; справа — название, стоимость, текст и кнопка */
+  .product{width:100%;max-width:none;padding:0;grid-template-columns:auto minmax(0,1fr);gap:3.25rem;align-items:stretch}
+  .product__gallery{width:calc((100svh - 102px)*1.3333);height:calc(100svh - 102px);display:flex;flex-direction:column}
   .gallery{height:100%}
   .gallery__stage{flex:1;min-height:0}
-  .gallery__track{height:100%;width:100%;aspect-ratio:auto;border-radius:0 1.875rem 1.875rem 0}
-  .gallery__dots{margin-top:.75rem}
-  .product__info{padding:2.5rem var(--gutter-r) 2.5rem 0;max-width:40rem}
+  .gallery__track{height:100%;width:100%;aspect-ratio:auto;border:0;border-radius:0}
+  .product__info{padding:4rem var(--gutter-r) 3rem 0}
   .product__info{text-align:left}
   .product__info h1 span{margin-inline:0;max-width:30rem;text-align:left}
   .product__cost{align-items:flex-start;text-align:left;margin-top:1.5rem}
   .product__label{margin-top:0}
-  .product__note{margin-inline:0;max-width:34rem;text-wrap:pretty;margin-top:0}
-  .product__info .btn{width:auto;align-self:stretch}
+  .product__note{margin-inline:0;max-width:26rem;text-wrap:pretty;margin-top:0}
+  .product__info .btn{width:auto;align-self:stretch;margin-top:2rem}
   .section--about,.section--spec{padding-block:3.25rem 0}
   .section--other{padding-block:5rem 5rem}
   /* вертикальное видео слева, текст о сборке справа */
