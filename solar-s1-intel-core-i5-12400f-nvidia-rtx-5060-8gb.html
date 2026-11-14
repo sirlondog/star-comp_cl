@@ -305,21 +305,22 @@ html{scroll-behavior:smooth}
   .lightbox__next{right:1.25rem;left:auto}
 }
 @media (min-width:64rem){
-  /* галерея и блок под ней — во всю ширину контента, как шапка (фото 4:3 растягивается по ширине) */
+  /* две колонки: слева галерея, справа название, описание, цена и кнопка */
+  .product{grid-template-columns:minmax(0,1.6fr) minmax(19rem,1fr);align-items:start;gap:2.5rem;padding-block:.25rem 3.5rem}
   .gallery,.product__info{width:100%}
   .gallery__track{border-radius:1.875rem}
-  .product{padding-block:.25rem 3.5rem}
-}
-@media (min-width:64rem){
-  .product__info{margin-top:.5rem;text-align:left}
-  .product__row{flex-direction:row;justify-content:space-between;align-items:flex-end;gap:2.5rem}
+  /* миниатюры делят ширину колонки поровну, чтобы все семь помещались без прокрутки */
+  .gallery__thumbs button{flex:1 1 0;min-width:0;border-radius:.75rem}
+
+  .product__info{margin-top:0;text-align:left}
+  .product__row{flex-direction:column;align-items:flex-start;gap:0}
   .product__info h1{margin-top:0}
   .product__info h1 span{margin-inline:0;max-width:30rem}
-  .product__cost{flex:none;align-items:flex-end;text-align:right}
+  .product__cost{flex:none;align-items:flex-start;text-align:left;margin-top:1.5rem}
   .product__label{margin-top:0}
-  .product__row--buy{align-items:center;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
-  .product__note{margin-top:0;text-wrap:pretty}
-  .product__info .btn{flex:none;align-self:center;margin-top:0}
+  .product__row--buy{align-items:stretch;gap:1.5rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+  .product__note{margin-top:0;max-width:34rem;text-wrap:pretty}
+  .product__info .btn{flex:none;align-self:stretch;margin-top:0}
 }
 
 /* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию */
