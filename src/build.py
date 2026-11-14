@@ -28,6 +28,15 @@ def load_content(name,default):
 S=load_content('settings.json',{})            # контакты, соцсети, цифры рейтинга
 H=load_content('home.json',{})                # тексты главной
 P=load_content('perks.json',{}).get('perks') or []  # блок «Наши преимущества»
+_codes=load_content('codes.json',{})          # коды счётчиков для всех страниц
+
+def inject_code(html):
+    """Вставляет коды из CMS: head_code — перед </head>, body_code — перед </body>."""
+    head=(_codes.get('head_code') or '').strip()
+    body=(_codes.get('body_code') or '').strip()
+    if head: html=html.replace('</head>',head+'\n</head>')
+    if body: html=html.replace('</body>',body+'\n</body>')
+    return html
 
 _css=open('page.css',encoding='utf-8').read()
 _body=open('page.body.html',encoding='utf-8').read()
@@ -286,7 +295,7 @@ full=f'''<!doctype html>
 </body>
 </html>
 '''
-open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(full)
+open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(inject_code(full))
 frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
@@ -456,6 +465,6 @@ img{{max-width:100%}}
 for f in sorted(glob.glob(os.path.join(ROOT,'content','builds','*.json'))):
     d=json.load(open(f,encoding='utf-8'))
     d.setdefault('slug',os.path.splitext(os.path.basename(f))[0])
-    out=page_html(d)
+    out=inject_code(page_html(d))
     open(os.path.join(ROOT,d['slug']+'.html'),'w',encoding='utf-8').write(out)
     print('сборка',d['slug'],len(out))

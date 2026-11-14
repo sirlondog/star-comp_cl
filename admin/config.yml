@@ -236,6 +236,24 @@ singletons:
             widget: string
             hint: 'Якорь на главной со решёткой (#otzivy) или адрес страницы (remont-kompyuterov-spb.html). На страницах сборок якоря автоматически ведут на главную'
 
+  - name: codes
+    label: Коды и счётчики
+    icon: code
+    description: Код для сторонних сервисов (Яндекс Метрика, Top.Mail.Ru, чаты). Вставляется на все страницы сайта сразу. После сохранения сайт пересоберётся сам
+    file: content/codes.json
+    format: json
+    fields:
+      - name: head_code
+        label: Код в <head> (служебная часть страницы)
+        widget: code
+        required: false
+        hint: 'То, что сервис просит вставить «в тег head». Обычно это метатеги и favicon-коды. Оставьте пустым, если ничего не нужно'
+      - name: body_code
+        label: Код перед </body> (конец страницы)
+        widget: code
+        required: false
+        hint: 'То, что сервис просит вставить «перед закрывающим body». Обычно сюда ставят Яндекс Метрику, Top.Mail.Ru и онлайн-чаты. Оставьте пустым, если ничего не нужно'
+
 collections:
   - name: cards
     label: Последние проекты нашей мастерской
