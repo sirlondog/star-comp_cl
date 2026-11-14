@@ -153,6 +153,12 @@ def _title_html():
     if H.get('title_after'): h1+=' '+txt(H.get('title_after'))
     return re.sub(r'&nbsp; ',r'&nbsp;',h1)
 
+def _cards_title_html():
+    """Заголовок блока конфигураций: обычная часть + выделенный акцент <em>."""
+    t=txt(H.get('cards_title') or 'Последние проекты нашей')
+    if H.get('cards_title_accent'): t+=' <em>'+txt(H.get('cards_title_accent'))+'</em>'
+    return re.sub(r'&nbsp; ',r'&nbsp;',t)
+
 # ---------- боковое меню из content/menu.json ----------
 _menu_links=load_content('menu.json',{}).get('links') or []
 def menu_links_html(inner=False):
@@ -186,6 +192,7 @@ FILLS={
  '{{HERO_CAPTION}}':txt(H.get('hero_caption') or ''),
  '{{HERO_PICTURE}}':hero_picture(),
  '{{CARDS_LEAD}}':txt(H.get('cards_lead') or ''),
+ '{{CARDS_TITLE}}':_cards_title_html(),
  '{{LOGO_ICON}}':logo_icon,
  '{{LOGO_WORD}}':logo_word,
  '{{SOCIALS}}':socials,
