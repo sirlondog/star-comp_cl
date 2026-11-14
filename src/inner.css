@@ -63,7 +63,7 @@
 
 .spec-grid{display:grid;gap:.75rem;margin-top:2rem}
 .spec-grid div{min-width:0;padding:.875rem 1.25rem 1rem;border:1px solid var(--line);border-radius:.875rem;background:#0e0e10}
-.spec-grid dt{color:var(--muted);font-size:var(--fs-s);line-height:1.3}
+.spec-grid dt{color:var(--muted);font-size:var(--fs-m);line-height:1.3}
 .spec-grid dd{margin:.25rem 0 0;font-weight:600;font-size:var(--fs-m);line-height:1.35}
 .spec-grid dd.todo{color:var(--muted);font-weight:400}
 /* текст о сборке: после заголовка конфигурации, во всю ширину */

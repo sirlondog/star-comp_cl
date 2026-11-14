@@ -36,12 +36,11 @@
   --cyan:#00d9ff;
   --pink:#ff28b4;
   --font:Gilroy,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  /* Шкала шрифтов: 2 заголовочных размера + 3 текстовых. Меньше 14px на сайте ничего нет. */
+  /* Шкала шрифтов: 4 размера — 16, 20, 24 и 38px. Меньше 16px на сайте ничего нет. */
   --fs-h:clamp(1.875rem,1.5rem + 1.6vw,2.375rem); /* 30–38px: заголовки блоков, цифры */
   --fs-h3:1.5rem;                                  /* 24px: названия сборок, цены */
   --fs-l:clamp(1.125rem,1.05rem + .35vw,1.25rem);  /* 18–20px: подзаголовки, кнопки, меню */
-  --fs-m:1rem;                                     /* 16px: основной текст */
-  --fs-s:.875rem;                                  /* 14px: подписи и сноски */
+  --fs-m:1rem;                                     /* 16px: основной текст и подписи */
   --container:72.5rem;
   --gutter:max(1rem,env(safe-area-inset-left,0px));
   --gutter-r:max(1rem,env(safe-area-inset-right,0px));
@@ -71,7 +70,7 @@ ul{list-style:none}
 .social svg{width:2.1875rem;height:2.1875rem}
 .header__phone{display:none;flex-direction:column;align-items:flex-end;gap:.25rem;line-height:1;white-space:nowrap}
 .header__phone a{font-weight:600;font-size:var(--fs-l);text-decoration:none}
-.header__phone span{font-size:var(--fs-s);color:var(--muted)}
+.header__phone span{font-size:var(--fs-m);color:var(--muted)}
 .burger{flex:none;display:grid;place-items:center;width:2.875rem;height:2.875rem;padding:0;border:0;border-radius:50%;background:#fff;cursor:pointer;transition:transform .2s}
 .burger i,.burger i::before,.burger i::after{display:block;width:1.25rem;height:1px;background:#000}
 .burger i{position:relative}
@@ -100,7 +99,7 @@ ul{list-style:none}
 .stats li{display:flex;flex-direction:column}
 .stats b{font-weight:600;font-size:var(--fs-h);line-height:1.2;font-variant-numeric:lining-nums tabular-nums}
 .stats span{color:var(--muted);font-size:var(--fs-m)}
-.note{margin-top:1rem;color:var(--muted);font-size:var(--fs-s)}
+.note{margin-top:1rem;color:var(--muted);font-size:var(--fs-m)}
 .note a{text-underline-offset:.2em}
 
 /* ---------- Меню ---------- */
@@ -148,7 +147,7 @@ ul{list-style:none}
 .card{position:relative;display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:1.25rem;background:#0e0e10;overflow:hidden;transition:border-color .2s,transform .2s}
 .card__media{position:relative;aspect-ratio:4/3;background:#15151a}
 .card__media img{width:100%;height:100%;object-fit:cover}
-.card__tag{position:absolute;top:.875rem;right:.875rem;padding:.3125rem .75rem;border:1px solid var(--line);border-radius:62.5rem;background:rgba(10,10,10,.72);font-size:var(--fs-s);line-height:1.3}
+.card__tag{position:absolute;top:.875rem;right:.875rem;padding:.3125rem .75rem;border:1px solid var(--line);border-radius:62.5rem;background:rgba(10,10,10,.72);font-size:var(--fs-m);line-height:1.3}
 .card__body{display:flex;flex-direction:column;flex:1;gap:.75rem;padding:1.25rem 1.375rem 1.375rem}
 .card__name{margin:0;font-weight:600;font-size:var(--fs-h3);line-height:1.15;text-transform:uppercase}
 .card__name a{text-decoration:none}
@@ -156,7 +155,7 @@ ul{list-style:none}
 .card__name a:focus-visible{outline:0}
 .card:has(a:focus-visible){outline:2px solid var(--cyan);outline-offset:3px}
 .specs{display:grid;gap:.5rem;margin:0}
-.specs dt,.card__price span{color:var(--muted);font-size:var(--fs-s);line-height:1.3}
+.specs dt,.card__price span{color:var(--muted);font-size:var(--fs-m);line-height:1.3}
 .specs dd{margin:0;font-weight:600;font-size:var(--fs-m);line-height:1.35}
 .card__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-top:auto;padding-top:.375rem}
 .card__price{display:flex;flex-direction:column}
