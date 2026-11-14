@@ -328,7 +328,7 @@ def gallery_html(d):
           </picture>
         </li>""")
         cur=' aria-current="true"' if n==0 else ''
-        dots.append(f'        <button type="button" aria-label="Фото {n+1}: {alt}"{cur}></button>')
+        dots.append(f'        <button type="button" aria-label="Фото {n+1}: {alt}"{cur}><picture><source type="image/avif" srcset="assets/{stem}-240.avif"><img src="assets/{stem}-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>')
     nl='\n'
     return f"""    <div class="gallery" id="gallery">
       <div class="gallery__stage">
@@ -338,7 +338,7 @@ def gallery_html(d):
       <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Предыдущее фото">{ARROW_L}</button>
       <button class="gallery__nav gallery__nav--next" type="button" aria-label="Следующее фото">{ARROW_R}</button>
       </div>
-      <div class="gallery__dots">
+      <div class="gallery__thumbs">
 {nl.join(dots)}
       </div>
     </div>"""
@@ -395,7 +395,7 @@ def body_html(d):
         <p class="product__price">{money(d['price'])}</p>
       </div>
       {note}
-      <a class="btn" href="#podbor">Хочу похожий компьютер</a>
+      <a class="btn" href="#podbor">Консультация</a>
     </div>
   </section>
 {video_html(d)}

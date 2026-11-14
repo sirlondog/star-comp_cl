@@ -1,12 +1,12 @@
 (function () {
-  // Галерея: стрелки, точки под фото и крупный просмотр по нажатию на фото
+  // Галерея: стрелки, миниатюры и крупный просмотр по нажатию на фото
   var g = document.getElementById('gallery');
   if (!g) return;
   var track = g.querySelector('.gallery__track');
   var slides = track.children;
   var n = slides.length;
-  var dotsBox = g.querySelector('.gallery__dots');
-  var dots = dotsBox.children;
+  var thumbsBox = g.querySelector('.gallery__thumbs');
+  var thumbs = thumbsBox.children;
   var prev = g.querySelector('.gallery__nav--prev');
   var next = g.querySelector('.gallery__nav--next');
   var current = 0;
@@ -16,13 +16,16 @@
   }
   function update() {
     current = Math.max(0, Math.min(n - 1, Math.round(track.scrollLeft / track.clientWidth)));
-    for (var i = 0; i < dots.length; i++) dots[i].setAttribute('aria-current', String(i === current));
+    for (var i = 0; i < thumbs.length; i++) thumbs[i].setAttribute('aria-current', String(i === current));
     prev.disabled = current === 0;
     next.disabled = current === n - 1;
+    // активная миниатюра всегда видна в ленте
+    var t = thumbs[current];
+    if (t) thumbsBox.scrollTo({ left: t.offsetLeft - thumbsBox.offsetLeft - (thumbsBox.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
   }
-  if (n < 2) dotsBox.hidden = true;
+  if (n < 2) thumbsBox.hidden = true;
   else g.classList.add('gallery--many');
-  for (var i = 0; i < dots.length; i++) dots[i].addEventListener('click', go.bind(null, i, false));
+  for (var i = 0; i < thumbs.length; i++) thumbs[i].addEventListener('click', go.bind(null, i, false));
   prev.addEventListener('click', function () { go(current - 1); });
   next.addEventListener('click', function () { go(current + 1); });
   track.addEventListener('scroll', update, { passive: true });
