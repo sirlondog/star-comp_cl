@@ -104,17 +104,24 @@
   // Видео: плеер не грузится, пока человек не нажал на обложку.
   // Если ролик вертикальный (.video--vertical), он всегда вертикальный;
   // иначе на десктопе горизонтальный, на телефоне вертикальный.
+  // На телефоне вертикальное видео запускается сразу, без звука (автоплей).
   var v = document.getElementById('video');
   if (!v) return;
   var vertical = v.classList.contains('video--vertical');
-  v.querySelector('.video__play').addEventListener('click', function () {
-    var id = vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h;
+  function play(id, muted) {
     var f = document.createElement('iframe');
-    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1';
+    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1' + (muted ? '&muted=1' : '');
     f.title = v.dataset.title || 'Видео';
     f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
     f.allowFullscreen = true;
     v.innerHTML = '';
     v.appendChild(f);
-  });
+  }
+  if (window.matchMedia('(max-width:63.99rem)').matches) {
+    play(v.dataset.v || v.dataset.h, true);
+  } else {
+    v.querySelector('.video__play').addEventListener('click', function () {
+      play(vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h, false);
+    });
+  }
 })();

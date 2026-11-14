@@ -402,8 +402,9 @@ html{scroll-behavior:smooth}
 .product__info{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:34px var(--gutter) 2.75rem;text-align:center}
 .product__info h1{margin-top:0;margin-inline:0;max-width:none;font-size:var(--fs-h)}
 .product__cost{width:auto;margin-inline:0;align-items:center;margin-top:10px}
-/* видео: во всю ширину, без скруглений */
-.about .about__video .video{width:100%;max-width:none;border-radius:0}
+/* видео: во всю ширину экрана, без рамки, автоплей без звука */
+.about .about__video .video{width:100%;max-width:none;border:0;border-radius:0;aspect-ratio:9/16}
+.about .about__video{margin:0}
 .product__note{width:auto;margin-inline:0;margin-top:20px}
 }
 
@@ -657,19 +658,26 @@ html{scroll-behavior:smooth}
   // Видео: плеер не грузится, пока человек не нажал на обложку.
   // Если ролик вертикальный (.video--vertical), он всегда вертикальный;
   // иначе на десктопе горизонтальный, на телефоне вертикальный.
+  // На телефоне вертикальное видео запускается сразу, без звука (автоплей).
   var v = document.getElementById('video');
   if (!v) return;
   var vertical = v.classList.contains('video--vertical');
-  v.querySelector('.video__play').addEventListener('click', function () {
-    var id = vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h;
+  function play(id, muted) {
     var f = document.createElement('iframe');
-    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1';
+    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1' + (muted ? '&muted=1' : '');
     f.title = v.dataset.title || 'Видео';
     f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
     f.allowFullscreen = true;
     v.innerHTML = '';
     v.appendChild(f);
-  });
+  }
+  if (window.matchMedia('(max-width:63.99rem)').matches) {
+    play(v.dataset.v || v.dataset.h, true);
+  } else {
+    v.querySelector('.video__play').addEventListener('click', function () {
+      play(vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h, false);
+    });
+  }
 })();
 
 (function () {
