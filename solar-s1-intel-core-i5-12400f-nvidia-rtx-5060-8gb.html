@@ -280,7 +280,8 @@ html{scroll-behavior:smooth}
 .product__price{font-weight:600;font-size:var(--fs-h);line-height:1.2;font-variant-numeric:lining-nums}
 /* разделитель между ценой и текстом с кнопкой; на десктопе он уже был */
 .product__row--buy{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
-.product__note{margin-top:1.25rem;max-width:30rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-m);line-height:1.4}
+/* на мобильных текст идёт сразу после разделителя: его отступ даёт padding родителя (24 px, как у цены сверху) */
+.product__note{margin-top:0;max-width:30rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-m);line-height:1.4}
 .product__info .btn{align-self:stretch;margin-top:1.5rem}
 
 .spec-grid{display:grid;gap:.75rem;margin-top:2rem}
