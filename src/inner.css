@@ -78,7 +78,9 @@
 }
 @media (min-width:64rem){
   /* две колонки: слева галерея, справа название, описание, цена и кнопка */
-  .product{grid-template-columns:minmax(0,1.6fr) minmax(19rem,1fr);align-items:start;gap:2.5rem;padding-block:2.5rem 3.5rem}
+  .product{grid-template-columns:minmax(0,1.6fr) minmax(19rem,1fr);align-items:start;gap:2.5rem;padding-block:2.5rem 3.25rem}
+  /* видео начинается сразу после галереи с тем же отступом, что шапка — галерея (52 px) */
+  .section[aria-label="Видео"]{padding-top:0}
   .gallery,.product__info{width:100%}
   .gallery__track{border-radius:1.875rem}
   /* миниатюры делят ширину колонки поровну, чтобы все семь помещались без прокрутки */
