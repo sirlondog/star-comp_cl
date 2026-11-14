@@ -1,0 +1,36 @@
+{
+  "name": "CORONA N6",
+  "subtitle": "",
+  "slug": "corona-n6-amd-ryzen-7-9800x3d-nvidia-rtx-5080",
+  "price": 343000,
+  "note": "",
+  "photos": [
+    {
+      "image": "/content/photos/15790_sale_corona_n6/1-копия.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/15790_sale_corona_n6/2-копия.webp",
+      "alt": "Радиатор материнской платы и вентилятор"
+    },
+    {
+      "image": "/content/photos/15790_sale_corona_n6/3-копия.webp",
+      "alt": "Видеокарта GIGABYTE NVIDIA RTX 5070 Ti 16GB"
+    }
+  ],
+  "video": {
+    "horizontal": "",
+    "vertical": "https://kinescope.io/hTPTpwowjGvSnw9wSQsYCp",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "AMD RYZEN 7 9800X3D"
+    }
+  ],
+  "seo": null
+}
