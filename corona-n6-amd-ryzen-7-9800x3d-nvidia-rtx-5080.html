@@ -361,8 +361,10 @@ html{scroll-behavior:smooth}
   .about--video-v .about__video{display:none}
   /* горизонтальное видео — во всю ширину под текстом */
   .about--video-h .about__video .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
-  /* шапка лежит поверх галереи при первой загрузке (как на макете), отступ сверху 2% */
+  /* шапка лежит поверх галереи при первой загрузке (как на макете), отступ сверху 2%;
+     соцсети, телефон и режим работы из шапки убраны */
   .header{position:fixed;left:0;right:0;top:2%;padding-block:0}
+  .header__socials,.header__phone{display:none}
   .product{padding:0}
   .product__gallery{height:100svh}
 }
