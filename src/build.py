@@ -63,6 +63,11 @@ def typo(x):
     return x
 def txt(x): return typo(esc(x))
 def money(n): return f'{int(n):,}'.replace(',','&nbsp;')+'&nbsp;₽'
+def money_tr(n):
+    """Цена в тысячах рублей, как на старом сайте: 348 т.р."""
+    t=n/1000
+    s=f'{t:.0f}' if abs(t-round(t))<0.05 else f'{t:.1f}'.replace('.',',')
+    return s+'&nbsp;т.р.'
 
 def derive(src,widths,ratio):
     """Нарезает фото под нужные ширины (обрезка по центру до ratio=ширина/высота). Возвращает (имя, [ширины], высота_на_ширину)."""
@@ -256,7 +261,7 @@ def cards_html(cards,with_hidden=False):
 def other_builds_html(cards):
     """Блок «Другие конфигурации» внизу страниц сборок — из тех же данных, что и главная."""
     items='\n'.join(card_html(c) for c in cards)
-    return f'''  <section class="section wrap" aria-labelledby="other-title">
+    return f'''  <section class="section section--other wrap" aria-labelledby="other-title">
     <h2 class="section__title" id="other-title">Другие конфигурации</h2>
     <p class="section__lead">Соберём под ваш бюджет и задачи</p>
     <!-- Карточки собираются из content/cards.json — того же файла, что и «Популярные конфигурации» на главной -->
@@ -354,7 +359,7 @@ def video_html(d):
     hs,hw=derive(ch,[640,1280],16/9)
     vs,vw=derive(cv,[480],9/16)
     name=esc(d['name'])
-    # Вертикальное видео — узкой колонкой по центру на всех экранах; обложка тоже вертикальная
+    # Вертикальное видео — узкая колонка (на десктопе справа от текста); обложка тоже вертикальная
     if v_id:
         cls=' video video--vertical'
         cover=(f'<source type="image/avif" srcset="assets/{vs}-{vw[0]}.avif">'
@@ -364,26 +369,38 @@ def video_html(d):
         h0=hw[0]
         cover=(f'<source type="image/avif" srcset="{srcset(hs,hw,"avif")}" sizes="(min-width: 1024px) 1160px, 96vw">'
                f'\n          <img src="assets/{hs}-{h0}.webp" width="{h0}" height="{round(h0*9/16)}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async">')
-    return f"""
-  <section class="section wrap" aria-label="Видео">
-    <div class="{cls}" id="video" data-h="{esc(h_id or v_id)}" data-v="{esc(v_id or h_id)}" data-title="Видео о сборке {name}">
-      <button class="video__play" type="button">
-        <picture>
-          {cover}
-        </picture>
-        <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.500z"/></svg></span>
-      </button>
-    </div>
-  </section>
-"""
+    return f"""      <div class="about__video">
+        <div class="{cls}" id="video" data-h="{esc(h_id or v_id)}" data-v="{esc(v_id or h_id)}" data-title="Видео о сборке {name}">
+          <button class="video__play" type="button">
+            <picture>
+              {cover}
+            </picture>
+            <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.500z"/></svg></span>
+          </button>
+        </div>
+        <p class="video__caption">Видео о сборке {name}</p>
+      </div>"""
 
 def body_html(d):
     name=esc(d['name'])
     sub=f' <i class="sr-only">— </i><span>{txt(d["subtitle"])}</span>' if d.get('subtitle') else ''
     note=f'\n      <p class="product__note">{txt(d["note"])}</p>' if d.get('note') else ''
-    lead=f'\n    <p class="section__lead">{txt(d["lead"])}</p>' if d.get('lead') else ''
-    about=f'\n    <div class="seo-text"><p>{txt(d["about"])}</p></div>' if d.get('about') else ''
     specs='\n'.join(f'      <div><dt>{esc(x["label"]).rstrip(":")}:</dt><dd>{esc(x["value"])}</dd></div>' for x in d.get('specs') or [])
+    # Блок «О сборке»: описание и текст рядом с видео (на мобильном — друг под другом)
+    lead=f'\n        <p class="section__lead">{txt(d["lead"])}</p>' if d.get('lead') else ''
+    about=f'\n        <div class="seo-text"><p>{txt(d["about"])}</p></div>' if d.get('about') else ''
+    vid=video_html(d)
+    if lead or about or vid:
+        has_v=' about--video-v' if 'video--vertical' in vid else (' about--video-h' if vid else '')
+        about_section=f'''  <section class="section section--about wrap" aria-label="О сборке">
+    <div class="about{has_v}">
+      <div class="about__text">{lead}{about}
+      </div>
+{vid}
+    </div>
+  </section>'''
+    else:
+        about_section=''
     return f"""<main>
   <section class="product wrap">
 {gallery_html(d)}
@@ -391,17 +408,16 @@ def body_html(d):
     <div class="product__info">
       <h1>{name}{sub}</h1>
       <div class="product__cost">
-        <p class="product__label">Стоимость на момент сборки:</p>
-        <p class="product__price">{money(d['price'])}</p>
+        <p class="product__label">Стоимость:</p>
+        <p class="product__price">{money_tr(d['price'])}</p>
       </div>
       {note}
       <a class="btn" href="#podbor">Консультация</a>
     </div>
   </section>
-{video_html(d)}
-  <section class="section wrap" aria-labelledby="spec-title">
-    <h2 class="section__title" id="spec-title">Конфигурация {name}</h2>{lead}
-    {about}
+{about_section}
+  <section class="section section--spec wrap" aria-labelledby="spec-title">
+    <h2 class="section__title" id="spec-title">Конфигурация {name}</h2>
     <dl class="spec-grid">
 {specs}
     </dl>
