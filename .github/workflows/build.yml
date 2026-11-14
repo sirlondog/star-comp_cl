@@ -22,3 +22,15 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Сборка сайта из исходников (Actions)'
+      # Публикация на Cloudflare Pages: только собранные файлы, без исходников
+      - name: Подготовка папки публикации
+        run: |
+          mkdir deploy
+          find . -maxdepth 1 -name '*.html' -exec cp {} deploy/ \;
+          cp -r assets admin content deploy/
+      - name: Публикация на Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy deploy --project-name=star-comp --branch=main
