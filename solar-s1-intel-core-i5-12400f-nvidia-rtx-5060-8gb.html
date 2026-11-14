@@ -45,8 +45,8 @@ img{max-width:100%}
   --container:72.5rem;
   --gutter:max(1rem,env(safe-area-inset-left,0px));
   --gutter-r:max(1rem,env(safe-area-inset-right,0px));
-  /* 16px до 1920px, дальше плавно растёт (2K, 4K) */
-  font-size:clamp(100%,.8333vw,150%);
+  /* 16px на всех экранах: сайт остаётся компактным на 2K/4K, как на референсе */
+  font-size:100%;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
