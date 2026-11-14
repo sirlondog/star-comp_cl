@@ -318,11 +318,22 @@ html{scroll-behavior:smooth}
   .lightbox__next{right:1.25rem;left:auto}
 }
 @media (min-width:64rem){
-  /* одна колонка по центру, как на Тильде: галерея, название, стоимость, текст, кнопка */
-  .product{grid-template-columns:minmax(0,1fr);padding-block:2.5rem 0}
-  .gallery{width:100%}
-  .gallery__track{border-radius:1.875rem}
-  .product__info{margin-top:0}
+  /* в духе Bork: галерея прижата к левому краю экрана и подстроена под высоту окна
+     (160px — шапка, точки и воздух), ширина окна вытекает из пропорции фото 4:3;
+     справа — название, стоимость, текст и кнопка */
+  .product{width:100%;max-width:none;padding:0;grid-template-columns:auto minmax(0,1fr);gap:3.25rem;align-items:start}
+  .product__gallery{width:calc((100svh - 160px)*1.3333);height:calc(100svh - 160px);display:flex;flex-direction:column}
+  .gallery{height:100%}
+  .gallery__stage{flex:1;min-height:0}
+  .gallery__track{height:100%;width:100%;aspect-ratio:auto;border-radius:0 1.875rem 1.875rem 0}
+  .gallery__dots{margin-top:.75rem}
+  .product__info{padding:2.5rem var(--gutter-r) 2.5rem 0;max-width:40rem}
+  .product__info{text-align:left}
+  .product__info h1 span{margin-inline:0;max-width:30rem;text-align:left}
+  .product__cost{align-items:flex-start;text-align:left;margin-top:1.5rem}
+  .product__label{margin-top:0}
+  .product__note{margin-inline:0;max-width:34rem;text-wrap:pretty;margin-top:0}
+  .product__info .btn{width:auto;align-self:stretch}
   .section--about,.section--spec{padding-block:3.25rem 0}
   .section--other{padding-block:5rem 5rem}
   /* вертикальное видео слева, текст о сборке справа */
@@ -371,6 +382,7 @@ html{scroll-behavior:smooth}
 
 <main>
   <section class="product wrap">
+    <div class="product__gallery">
     <div class="gallery" id="gallery">
       <div class="gallery__stage">
       <ul class="gallery__track" tabindex="0" aria-label="Фотографии сборки. Нажмите, чтобы увеличить">
@@ -401,6 +413,7 @@ html{scroll-behavior:smooth}
         <button type="button" aria-label="Фото 2: Радиатор материнской платы и вентилятор"></button>
         <button type="button" aria-label="Фото 3: Видеокарта GIGABYTE NVIDIA RTX 5070 Ti 16GB"></button>
       </div>
+    </div>
     </div>
 
     <div class="product__info">

@@ -402,7 +402,9 @@ def body_html(d):
         about_section=''
     return f"""<main>
   <section class="product wrap">
+    <div class="product__gallery">
 {gallery_html(d)}
+    </div>
 
     <div class="product__info">
       <h1>{name}{sub}</h1>
