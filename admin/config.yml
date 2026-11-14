@@ -239,7 +239,7 @@ singletons:
 collections:
   - name: cards
     label: Последние проекты нашей мастерской
-    icon: handiwork
+    icon: computer
     description: Компьютеры, которые показываются на главной в блоке «Последние проекты нашей мастерской» и внизу страниц сборок в блоке «Другие конфигурации»
     files:
       - name: cards
