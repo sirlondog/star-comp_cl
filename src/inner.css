@@ -162,19 +162,21 @@
 .header__socials,.header__phone{display:none}
 .burger{background:none;border:0;color:#fff;width:2.5rem;height:2.5rem}
 .burger i,.burger i::before,.burger i::after{height:2px;background:#fff}
-/* фото: 65% экрана по высоте, во всю ширину, без скруглений, заходит под полосу шапки */
+/* фото: 70% экрана по высоте, во всю ширину, без скруглений, заходит под полосу шапки */
 .product{gap:0;padding:0}
-.product__gallery{width:100%;height:65svh;display:flex;flex-direction:column}
+.product__gallery{width:100%;height:70svh;display:flex;flex-direction:column}
 .gallery{height:100%;display:flex;flex-direction:column}
 .gallery__stage{flex:1;min-height:0}
 .gallery__track{height:100%;width:100%;aspect-ratio:auto;border:0;border-radius:0}
 .gallery__dots{bottom:20px;gap:3px}
 .gallery__dots button{width:30px;height:2px;border-radius:0;background:#fff}
 .gallery__dots button[aria-current="true"]{background:var(--cyan)}
-/* инфо-блок под фото: название, стоимость и текст по центру экрана, шаг 20px */
-.product__info{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:24px var(--gutter) 2.75rem;text-align:center}
+/* инфо-блок под фото: название +34px от галереи, стоимость +10px, по центру экрана */
+.product__info{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:34px var(--gutter) 2.75rem;text-align:center}
 .product__info h1{margin-top:0;margin-inline:0;max-width:none;font-size:var(--fs-h)}
-.product__cost{width:auto;margin-inline:0;align-items:center;margin-top:20px}
+.product__cost{width:auto;margin-inline:0;align-items:center;margin-top:10px}
+/* видео: во всю ширину, без скруглений */
+.about .about__video .video{width:100%;max-width:none;border-radius:0}
 .product__note{width:auto;margin-inline:0;margin-top:20px}
 }
 
