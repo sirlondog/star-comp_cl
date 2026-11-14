@@ -135,11 +135,16 @@
      круглый логотип слева (80px), надпись STAR•COMP и бургер убраны */
   .header{position:fixed;left:0;right:0;top:0;padding-block:0}
   .header .wrap{max-width:none;padding:0;height:auto}
-  .header__bar{position:relative;height:80px;width:100%;border-radius:0;justify-content:flex-start;padding:0 0 0 5rem;gap:0;background:rgba(255,255,255,.05);border:0;border-bottom:1px solid rgba(255,255,255,.15);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+  .header__bar{position:relative;height:80px;width:100%;border-radius:0;justify-content:space-between;padding:0 1.5625rem 0 5rem;gap:0;background:rgba(255,255,255,.05);border:0;border-bottom:1px solid rgba(255,255,255,.15);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
   .header__bar::after{content:none}
   .logo{width:auto;justify-content:flex-start}
-  .logo__word{display:none}
-  .header__socials,.header__phone,.burger{display:none}
+  .logo__word{display:inline-block}
+  .header__socials,.header__phone{display:none}
+  /* бургер: 4 белые полоски, без круга на фоне */
+  .burger{display:grid;place-items:center;margin-left:auto;background:none;border:0;color:#fff}
+  .burger i{background:none;height:0}
+  .burger i::before{top:-.375rem;box-shadow:0 .25rem 0 currentColor}
+  .burger i::after{top:.125rem;box-shadow:0 .25rem 0 currentColor}
   .product{padding:0}
   .product__gallery{height:100svh}
 }
