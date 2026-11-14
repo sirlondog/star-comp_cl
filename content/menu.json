@@ -1,0 +1,14 @@
+{
+  "links": [
+    { "label": "Последние проекты", "url": "#works" },
+    { "label": "Компьютеры в наличии", "url": "#nal" },
+    { "label": "Обслуживание", "url": "remont-kompyuterov-spb.html" },
+    { "label": "Учитываем при сборке", "url": "#ychit" },
+    { "label": "Последние видео", "url": "#lastvid" },
+    { "label": "Почему мы", "url": "#preim" },
+    { "label": "Как мы работаем", "url": "#proces" },
+    { "label": "Акции", "url": "#gift" },
+    { "label": "Отзывы", "url": "#otzivy" },
+    { "label": "Контакты", "url": "#contakty" }
+  ]
+}

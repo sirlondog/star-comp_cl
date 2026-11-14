@@ -153,6 +153,20 @@ def _title_html():
     if H.get('title_after'): h1+=' '+txt(H.get('title_after'))
     return re.sub(r'&nbsp; ',r'&nbsp;',h1)
 
+# ---------- боковое меню из content/menu.json ----------
+_menu_links=load_content('menu.json',{}).get('links') or []
+def menu_links_html(inner=False):
+    """Пункты бокового меню. inner=True — для страниц сборок: якоря ведут на главную."""
+    base='index.html' if inner else ''
+    out=[]
+    for l in _menu_links:
+        label=(l.get('label') or '').strip()
+        url=(l.get('url') or '').strip()
+        if not label or not url: continue
+        href=base+url if url.startswith('#') else url
+        out.append(f'    <a href="{esc(href)}">{txt(label)}</a>')
+    return '\n'.join(out)
+
 # Подстановки для шапки, меню и главной страницы
 FILLS={
  '{{PHONE_TEL}}':esc(S.get('phone_tel') or '+79939845505'),
@@ -233,7 +247,7 @@ def other_builds_html(cards):
 
 # ---------- главная страница ----------
 ld=json.dumps({"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":esc(S.get('phone_schema') or '+7-993-984-55-05'),"email":esc(S.get('email') or 'info@star-comp.ru'),"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":esc(S.get('address_full') or 'Заневский пр., 65 к5, 2 этаж'),"addressCountry":"RU"},"openingHours":esc(S.get('opening_hours_schema') or 'Mo-Su 11:00-19:00'),"sameAs":[v for v in (_soc.get('vk'),_soc.get('telegram')) if v]},ensure_ascii=False,separators=(',',':'))
-body=fill_text(_body)
+body=fill_text(_body).replace('{{MENU_LINKS}}',menu_links_html(False))
 full=f'''<!doctype html>
 <html lang="ru">
 <head>
@@ -376,9 +390,9 @@ def body_html(d):
 src=open('page.body.html',encoding='utf-8').read()
 header=src[:src.index('<main>')]
 menu=src[src.index('<dialog'):]
-def fill(x): return fill_text(x.replace('{{LOGO_ICON}}',logo_icon).replace('{{LOGO_WORD}}',logo_word).replace('{{SOCIALS}}',socials).replace('{{SOCIALS_MENU}}',socials.replace('mx-','mxm-')))
+def fill(x): return fill_text(x.replace('{{MENU_LINKS}}',menu_links_html(True)).replace('{{LOGO_ICON}}',logo_icon).replace('{{LOGO_WORD}}',logo_word).replace('{{SOCIALS}}',socials).replace('{{SOCIALS_MENU}}',socials.replace('mx-','mxm-')))
 header_i=fill(header).replace('<a class="logo" href="/"','<a class="logo" href="index.html"')
-menu_i=re.sub(r'href="#(works|nal|ychit|lastvid|preim|proces|gift|otzivy|contakty)"',r'href="index.html#\1"',fill(menu))
+menu_i=fill(menu)
 menu_js=_js[_js.index("  var menu ="):]
 inner_js=open('inner.js',encoding='utf-8').read()
 css_i=_css+open('inner.css',encoding='utf-8').read()

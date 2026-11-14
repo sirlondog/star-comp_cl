@@ -207,6 +207,33 @@ collections:
                 widget: text
                 hint: 'Одно короткое предложение'
 
+  - name: menu
+    label: Боковое меню
+    description: Пункты меню, которое открывается по кнопке с полосками в шапке. Показывается и на главной, и на страницах сборок
+    files:
+      - name: menu
+        label: Пункты меню
+        file: content/menu.json
+        format: json
+        fields:
+          - name: links
+            label: Пункты
+            label_singular: пункт
+            widget: list
+            min: 1
+            add_to_top: false
+            summary: '{{label}} → {{url}}'
+            hint: 'Порядок в списке = порядок в меню. Кнопками вверх/вниз меняются местами, крестиком удаляются'
+            fields:
+              - name: label
+                label: Название пункта
+                widget: string
+                hint: 'Например: Отзывы'
+              - name: url
+                label: Куда ведёт
+                widget: string
+                hint: 'Якорь на главной со решёткой (#otzivy) или адрес страницы (remont-kompyuterov-spb.html). На страницах сборок якоря автоматически ведут на главную'
+
   - name: cards
     label: Популярные конфигурации
     description: Карточки в блоке «Популярные конфигурации» на главной странице. Те же карточки показываются внизу страниц сборок в блоке «Другие конфигурации»
