@@ -256,6 +256,104 @@ singletons:
         required: false
         hint: 'То, что сервис просит вставить «перед закрывающим body». Обычно сюда ставят Яндекс Метрику, Top.Mail.Ru и онлайн-чаты. Оставьте пустым, если ничего не нужно'
 
+  - name: design
+    label: Дизайн
+    icon: tune
+    description: Настройка отступов и размеров на страницах сборок. Число — и сайт пересоберётся сам. Не меняйте резко — смотрите результат на сайте после публикации
+    file: content/design.json
+    format: json
+    fields:
+      - name: header_top
+        label: Шапка — отступ сверху, % экрана
+        widget: number
+        value_type: float
+        min: 0
+        max: 15
+        default: 2
+        hint: 'На десктопе шапка лежит поверх фото. 2 = как сейчас. На мобильных отступ минимальный и не зависит от этого поля'
+      - name: gallery_desktop_w
+        label: Галерея — ширина на десктопе, % экрана
+        widget: number
+        value_type: float
+        min: 50
+        max: 80
+        default: 66.7
+        hint: '66.7 = две трети экрана. Остальное — правая панель с названием и ценой'
+      - name: hero_title_size
+        label: Название сборки — размер, px
+        widget: number
+        value_type: int
+        min: 30
+        max: 90
+        default: 57
+      - name: hero_price_size
+        label: Цена — размер, px
+        widget: number
+        value_type: int
+        min: 24
+        max: 64
+        default: 44
+      - name: hero_label_size
+        label: Подпись «Стоимость:» — размер, px
+        widget: number
+        value_type: int
+        min: 14
+        max: 26
+        default: 19
+      - name: hero_gap
+        label: Десктоп — шаг между элементами панели, px
+        widget: number
+        value_type: int
+        min: 10
+        max: 80
+        default: 20
+        hint: 'Название → Стоимость → цена → примечание. Сейчас на Full HD — 20, на 2K — 40 (следующее поле)'
+      - name: hero_gap_tall
+        label: Десктоп — шаг на высоких экранах (2K), px
+        widget: number
+        value_type: int
+        min: 10
+        max: 100
+        default: 40
+        hint: 'Применяется, когда высота экрана от 1200px. На Full HD работает поле выше'
+      - name: gallery_mobile_h
+        label: Мобильные — высота галереи, % экрана
+        widget: number
+        value_type: int
+        min: 30
+        max: 100
+        default: 70
+      - name: mobile_gap_title_gallery
+        label: Мобильные — отступ галерея → название, px
+        widget: number
+        value_type: int
+        min: 0
+        max: 80
+        default: 34
+      - name: mobile_gap_cost
+        label: Мобильные — отступ название → Стоимость, px
+        widget: number
+        value_type: int
+        min: 0
+        max: 60
+        default: 5
+      - name: mobile_gap
+        label: Мобильные — шаг между элементами, px
+        widget: number
+        value_type: int
+        min: 0
+        max: 60
+        default: 20
+        hint: 'Стоимость → цена → примечание'
+      - name: font_scale
+        label: Общий масштаб шрифтов сайта, %
+        widget: number
+        value_type: int
+        min: 80
+        max: 150
+        default: 100
+        hint: '100 = обычный размер. 110 = все шрифты сайта крупнее на 10%. Меняйте аккуратно, по шагам 5'
+
 collections:
   - name: cards
     label: Последние проекты нашей мастерской

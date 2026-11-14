@@ -46,6 +46,41 @@ _css=open('page.css',encoding='utf-8').read()
 _body=open('page.body.html',encoding='utf-8').read()
 _js=open('page.js',encoding='utf-8').read()
 
+# ---------- дизайн-настройки из CMS (раздел «Дизайн») ----------
+_d=load_content('design.json',{})
+def _dnum(key,default):
+    try: return float(_d.get(key,default))
+    except Exception: return default
+_header_top=_dnum('header_top',2)                # отступ шапки сверху, % высоты экрана
+_gallery_w=_dnum('gallery_desktop_w',66.7)       # ширина галереи на десктопе, % ширины экрана
+_hero_title=_dnum('hero_title_size',57)          # название сборки, px
+_hero_price=_dnum('hero_price_size',44)          # цена, px
+_hero_label=_dnum('hero_label_size',19)          # подпись «Стоимость:», px
+_hero_gap=round(_dnum('hero_gap',30))            # шаг между элементами панели
+_hero_gap_tall=round(_dnum('hero_gap_tall',40))  # шаг на высоких экранах (2K)
+_gallery_m=_dnum('gallery_mobile_h',70)          # высота галереи на мобильных, % высоты экрана
+_m_gap_tg=round(_dnum('mobile_gap_title_gallery',34))  # мобильный: галерея → название
+_m_gap_cost=round(_dnum('mobile_gap_cost',5))         # мобильный: название → стоимость
+_m_gap=round(_dnum('mobile_gap',20))             # мобильный: шаг между элементами
+_font_scale=_dnum('font_scale',100)              # общий масштаб шрифтов сайта, %
+design_css=f'''
+/* дизайн: значения из CMS (раздел «Дизайн») */
+html{{font-size:calc(100%*{_font_scale/100})}}
+:root{{
+--d-header-top:{_header_top}%;
+--d-gallery-w:{_gallery_w}%;
+--d-hero-title:{_hero_title}px;
+--d-hero-price:{_hero_price}px;
+--d-hero-label:{_hero_label}px;
+--d-hero-gap:{_hero_gap}px;
+--d-hero-gap-tall:{_hero_gap_tall}px;
+--d-gallery-mobile-h:{_gallery_m}svh;
+--d-mobile-gap-title:{_m_gap_tg}px;
+--d-mobile-gap-cost:{_m_gap_cost}px;
+--d-mobile-gap:{_m_gap}px;
+}}'''
+_css=_css+design_css
+
 # ---------- карточки «Популярных конфигураций» из content/cards.json ----------
 _cards=load_content('cards.json',{}).get('cards') or []
 

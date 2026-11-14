@@ -96,7 +96,7 @@
 @media (min-width:64rem){
   /* по макету Figma (Frame 121, 1400px): фото 844/1400 = 60.3% ширины, вся высота экрана
      минус шапка (81px); справа контент 380px — 94px от фото, шаг между элементами 30px */
-  .product{width:100%;max-width:none;padding:0;grid-template-columns:66.6667% minmax(0,1fr);gap:0;align-items:stretch}
+  .product{width:100%;max-width:none;padding:0;grid-template-columns:var(--d-gallery-w) minmax(0,1fr);gap:0;align-items:stretch}
   .product__gallery{width:100%;height:100svh;display:flex;flex-direction:column}
   .gallery{height:100%;display:flex;flex-direction:column}
   .gallery__stage{flex:1;min-height:0}
@@ -113,17 +113,17 @@
      и кнопкой — по центру области НИЖЕ шапки (81px), чтобы название никогда
      не перекрывалось шапкой на невысоких экранах; текст от левого края, шаг 30px */
   .product__info{display:flex;flex-direction:column;justify-content:center;padding:81px 3.25rem 0;text-align:left}
-  .product__info h1{margin-top:0;margin-inline:auto;width:380px;font-size:57px;line-height:1.21;font-weight:600;-webkit-text-stroke:.018em currentColor}
+  .product__info h1{margin-top:0;margin-inline:auto;width:380px;font-size:var(--d-hero-title);line-height:1.21;font-weight:600;-webkit-text-stroke:.018em currentColor}
   .product__info h1 span{margin-inline:0;max-width:380px;text-align:left}
-  .product__cost{width:380px;margin-inline:auto;align-items:flex-start;text-align:left;margin-top:20px}
-  .product__label{margin-top:0;font-size:19px;line-height:1.16;color:#808080}
-  .product__price{margin-top:0;font-size:44px;line-height:1.22;font-weight:600;-webkit-text-stroke:.018em currentColor}
-  .product__note{margin-inline:auto;width:380px;text-wrap:pretty;margin-top:20px;font-size:20px;line-height:1.18;color:#808080;-webkit-text-stroke:.012em currentColor}
-  .product__info .btn{width:380px;max-width:100%;align-self:center;margin-inline:auto;margin-top:20px;height:60px}
+  .product__cost{width:380px;margin-inline:auto;align-items:flex-start;text-align:left;margin-top:var(--d-hero-gap)}
+  .product__label{margin-top:0;font-size:var(--d-hero-label);line-height:1.16;color:#808080}
+  .product__price{margin-top:0;font-size:var(--d-hero-price);line-height:1.22;font-weight:600;-webkit-text-stroke:.018em currentColor}
+  .product__note{margin-inline:auto;width:380px;text-wrap:pretty;margin-top:var(--d-hero-gap);font-size:20px;line-height:1.18;color:#808080;-webkit-text-stroke:.012em currentColor}
+  .product__info .btn{width:380px;max-width:100%;align-self:center;margin-inline:auto;margin-top:var(--d-hero-gap);height:60px}
   /* на высоких экранах (2K) шаг между элементами больше — 40px */
   @media (min-height:1200px){
-    .product__cost{margin-top:40px}
-    .product__info .btn{margin-top:40px}
+    .product__cost{margin-top:var(--d-hero-gap-tall)}
+    .product__info .btn{margin-top:var(--d-hero-gap-tall)}
   }
   .section--about,.section--spec{padding-block:3.25rem 0}
   .section--other{padding-block:5rem 5rem}
@@ -136,7 +136,7 @@
   .about--video-h .about__video .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
   /* шапка лежит поверх галереи при первой загрузке (как на макете), отступ сверху 2%;
      соцсети, телефон и режим работы из шапки убраны */
-  .header{position:fixed;left:0;right:0;top:2%;padding-block:0}
+  .header{position:fixed;left:0;right:0;top:var(--d-header-top);padding-block:0}
   .header__socials,.header__phone{display:none}
   .product{padding:0}
   .product__gallery{height:100svh}
@@ -149,7 +149,7 @@
 .header{position:fixed;left:0;right:0;top:max(var(--gutter),calc((100vw - var(--container))/2));padding-block:0}
 /* фото: 70% экрана по высоте, во всю ширину, без скруглений, заходит под полосу шапки */
 .product{gap:0;padding:0}
-.product__gallery{width:100%;height:70svh;display:flex;flex-direction:column}
+.product__gallery{width:100%;height:var(--d-gallery-mobile-h);display:flex;flex-direction:column}
 .gallery{height:100%;display:flex;flex-direction:column}
 .gallery__stage{flex:1;min-height:0}
 .gallery__track{height:100%;width:100%;aspect-ratio:auto;border:0;border-radius:0}
@@ -157,9 +157,9 @@
 .gallery__dots button{width:30px;height:2px;border-radius:0;background:#fff}
 .gallery__dots button[aria-current="true"]{background:var(--cyan)}
 /* инфо-блок под фото: название +34px от галереи, стоимость +10px, по центру экрана */
-.product__info{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:34px var(--gutter) 0;text-align:center}
+.product__info{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:var(--d-mobile-gap-title) var(--gutter) 0;text-align:center}
 .product__info h1{margin-top:0;margin-inline:0;max-width:none;font-size:var(--fs-h)}
-.product__cost{width:auto;margin-inline:0;align-items:center;margin-top:5px}
+.product__cost{width:auto;margin-inline:0;align-items:center;margin-top:var(--d-mobile-gap-cost)}
 /* видео: во всю ширину экрана, без рамки, автоплей без звука в цикле;
    отступ от примечания 24px (низ панели обнулён, чтобы не было двойного отступа) */
 .section--about{padding-inline:0;padding-top:24px}
@@ -167,7 +167,7 @@
 .about .about__text{padding-inline:var(--gutter)}
 .about .about__video .video{width:100%;max-width:none;border:0;border-radius:0;aspect-ratio:9/16}
 .about .about__video .video iframe{width:calc(100% + 16px);height:calc(100% + 16px);left:-8px;top:-8px}
-.product__note{width:auto;margin-inline:0;margin-top:20px}
+.product__note{width:auto;margin-inline:0;margin-top:var(--d-mobile-gap)}
 /* заголовок «Конфигурация»: тот же размер и начертание, что у названия, заглавными */
 .section--spec .section__title{text-transform:uppercase;-webkit-text-stroke:.018em currentColor}
 }
