@@ -128,8 +128,10 @@
   .section--about,.section--spec{padding-block:3.25rem 0}
   .section--other{padding-block:5rem 5rem}
   /* вертикальное видео слева, текст о сборке справа */
-  .about--video-v{grid-template-columns:24rem minmax(0,1fr);gap:3.25rem;align-items:start}
-  .about--video-v .about__video{order:-1}
+  .about--video-v{grid-template-columns:minmax(0,1fr);gap:3.25rem;align-items:start}
+  /* если есть только вертикальное видео — на десктопе блок видео не показываем
+     (оно играет на мобильной версии) */
+  .about--video-v .about__video{display:none}
   /* горизонтальное видео — во всю ширину под текстом */
   .about--video-h .about__video .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
   /* шапка по макету: горизонтальная полоса наверху, 80px высотой, фиксирована
