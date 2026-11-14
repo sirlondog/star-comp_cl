@@ -314,7 +314,7 @@ print(len(full))
 
 
 def gallery_html(d):
-    name=esc(d['name']); slides=[]; thumbs=[]
+    name=esc(d['name']); slides=[]; dots=[]
     for n,ph in enumerate(d.get('photos') or []):
         stem,ws=derive(ph['image'],[240,640,1024,1600],4/3)
         big=[w for w in ws if w>=640] or ws
@@ -327,9 +327,8 @@ def gallery_html(d):
             <img src="assets/{stem}-{mid}.webp" srcset="{srcset(stem,big,'webp')}" sizes="{SIZES}" width="{mid}" height="{round(mid*3/4)}" alt="{name}: {alt}" {load} decoding="async">
           </picture>
         </li>""")
-        t=ws[0]
         cur=' aria-current="true"' if n==0 else ''
-        thumbs.append(f'        <button type="button" aria-label="Фото {n+1}: {alt}"{cur}><picture><source type="image/avif" srcset="assets/{stem}-{t}.avif"><img src="assets/{stem}-{t}.webp" width="240" height="180" alt="" decoding="async"></picture></button>')
+        dots.append(f'        <button type="button" aria-label="Фото {n+1}: {alt}"{cur}></button>')
     nl='\n'
     return f"""    <div class="gallery" id="gallery">
       <div class="gallery__stage">
@@ -339,8 +338,8 @@ def gallery_html(d):
       <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Предыдущее фото">{ARROW_L}</button>
       <button class="gallery__nav gallery__nav--next" type="button" aria-label="Следующее фото">{ARROW_R}</button>
       </div>
-      <div class="gallery__thumbs">
-{nl.join(thumbs)}
+      <div class="gallery__dots">
+{nl.join(dots)}
       </div>
     </div>"""
 
@@ -351,19 +350,26 @@ def video_html(d):
     first=(d.get('photos') or [{}])[0].get('image')
     ch=v.get('cover_h') or v.get('cover_v') or first
     cv=v.get('cover_v') or v.get('cover_h') or first
-    if not ch: return ''
+    if not ch or not cv: return ''
     hs,hw=derive(ch,[640,1280],16/9)
     vs,vw=derive(cv,[480],9/16)
     name=esc(d['name'])
+    # Вертикальное видео — узкой колонкой по центру на всех экранах; обложка тоже вертикальная
+    if v_id:
+        cls=' video video--vertical'
+        cover=(f'<source type="image/avif" srcset="assets/{vs}-{vw[0]}.avif">'
+               f'\n          <img src="assets/{vs}-{vw[0]}.webp" width="{vw[0]}" height="{round(vw[0]*16/9)}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async">')
+    else:
+        cls=' video'
+        h0=hw[0]
+        cover=(f'<source type="image/avif" srcset="{srcset(hs,hw,"avif")}" sizes="(min-width: 1024px) 1160px, 96vw">'
+               f'\n          <img src="assets/{hs}-{h0}.webp" width="{h0}" height="{round(h0*9/16)}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async">')
     return f"""
   <section class="section wrap" aria-label="Видео">
-    <div class="video" id="video" data-h="{esc(h_id or v_id)}" data-v="{esc(v_id or h_id)}" data-title="Видео о сборке {name}">
+    <div class="{cls}" id="video" data-h="{esc(h_id or v_id)}" data-v="{esc(v_id or h_id)}" data-title="Видео о сборке {name}">
       <button class="video__play" type="button">
         <picture>
-          <source media="(min-width: 1024px)" type="image/avif" srcset="{srcset(hs,hw,'avif')}" sizes="(min-width: 1240px) 1160px, 96vw">
-          <source media="(min-width: 1024px)" type="image/webp" srcset="{srcset(hs,hw,'webp')}" sizes="(min-width: 1240px) 1160px, 96vw">
-          <source type="image/avif" srcset="assets/{vs}-{vw[0]}.avif">
-          <img src="assets/{vs}-{vw[0]}.webp" width="480" height="853" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async">
+          {cover}
         </picture>
         <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.500z"/></svg></span>
       </button>
@@ -383,16 +389,13 @@ def body_html(d):
 {gallery_html(d)}
 
     <div class="product__info">
-      <div class="product__row">
       <h1>{name}{sub}</h1>
       <div class="product__cost">
         <p class="product__label">Стоимость на момент сборки:</p>
         <p class="product__price">{money(d['price'])}</p>
       </div>
-      </div>
-      <div class="product__row product__row--buy">{note}
-      <a class="btn" href="#podbor">Заказать компьютер</a>
-      </div>
+      {note}
+      <a class="btn" href="#podbor">Хочу похожий компьютер</a>
     </div>
   </section>
 {video_html(d)}

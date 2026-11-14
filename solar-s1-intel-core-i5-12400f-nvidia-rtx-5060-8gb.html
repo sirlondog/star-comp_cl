@@ -249,11 +249,10 @@ html{scroll-behavior:smooth}
 .gallery__nav--prev{left:1rem}
 .gallery__nav--next{right:1rem}
 .gallery__nav:disabled{opacity:.35;cursor:default}
-.gallery__thumbs{display:flex;gap:.5rem;margin-top:.75rem;padding:1px;overflow-x:auto;scrollbar-width:none}
-.gallery__thumbs::-webkit-scrollbar{display:none}
-.gallery__thumbs button{flex:0 0 4.5rem;aspect-ratio:4/3;padding:0;border:1px solid var(--line);border-radius:.625rem;background:#15151a;overflow:hidden;opacity:.55;cursor:pointer;transition:opacity .2s,border-color .2s}
-.gallery__thumbs img{width:100%;height:100%;object-fit:cover}
-.gallery__thumbs button[aria-current="true"]{border-color:var(--cyan);opacity:1}
+/* Точки-переключатели под галереей (вместо миниатюр) */
+.gallery__dots{display:flex;justify-content:center;align-items:center;gap:.75rem;margin-top:.75rem;padding:1px 0}
+.gallery__dots button{flex:none;width:.625rem;height:.625rem;padding:0;border:0;border-radius:62.5rem;background:#33343c;cursor:pointer;transition:background-color .2s,transform .2s}
+.gallery__dots button[aria-current="true"]{background:var(--cyan);transform:scale(1.25)}
 
 /* Крупный просмотр фото */
 .lightbox{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(5,5,7,.96);color:var(--fg);overflow:hidden}
@@ -270,10 +269,9 @@ html{scroll-behavior:smooth}
 .lightbox__next{left:calc(50% + 2.75rem)}
 .lightbox__count{position:absolute;left:0;right:0;bottom:calc(.75rem + env(safe-area-inset-bottom,0px));line-height:3rem;text-align:center;color:var(--muted);font-size:var(--fs-m);font-variant-numeric:lining-nums;pointer-events:none}
 
-/* Название и цена, под ними текст и кнопка. На телефоне всё в одну колонку по центру,
-   на десктопе — две строки по ширине фото: [название | цена], линия, [текст | кнопка] */
-.product__info{display:flex;flex-direction:column;align-items:stretch;text-align:center}
-.product__row,.product__cost{display:flex;flex-direction:column;align-items:center;min-width:0}
+/* Название, цена, текст и кнопка — все по центру, одна колонка */
+.product__info{display:flex;flex-direction:column;align-items:center;text-align:center}
+.product__cost{display:flex;flex-direction:column;align-items:center;min-width:0}
 /* жирнее, чем 600: начертания Bold у нас нет, поэтому буквы слегка утолщены обводкой */
 .product__info h1{margin-top:1rem;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-transform:uppercase;-webkit-text-stroke:.03em currentColor}
 /* вторая строка заголовка: то же h1, но обычным текстом */
@@ -282,11 +280,9 @@ html{scroll-behavior:smooth}
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .product__label{margin-top:1.25rem;color:var(--muted);font-size:var(--fs-m);line-height:1.3}
 .product__price{font-weight:600;font-size:var(--fs-h);line-height:1.2;font-variant-numeric:lining-nums}
-/* разделитель между ценой и текстом с кнопкой; на десктопе он уже был */
-.product__row--buy{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
-/* на мобильных текст идёт сразу после разделителя: его отступ даёт padding родителя (24 px, как у цены сверху) */
-.product__note{margin-top:0;max-width:30rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-m);line-height:1.4}
-.product__info .btn{align-self:stretch;margin-top:1.5rem}
+/* разделитель между ценой и текстом с кнопкой */
+.product__note{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line);max-width:30rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-m);line-height:1.4}
+.product__info .btn{align-self:center;margin-top:1.5rem}
 
 .spec-grid{display:grid;gap:.75rem;margin-top:2rem}
 .spec-grid div{min-width:0;padding:.875rem 1.25rem 1rem;border:1px solid var(--line);border-radius:.875rem;background:#0e0e10}
@@ -303,44 +299,34 @@ html{scroll-behavior:smooth}
 .flex-note li::before{content:"";flex:none;width:.375rem;height:.375rem;margin-top:.5rem;border-radius:50%;background:var(--cyan)}
 
 @media (hover:hover){
-  .gallery__thumbs button:hover,.lightbox__btn:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
+  .gallery__dots button:hover{background:var(--cyan)}
+  .lightbox__btn:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
   .gallery__nav:not(:disabled):hover{border-color:var(--cyan);color:var(--cyan)}
 }
 @media (min-width:64rem){
   .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:.75rem 2rem}
   .flex-note ul{grid-template-columns:repeat(2,minmax(0,1fr))}
   .gallery--many .gallery__nav{display:grid}
-  .gallery__thumbs{justify-content:center;gap:.75rem}
-  .gallery__thumbs button{flex-basis:6rem;border-radius:.875rem}
   .lightbox__img{--px:5.5rem;--py:4rem}
   .lightbox__prev,.lightbox__next{top:calc(50% - 1.5rem);bottom:auto}
   .lightbox__prev{left:1.25rem;right:auto}
   .lightbox__next{right:1.25rem;left:auto}
 }
 @media (min-width:64rem){
-  /* две колонки: слева галерея, справа название, описание, цена и кнопка */
-  .product{grid-template-columns:minmax(0,1.6fr) minmax(19rem,1fr);align-items:start;gap:2.5rem;padding-block:2.5rem 3.25rem}
-  /* видео начинается сразу после галереи с тем же отступом, что шапка — галерея (52 px) */
+  /* одна колонка по центру: галерея, точки, название, цена, текст, кнопка */
+  .product{grid-template-columns:minmax(0,1fr);padding-block:2.5rem 3.25rem}
+  /* видео сразу после кнопки с тем же отступом, что шапка — галерея (52 px) */
   .section[aria-label="Видео"]{padding-block:0 3.25rem}
   /* заголовок конфигурации отстоит от видео на тот же отступ (52 px) */
   .section[aria-labelledby="spec-title"]{padding-top:0;padding-bottom:3.25rem}
-  .gallery,.product__info{width:100%}
+  .gallery{width:100%}
   .gallery__track{border-radius:1.875rem}
-  /* миниатюры делят ширину колонки поровну, чтобы все семь помещались без прокрутки */
-  .gallery__thumbs button{flex:1 1 0;min-width:0;border-radius:.75rem}
-
-  .product__info{margin-top:0;text-align:left}
-  .product__row{flex-direction:column;align-items:flex-start;gap:0}
-  .product__info h1{margin-top:0}
-  .product__info h1 span{margin-inline:0;max-width:30rem}
-  .product__cost{flex:none;align-items:flex-start;text-align:left;margin-top:1.5rem}
-  .product__label{margin-top:0}
-  .product__row--buy{align-items:stretch;gap:1.5rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
-  .product__note{margin-top:0;max-width:34rem;text-wrap:pretty}
-  .product__info .btn{flex:none;align-self:stretch;margin-top:0}
+  .product__info{margin-top:0}
+  .product__note{max-width:38rem;text-wrap:pretty}
 }
 
-/* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию */
+/* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию.
+   Горизонтальное — во всю ширину, вертикальное (.video--vertical) — узкой колонкой по центру */
 .video{position:relative;width:100%;max-width:24rem;margin:0 auto;aspect-ratio:9/16;border:1px solid var(--line);border-radius:1.25rem;background:#000;overflow:hidden}
 .video__play{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer}
 .video__play img{width:100%;height:100%;object-fit:cover}
@@ -350,6 +336,7 @@ html{scroll-behavior:smooth}
 @media (hover:hover){.video__play:hover .video__icon{transform:scale(1.08)}}
 @media (min-width:64rem){
   .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
+  .video--vertical{max-width:24rem;aspect-ratio:9/16;border-radius:1.25rem}
 }
 </style>
 </head>
@@ -427,38 +414,33 @@ html{scroll-behavior:smooth}
       <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
       <button class="gallery__nav gallery__nav--next" type="button" aria-label="Следующее фото"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
       </div>
-      <div class="gallery__thumbs">
-        <button type="button" aria-label="Фото 1: общий вид компьютера в корпусе с панорамным стеклом и жёлтой подсветкой" aria-current="true"><picture><source type="image/avif" srcset="assets/solar-s1-1-240.avif"><img src="assets/solar-s1-1-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 2: угол корпуса крупным планом"><picture><source type="image/avif" srcset="assets/solar-s1-2-240.avif"><img src="assets/solar-s1-2-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 3: башенный кулер и вентиляторы с подсветкой"><picture><source type="image/avif" srcset="assets/solar-s1-3-240.avif"><img src="assets/solar-s1-3-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 4: материнская плата и укладка кабелей"><picture><source type="image/avif" srcset="assets/solar-s1-4-240.avif"><img src="assets/solar-s1-4-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 5: вентилятор и кожух блока питания"><picture><source type="image/avif" srcset="assets/solar-s1-5-240.avif"><img src="assets/solar-s1-5-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 6: видеокарта GeForce RTX"><picture><source type="image/avif" srcset="assets/solar-s1-6-240.avif"><img src="assets/solar-s1-6-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
-        <button type="button" aria-label="Фото 7: кулер процессора крупным планом"><picture><source type="image/avif" srcset="assets/solar-s1-7-240.avif"><img src="assets/solar-s1-7-240.webp" width="240" height="180" alt="" decoding="async"></picture></button>
+      <div class="gallery__dots">
+        <button type="button" aria-label="Фото 1: общий вид компьютера в корпусе с панорамным стеклом и жёлтой подсветкой" aria-current="true"></button>
+        <button type="button" aria-label="Фото 2: угол корпуса крупным планом"></button>
+        <button type="button" aria-label="Фото 3: башенный кулер и вентиляторы с подсветкой"></button>
+        <button type="button" aria-label="Фото 4: материнская плата и укладка кабелей"></button>
+        <button type="button" aria-label="Фото 5: вентилятор и кожух блока питания"></button>
+        <button type="button" aria-label="Фото 6: видеокарта GeForce RTX"></button>
+        <button type="button" aria-label="Фото 7: кулер процессора крупным планом"></button>
       </div>
     </div>
 
     <div class="product__info">
-      <div class="product__row">
       <h1>SOLAR S1 <i class="sr-only">— </i><span>игровой компьютер на&nbsp;процессоре INTEL CORE i5-12400F и&nbsp;NVIDIA RTX 5050</span></h1>
       <div class="product__cost">
         <p class="product__label">Стоимость на момент сборки:</p>
         <p class="product__price">121&nbsp;000&nbsp;₽</p>
       </div>
-      </div>
-      <div class="product__row product__row--buy">
+      
       <p class="product__note">Собран, настроен и&nbsp;протестирован. Можно изменить или&nbsp;дополнить конфигурацию. Забирайте сегодня или&nbsp;закажите доставку с&nbsp;подключением.</p>
-      <a class="btn" href="#podbor">Заказать компьютер</a>
-      </div>
+      <a class="btn" href="#podbor">Хочу похожий компьютер</a>
     </div>
   </section>
 
   <section class="section wrap" aria-label="Видео">
-    <div class="video" id="video" data-h="n1TmwaddQRqe4BRXvLC95D" data-v="bp2312pYaexLVSokJALhvv" data-title="Видео о сборке SOLAR S1">
+    <div class=" video video--vertical" id="video" data-h="n1TmwaddQRqe4BRXvLC95D" data-v="bp2312pYaexLVSokJALhvv" data-title="Видео о сборке SOLAR S1">
       <button class="video__play" type="button">
         <picture>
-          <source media="(min-width: 1024px)" type="image/avif" srcset="assets/solar-s1-video-h-640.avif 640w, assets/solar-s1-video-h-1280.avif 1280w" sizes="(min-width: 1240px) 1160px, 96vw">
-          <source media="(min-width: 1024px)" type="image/webp" srcset="assets/solar-s1-video-h-640.webp 640w, assets/solar-s1-video-h-1280.webp 1280w" sizes="(min-width: 1240px) 1160px, 96vw">
           <source type="image/avif" srcset="assets/solar-s1-video-v-480.avif">
           <img src="assets/solar-s1-video-v-480.webp" width="480" height="853" alt="Смотреть видео о сборке SOLAR S1" loading="lazy" decoding="async">
         </picture>
@@ -586,14 +568,14 @@ html{scroll-behavior:smooth}
 
 <script>
 (function () {
-  // Галерея: стрелки, миниатюры и крупный просмотр по нажатию на фото
+  // Галерея: стрелки, точки под фото и крупный просмотр по нажатию на фото
   var g = document.getElementById('gallery');
   if (!g) return;
   var track = g.querySelector('.gallery__track');
   var slides = track.children;
   var n = slides.length;
-  var thumbsBox = g.querySelector('.gallery__thumbs');
-  var thumbs = thumbsBox.children;
+  var dotsBox = g.querySelector('.gallery__dots');
+  var dots = dotsBox.children;
   var prev = g.querySelector('.gallery__nav--prev');
   var next = g.querySelector('.gallery__nav--next');
   var current = 0;
@@ -603,16 +585,13 @@ html{scroll-behavior:smooth}
   }
   function update() {
     current = Math.max(0, Math.min(n - 1, Math.round(track.scrollLeft / track.clientWidth)));
-    for (var i = 0; i < thumbs.length; i++) thumbs[i].setAttribute('aria-current', String(i === current));
+    for (var i = 0; i < dots.length; i++) dots[i].setAttribute('aria-current', String(i === current));
     prev.disabled = current === 0;
     next.disabled = current === n - 1;
-    // активная миниатюра всегда видна в ленте
-    var t = thumbs[current];
-    if (t) thumbsBox.scrollTo({ left: t.offsetLeft - thumbsBox.offsetLeft - (thumbsBox.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
   }
-  if (n < 2) thumbsBox.hidden = true;
+  if (n < 2) dotsBox.hidden = true;
   else g.classList.add('gallery--many');
-  for (var i = 0; i < thumbs.length; i++) thumbs[i].addEventListener('click', go.bind(null, i, false));
+  for (var i = 0; i < dots.length; i++) dots[i].addEventListener('click', go.bind(null, i, false));
   prev.addEventListener('click', function () { go(current - 1); });
   next.addEventListener('click', function () { go(current + 1); });
   track.addEventListener('scroll', update, { passive: true });
@@ -687,11 +666,13 @@ html{scroll-behavior:smooth}
 
 (function () {
   // Видео: плеер не грузится, пока человек не нажал на обложку.
-  // На десктопе берём горизонтальный ролик, на телефоне — вертикальный.
+  // Если ролик вертикальный (.video--vertical), он всегда вертикальный;
+  // иначе на десктопе горизонтальный, на телефоне вертикальный.
   var v = document.getElementById('video');
   if (!v) return;
+  var vertical = v.classList.contains('video--vertical');
   v.querySelector('.video__play').addEventListener('click', function () {
-    var id = window.matchMedia('(min-width:64rem)').matches ? v.dataset.h : v.dataset.v;
+    var id = vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h;
     var f = document.createElement('iframe');
     f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1';
     f.title = v.dataset.title || 'Видео';
