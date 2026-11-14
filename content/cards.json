@@ -1,26 +1,26 @@
 {
   "cards": [
     {
-      "name": "CRYO M1",
+      "name": "CORONA N6",
       "image": {
-        "path": "/content/photos/cards/1_1x1_2000px.webp",
-        "x": 49,
-        "y": 99
+        "path": "/content/photos/15790_sale_corona_n6/1-копия.webp",
+        "x": 51,
+        "y": 92
       },
-      "alt": "Компьютер CRYO M1 с синей подсветкой, квадратный корпус аквариум с дисплеем",
+      "alt": "Компьютер CORONA N6 с желтой подсветкой, черно-желтый корпус аквариум",
       "tag": "",
       "specs": [
         {
           "label": "Процессор",
-          "value": "AMD RYZEN 5 7500F"
+          "value": "AMD RYZEN 7 9800X3D"
         },
         {
           "label": "Видеокарта",
-          "value": "NVIDIA RTX 5060 Ti 8GB"
+          "value": "NVIDIA RTX 5070 Ti 16GB"
         }
       ],
-      "price_from": 178000,
-      "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb_oc",
+      "price_from": 343000,
+      "page": "corona-n6-amd-ryzen-7-9800x3d-nvidia-rtx-5080",
       "extra": false
     },
     {
