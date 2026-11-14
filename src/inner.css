@@ -61,7 +61,6 @@
 .about{display:grid;gap:1.75rem}
 .about__text{min-width:0}
 .about .section__lead{margin-top:0}
-.video__caption{margin-top:1rem;text-align:center;color:var(--muted);font-size:var(--fs-m);line-height:1.4}
 
 /* Конфигурация: простые пункты без плашек — серая подпись сверху, значение крупнее под ней */
 .spec-grid{display:grid;gap:2rem;margin-top:2.75rem}
@@ -105,14 +104,13 @@
   /* вертикальное видео справа от текста о сборке */
   .about--video-v{grid-template-columns:minmax(0,1fr) 24rem;gap:3.25rem;align-items:start}
   .about--video-v .about__video{width:100%}
-  .about--video-v .video__caption{text-align:left}
   /* горизонтальное видео — во всю ширину под текстом */
   .about--video-h .about__video .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
 }
 
 /* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию.
-   В блоке «О сборке»: вертикальное — узкая колонка, горизонтальное — во всю ширину */
-.video{position:relative;width:100%;max-width:24rem;margin:0 auto;aspect-ratio:9/16;border:1px solid var(--line);border-radius:1.25rem;background:#000;overflow:hidden;box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(0,217,255,.14)}
+   Прижато к правому краю; в блоке «О сборке»: вертикальное — узкая колонка, горизонтальное — во всю ширину */
+.video{position:relative;width:100%;max-width:24rem;margin:0 0 0 auto;aspect-ratio:9/16;border:1px solid var(--line);border-radius:1.25rem;background:#000;overflow:hidden;box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(0,217,255,.14)}
 .video__play{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer}
 .video__play img{width:100%;height:100%;object-fit:cover}
 .video__icon{position:absolute;inset:0;display:grid;place-items:center;width:4.5rem;height:4.5rem;margin:auto;border-radius:50%;background:var(--cyan);box-shadow:0 0 1.5rem rgba(0,217,255,.45);transition:transform .2s}

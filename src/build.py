@@ -378,7 +378,6 @@ def video_html(d):
             <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.500z"/></svg></span>
           </button>
         </div>
-        <p class="video__caption">Видео о сборке {name}</p>
       </div>"""
 
 def body_html(d):
