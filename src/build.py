@@ -570,6 +570,22 @@ img{{max-width:100%}}
 </html>
 """
 
+# Защита от публикации копий: две сборки с одним адресом (slug) не должны перезаписывать друг друга
+_slugs={}
+_dupes=[]
+for f in sorted(glob.glob(os.path.join(ROOT,'content','builds','*.json'))):
+    d=json.load(open(f,encoding='utf-8'))
+    d.setdefault('slug',os.path.splitext(os.path.basename(f))[0])
+    s=d['slug'].strip().strip('/')
+    if s in _slugs:
+        _dupes.append((s,os.path.basename(_slugs[s]),os.path.basename(f)))
+    _slugs[s]=f
+if _dupes:
+    print('ОШИБКА: найдены сборки с одинаковым адресом (slug). Публикация заблокирована.')
+    for s,a,b in _dupes:
+        print(f'  адрес «{s}»: {a} и {b} — измените адрес у копии в админке')
+    raise SystemExit(1)
+
 for f in sorted(glob.glob(os.path.join(ROOT,'content','builds','*.json'))):
     d=json.load(open(f,encoding='utf-8'))
     d.setdefault('slug',os.path.splitext(os.path.basename(f))[0])
