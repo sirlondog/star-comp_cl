@@ -108,9 +108,10 @@
   var v = document.getElementById('video');
   if (!v) return;
   var vertical = v.classList.contains('video--vertical');
-  function play(id, mobile) {
+  function play(id, background, sound) {
     var f = document.createElement('iframe');
-    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1&muted=1&loop=1&playsinline=1&transparent=1' + (mobile ? '&background=1&controls=0' : '');
+    // background=1 — фоновое видео без кнопок; sound — со звуком и элементами управления
+    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1&loop=1&playsinline=1&transparent=1' + (sound ? '' : '&muted=1') + (background ? '&background=1&controls=0' : '');
     f.title = v.dataset.title || 'Видео';
     f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
     f.allowFullscreen = true;
@@ -120,10 +121,18 @@
     v.appendChild(f);
   }
   if (window.matchMedia('(max-width:63.99rem)').matches) {
-    play(v.dataset.v || v.dataset.h, true);
+    var id = v.dataset.v || v.dataset.h;
+    // на телефоне вертикальное видео играет сразу: без звука, в цикле, без кнопок
+    play(id, true, false);
+    // тап по видео: обычный плеер — появляются элементы управления и включается звук.
+    // Слой-перехватчик нужен, чтобы тап не уходил внутрь фонового плеера
+    var tap = document.createElement('div');
+    tap.style.cssText = 'position:absolute;inset:0;z-index:2;cursor:pointer';
+    v.appendChild(tap);
+    tap.addEventListener('click', function () { play(id, false, true); });
   } else {
     v.querySelector('.video__play').addEventListener('click', function () {
-      play(vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h, false);
+      play(vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h, false, false);
     });
   }
 })();
