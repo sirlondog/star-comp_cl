@@ -212,9 +212,12 @@ html{scroll-behavior:smooth}
 .tf-title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
 .tf-title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .tf-lead{margin-top:.75rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
-.tf-contacts__grid{display:grid;gap:1.5rem;margin-top:1.75rem}
+.tf-contacts__grid{display:grid;gap:1.5rem;margin-top:1.75rem;grid-template-areas:"photos" "details" "map"}
+.tf-photos{grid-area:photos}
+.tf-details{grid-area:details}
+.tf-map{grid-area:map;margin-inline:calc(50% - 50vw)}
 .tf-label{margin:1.5rem 0 .25rem;font-weight:600;font-size:var(--fs-h3);line-height:1.3}
-.tf-contacts__col .tf-label:first-child{margin-top:0}
+.tf-label:first-child{margin-top:0}
 .tf-value{margin:0;font-size:var(--fs-l);line-height:1.45}
 .tf-value a{color:var(--cyan);text-decoration:underline;text-underline-offset:.2em}
 .tf-shop__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:.75rem}
@@ -236,7 +239,10 @@ html{scroll-behavior:smooth}
 @media (min-width:64rem){
   .tf-section{padding-block:3.5rem}
   .tf-lead{text-wrap:balance}
-  .tf-contacts__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:2.5rem}
+  .tf-contacts__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);grid-template-areas:"photos map" "details .";gap:2.5rem}
+  /* карта в одном ряду с фото — высота ряда = высоте блока с фото */
+  .tf-map{margin-inline:0;height:100%}
+  .tf-map iframe,.tf-map-ph{height:100%;aspect-ratio:auto;border-radius:.625rem}
   .tf-socials img{width:2.1875rem;height:2.1875rem}
   .tf-socials{margin-top:1.25rem}
   /* карта растягивается по высоте левой колонки */

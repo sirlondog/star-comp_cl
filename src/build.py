@@ -166,10 +166,13 @@ FOOTER=f'''<footer class="tfooter">
       <h2 class="tf-title">{_tf_title}{' <em>'+_tf_accent+'</em>' if _tf_accent else ''}</h2>
       <p class="tf-lead">{_tf_lead}</p>
       <div class="tf-contacts__grid">
-        <div class="tf-contacts__col">
+        <div class="tf-photos">
           <p class="tf-label">Фото нашей мастерской:</p>
           <div class="tf-shop__grid">{_tf_cells}
           </div>
+        </div>
+        <div class="tf-map">{_tf_map}</div>
+        <div class="tf-details">
           <p class="tf-label">Адрес:</p>
           <p class="tf-value">{txt(S.get('address_full') or 'г. Санкт-Петербург, Заневский пр. 65 к5, 2 этаж.')}</p>
           <a class="btn tf-route" href="{esc(C.get('maps_url') or 'https://yandex.ru/maps/-/CXbR7LiO')}" target="_blank" rel="noopener">Построить маршрут</a>
@@ -182,7 +185,6 @@ FOOTER=f'''<footer class="tfooter">
           <p class="tf-label">Социальные сети:</p>
           <div class="tf-socials">{_tf_social}</div>
         </div>
-        <div class="tf-map">{_tf_map}</div>
       </div>
       <div class="tf-bottom">
         <p>2009–2026 © STARCOMP. Все права защищены. Политика обработки данных.</p>
