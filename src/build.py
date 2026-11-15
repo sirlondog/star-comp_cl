@@ -365,27 +365,17 @@ def video_html(d):
     v=d.get('video') or {}
     h_id=vcode(v.get('horizontal')); v_id=vcode(v.get('vertical'))
     if not (h_id or v_id): return ''
-    first=(d.get('photos') or [{}])[0].get('image')
-    ch=v.get('cover_h') or v.get('cover_v') or first
-    cv=v.get('cover_v') or v.get('cover_h') or first
-    if not ch or not cv: return ''
-    hs,hw=derive(ch,[640,1280],16/9)
-    vs,vw=derive(cv,[480],9/16)
     name=esc(d['name'])
-    # Вертикальное видео — узкая колонка; если есть и горизонтальное, на десктопе
-    # играет оно (полная ширина 16:9), вертикальный остаётся для мобильной версии.
-    # Обложка ставится фоном под плеером: пока кадр грузится, видна статичная картинка, а не белый экран.
+    # Статичная обложка — первый кадр прямо с Kinescope (poster.jpg, 4K):
+    # показывается, пока плеер грузится в фоне. Если кадр не отдался — просто чёрный фон.
     if v_id and not h_id:
         cls=' video video--vertical'
-        poster=f"assets/{vs}-{vw[0]}.webp"
-        cover=(f'<source type="image/avif" srcset="assets/{vs}-{vw[0]}.avif">'
-               f'\n          <img src="{poster}" width="{vw[0]}" height="{round(vw[0]*16/9)}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async">')
+        poster=f"https://kinescope.io/{v_id}/poster.jpg"
+        cover=(f'\n          <img src="{poster}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">')
     else:
         cls=' video'
-        h0=hw[0]
-        poster=f"assets/{hs}-{h0}.webp"
-        cover=(f'<source type="image/avif" srcset="{srcset(hs,hw,"avif")}" sizes="(min-width: 1024px) 1160px, 96vw">'
-               f'\n          <img src="assets/{hs}-{h0}.webp" width="{h0}" height="{round(h0*9/16)}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async">')
+        poster=f"https://kinescope.io/{(h_id or v_id)}/poster.jpg"
+        cover=(f'\n          <img src="{poster}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">')
     return f"""      <div class="about__video">
         <div class="{cls}" id="video" data-h="{esc(h_id or v_id)}" data-v="{esc(v_id or h_id)}" data-title="Видео о сборке {name}" style="background:#000 url('{poster}') center/cover no-repeat">
           <button class="video__play" type="button">

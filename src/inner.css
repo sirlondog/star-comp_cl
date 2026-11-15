@@ -132,8 +132,8 @@
   /* если есть только вертикальное видео — на десктопе блок видео не показываем
      (оно играет на мобильной версии) */
   .about--video-v .about__video{display:none}
-  /* горизонтальное видео — во всю ширину под текстом */
-  .about--video-h .about__video .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
+  /* горизонтальное видео — во всю ширину экрана (выходит за пределы контейнера) */
+  .about--video-h .about__video .video{width:100vw;max-width:none;aspect-ratio:16/9;border:0;border-radius:0;margin-inline:calc(50% - 50vw)}
   /* шапка лежит поверх галереи при первой загрузке (как на макете), отступ сверху 2%;
      соцсети, телефон и режим работы из шапки убраны */
   .header{position:fixed;left:0;right:0;top:2%;padding-block:0}

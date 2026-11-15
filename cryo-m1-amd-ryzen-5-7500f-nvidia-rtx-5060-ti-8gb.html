@@ -362,8 +362,8 @@ html{scroll-behavior:smooth}
   /* если есть только вертикальное видео — на десктопе блок видео не показываем
      (оно играет на мобильной версии) */
   .about--video-v .about__video{display:none}
-  /* горизонтальное видео — во всю ширину под текстом */
-  .about--video-h .about__video .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
+  /* горизонтальное видео — во всю ширину экрана (выходит за пределы контейнера) */
+  .about--video-h .about__video .video{width:100vw;max-width:none;aspect-ratio:16/9;border:0;border-radius:0;margin-inline:calc(50% - 50vw)}
   /* шапка лежит поверх галереи при первой загрузке (как на макете), отступ сверху 2%;
      соцсети, телефон и режим работы из шапки убраны */
   .header{position:fixed;left:0;right:0;top:2%;padding-block:0}
@@ -518,11 +518,11 @@ html{scroll-behavior:smooth}
       <div class="about__text">
       </div>
       <div class="about__video">
-        <div class=" video" id="video" data-h="hLJmaxsPThiG2zDbpoNs6M" data-v="mgxs2mprg1WgFwuRVXvdxx" data-title="Видео о сборке CRYO M1" style="background:#000 url('assets/06.11.2026_15805_cryo_m1-1-640.webp') center/cover no-repeat">
+        <div class=" video" id="video" data-h="hLJmaxsPThiG2zDbpoNs6M" data-v="mgxs2mprg1WgFwuRVXvdxx" data-title="Видео о сборке CRYO M1" style="background:#000 url('https://kinescope.io/hLJmaxsPThiG2zDbpoNs6M/poster.jpg') center/cover no-repeat">
           <button class="video__play" type="button">
             <picture>
-              <source type="image/avif" srcset="assets/06.11.2026_15805_cryo_m1-1-640.avif 640w, assets/06.11.2026_15805_cryo_m1-1-1280.avif 1280w" sizes="(min-width: 1024px) 1160px, 96vw">
-          <img src="assets/06.11.2026_15805_cryo_m1-1-640.webp" width="640" height="360" alt="Смотреть видео о сборке CRYO M1" loading="lazy" decoding="async">
+              
+          <img src="https://kinescope.io/hLJmaxsPThiG2zDbpoNs6M/poster.jpg" alt="Смотреть видео о сборке CRYO M1" loading="lazy" decoding="async" onerror="this.style.display='none'">
             </picture>
             <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.500z"/></svg></span>
           </button>
