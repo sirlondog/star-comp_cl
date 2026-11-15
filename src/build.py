@@ -69,10 +69,19 @@ def money_tr(n):
     s=f'{t:.0f}' if abs(t-round(t))<0.05 else f'{t:.1f}'.replace('.',',')
     return s+'&nbsp;т.р.'
 
+def stem_of(src):
+    """Уникальное имя нарезки: папка + файл. Одинаковые имена файлов в разных
+    папках (content/photos/golden/1.webp и content/photos/cryo/1.webp) больше
+    не конфликтуют — раньше учитывалось только имя файла."""
+    rel=src.lstrip('/').replace('\\','/')
+    for p in ('content/photos/','content\\photos\\'):
+        if rel.startswith(p): rel=rel[len(p):]
+    return os.path.splitext(rel.replace('/', '-'))[0]
+
 def derive(src,widths,ratio):
     """Нарезает фото под нужные ширины (обрезка по центру до ratio=ширина/высота). Возвращает (имя, [ширины], высота_на_ширину)."""
     path=os.path.join(ROOT,src.lstrip('/'))
-    stem=os.path.splitext(os.path.basename(path))[0]
+    stem=stem_of(src)
     with Image.open(path) as im:
         W,H=ImageOps.exif_transpose(im).size
     W=min(W,int(H*ratio))  # ширина после обрезки
@@ -93,7 +102,7 @@ def focal_derive(src,widths,ratio,focal):
     path=os.path.join(ROOT,src.lstrip('/'))
     X=int(round(max(0,min(100,focal[0]))))
     Y=int(round(max(0,min(100,focal[1]))))
-    stem=os.path.splitext(os.path.basename(path))[0]+f'-f{X}x{Y}'
+    stem=stem_of(src)+f'-f{X}x{Y}'
     with Image.open(path) as im:
         W,H=ImageOps.exif_transpose(im).size
     cw=min(W,int(H*ratio))  # ширина видимой области
@@ -117,7 +126,7 @@ def card_image(c):
 
 def og_image(src):
     path=os.path.join(ROOT,src.lstrip('/'))
-    stem=os.path.splitext(os.path.basename(path))[0]
+    stem=stem_of(src)
     out=os.path.join(ROOT,'assets',f'{stem}-og.jpg')
     if not os.path.exists(out):
         ImageOps.fit(ImageOps.exif_transpose(Image.open(path)).convert('RGB'),(1200,630),Image.LANCZOS).save(out,quality=82,optimize=True,progressive=True)
