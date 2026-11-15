@@ -1,0 +1,73 @@
+{
+  "name": "CRYO M1",
+  "subtitle": "",
+  "slug": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
+  "price": 178000,
+  "show_from": true,
+  "note": "Собран, настроен и протестирован. Можно изменить или дополнить конфигурацию. Забирайте сегодня или закажите доставку с подключением.",
+  "photos": [
+    {
+      "image": "/content/photos/06.11.2026_15805_cryo_m1/1.webp",
+      "alt": "Общий план компьютера"
+    },
+    {
+      "image": "/content/photos/06.11.2026_15805_cryo_m1/2.webp",
+      "alt": "Корпус с цифровой панелью"
+    },
+    {
+      "image": "/content/photos/06.11.2026_15805_cryo_m1/3.webp",
+      "alt": "Видеокарта и корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/06.11.2026_15805_cryo_m1/4.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/06.11.2026_15805_cryo_m1/5.webp",
+      "alt": "Логотип на кромке корпуса"
+    },
+    {
+      "image": "/content/photos/06.11.2026_15805_cryo_m1/6.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/06.11.2026_15805_cryo_m1/7.webp",
+      "alt": "Система охлаждения"
+    }
+  ],
+  "video": {
+    "horizontal": "https://kinescope.io/hLJmaxsPThiG2zDbpoNs6M",
+    "vertical": "https://kinescope.io/mgxs2mprg1WgFwuRVXvdxx",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "AMD RYZEN 5 7500F"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "NVIDIA RTX 5060 Ti 8GB PALIT DUAL"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "MSI B650M-P PRO"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "16GB DDR5 ADATA LANCR BLADE"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 500GB COLORFUL CN600"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL PF750D V2 80+ SILVER"
+    }
+  ],
+  "seo": null
+}
