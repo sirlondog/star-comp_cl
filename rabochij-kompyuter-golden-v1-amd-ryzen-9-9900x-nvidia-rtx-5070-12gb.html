@@ -691,6 +691,9 @@ html{scroll-behavior:smooth}
       behavior: { autoPlay: mobile, loop: true, muted: mobile, playsInline: true, preload: 'metadata' }
     }).then(function (p) {
       player = p;
+      // на всякий случай даём фрейму право на автоплей (важно для iPhone)
+      var f = v.querySelector('iframe');
+      if (f) f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
       // как только видео реально играет — обложка убирается (видно замьюченное видео)
       p.on(p.Events.Playing, function () { playing = true; uncover(); });
       if (action) { var a = action; action = null; a(); }
@@ -705,8 +708,18 @@ html{scroll-behavior:smooth}
     else action = fn;
   }
 
-  if (mobile) {
-    // тап: включается звук; кнопки (стоп/плей, громкость, на весь экран) показывает сам плеер
+  if (!mobile) {
+    v.querySelector('.video__play').addEventListener('click', function () {
+      uncover();
+      command(function () { player.play(); });
+    });
+  } else if (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+    // iPhone (WebKit): команды API не пробиваются внутрь iframe, зато жест
+    // внутри самого плеера всегда работает. Убираем только обложку, дальше
+    // тапы идут прямо в плеер: свои кнопки, звук — кнопкой громкости в панели
+    v.querySelector('.video__play').addEventListener('click', uncover);
+  } else {
+    // Android: перехватываем первый тап и включаем звук через API
     var tap = document.createElement('div');
     tap.style.cssText = 'position:absolute;inset:0;z-index:2;cursor:pointer';
     v.appendChild(tap);
@@ -716,19 +729,13 @@ html{scroll-behavior:smooth}
       command(function () {
         player.unmute();
         player.play();
-        // страховка: если за 2с видео так и не начало играть (команды не прошли,
-        // бывает на iOS) — перезапускаем плеер по прямой ссылке со звуком
+        // страховка: если за 2с видео так и не начало играть — перезапуск по прямой ссылке
         setTimeout(function () {
           if (playing) return;
           var f = v.querySelector('iframe');
           if (f) f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1&loop=1&playsinline=1&transparent=1';
         }, 2000);
       });
-    });
-  } else {
-    v.querySelector('.video__play').addEventListener('click', function () {
-      uncover();
-      command(function () { player.play(); });
     });
   }
 })();
