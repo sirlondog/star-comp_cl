@@ -711,7 +711,20 @@ html{scroll-behavior:smooth}
     tap.addEventListener('click', function () {
       tap.remove();
       uncover();
-      command(function () { player.unmute(); player.play(); });
+      command(function () {
+        player.unmute();
+        player.play();
+        // страховка для iOS: команды API не всегда проходят внутрь iframe,
+        // тогда просто перезапускаем плеер по ссылке со звуком
+        setTimeout(function () {
+          Promise.all([player.isPaused(), player.isMuted()]).then(function (r) {
+            if (r[0] || r[1]) {
+              var f = v.querySelector('iframe');
+              if (f) f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1&loop=1&playsinline=1&transparent=1';
+            }
+          }).catch(function () {});
+        }, 800);
+      });
     });
   } else {
     v.querySelector('.video__play').addEventListener('click', function () {
