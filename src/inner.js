@@ -118,13 +118,19 @@
   slot.id = 'kinescope-slot';
   v.insertBefore(slot, v.firstChild);
 
-  var player = null, action = null;
+  var player = null, action = null, playing = false;
+  function uncover() {
+    var b = v.querySelector('.video__play');
+    if (b) b.remove();
+  }
   window.onKinescopeIframeAPIReady = function (factory) {
     factory.create('kinescope-slot', {
       url: 'https://kinescope.io/' + id,
       behavior: { autoPlay: mobile, loop: true, muted: mobile, playsInline: true, preload: 'metadata' }
     }).then(function (p) {
       player = p;
+      // как только видео реально играет — обложка убирается (видно замьюченное видео)
+      p.on(p.Events.Playing, function () { playing = true; uncover(); });
       if (action) { var a = action; action = null; a(); }
     });
   };
@@ -132,17 +138,13 @@
   api.src = 'https://player.kinescope.io/latest/iframe.player.js';
   document.head.appendChild(api);
 
-  function uncover() {
-    var b = v.querySelector('.video__play');
-    if (b) b.remove();
-  }
   function command(fn) {
     if (player) fn();
     else action = fn;
   }
 
   if (mobile) {
-    // тап: видео становится видно, включается звук; кнопки показывает сам плеер
+    // тап: включается звук; кнопки (стоп/плей, громкость, на весь экран) показывает сам плеер
     var tap = document.createElement('div');
     tap.style.cssText = 'position:absolute;inset:0;z-index:2;cursor:pointer';
     v.appendChild(tap);
@@ -152,16 +154,13 @@
       command(function () {
         player.unmute();
         player.play();
-        // страховка для iOS: команды API не всегда проходят внутрь iframe,
-        // тогда просто перезапускаем плеер по ссылке со звуком
+        // страховка: если за 2с видео так и не начало играть (команды не прошли,
+        // бывает на iOS) — перезапускаем плеер по прямой ссылке со звуком
         setTimeout(function () {
-          Promise.all([player.isPaused(), player.isMuted()]).then(function (r) {
-            if (r[0] || r[1]) {
-              var f = v.querySelector('iframe');
-              if (f) f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1&loop=1&playsinline=1&transparent=1';
-            }
-          }).catch(function () {});
-        }, 800);
+          if (playing) return;
+          var f = v.querySelector('iframe');
+          if (f) f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1&loop=1&playsinline=1&transparent=1';
+        }, 2000);
       });
     });
   } else {
