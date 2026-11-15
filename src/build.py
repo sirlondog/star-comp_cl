@@ -151,6 +151,11 @@ for _n in range(3):
         _tf_cells+='\n            <div class="tf-ph" aria-hidden="true"></div>'
 _tf_embed=(C.get('map_embed') or '').strip()
 _tf_map=f'<iframe src="{esc(_tf_embed)}" title="Карта: как нас найти" loading="lazy"></iframe>' if _tf_embed else '<div class="tf-map-ph" aria-hidden="true"></div>'
+_tf_social=''
+for _k,_f,_l in [('telegram','tg-white.svg','Написать в Telegram'),('vk','vk-white.svg','Группа ВКонтакте'),('max','max-white.svg','Написать в MAX')]:
+    _href=_soc.get(_k)
+    if _href:
+        _tf_social+=f'<a href="{esc(_href)}" target="_blank" rel="noopener" aria-label="{_l}"><img src="assets/footer/{_f}" alt="" loading="lazy" decoding="async"></a>'
 _tf_title=txt(C.get('title') or 'Личная консультация там, где')
 _tf_accent=txt(C.get('title_accent') or '')
 _tf_lead=txt(C.get('lead') or 'Проконсультируем по телефону, в мессенджере или при встрече в мастерской.')
@@ -174,7 +179,7 @@ FOOTER=f'''<footer class="tfooter">
           <p class="tf-label">Почта:</p>
           <p class="tf-value"><a href="mailto:{esc(S.get('email') or 'info@star-comp.ru')}">{esc(S.get('email') or 'info@star-comp.ru')}</a></p>
           <p class="tf-label">Социальные сети:</p>
-          <div class="tf-socials">{socials}</div>
+          <div class="tf-socials">{_tf_social}</div>
         </div>
         <div class="tf-map">{_tf_map}</div>
       </div>
