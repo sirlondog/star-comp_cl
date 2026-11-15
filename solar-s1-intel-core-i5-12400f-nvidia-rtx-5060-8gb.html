@@ -696,47 +696,48 @@ html{scroll-behavior:smooth}
     : (vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h) || '').trim();
   if (!id) return;
 
-  // на телефоне видео играет сразу без звука, на десктопе ждёт нажатия по обложке
-  var f = document.createElement('iframe');
-  f.src = 'https://kinescope.io/embed/' + id + '?enableIframeApi&autoplay=' + (mobile ? '1&muted=1' : '0') + '&loop=1&playsinline=1&transparent=1';
-  f.title = v.dataset.title || 'Видео';
-  f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
-  f.allowFullscreen = true;
-  f.style.background = '#000';
-  v.insertBefore(f, v.firstChild); // под обложкой
+  // пустой слой под обложкой: API заменит его на iframe с плеером
+  var slot = document.createElement('div');
+  slot.id = 'kinescope-slot';
+  v.insertBefore(slot, v.firstChild);
 
-  // API плеера: даёт команды без перезагрузки видео
   var player = null, action = null;
   window.onKinescopeIframeAPIReady = function (factory) {
-    factory.on(factory.Events.Created, function (e) {
-      player = e.data;
+    factory.create('kinescope-slot', {
+      url: 'https://kinescope.io/' + id,
+      behavior: { autoPlay: mobile, loop: true, muted: mobile, playsInline: true, preload: 'metadata' }
+    }).then(function (p) {
+      player = p;
       if (action) { var a = action; action = null; a(); }
     });
   };
   var api = document.createElement('script');
-  api.src = 'https://player.kinescope.io/latest/iframe.player.js?auto';
+  api.src = 'https://player.kinescope.io/latest/iframe.player.js';
   document.head.appendChild(api);
 
+  function uncover() {
+    var b = v.querySelector('.video__play');
+    if (b) b.remove();
+  }
   function command(fn) {
     if (player) fn();
     else action = fn;
   }
 
   if (mobile) {
-    // тап: включается звук; обложка-перехватчик убирается, дальше кнопки
-    // (стоп/плей, громкость, на весь экран) показывает сам плеер при нажатии
+    // тап: видео становится видно, включается звук; кнопки показывает сам плеер
     var tap = document.createElement('div');
     tap.style.cssText = 'position:absolute;inset:0;z-index:2;cursor:pointer';
     v.appendChild(tap);
     tap.addEventListener('click', function () {
       tap.remove();
-      command(function () { player.unmute(); });
+      uncover();
+      command(function () { player.unmute(); player.play(); });
     });
   } else {
     v.querySelector('.video__play').addEventListener('click', function () {
+      uncover();
       command(function () { player.play(); });
-      var playBtn = v.querySelector('.video__play');
-      if (playBtn) playBtn.remove();
     });
   }
 })();
