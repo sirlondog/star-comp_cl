@@ -674,9 +674,26 @@ html{scroll-behavior:smooth}
     f.title = v.dataset.title || 'Видео';
     f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
     f.allowFullscreen = true;
-    // пока плеер не загрузился, вместо белого вспышки — чёрный
     f.style.background = '#000';
-    v.innerHTML = '';
+    var old = v.querySelector('iframe');
+    if (old) {
+      // замена плеера: Chromium рисует новый iframe белым, пока грузится документ,
+      // поэтому новый держим прозрачным до загрузки, а старый показываем до этого момента
+      Array.prototype.forEach.call(v.children, function (c) { if (c !== old) c.remove(); });
+      f.style.opacity = '0';
+      f.style.transition = 'opacity .25s';
+      var swap = function () {
+        f.style.opacity = '1';
+        old.remove();
+      };
+      f.addEventListener('load', swap);
+      // если load задержится (медленная сеть), показываем новый плеер по таймауту
+      setTimeout(function () {
+        if (old.parentNode === v) swap();
+      }, 5000);
+    } else {
+      v.innerHTML = '';
+    }
     v.appendChild(f);
   }
   if (window.matchMedia('(max-width:63.99rem)').matches) {
