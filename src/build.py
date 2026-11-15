@@ -82,7 +82,7 @@ def derive(src,widths,ratio):
         im=ImageOps.exif_transpose(Image.open(path)).convert('RGB')
         for w in todo:
             t=ImageOps.fit(im,(w,round(w/ratio)),Image.LANCZOS)
-            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=80,method=6)
+            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=90,method=6)
             t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=60)
     return stem,ws
 
@@ -104,7 +104,7 @@ def focal_derive(src,widths,ratio,focal):
     crop=ImageOps.exif_transpose(Image.open(path)).convert('RGB').crop((left,top,left+cw,top+ch))
     for w in ws:
         t=crop.resize((w,round(w/ratio)),Image.LANCZOS)
-        t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=80,method=6)
+        t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=90,method=6)
         t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=60)
     return stem,ws
 
