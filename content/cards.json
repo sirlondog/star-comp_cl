@@ -1,6 +1,29 @@
 {
   "cards": [
     {
+      "name": "GOLDEN V1",
+      "image": {
+        "path": "/content/photos/15819_golden_v1/1.webp",
+        "x": 52,
+        "y": 83
+      },
+      "alt": "Компьютер в черном корпусе с деревянной панелью",
+      "tag": "",
+      "specs": [
+        {
+          "label": "Процессор",
+          "value": "AMD RYZEN 9 9900X"
+        },
+        {
+          "label": "Видеокарта",
+          "value": "NVIDIA RTX 5070 12GB"
+        }
+      ],
+      "price_from": 275000,
+      "page": "rabochij-kompyuter-golden-v1-amd-ryzen-9-9900x-nvidia-rtx-5070-12gb",
+      "extra": false
+    },
+    {
       "name": "CORONA N6",
       "image": {
         "path": "/content/photos/15790_sale_corona_n6/1-копия.webp",
@@ -67,29 +90,6 @@
       ],
       "price_from": 184000,
       "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb_oc",
-      "extra": false
-    },
-    {
-      "name": "GOLDEN V1",
-      "image": {
-        "path": "/content/photos/15819_golden_v1/1.webp",
-        "x": 52,
-        "y": 83
-      },
-      "alt": "Компьютер в черном корпусе с деревянной панелью",
-      "tag": "",
-      "specs": [
-        {
-          "label": "Процессор",
-          "value": "AMD RYZEN 9 9900X"
-        },
-        {
-          "label": "Видеокарта",
-          "value": "NVIDIA RTX 5070 12GB"
-        }
-      ],
-      "price_from": 275000,
-      "page": "rabochij-kompyuter-golden-v1-amd-ryzen-9-9900x-nvidia-rtx-5070-12gb",
       "extra": false
     }
   ]
