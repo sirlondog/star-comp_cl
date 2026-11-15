@@ -191,6 +191,26 @@ FOOTER=f'''<footer class="tfooter">
     </section>
   </div>
 </footer>'''
+FOOTER+='''
+<script>
+(function () {
+  // фото мастерской: клик открывает просмотр на весь экран
+  var t = document.querySelector('.tfooter');
+  if (!t) return;
+  t.addEventListener('click', function (e) {
+    var img = e.target.closest('.tf-shop__grid img');
+    if (!img) return;
+    var box = document.createElement('dialog');
+    box.className = 'tf-view';
+    box.innerHTML = '<img src="' + (img.currentSrc || img.src) + '" alt="' + (img.alt || '') + '">'
+      + '<button class="tf-view__close" type="button" aria-label="Закрыть">×</button>';
+    document.body.appendChild(box);
+    box.addEventListener('click', function () { box.close(); });
+    box.addEventListener('close', function () { box.remove(); });
+    box.showModal();
+  });
+})();
+</script>'''
 
 _perk_icons={
  'no-extra':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/><path d="M9 14l3-3 3 3"/></svg>',
