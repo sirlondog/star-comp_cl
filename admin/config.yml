@@ -257,6 +257,31 @@ singletons:
         hint: 'То, что сервис просит вставить «перед закрывающим body». Обычно сюда ставят Яндекс Метрику, Top.Mail.Ru и онлайн-чаты. Оставьте пустым, если ничего не нужно'
 
 collections:
+  - name: hardware
+    label: База железа
+    label_singular: позицию
+    icon: memory
+    description: База комплектующих. Заполняется один раз, дальше модели выбираются в сборках из списка.
+    folder: content/hardware
+    format: json
+    extension: json
+    create: true
+    identifier_field: model
+    slug: '{{fields.model}}'
+    sortable_fields: [type, model]
+    editor:
+      preview: false
+    fields:
+      - name: type
+        label: Категория
+        widget: select
+        options: [Процессор, Видеокарта, Материнская плата, Оперативная память, Накопитель, Блок питания, Охлаждение, Корпус]
+        hint: 'Категория детали. Если нужной нет в списке — скажите, добавим'
+      - name: model
+        label: Модель
+        widget: string
+        hint: 'Бренд и модель как должны выглядеть на странице: NVIDIA RTX 5060 8GB GIGABYTE WINDFORCE'
+
   - name: cards
     label: Последние проекты нашей мастерской
     icon: computer
@@ -422,11 +447,18 @@ collections:
         fields:
           - name: label
             label: Что
-            widget: string
-            hint: 'Процессор, Видеокарта, Корпус…'
+            widget: select
+            options: [Процессор, Видеокарта, Материнская плата, Оперативная память, Накопитель, Блок питания, Охлаждение, Корпус]
+            hint: 'Категория. Нужной нет в списке — добавьте её в разделе «База железа» (пока категория там не выбрана, модель не покажется)'
           - name: value
             label: Модель
-            widget: string
+            widget: relation
+            collection: hardware
+            value_field: model
+            display_fields: [model, type]
+            search_fields: [model, type]
+            required: false
+            hint: 'Выбор из «Базы железа» с поиском. Нет нужной модели — сначала добавьте её там, затем выберите здесь'
       - name: seo
         label: Для поисковиков
         widget: object
