@@ -205,3 +205,34 @@ html{scroll-behavior:smooth}
   .btn{display:inline-flex}
   .more{width:auto;margin-top:2rem}
 }
+
+/* ---------- Футер: блок контактов ---------- */
+.tfooter{border-top:1px solid var(--line);margin-top:2.5rem}
+.tf-section{padding-block:2.5rem}
+.tf-title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
+.tf-title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tf-lead{margin-top:.75rem;max-width:46rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4;text-wrap:balance}
+.tf-contacts__grid{display:grid;gap:1.5rem;margin-top:1.75rem}
+.tf-label{margin:1.5rem 0 .25rem;font-weight:600;font-size:var(--fs-h3);line-height:1.3}
+.tf-contacts__col .tf-label:first-child{margin-top:0}
+.tf-value{margin:0;font-size:var(--fs-l);line-height:1.45}
+.tf-value a{color:var(--cyan);text-decoration:underline;text-underline-offset:.2em}
+.tf-shop__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:.75rem}
+.tf-shop__grid img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:.875rem;background:#0e0e10}
+.tf-ph{aspect-ratio:3/4;border:1px dashed var(--line);border-radius:.875rem;background:#0e0e10}
+.tf-route{margin-top:1.25rem}
+.tf-map iframe{display:block;width:100%;aspect-ratio:3/2;border:0;border-radius:1.25rem;background:#0e0e10}
+.tf-map-ph{aspect-ratio:3/2;border:1px dashed var(--line);border-radius:1.25rem;background:#0e0e10}
+.tf-socials{display:flex;gap:1rem;align-items:center;margin-top:.25rem}
+.tf-socials .social{display:block;border-radius:50%;transition:transform .2s}
+.tf-bottom{display:grid;gap:.5rem;margin-top:2.5rem;padding-block:1.5rem;border-top:1px solid var(--line)}
+.tf-bottom p{margin:0;color:var(--muted);font-size:var(--fs-m);line-height:1.5}
+@media (hover:hover){
+  .tf-socials .social:hover{transform:scale(1.07)}
+  .tf-value a:hover{color:var(--fg)}
+}
+@media (min-width:64rem){
+  .tf-section{padding-block:3.5rem}
+  .tf-contacts__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:2.5rem;align-items:start}
+  .tf-bottom{grid-template-columns:minmax(0,1fr) auto;align-items:end}
+}

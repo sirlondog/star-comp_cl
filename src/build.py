@@ -139,6 +139,53 @@ _social_defs=[('max',max_svg,'Написать в MAX'),('telegram',tg_svg,'На
 socials='\n'.join(f'<a class="social" href="{esc(_soc.get(k,""))}" target="_blank" rel="noopener" aria-label="{label}">{ic}</a>'
                   for k,ic,label in _social_defs if _soc.get(k))
 
+# ---------- футер: блок «Контакты» из content/contacts.json ----------
+C=load_content('contacts.json',{})
+_tf_ph=[(p.get('image') if isinstance(p,dict) else p) for p in (C.get('photos') or [])]
+_tf_ph=[str(p).strip() for p in _tf_ph if p and str(p).strip()]
+_tf_cells=''
+for _n in range(3):
+    if _n<len(_tf_ph):
+        _tf_cells+=f'\n            <img src="{esc(_tf_ph[_n])}" alt="Фото мастерской STAR-COMP" loading="lazy" decoding="async">'
+    else:
+        _tf_cells+='\n            <div class="tf-ph" aria-hidden="true"></div>'
+_tf_embed=(C.get('map_embed') or '').strip()
+_tf_map=f'<iframe src="{esc(_tf_embed)}" title="Карта: как нас найти" loading="lazy"></iframe>' if _tf_embed else '<div class="tf-map-ph" aria-hidden="true"></div>'
+_tf_title=txt(C.get('title') or 'Личная консультация там, где')
+_tf_accent=txt(C.get('title_accent') or '')
+_tf_lead=txt(C.get('lead') or 'Проконсультируем по телефону, в мессенджере или при встрече в мастерской.')
+FOOTER=f'''<footer class="tfooter">
+  <div class="wrap">
+    <section class="tf-section tf-contacts" aria-label="Контакты">
+      <h2 class="tf-title">{_tf_title}{' <em>'+_tf_accent+'</em>' if _tf_accent else ''}</h2>
+      <p class="tf-lead">{_tf_lead}</p>
+      <div class="tf-contacts__grid">
+        <div class="tf-contacts__col">
+          <p class="tf-label">Фото нашей мастерской:</p>
+          <div class="tf-shop__grid">{_tf_cells}
+          </div>
+          <p class="tf-label">Адрес:</p>
+          <p class="tf-value">{txt(S.get('address_full') or 'г. Санкт-Петербург, Заневский пр. 65 к5, 2 этаж.')}</p>
+          <a class="btn tf-route" href="{esc(C.get('maps_url') or 'https://yandex.ru/maps/-/CXbR7LiO')}" target="_blank" rel="noopener">Построить маршрут</a>
+          <p class="tf-label">Телефон:</p>
+          <p class="tf-value"><a href="tel:{esc(S.get('phone_tel') or '+79939845505')}">{txt(S.get('phone_display') or '8 (993) 984-55-05')}</a></p>
+          <p class="tf-label">График работы:</p>
+          <p class="tf-value">{txt(S.get('schedule') or 'Ежедневно: 11:00–19:00')}</p>
+          <p class="tf-label">Почта:</p>
+          <p class="tf-value"><a href="mailto:{esc(S.get('email') or 'info@star-comp.ru')}">{esc(S.get('email') or 'info@star-comp.ru')}</a></p>
+          <p class="tf-label">Социальные сети:</p>
+          <div class="tf-socials">{socials}</div>
+        </div>
+        <div class="tf-map">{_tf_map}</div>
+      </div>
+      <div class="tf-bottom">
+        <p>2009–2026 © STARCOMP. Все права защищены. Политика обработки данных.</p>
+        <p>ИНН: 784200735088 ОГРН: 322784700364590.<br>Вся информация, размещённая на сайте, носит ознакомительный характер.</p>
+      </div>
+    </section>
+  </div>
+</footer>'''
+
 _perk_icons={
  'no-extra':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/><path d="M9 14l3-3 3 3"/></svg>',
  'warranty':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.4-2.9 8-7 9.5-4.1-1.5-7-5.1-7-9.5V6l7-3z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg>',
@@ -307,7 +354,7 @@ full=f'''<!doctype html>
 {_css}</style>
 </head>
 <body>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden')}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden').replace('{{FOOTER}}',FOOTER)}
 <script>
 {_js}</script>
 </body>
@@ -318,7 +365,7 @@ frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 {_css}</style>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden')}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden').replace('{{FOOTER}}',FOOTER)}
 <script>
 {_js}</script>
 '''
@@ -483,6 +530,8 @@ img{{max-width:100%}}
 <body>
 {header_i}
 {body_html(d)}
+
+{FOOTER}
 
 {menu_i}
 <script>

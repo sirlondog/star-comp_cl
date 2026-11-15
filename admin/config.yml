@@ -33,6 +33,48 @@ media_libraries:
 
 # Одиночные страницы: показываются одной группой в сайдбаре, клик открывает редактор сразу
 singletons:
+  - name: contacts
+    label: Блок контактов (футер)
+    icon: contact_mail
+    description: 'Нижний блок «Личная консультация» на всех страницах: фото мастерской, карта, контакты берутся из «Настроек сайта»'
+    file: content/contacts.json
+    format: json
+    fields:
+      - name: title
+        label: Заголовок (обычный текст)
+        widget: string
+        hint: 'Начало заголовка. Например: Личная консультация там, где'
+      - name: title_accent
+        label: Заголовок (градиентная часть)
+        widget: string
+        required: false
+        hint: 'Конец заголовка голубым градиентом. Например: удобно вам'
+      - name: lead
+        label: Строка под заголовком
+        widget: text
+        hint: 'Например: Проконсультируем по телефону, в мессенджере или при встрече в мастерской.'
+      - name: maps_url
+        label: Ссылка на Яндекс Карты
+        widget: string
+        hint: 'Открывается по кнопке «Построить маршрут». Например: https://yandex.ru/maps/-/CXbR7LiO'
+      - name: map_embed
+        label: Ссылка на встроенную карту
+        widget: string
+        required: false
+        hint: 'Необязательно. URL из Яндекс Карт: Поделиться → Код карты (ссылка вида https://yandex.ru/map-widget/v1/?…). Если пусто — на сайте будет пустой блок-заглушка'
+      - name: photos
+        label: Фото мастерской
+        label_singular: фото
+        widget: list
+        max: 3
+        required: false
+        summary: '{{image}}'
+        hint: 'До трёх вертикальных фото 3:4. Если пусто — на сайте будут пустые блоки-заглушки'
+        fields:
+          - name: image
+            label: Фото
+            widget: image
+
   - name: settings
     label: Настройки сайта
     icon: settings
