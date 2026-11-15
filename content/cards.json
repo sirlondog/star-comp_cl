@@ -119,6 +119,30 @@
       "show_from": true,
       "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
       "extra": false
+    },
+    {
+      "name": "PHANTOM F1",
+      "image": {
+        "path": "/content/photos/15820_phantom_f1/1.webp",
+        "x": 52,
+        "y": 78
+      },
+      "alt": "Компьютер в корпусе аквариум с зеленой подсветкой",
+      "tag": "",
+      "specs": [
+        {
+          "label": "Процессор",
+          "value": "AMD RYZEN 7 7800X3D"
+        },
+        {
+          "label": "Видеокарта",
+          "value": "NVIDIA RTX 5070 12GB"
+        }
+      ],
+      "price_from": 212000,
+      "show_from": true,
+      "page": "",
+      "extra": false
     }
   ]
 }
