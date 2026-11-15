@@ -396,12 +396,14 @@ def body_html(d):
     lead=f'\n        <p class="section__lead">{txt(d["lead"])}</p>' if d.get('lead') else ''
     about=f'\n        <div class="seo-text"><p>{txt(d["about"])}</p></div>' if d.get('about') else ''
     vid=video_html(d)
-    if lead or about or vid:
+    text=lead+about
+    if text or vid:
         has_v=' about--video-v' if 'video--vertical' in vid else (' about--video-h' if vid else '')
-        about_section=f'''  <section class="section section--about wrap" aria-label="О сборке">
-    <div class="about{has_v}">
-      <div class="about__text">{lead}{about}
-      </div>
+        # без текста секция прижимается к первому экрану (галерее) без верхнего отступа
+        flush='' if text else ' section--flush'
+        text_html=f'\n      <div class="about__text">{lead}{about}\n      </div>' if text else ''
+        about_section=f'''  <section class="section section--about wrap{flush}" aria-label="О сборке">
+    <div class="about{has_v}">{text_html}
 {vid}
     </div>
   </section>'''

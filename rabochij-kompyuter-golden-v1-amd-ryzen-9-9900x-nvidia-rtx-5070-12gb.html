@@ -356,6 +356,8 @@ html{scroll-behavior:smooth}
     .product__info .btn{margin-top:40px}
   }
   .section--about,.section--spec{padding-block:3.25rem 0}
+  /* секция только с видео прижата к первому экрану (галерее) без отступа */
+  .section--about.section--flush{padding-top:0}
   .section--other{padding-block:5rem 5rem}
   /* вертикальное видео слева, текст о сборке справа */
   .about--video-v{grid-template-columns:minmax(0,1fr);gap:3.25rem;align-items:start}
@@ -492,10 +494,8 @@ html{scroll-behavior:smooth}
       <p class="product__note">Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или&nbsp;подобрать другую конфигурацию, стоимость указана на&nbsp;момент заказа компьютера.</p>
     </div>
   </section>
-  <section class="section section--about wrap" aria-label="О сборке">
+  <section class="section section--about wrap section--flush" aria-label="О сборке">
     <div class="about about--video-v">
-      <div class="about__text">
-      </div>
       <div class="about__video">
         <div class=" video video--vertical" id="video" data-h="iy7H2NddNmhA3xwDumosxp" data-v="iy7H2NddNmhA3xwDumosxp" data-title="Видео о сборке GOLDEN V1" style="background:#000 url('https://kinescope.io/iy7H2NddNmhA3xwDumosxp/poster.jpg') center/cover no-repeat">
           <button class="video__play" type="button">
