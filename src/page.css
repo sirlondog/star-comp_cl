@@ -239,7 +239,7 @@ html{scroll-behavior:smooth}
 @media (min-width:64rem){
   .tf-section{padding-block:3.5rem}
   .tf-lead{text-wrap:balance}
-  .tf-contacts__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);grid-template-areas:"photos map" "details .";gap:2.5rem}
+  .tf-contacts__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);grid-template-areas:"photos map" "details map";gap:2.5rem}
   /* карта в одном ряду с фото — высота ряда = высоте блока с фото */
   .tf-map{margin-inline:0;height:100%}
   .tf-map iframe,.tf-map-ph{height:100%;aspect-ratio:auto;border-radius:.625rem}
