@@ -114,6 +114,8 @@
     f.title = v.dataset.title || 'Видео';
     f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
     f.allowFullscreen = true;
+    // пока плеер не загрузился, вместо белого вспышки — чёрный
+    f.style.background = '#000';
     v.innerHTML = '';
     v.appendChild(f);
   }
