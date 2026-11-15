@@ -101,55 +101,59 @@
 })();
 
 (function () {
-  // Видео: плеер не грузится, пока человек не нажал на обложку.
-  // Если ролик вертикальный (.video--vertical), он всегда вертикальный;
-  // иначе на десктопе горизонтальный, на телефоне вертикальный.
-  // На телефоне вертикальное видео запускается сразу: без звука, в цикле, без кнопок.
+  // Видео: плеер создаётся один раз и прячется под обложкой — никаких белых вспышек.
+  // Управление через API Kinescope: тап включает звук, кнопки (стоп/плей, громкость,
+  // на весь экран) показывает сам плеер при нажатии на видео.
   var v = document.getElementById('video');
   if (!v) return;
   var vertical = v.classList.contains('video--vertical');
-  function play(id, background, sound) {
-    var f = document.createElement('iframe');
-    // background=1 — фоновое видео без кнопок; sound — со звуком и элементами управления
-    f.src = 'https://kinescope.io/embed/' + id + '?autoplay=1&loop=1&playsinline=1&transparent=1' + (sound ? '' : '&muted=1') + (background ? '&background=1&controls=0' : '');
-    f.title = v.dataset.title || 'Видео';
-    f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
-    f.allowFullscreen = true;
-    f.style.background = '#000';
-    var old = v.querySelector('iframe');
-    if (old) {
-      // замена плеера: Chromium рисует новый iframe белым, пока грузится документ,
-      // поэтому новый держим прозрачным до загрузки, а старый показываем до этого момента
-      Array.prototype.forEach.call(v.children, function (c) { if (c !== old) c.remove(); });
-      f.style.opacity = '0';
-      f.style.transition = 'opacity .25s';
-      var swap = function () {
-        f.style.opacity = '1';
-        old.remove();
-      };
-      f.addEventListener('load', swap);
-      // если load задержится (медленная сеть), показываем новый плеер по таймауту
-      setTimeout(function () {
-        if (old.parentNode === v) swap();
-      }, 5000);
-    } else {
-      v.innerHTML = '';
-    }
-    v.appendChild(f);
+  var mobile = window.matchMedia('(max-width:63.99rem)').matches;
+  var id = (mobile
+    ? (v.dataset.v || v.dataset.h)
+    : (vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h) || '').trim();
+  if (!id) return;
+
+  // на телефоне видео играет сразу без звука, на десктопе ждёт нажатия по обложке
+  var f = document.createElement('iframe');
+  f.src = 'https://kinescope.io/embed/' + id + '?enableIframeApi&autoplay=' + (mobile ? '1&muted=1' : '0') + '&loop=1&playsinline=1&transparent=1';
+  f.title = v.dataset.title || 'Видео';
+  f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+  f.allowFullscreen = true;
+  f.style.background = '#000';
+  v.insertBefore(f, v.firstChild); // под обложкой
+
+  // API плеера: даёт команды без перезагрузки видео
+  var player = null, action = null;
+  window.onKinescopeIframeAPIReady = function (factory) {
+    factory.on(factory.Events.Created, function (e) {
+      player = e.data;
+      if (action) { var a = action; action = null; a(); }
+    });
+  };
+  var api = document.createElement('script');
+  api.src = 'https://player.kinescope.io/latest/iframe.player.js?auto';
+  document.head.appendChild(api);
+
+  function command(fn) {
+    if (player) fn();
+    else action = fn;
   }
-  if (window.matchMedia('(max-width:63.99rem)').matches) {
-    var id = v.dataset.v || v.dataset.h;
-    // на телефоне вертикальное видео играет сразу: без звука, в цикле, без кнопок
-    play(id, true, false);
-    // тап по видео: обычный плеер — появляются элементы управления и включается звук.
-    // Слой-перехватчик нужен, чтобы тап не уходил внутрь фонового плеера
+
+  if (mobile) {
+    // тап: включается звук; обложка-перехватчик убирается, дальше кнопки
+    // (стоп/плей, громкость, на весь экран) показывает сам плеер при нажатии
     var tap = document.createElement('div');
     tap.style.cssText = 'position:absolute;inset:0;z-index:2;cursor:pointer';
     v.appendChild(tap);
-    tap.addEventListener('click', function () { play(id, false, true); });
+    tap.addEventListener('click', function () {
+      tap.remove();
+      command(function () { player.unmute(); });
+    });
   } else {
     v.querySelector('.video__play').addEventListener('click', function () {
-      play(vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h, false, false);
+      command(function () { player.play(); });
+      var playBtn = v.querySelector('.video__play');
+      if (playBtn) playBtn.remove();
     });
   }
 })();
