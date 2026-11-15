@@ -248,7 +248,7 @@ def card_html(c,hidden=False):
 {specs}
           </dl>
           <div class="card__foot">
-            <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;{money(c['price_from'])}</b></p>
+            <p class="card__price"><span>Стоимость на момент сборки:</span><b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></p>
             <span class="card__go" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span>
           </div>
         </div>
@@ -417,7 +417,7 @@ def body_html(d):
       <h1>{name}{sub}</h1>
       <div class="product__cost">
         <p class="product__label">Стоимость:</p>
-        <p class="product__price">от&nbsp;{money(d['price'])}</p>
+        <p class="product__price">{'от&nbsp;' if d.get('show_from') is not False else ''}{money(d['price'])}</p>
       </div>
       {note}
     </div>

@@ -337,6 +337,12 @@ collections:
                 value_type: int
                 min: 0
                 hint: 'Только число, без пробелов: 99800'
+              - name: show_from
+                label: Пометка «от» перед ценой
+                widget: boolean
+                required: false
+                default: true
+                hint: 'Включено — на карточке «от 99 800 ₽» (цена может вырасти). Выключено — просто «99 800 ₽» (фиксированная цена)'
               - name: page
                 label: Ссылка на страницу сборки
                 widget: string
@@ -384,6 +390,12 @@ collections:
         value_type: int
         min: 0
         hint: 'Только число, без пробелов и знака рубля: 121000'
+      - name: show_from
+        label: Пометка «от» перед ценой
+        widget: boolean
+        required: false
+        default: true
+        hint: 'Включено — на странице «от 121 000 ₽» (цена может вырасти). Выключено — просто «121 000 ₽» (фиксированная цена)'
       - name: note
         label: Текст рядом с кнопкой
         widget: text
