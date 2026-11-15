@@ -227,6 +227,64 @@ html{scroll-behavior:smooth}
   .btn{display:inline-flex}
   .more{width:auto;margin-top:2rem}
 }
+
+/* ---------- Футер (общий для всех страниц) ---------- */
+.tfooter{margin-top:2.5rem;border-top:1px solid var(--line)}
+.tf-section{padding-block:2.5rem;border-bottom:1px solid var(--line)}
+.tf-contacts{border-bottom:0}
+.tf-title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
+.tf-title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tf-lead{margin-top:.75rem;max-width:46rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4;text-wrap:balance}
+.tf-collage{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1.75rem}
+.tf-collage img{width:100%;height:100%;object-fit:cover;aspect-ratio:9/16;border-radius:1rem;background:#0e0e10}
+.tf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr));gap:.75rem;margin:1.75rem 0 0;padding:0;list-style:none}
+.tf-card{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem 1.375rem;border:1px solid var(--line);border-radius:1rem;background:#0e0e10}
+.tf-num{font-weight:600;font-size:var(--fs-h);line-height:1;color:var(--cyan)}
+.tf-name{margin:0;font-weight:600;font-size:var(--fs-h3);line-height:1.15}
+.tf-desc{margin:0;color:var(--muted);font-size:var(--fs-m);line-height:1.4}
+.tf-tag{align-self:flex-start;padding:.3125rem .75rem;border:1px solid var(--line);border-radius:62.5rem;color:var(--muted);font-size:var(--fs-m);line-height:1.25}
+.tf-badge{align-self:flex-start;padding:.3125rem .75rem;border-radius:62.5rem;background:var(--cyan);color:#000;font-weight:600;font-size:var(--fs-m);line-height:1.25}
+.tf-cta{display:grid;gap:1.25rem;margin-top:2rem}
+.tf-cta img{width:100%;max-width:24rem;justify-self:center;aspect-ratio:5/8;object-fit:cover;border-radius:1.25rem;background:#0e0e10}
+.tf-steps{display:grid;gap:1.25rem;margin-top:1.75rem}
+.tf-steps__list{display:grid;gap:.75rem;margin:0;padding:0;list-style:none}
+.tf-steps__img{width:100%;max-width:24rem;justify-self:center;aspect-ratio:4/5;object-fit:cover;border-radius:1.25rem;background:#0e0e10}
+.tf-reviews{grid-template-columns:1fr}
+.tf-review{gap:.875rem}
+.tf-review__meta{display:flex;align-items:center;gap:.75rem;margin-top:auto;padding-top:.375rem}
+.tf-avatar{display:grid;place-items:center;flex:none;width:2.75rem;height:2.75rem;border-radius:50%;background:var(--cyan);color:#000;font-weight:600}
+.tf-review__meta b{display:block;font-weight:600;font-size:var(--fs-m);line-height:1.2}
+.tf-date{color:var(--muted);font-size:var(--fs-m)}
+.tf-yandex{display:block;margin-top:1.5rem;color:var(--cyan);font-size:var(--fs-l);text-decoration:none;text-underline-offset:.2em}
+.tf-contacts__grid{display:grid;gap:1.5rem;margin-top:1.75rem}
+.tf-contacts__list{display:grid;gap:.875rem;margin:0}
+.tf-contacts__list div{display:grid;gap:.25rem}
+.tf-contacts__list dt{color:var(--muted);font-size:var(--fs-m)}
+.tf-contacts__list dd{margin:0;font-weight:600;font-size:var(--fs-l)}
+.tf-contacts__list a{text-decoration:none}
+.tf-socials{display:flex;gap:1rem;align-items:center}
+.tf-socials svg{width:2.1875rem;height:2.1875rem}
+.tf-socials a{display:block;border-radius:50%;transition:transform .2s}
+.tf-shop__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:.75rem}
+.tf-shop__grid img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;border-radius:.875rem;background:#0e0e10}
+.tf-bottom{display:grid;gap:.5rem;margin-top:2rem;padding-block:1.5rem 0;border-top:1px solid var(--line)}
+.tf-bottom p{margin:0;color:var(--muted);font-size:var(--fs-m);line-height:1.4}
+@media (hover:hover){
+  .tf-socials a:hover{transform:scale(1.07)}
+  .tf-yandex:hover,.tf-contacts__list a:hover{color:var(--cyan)}
+}
+@media (min-width:64rem){
+  .tf-section{padding-block:3.5rem}
+  .tf-collage{grid-template-columns:repeat(4,1fr);gap:1rem}
+  .tf-grid{gap:1rem}
+  .tf-cta{grid-template-columns:24rem minmax(0,1fr);align-items:center;gap:2rem}
+  .tf-cta img{justify-self:start;max-width:none;width:100%}
+  .tf-steps{grid-template-columns:minmax(0,1fr) 24rem;align-items:start;gap:2rem}
+  .tf-steps__img{justify-self:end;max-width:24rem}
+  .tf-reviews{grid-template-columns:repeat(3,1fr)}
+  .tf-contacts__grid{grid-template-columns:minmax(0,1fr) 38rem;gap:2rem;align-items:start}
+  .tf-bottom{grid-template-columns:minmax(0,1fr) auto;align-items:end;margin-bottom:2.5rem;padding-bottom:.25rem}
+}
 </style>
 </head>
 <body>
@@ -403,6 +461,132 @@ html{scroll-behavior:smooth}
     <button class="more" hidden id="cards-more" type="button" aria-controls="cards" aria-expanded="false">Показать ещё</button>
   </section>
 </main>
+
+<footer class="tfooter">
+  <div class="wrap">
+
+    <section class="tf-section">
+      <h2 class="tf-title">Компьютеры, которые <em>хочется рассматривать</em></h2>
+      <p class="tf-lead">Каждая сборка — это сочетание мощности, эстетики и аккуратной ручной работы.</p>
+      <div class="tf-collage">
+        <img src="assets/footer/collage-1.webp" alt="Сборка STAR-COMP крупным планом" loading="lazy" decoding="async">
+        <img src="assets/footer/collage-2.webp" alt="Подсветка и укладка кабелей" loading="lazy" decoding="async">
+        <img src="assets/footer/collage-3.webp" alt="Видеокарта в сборке" loading="lazy" decoding="async">
+        <img src="assets/footer/collage-4.webp" alt="Корпус собранного компьютера" loading="lazy" decoding="async">
+      </div>
+    </section>
+
+    <section class="tf-section">
+      <h2 class="tf-title">7 причин <em>заказать у нас</em></h2>
+      <p class="tf-lead">От подбора комплектующих до финального тестирования — мы берём на себя всё, чтобы вы получили идеальный результат.</p>
+      <ol class="tf-grid">
+        <li class="tf-card"><b class="tf-num">1</b><h3 class="tf-name">Бесплатная доставка</h3><p class="tf-desc">Специалист всё подключит и настроит</p></li>
+        <li class="tf-card"><b class="tf-num">2</b><h3 class="tf-name">Быстрая сборка</h3><p class="tf-desc">Детали в наличии, сборка занимает 2 дня</p></li>
+        <li class="tf-card"><b class="tf-num">3</b><h3 class="tf-name">Гарантия до 5 лет</h3><p class="tf-desc">Заменим неисправную деталь без хлопот</p></li>
+        <li class="tf-card"><b class="tf-num">4</b><h3 class="tf-name">Тех поддержка</h3><p class="tf-desc">Помощь специалиста по любым вопросам</p></li>
+        <li class="tf-card"><b class="tf-num">5</b><h3 class="tf-name">Только новые детали</h3><p class="tf-desc">Предоставим коробки от всех деталей</p></li>
+        <li class="tf-card"><b class="tf-num">6</b><h3 class="tf-name">Отличная репутация</h3><p class="tf-desc">120+ отзывов на Яндексе с рейтингом 5 звёзд</p></li>
+        <li class="tf-card"><b class="tf-num">7</b><h3 class="tf-name">Лицензионный Windows</h3><p class="tf-desc">Антивирус и OFFICE включены в стоимость</p></li>
+      </ol>
+      <div class="tf-cta">
+        <img src="assets/footer/workshop-cta.webp" alt="Мастерская STAR-COMP" loading="lazy" decoding="async">
+        <div class="tf-cta__body">
+          <h3 class="tf-name">Приезжайте в мастерскую</h3>
+          <p class="tf-desc">Запишитесь заранее, и мы встретим вас в удобное время.</p>
+          <a class="btn" href="#podbor">Записаться</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tf-section">
+      <h2 class="tf-title">Всего 4 шага <em>до вашего нового компьютера</em></h2>
+      <p class="tf-lead">От консультации и подбора комплектующих до доставки и запуска — сделаем всё под ключ и с гарантией результата.</p>
+      <div class="tf-steps">
+        <ol class="tf-steps__list">
+          <li class="tf-card"><b class="tf-num">1</b><p class="tf-desc">Оставляете заявку на сайте, обсуждаем конфигурацию и стоимость.</p></li>
+          <li class="tf-card"><b class="tf-num">2</b><p class="tf-desc">Оформляем договор удалённо или у нас в мастерской.</p></li>
+          <li class="tf-card"><b class="tf-num">3</b><p class="tf-desc">Начинаем сборку, в среднем занимает 2 дня.</p></li>
+          <li class="tf-card"><b class="tf-num">4</b><p class="tf-desc">Привозим и подключаем готовый компьютер. Выдаём гарантийные документы.</p></li>
+        </ol>
+        <img class="tf-steps__img" src="assets/footer/steps.webp" alt="Сборка компьютера в мастерской" loading="lazy" decoding="async">
+      </div>
+    </section>
+
+    <section class="tf-section">
+      <h2 class="tf-title">Подарки <em>всем клиентам</em></h2>
+      <p class="tf-lead">Мы ценим ваше доверие, поэтому подготовили полезные бонусы к каждой сборке и дополнительные подарки для крупных заказов.</p>
+      <div class="tf-grid">
+        <div class="tf-card">
+          <span class="tf-tag">Всем клиентам</span>
+          <h3 class="tf-name">Клавиатура и мышь</h3>
+          <p class="tf-desc">Механическая, игровая — в подарок при заказе</p>
+          <span class="tf-badge">От 155 000 ₽</span>
+        </div>
+        <div class="tf-card">
+          <span class="tf-tag">Всем клиентам</span>
+          <h3 class="tf-name">Антивирус в подарок</h3>
+          <p class="tf-desc">Kaspersky AntiVirus — лицензия на 1 год</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tf-section">
+      <h2 class="tf-title">Доверие, <em>подтверждённое отзывами</em></h2>
+      <p class="tf-lead">Каждый компьютер собирается с вниманием к деталям, а лучшая оценка нашей работы — рекомендации и отзывы клиентов.</p>
+      <div class="tf-grid">
+        <div class="tf-card tf-review">
+          <p class="tf-desc">Ребята делают на уровне и качественно. Специалисты отзывчивы и оперативны. Только заказал и вечером уже стоял в работе! Все супер. Ещё раз спасибо огромное, я доволен работой star-comp 🤝🤝🤝🤝</p>
+          <div class="tf-review__meta"><span class="tf-avatar">Э</span><div><b class="tf-name">Эдуард Дроздов</b><span class="tf-date">15.02.2025</span></div></div>
+        </div>
+        <div class="tf-card tf-review">
+          <p class="tf-desc">Заказывал сборку игрового ПК — ребята сделали всё быстро и с учётом всех моих пожеланий. Привезли на следующий день, цена приятно удивила. Качество компонентов и сборки на высоте, теперь играю без лагов. Рекомендую!</p>
+          <div class="tf-review__meta"><span class="tf-avatar">С</span><div><b class="tf-name">Станислав</b><span class="tf-date">07.12.2025</span></div></div>
+        </div>
+        <div class="tf-card tf-review">
+          <p class="tf-desc">Заказал игровой компьютер с монитором для внуков, оптимально скомплектовали, разъяснили. Доставили в удобное для меня время, настроили. Компетентно, в разумной достаточности по характеристикам и цене. Итог — выше ожиданий.</p>
+          <div class="tf-review__meta"><span class="tf-avatar">Э</span><div><b class="tf-name">Эдуард Дроздов</b><span class="tf-date">31.12.2025</span></div></div>
+        </div>
+        <div class="tf-card tf-review">
+          <p class="tf-desc">Оперативно и собрали и привезли ПК, всё настроили, все детали новые, оптимальное сочетание компонентов — ребята вообще профи своего дела. По цене вышло дешевле, чем самому собирать из DNS. Рекомендую!</p>
+          <div class="tf-review__meta"><span class="tf-avatar">Н</span><div><b class="tf-name">Наталия Беликова</b><span class="tf-date">20.01.2026</span></div></div>
+        </div>
+        <div class="tf-card tf-review">
+          <p class="tf-desc">Покупал готовый системник из наличия. Цена-качество 10 из 10. Включил дома и сразу начал пользоваться, всё уже было настроено. Сэкономил кучу времени и нервов.</p>
+          <div class="tf-review__meta"><span class="tf-avatar">Г</span><div><b class="tf-name">Глеб Ш.</b><span class="tf-date">13.02.2026</span></div></div>
+        </div>
+      </div>
+      <a class="tf-yandex" href="https://yandex.ru/maps/org/starcomp_igrovyye_kompyutery/141663119214/reviews/" target="_blank" rel="noopener">120+ отзывов с рейтингом 5 звёзд — читайте на Яндекс Картах →</a>
+    </section>
+
+    <section class="tf-section tf-contacts">
+      <h2 class="tf-title">Личная консультация <em>там, где удобно вам</em></h2>
+      <p class="tf-lead">Проконсультируем по телефону, в мессенджере или при встрече в мастерской.</p>
+      <div class="tf-contacts__grid">
+        <dl class="tf-contacts__list">
+          <div><dt>Телефон:</dt><dd><a href="tel:+79939845505">+7 (993) 984-55-05</a></dd></div>
+          <div><dt>Почта:</dt><dd><a href="mailto:info@star-comp.ru">info@star-comp.ru</a></dd></div>
+          <div><dt>График работы:</dt><dd>Ежедневно: 11:00–19:00</dd></div>
+          <div><dt>Адрес:</dt><dd><a href="https://yandex.ru/maps/-/CXbR7LiO" target="_blank" rel="noopener">г. Санкт-Петербург, Заневский пр. 65 к5, 2 этаж</a></dd></div>
+          <div><dt>Социальные сети:</dt><dd class="tf-socials"><a href="https://max.ru/u/f9LHodD0cOKrboX3imjyg3cBiLspEiRa0Yz4Pb8i89Zd2AoqQNLb-lqSCpU" target="_blank" rel="noopener" aria-label="Написать в MAX">{MAX_SVG}</a><a href="https://t.me/ST_COMP" target="_blank" rel="noopener" aria-label="Написать в Telegram">{TG_SVG}</a><a href="https://vk.com/star_comp_spb" target="_blank" rel="noopener" aria-label="Группа ВКонтакте">{VK_SVG}</a></dd></div>
+        </dl>
+        <div class="tf-shop">
+          <p class="tf-desc">Фото нашей мастерской:</p>
+          <div class="tf-shop__grid">
+            <img src="assets/footer/shop-1.webp" alt="Мастерская STAR-COMP" loading="lazy" decoding="async">
+            <img src="assets/footer/shop-2.webp" alt="Рабочее место сборщика" loading="lazy" decoding="async">
+            <img src="assets/footer/shop-3.webp" alt="Компьютеры в мастерской" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+      <div class="tf-bottom">
+        <p class="tf-desc">2009–2026 © STARCOMP. Все права защищены. Политика обработки данных.</p>
+        <p class="tf-desc">ИНН: 784200735088 · ОГРН: 322784700364590. Вся информация, размещённая на сайте, носит ознакомительный характер.</p>
+      </div>
+    </section>
+
+  </div>
+</footer>
+
 
 <dialog class="menu" id="menu" aria-label="Меню">
   <button class="menu__close" type="button" aria-label="Закрыть меню">×</button>

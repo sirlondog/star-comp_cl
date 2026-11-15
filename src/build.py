@@ -139,6 +139,10 @@ _social_defs=[('max',max_svg,'Написать в MAX'),('telegram',tg_svg,'На
 socials='\n'.join(f'<a class="social" href="{esc(_soc.get(k,""))}" target="_blank" rel="noopener" aria-label="{label}">{ic}</a>'
                   for k,ic,label in _social_defs if _soc.get(k))
 
+# ---------- футер (общий для всех страниц) ----------
+FOOTER=(open('footer.html',encoding='utf-8').read()
+        .replace('{{MAX_SVG}}',max_svg).replace('{{TG_SVG}}',tg_svg).replace('{{VK_SVG}}',vk_svg))
+
 _perk_icons={
  'no-extra':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/><path d="M9 14l3-3 3 3"/></svg>',
  'warranty':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.4-2.9 8-7 9.5-4.1-1.5-7-5.1-7-9.5V6l7-3z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg>',
@@ -307,7 +311,7 @@ full=f'''<!doctype html>
 {_css}</style>
 </head>
 <body>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden')}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden').replace('{{FOOTER}}',FOOTER)}
 <script>
 {_js}</script>
 </body>
@@ -318,7 +322,7 @@ frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 {_css}</style>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden')}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden').replace('{{FOOTER}}',FOOTER)}
 <script>
 {_js}</script>
 '''
@@ -483,6 +487,8 @@ img{{max-width:100%}}
 <body>
 {header_i}
 {body_html(d)}
+
+{FOOTER}
 
 {menu_i}
 <script>
