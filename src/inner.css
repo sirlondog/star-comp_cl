@@ -10,10 +10,10 @@
 
 /* Галерея: листается пальцем или стрелками, под ней миниатюры; по нажатию на фото открывается крупный просмотр */
 .gallery__stage{position:relative}
-.gallery__track{display:flex;aspect-ratio:4/3;border:1px solid var(--line);border-radius:1.25rem;background:#15151a;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:zoom-in}
+.gallery__track{display:flex;aspect-ratio:4/3;border:1px solid var(--line);border-radius:1.25rem;background:var(--bg);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:zoom-in}
 .gallery__track::-webkit-scrollbar{display:none}
-.gallery__track li{flex:0 0 100%;scroll-snap-align:start;background:#15151a}
-.gallery__track img{width:100%;height:100%;object-fit:cover;background:#15151a}
+.gallery__track li{flex:0 0 100%;scroll-snap-align:start;background:var(--bg)}
+.gallery__track img{width:100%;height:100%;object-fit:cover;background:var(--bg)}
 .gallery__nav{position:absolute;top:calc(50% - 1.5rem);display:none;place-items:center;width:3rem;height:3rem;padding:0;border:1px solid var(--line);border-radius:50%;background:rgba(10,10,10,.72);color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
 .gallery__nav svg{width:1.125rem;height:1.125rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gallery__nav--prev{left:1rem}
