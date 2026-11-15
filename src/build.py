@@ -95,18 +95,21 @@ def derive(src,widths,ratio):
             t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=80)
     return stem,ws
 
-def focal_derive(src,widths,ratio,focal):
+def focal_derive(src,widths,ratio,focal,zoom=1):
     """Обрезка фото вокруг фокусной точки. focal=(x,y) — проценты исходного фото (50/50 — центр).
-    Имя файла включает точку фокуса: сменишь фокус в админке — сменится и файл, кэш не помешает.
+    zoom — увеличение (1 — без увеличения, 2 — видна половина ширины, максимум 4); то же считает admin/custom-fields.js.
+    Имя файла включает точку фокуса и увеличение: сменишь фокус в админке — сменится и файл, кэш не помешает.
     Кадры пересоздаются при каждой сборке, потому что результат зависит от данных."""
     path=os.path.join(ROOT,src.lstrip('/'))
     X=int(round(max(0,min(100,focal[0]))))
     Y=int(round(max(0,min(100,focal[1]))))
-    stem=stem_of(src)+f'-f{X}x{Y}'
+    try: Z=max(1.0,min(4.0,float(zoom or 1)))
+    except (TypeError,ValueError): Z=1.0
+    stem=stem_of(src)+f'-f{X}x{Y}'+(f'z{round(Z*10)}' if Z>1 else '')
     with Image.open(path) as im:
         W,H=ImageOps.exif_transpose(im).size
-    cw=min(W,int(H*ratio))  # ширина видимой области
-    ch=round(cw/ratio)      # высота видимой области
+    cw=round(min(W,int(H*ratio))/Z)  # ширина видимой области
+    ch=round(cw/ratio)               # высота видимой области
     left=min(max(round(X/100*W-cw/2),0),W-cw)   # видимая область прижата к краям
     top=min(max(round(Y/100*H-ch/2),0),H-ch)
     ws=[w for w in widths if w<=cw] or [widths[0]]
@@ -118,10 +121,10 @@ def focal_derive(src,widths,ratio,focal):
     return stem,ws
 
 def card_image(c):
-    """Картинка карточки: либо строка-путь (центральная обрезка), либо объект {path,x,y} (обрезка по фокусу)."""
+    """Картинка карточки: либо строка-путь (центральная обрезка), либо объект {path,x,y,zoom} (обрезка по фокусу с увеличением)."""
     img=c.get('image')
     if isinstance(img,dict):
-        return focal_derive(img.get('path',''),[480,960],4/3,(img.get('x',50) or 50,img.get('y',50) or 50))
+        return focal_derive(img.get('path',''),[480,960],4/3,(img.get('x',50) or 50,img.get('y',50) or 50),img.get('zoom',1))
     return derive(img or '',[480,960],4/3)
 
 def og_image(src):
