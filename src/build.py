@@ -349,8 +349,12 @@ def gallery_html(d):
     </div>"""
 
 def video_html(d):
+    def vcode(x):
+        """Только код ролика: если вставили полную ссылку kinescope.io/…, вытаскиваем её последний сегмент."""
+        x=str(x or '').strip()
+        return x.split('/')[-1].split('?')[0] if x else ''
     v=d.get('video') or {}
-    h_id=(v.get('horizontal') or '').strip(); v_id=(v.get('vertical') or '').strip()
+    h_id=vcode(v.get('horizontal')); v_id=vcode(v.get('vertical'))
     if not (h_id or v_id): return ''
     first=(d.get('photos') or [{}])[0].get('image')
     ch=v.get('cover_h') or v.get('cover_v') or first
