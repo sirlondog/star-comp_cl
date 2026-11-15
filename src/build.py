@@ -229,7 +229,7 @@ def fill_text(x):
     for k,v in FILLS.items(): x=x.replace(k,v)
     return x
 
-SIZES='(min-width: 1920px) 60vw, (min-width: 1024px) min(1160px, calc((100vh - 264px) * 1.34)), (min-width: 608px) 576px, calc(100vw - 32px)'
+SIZES='(min-width: 1024px) max(66.6667vw, calc(100svh * 1.3334)), max(100vw, calc(70svh * 1.3334))'
 CARD_SIZES='(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)'
 ARROW_L='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>'
 ARROW_R='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg>'
@@ -330,7 +330,7 @@ print(len(full))
 def gallery_html(d):
     name=esc(d['name']); slides=[]; dots=[]
     for n,ph in enumerate(d.get('photos') or []):
-        stem,ws=derive(ph['image'],[240,640,1024,1600],4/3)
+        stem,ws=derive(ph['image'],[240,640,1024,1600,2400],4/3)
         big=[w for w in ws if w>=640] or ws
         mid=1024 if 1024 in big else big[-1]
         alt=esc(ph.get('alt')) or f'фото {n+1}'
