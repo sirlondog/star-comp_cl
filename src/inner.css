@@ -22,7 +22,7 @@
 /* Точки-чёрточки внутри фото, внизу по центру */
 .gallery{position:relative}
 .gallery__dots{position:absolute;bottom:1rem;left:0;right:0;z-index:2;display:flex;justify-content:center;align-items:center;gap:.5rem}
-.gallery__dots button{flex:none;width:1.125rem;height:.25rem;padding:0;border:0;border-radius:62.5rem;background:rgba(255,255,255,.4);cursor:pointer;transition:background-color .2s}
+.gallery__dots button{flex:none;width:.5rem;height:.5rem;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:background-color .2s}
 .gallery__dots button[aria-current="true"]{background:var(--cyan)}
 
 /* Крупный просмотр фото: картинка вписана в экран, клик по ней — оригинальный размер */
@@ -105,8 +105,8 @@
   .gallery__nav{width:4.5625rem;height:4.5625rem;background:transparent;border-color:rgba(255,255,255,.1)}
   .gallery__nav--next{right:3rem}
   .gallery__nav:disabled{opacity:0}
-  .gallery__dots{bottom:20px;gap:3px}
-  .gallery__dots button{width:30px;height:2px;border-radius:0;background:#fff}
+  .gallery__dots{bottom:20px}
+  .gallery__dots button{width:.5rem;height:.5rem;border-radius:50%;background:#fff}
   .gallery__dots button[aria-current="true"]{background:var(--cyan)}
   /* правая колонка: контейнер 380px по центру, текст внутри — к левому краю, шаг 30px */
   /* правая колонка: контейнер 380px по центру горизонтали, весь блок с текстом
@@ -153,8 +153,8 @@
 .gallery{height:100%;display:flex;flex-direction:column}
 .gallery__stage{flex:1;min-height:0}
 .gallery__track{height:100%;width:100%;aspect-ratio:auto;border:0;border-radius:0}
-.gallery__dots{bottom:20px;gap:3px}
-.gallery__dots button{width:30px;height:2px;border-radius:0;background:#fff}
+.gallery__dots{bottom:20px}
+.gallery__dots button{width:.5rem;height:.5rem;border-radius:50%;background:#fff}
 .gallery__dots button[aria-current="true"]{background:var(--cyan)}
 /* инфо-блок под фото: название +34px от галереи, стоимость +10px, по центру экрана */
 .product__info{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:34px var(--gutter) 0;text-align:center}
