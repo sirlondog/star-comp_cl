@@ -49,6 +49,11 @@ _js=open('page.js',encoding='utf-8').read()
 # ---------- карточки «Популярных конфигураций» из content/cards.json ----------
 _cards=load_content('cards.json',{}).get('cards') or []
 
+# ---------- карточки «Компьютеров в наличии» из content/stock.json ----------
+# Ползунок «Скрыть блок» (hidden) в админке прячет весь блок на главной.
+_STK=load_content('stock.json',{})
+_stk_cards=_STK.get('cards') or []
+
 # ---------- страницы сборок: по одной на каждый файл в content/builds/ ----------
 # Данные (название, цена, фото, видео, комплектующие) правятся в админке /admin или прямо в JSON.
 # Фото лежат в content/photos/ в исходном виде; нужные размеры AVIF/WebP сборщик нарезает сам в assets/.
@@ -264,6 +269,12 @@ def _cards_title_html():
     if H.get('cards_title_accent'): t+=' <em>'+txt(H.get('cards_title_accent'))+'</em>'
     return re.sub(r'&nbsp; ',r'&nbsp;',t)
 
+def _stock_title_html():
+    """Заголовок блока «Компьютеры в наличии»: обычная часть + выделенный акцент <em>."""
+    t=txt(_STK.get('title') or 'Компьютеры в наличии')
+    if _STK.get('title_accent'): t+=' <em>'+txt(_STK.get('title_accent'))+'</em>'
+    return re.sub(r'&nbsp; ',r'&nbsp;',t)
+
 # ---------- боковое меню из content/menu.json ----------
 _menu_links=load_content('menu.json',{}).get('links') or []
 def menu_links_html(inner=False):
@@ -357,6 +368,19 @@ def other_builds_html(cards):
     </ul>
   </section>'''
 
+def stock_section_html():
+    """Блок «Компьютеры в наличии» на главной под «Последними проектами» — из content/stock.json.
+    Показывается только когда в админке выключен ползунок «Скрыть блок» и есть карточки."""
+    if _STK.get('hidden') or not _stk_cards: return ''
+    lead=f'\n    <p class="section__lead">{txt(_STK.get("lead"))}</p>' if _STK.get('lead') else ''
+    return f'''  <section class="section wrap" id="v-nalichii" aria-labelledby="stock-title">
+    <h2 class="section__title" id="stock-title">{_stock_title_html()}</h2>{lead}
+    <!-- Карточки собираются из content/stock.json — страница «Компьютеры в наличии» в админке -->
+    <ul class="cards">
+{cards_html(_stk_cards,False)}
+    </ul>
+  </section>'''
+
 # ---------- главная страница ----------
 ld=json.dumps({"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":esc(S.get('phone_schema') or '+7-993-984-55-05'),"email":esc(S.get('email') or 'info@star-comp.ru'),"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":esc(S.get('address_full') or 'Заневский пр., 65 к5, 2 этаж'),"addressCountry":"RU"},"openingHours":esc(S.get('opening_hours_schema') or 'Mo-Su 11:00-19:00'),"sameAs":[v for v in (_soc.get('vk'),_soc.get('telegram')) if v]},ensure_ascii=False,separators=(',',':'))
 body=fill_text(_body).replace('{{MENU_LINKS}}',menu_links_html(False))
@@ -385,7 +409,7 @@ full=f'''<!doctype html>
 {_css}</style>
 </head>
 <body>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden').replace('{{FOOTER}}',FOOTER)}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden').replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER)}
 <script>
 {_js}</script>
 </body>
@@ -396,7 +420,7 @@ frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 {_css}</style>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden').replace('{{FOOTER}}',FOOTER)}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden').replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER)}
 <script>
 {_js}</script>
 '''

@@ -327,10 +327,10 @@ collections:
   - name: cards
     label: Последние проекты нашей мастерской
     icon: computer
-    description: Компьютеры, которые показываются на главной в блоке «Последние проекты нашей мастерской»
+    description: Два блока на главной — «Последние проекты нашей мастерской» и «Компьютеры в наличии»
     files:
       - name: cards
-        label: Карточки
+        label: Последние проекты
         file: content/cards.json
         format: json
         fields:
@@ -342,7 +342,7 @@ collections:
             add_to_top: false
             summary: '{{name}} — от {{price_from}} ₽'
             hint: 'Порядок в списке = порядок на странице. Кнопками вверх/вниз можно менять карточки местами'
-            fields:
+            fields: &card_fields
               - name: name
                 label: Название
                 widget: string
@@ -395,6 +395,40 @@ collections:
                 widget: boolean
                 required: false
                 default: false
+
+      - name: stock
+        label: Компьютеры в наличии
+        file: content/stock.json
+        format: json
+        fields:
+          - name: hidden
+            label: Скрыть блок
+            widget: boolean
+            default: true
+            hint: 'Ползунок «Скрыть»: включён — блока нет на главной. Добавите работы в список ниже — выключите ползунок, и блок появится под «Последними проектами»'
+          - name: title
+            label: Заголовок блока
+            widget: string
+            hint: 'Например: Компьютеры в наличии'
+          - name: title_accent
+            label: Заголовок (выделенное слово)
+            widget: string
+            required: false
+            hint: 'Показывается цветным, например: наличии. Пусто = без выделения'
+          - name: lead
+            label: Описание над карточками
+            widget: text
+            required: false
+            hint: 'Одна строка под заголовком. Пусто = без описания'
+          - name: cards
+            label: Карточки
+            label_singular: карточку
+            widget: list
+            add_to_top: false
+            required: false
+            summary: '{{name}} — от {{price_from}} ₽'
+            hint: 'Порядок в списке = порядок на странице. Кнопками вверх/вниз можно менять карточки местами'
+            fields: *card_fields
 
   - name: builds
     label: Сборки
