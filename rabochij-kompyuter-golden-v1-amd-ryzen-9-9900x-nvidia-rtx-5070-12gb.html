@@ -663,16 +663,16 @@ html{scroll-behavior:smooth}
 })();
 
 (function () {
-  // Видео: плеер создаётся один раз и прячется под обложкой — никаких белых вспышек.
-  // Управление через API Kinescope: тап включает звук, кнопки (стоп/плей, громкость,
-  // на весь экран) показывает сам плеер при нажатии на видео.
+  // Видео: плеер создаётся через API Kinescope один раз, прячется под обложкой —
+  // никаких белых вспышек и перезагрузок. Автоплей без звука на всех устройствах,
+  // обложка убирается, как только видео реально играет. Тап/клик включает звук
+  // через API (iPhone — исключение: команды API туда не пробиваются, жест внутри
+  // фрейма — единственный способ), кнопки показывает сам плеер.
   var v = document.getElementById('video');
   if (!v) return;
-  var vertical = v.classList.contains('video--vertical');
   var mobile = window.matchMedia('(max-width:63.99rem)').matches;
-  var id = (mobile
-    ? (v.dataset.v || v.dataset.h)
-    : (vertical || !window.matchMedia('(min-width:64rem)').matches ? v.dataset.v : v.dataset.h) || '').trim();
+  // на телефоне вертикальный ролик (или горизонтальный), на десктопе горизонтальный (или вертикальный)
+  var id = (mobile ? (v.dataset.v || v.dataset.h) : (v.dataset.h || v.dataset.v) || '').trim();
   if (!id) return;
 
   // пустой слой под обложкой: API заменит его на iframe с плеером
@@ -688,7 +688,7 @@ html{scroll-behavior:smooth}
   window.onKinescopeIframeAPIReady = function (factory) {
     factory.create('kinescope-slot', {
       url: 'https://kinescope.io/' + id,
-      behavior: { autoPlay: mobile, loop: true, muted: mobile, playsInline: true, preload: 'metadata' }
+      behavior: { autoPlay: true, loop: true, muted: true, playsInline: true, preload: 'metadata' }
     }).then(function (p) {
       player = p;
       // на всякий случай даём фрейму право на автоплей (важно для iPhone)
@@ -708,18 +708,13 @@ html{scroll-behavior:smooth}
     else action = fn;
   }
 
-  if (!mobile) {
-    v.querySelector('.video__play').addEventListener('click', function () {
-      uncover();
-      command(function () { player.play(); });
-    });
-  } else if (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
     // iPhone (WebKit): команды API не пробиваются внутрь iframe, зато жест
     // внутри самого плеера всегда работает. Убираем только обложку, дальше
     // тапы идут прямо в плеер: свои кнопки, звук — кнопкой громкости в панели
     v.querySelector('.video__play').addEventListener('click', uncover);
   } else {
-    // Android: перехватываем первый тап и включаем звук через API
+    // тап/клик: включается звук; кнопки (стоп/плей, громкость, на весь экран) показывает сам плеер
     var tap = document.createElement('div');
     tap.style.cssText = 'position:absolute;inset:0;z-index:2;cursor:pointer';
     v.appendChild(tap);
