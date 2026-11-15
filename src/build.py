@@ -142,7 +142,8 @@ socials='\n'.join(f'<a class="social" href="{esc(_soc.get(k,""))}" target="_blan
 # ---------- футер: блок «Контакты» из content/contacts.json ----------
 C=load_content('contacts.json',{})
 _tf_ph=[(p.get('image') if isinstance(p,dict) else p) for p in (C.get('photos') or [])]
-_tf_ph=[str(p).strip() for p in _tf_ph if p and str(p).strip()]
+# путь делаем относительным: сайт может жить в подпапке (GitHub Pages), абсолютный /content/... отвалится
+_tf_ph=[str(p).strip().lstrip('/') for p in _tf_ph if p and str(p).strip()]
 _tf_cells=''
 for _n in range(3):
     if _n<len(_tf_ph):
