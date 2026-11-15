@@ -3,7 +3,7 @@
   "title_accent": "удобно вам",
   "lead": "Проконсультируем по телефону, в мессенджере или при встрече в мастерской.",
   "maps_url": "https://yandex.ru/maps/-/CXbR7LiO",
-  "map_embed": "",
+  "map_embed": "https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=101485963947",
   "photos": [
     {
       "image": "/content/photos/office/1_9x16.webp"
