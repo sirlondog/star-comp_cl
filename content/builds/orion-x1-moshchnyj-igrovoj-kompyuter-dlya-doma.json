@@ -1,0 +1,73 @@
+{
+  "name": "ORION X1",
+  "subtitle": "",
+  "slug": "orion-x1-moshchnyj-igrovoj-kompyuter-dlya-doma",
+  "price": 127000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/orion_x1/1_4x3_3000px.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/orion_x1/2_4x3_3000px.webp",
+      "alt": "Жидкостная система охлаждения"
+    },
+    {
+      "image": "/content/photos/orion_x1/3_4x3_3000px.webp",
+      "alt": "Корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/orion_x1/4_4x3_3000px.webp",
+      "alt": "Видеокарта NVIDIA RTX 5060"
+    },
+    {
+      "image": "/content/photos/orion_x1/5_4x3_3000px.webp",
+      "alt": "Помпа системы охлаждения"
+    }
+  ],
+  "video": {
+    "horizontal": "",
+    "vertical": "https://kinescope.io/otcfQwMT7JWMhqsMGxV9Vi",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "AMD RYZEN 5 7500F"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "NVIDIA RTX 5060 8GB GIGABYTE WINDFORCE"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "MSI A620M-B PRO"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "16GB DDR5 ADATA LANCR BLADE RGB"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 500GB GIGABYTE 2500E"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL PF700X 700W 80+ BRONZE"
+    },
+    {
+      "label": "Охлаждение",
+      "value": "DEEPCOOL LE360 V2"
+    },
+    {
+      "label": "Корпус",
+      "value": "DEEPCOOL CG380"
+    }
+  ],
+  "seo": null
+}
