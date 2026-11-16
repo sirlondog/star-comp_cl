@@ -1,0 +1,73 @@
+{
+  "name": "TITAN R1",
+  "subtitle": "",
+  "slug": "titan-r1-kompyuter-bez-tormozov-dlya-raboty-i-igr",
+  "price": 115000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/titan-r1/1_4x3_3000px.webp",
+      "alt": "общий вид компьютера в корпусе с панорамным стеклом и фиолетовой подсветкой"
+    },
+    {
+      "image": "/content/photos/titan-r1/2_4x3_3000px.webp",
+      "alt": "Оперативная память с RGB подсветкой"
+    },
+    {
+      "image": "/content/photos/titan-r1/3_4x3_3000px.webp",
+      "alt": "Видеокарта AMD RADEON RX 9060 8GB"
+    },
+    {
+      "image": "/content/photos/titan-r1/4_4x3_3000px.webp",
+      "alt": "Охлаждение процессора DEEPCOOL AG400"
+    },
+    {
+      "image": "/content/photos/titan-r1/5_4x3_3000px.webp",
+      "alt": "Корпусные вентиляторы"
+    }
+  ],
+  "video": {
+    "horizontal": "https://kinescope.io/hPiXawV3ApEMYFjpdZywQZ",
+    "vertical": "",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "AMD RYZEN 5 5600X"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "ASROCK AMD RADEON RX 9060 8GB"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "16GB DDR4 KINGSTON FURY RGB"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "MSI B550M PRO-VDH"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL PF700X 700W 80+ BRONZE"
+    },
+    {
+      "label": "Охлаждение",
+      "value": "DEEPCOOL AG400"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 500GB GIGABYTE 2500E"
+    },
+    {
+      "label": "Корпус",
+      "value": "OCYPUS GAMMA C52"
+    }
+  ],
+  "seo": null
+}
