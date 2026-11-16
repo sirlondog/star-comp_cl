@@ -559,36 +559,18 @@ def body_html(d):
     about=f'\n        <div class="seo-text"><p>{txt(d["about"])}</p></div>' if d.get('about') else ''
     vid=video_html(d)
     text=lead+about
-    # вертикальное видео: на десктопе живёт внутри «Конфигурации» (второй столбец)
-    vertical_only='video--vertical' in vid
-    if text or (vid and not vertical_only):
-        has_v=' about--video-h' if vid and not vertical_only else ''
+    if text or vid:
+        has_v=' about--video-v' if 'video--vertical' in vid else (' about--video-h' if vid else '')
         # без текста секция прижимается к первому экрану (галерее) без верхнего отступа
         flush='' if text else ' section--flush'
         text_html=f'\n      <div class="about__text">{lead}{about}\n      </div>' if text else ''
         about_section=f'''  <section class="section section--about wrap{flush}" aria-label="О сборке">
     <div class="about{has_v}">{text_html}
-{'' if vertical_only else vid}
+{vid}
     </div>
   </section>'''
     else:
         about_section=''
-    # секция «Конфигурация»; для страниц с только вертикальным видео —
-    # двухколоночная на десктопе (контент | видео), на мобильном видео над контентом
-    spec_mod=' spec--video-v' if vertical_only else ''
-    spec_video_block=f'''    <div class="spec__video">
-{vid}
-    </div>''' if vertical_only else ''
-    spec_body=f'''    <div class="spec__body">
-    <h2 class="section__title" id="spec-title">Конфигурация</h2>
-    <dl class="spec-grid">
-{specs}
-    </dl>
-{open('inner.flex-note.html',encoding='utf-8').read().rstrip()}
-    </div>'''
-    spec_section=f'''  <section class="section section--spec wrap{spec_mod}" aria-labelledby="spec-title">
-{spec_video_block}{spec_body}
-  </section>'''
     return f"""<main>
   <section class="product wrap">
     <div class="product__gallery">
@@ -605,7 +587,13 @@ def body_html(d):
     </div>
   </section>
 {about_section}
-{spec_section}
+  <section class="section section--spec wrap" aria-labelledby="spec-title">
+    <h2 class="section__title" id="spec-title">Конфигурация</h2>
+    <dl class="spec-grid">
+{specs}
+    </dl>
+{open('inner.flex-note.html',encoding='utf-8').read().rstrip()}
+  </section>
 </main>"""
 
 src=open('page.body.html',encoding='utf-8').read()
