@@ -355,11 +355,6 @@ collections:
                 label: Что на фото
                 widget: string
                 hint: 'Коротко: «компьютер в чёрном корпусе с деревянной панелью». Нужно поисковикам и незрячим'
-              - name: tag
-                label: Подпись в углу фото
-                widget: string
-                required: false
-                hint: 'Например: 2k gaming. Оставьте пустым, если подпись не нужна'
               - name: specs
                 label: Комплектующие (кратко)
                 label_singular: строку

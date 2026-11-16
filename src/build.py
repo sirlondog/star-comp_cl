@@ -331,7 +331,6 @@ def card_html(c,hidden=False):
     stem,ws=card_image(c)
     w0=ws[0]; h0=round(w0*3/4)
     alt=txt(c.get('alt') or c['name'])
-    tag=f'\n          <span class="card__tag">{txt(c["tag"])}</span>' if c.get('tag') else ''
     specs='\n'.join(f'          <div><dt>{esc(s["label"]).rstrip(":")}:</dt><dd>{esc(s["value"])}</dd></div>' for s in c.get('specs') or [])
     href=esc(c.get('page') or '') or '#podbor'
     extra=' hidden' if hidden else ''
@@ -340,7 +339,7 @@ def card_html(c,hidden=False):
           <picture>
             <source type="image/avif" srcset="{srcset(stem,ws,'avif')}" sizes="{CARD_SIZES}">
             <img src="assets/{stem}-{w0}.webp" srcset="{srcset(stem,ws,'webp')}" sizes="{CARD_SIZES}" width="{w0}" height="{h0}" alt="{alt}" loading="lazy" decoding="async">
-          </picture>{tag}
+          </picture>
         </div>
         <div class="card__body">
           <h3 class="card__name"><a href="{href}">{name}</a></h3>
