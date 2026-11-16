@@ -146,6 +146,31 @@
       "show_from": true,
       "page": "orion-x1-moshchnyj-igrovoj-kompyuter-dlya-doma",
       "extra": false
+    },
+    {
+      "name": "TITAN R1",
+      "image": {
+        "path": "/content/photos/titan-r1/1_4x3_3000px.webp",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
+      "tag": "",
+      "specs": [
+        {
+          "label": "Процессор",
+          "value": "AMD RYZEN 5 5600X"
+        },
+        {
+          "label": "Видеокарта",
+          "value": "AMD RADEON RX 9060 8GB"
+        }
+      ],
+      "price_from": 115000,
+      "show_from": true,
+      "page": "titan-r1-kompyuter-bez-tormozov-dlya-raboty-i-igr",
+      "extra": false
     }
   ]
 }
