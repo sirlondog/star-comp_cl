@@ -186,5 +186,5 @@
 @media (hover:hover){.video__play:hover .video__icon{transform:scale(1.08)}}
 @media (min-width:64rem){
   .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
-  .video--vertical{max-width:24rem;aspect-ratio:9/16;border-radius:1.25rem}
+  .video--vertical{max-width:24rem;aspect-ratio:9/16;border:0;border-radius:0}
 }
