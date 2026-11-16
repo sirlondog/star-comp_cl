@@ -407,7 +407,7 @@ def card_html(c,hidden=False):
           </dl>
           <div class="card__foot">
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></p>
-            <span class="card__go" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span>
+            <a class="card__go" href="{href}" aria-label="Открыть страницу: {name}"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
         </div>
       </li>'''

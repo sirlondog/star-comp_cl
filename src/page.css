@@ -148,7 +148,7 @@ ul{list-style:none}
 .card__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-top:auto;padding-top:.375rem}
 .card__price{display:flex;flex-direction:column}
 .card__price b{font-weight:600;font-size:var(--fs-h3);line-height:1.25;font-variant-numeric:lining-nums}
-.card__go{flex:none;display:grid;place-items:center;width:3rem;height:3rem;border-radius:50%;background:var(--cyan);box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:transform .2s}
+.card__go{flex:none;display:grid;place-items:center;width:3rem;height:3rem;border-radius:50%;background:var(--cyan);box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:transform .2s;text-decoration:none}
 .card__go svg{width:1.25rem;height:1.25rem;fill:none;stroke:#0a0a0c;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media (hover:hover){
   .card:hover{transform:translateY(-.125rem)}
