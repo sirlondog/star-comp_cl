@@ -1,6 +1,6 @@
 {
   "name": "MARS X8",
-  "subtitle": "",
+  "subtitle": "игровой компьютер на процессоре INTEL CORE i7-14700KF с видеокартой NVIDIA RTX 5080 16GB",
   "slug": "mars-x8-kompyuter-bez-kompromissov-maksimum-skorosti",
   "price": 336000,
   "show_from": true,
@@ -73,5 +73,8 @@
       "value": "ARDOR GAMING CF235"
     }
   ],
-  "seo": null
+  "seo": {
+    "title": "",
+    "description": ""
+  }
 }
