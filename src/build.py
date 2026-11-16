@@ -398,7 +398,7 @@ full=f'''<!doctype html>
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://star-comp.ru/assets/og-home.jpg">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#15171c">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <script type="application/ld+json">{ld.replace('</','<\\/')}</script>
@@ -570,7 +570,7 @@ def page_html(d):
 <meta property="og:type" content="product">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://star-comp.ru/{og}">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#15171c">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <script type="application/ld+json">{json.dumps(ld,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')}</script>
