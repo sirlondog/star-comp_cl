@@ -427,7 +427,9 @@ html{scroll-behavior:smooth}
   .about--video-v{grid-template-columns:minmax(0,1fr);gap:3.25rem;align-items:start}
   /* только вертикальное видео: на десктопе показываем у левого края,
      прижатым к галерее; низ ролика — на уровне заголовка «Конфигурация» */
-  .about--video-v .about__video .video{margin-top:0}
+  .about--video-v{min-height:60svh}
+  .about--video-v .about__video{height:100%}
+  .video--vertical{height:100%;max-width:none;aspect-ratio:9/16;border:0;border-radius:0}
   /* горизонтальное видео — во всю ширину экрана (выходит за пределы контейнера) */
   .about--video-h .about__video .video{width:100vw;max-width:none;aspect-ratio:16/9;border:0;border-radius:0;margin-inline:calc(50% - 50vw)}
   /* шапка лежит поверх галереи при первой загрузке (как на макете), отступ сверху 2%;
@@ -479,7 +481,7 @@ html{scroll-behavior:smooth}
 @media (hover:hover){.video__play:hover .video__icon{transform:scale(1.08)}}
 @media (min-width:64rem){
   .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
-  .video--vertical{height:100svh;max-width:none;aspect-ratio:9/16;border:0;border-radius:0}
+  .video--vertical{height:100%;max-width:none;aspect-ratio:9/16;border:0;border-radius:0}
 }</style>
 </head>
 <body>
