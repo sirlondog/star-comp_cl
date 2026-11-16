@@ -171,6 +171,31 @@
       "show_from": true,
       "page": "titan-r1-kompyuter-bez-tormozov-dlya-raboty-i-igr",
       "extra": false
+    },
+    {
+      "name": "MARS X8",
+      "image": {
+        "path": "/content/photos/mars_x8/1_4x3_3000px.webp",
+        "x": 55,
+        "y": 97,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
+      "tag": "",
+      "specs": [
+        {
+          "label": "Процессор",
+          "value": "INTEL CORE i7-14700KF"
+        },
+        {
+          "label": "Видеокарта",
+          "value": "NVIDIA RTX 5080 16GB"
+        }
+      ],
+      "price_from": 336000,
+      "show_from": true,
+      "page": "mars-x8-kompyuter-bez-kompromissov-maksimum-skorosti",
+      "extra": false
     }
   ]
 }
