@@ -147,6 +147,46 @@ _social_defs=[('max',max_svg,'Написать в MAX'),('telegram',tg_svg,'На
 socials='\n'.join(f'<a class="social" href="{esc(_soc.get(k,""))}" target="_blank" rel="noopener" aria-label="{label}">{ic}</a>'
                   for k,ic,label in _social_defs if _soc.get(k))
 
+# ---------- футер: блок «Отзывы» ----------
+_reviews=[
+ ('Женя Мележик','24.06.2026','Заказывали два компа с одинаковой сборкой ко дням рождения. Всё супер – сделали и красиво, и быстро, и качественно и очень выгодно по цене. Всем большое спасибо за вашу проделанную работу и, безусловно, доставку и подключение💥💥💥','ava-1.webp'),
+ ('Виктория Трофимова','14.06.2026','Сегодня приобрела компьютер сыну, и хочу поделиться своим восторгом от покупки и процесса доставки! Во-первых, сам компьютер превзошел все мои ожидания. Он работает быстро и без сбоев, все программы открываются...','ava-4.webp'),
+ ('Евгений А.','10.02.2026','Заказал компьютер, всё сделали быстро и качественно! Собрали отличную конфигурацию! Привезли как мне было удобно, подключили, объяснили! Ребята молодцы. Доставлял и подключал Игорь, ему отдельный респект! Советую всем! Цены ниже чем в DNS и у других...','ava-5.webp'),
+ ('Александр Михайлов','15.02.2026','Спасибо большое команде star-comp. Ребята делают на уровне и качественно Специалисты отзывчевы и оперативны Только заказал и вечром уже стоял в работе Все супер! Еще раз спасибо огромное я доволен работе star-corm 🤝🤝🤝🤝','ava-3.webp'),
+ ('Эдуард Дроздов','31.01.2026','Заказал игровой компьютер с монитором для внуков, оптимально скомплектовали, разъяснили. Доставили по адресу в удобное для меня время, настроили. Компетентно, в разумной достаточности по характеристикам и цене. Итог, выше ожиданий.','ava-2.webp'),
+]
+_quote='<svg class="tf-quote" viewBox="0 0 28 16" aria-hidden="true"><path d="M0 16V9.6C0 4.3 3.2 1 8.9 0l1.2 2.6C6.9 3.7 5.3 5.5 5 8h4.4v8H0Zm18.6 0V9.6c0-5.3 3.2-8.6 8.9-9.6l1.2 2.6c-3.2 1.1-4.8 2.9-5.1 5.4H28v8h-9.4Z" fill="#00d9ff"/></svg>'
+_reviews_cards=''
+for _n,_r in enumerate(_reviews):
+    _name,_date,_text,_ava=_r
+    _reviews_cards+="""        <article class="tf-review2">
+          <p class="tf-review2__text">{esc(_text)}</p>
+          <div class="tf-review2__meta">
+            <img class="tf-avatar" src="assets/footer/{_ava}" alt="Аватар: {esc(_name)}" loading="lazy" decoding="async">
+            <div class="tf-review2__who"><b>{esc(_name)}</b><span>{esc(_date)}</span></div>
+            {_quote}
+          </div>
+        </article>"""
+REVIEWS_HTML=f'''  <section class="tf-section tf-reviews" aria-label="Отзывы">
+    <h2 class="tf-title">Доверие, <em>подтверждённое отзывами</em></h2>
+    <p class="tf-lead">Каждый компьютер собирается с вниманием к деталям, а лучшая оценка нашей работы — рекомендации и отзывы клиентов.</p>
+    <div class="tf-reviews__grid">
+{_reviews_cards}
+        <div class="tf-ya-cell">
+          <div class="tf-ya-card">
+            <div class="tf-ya-top">
+              <span class="tf-ya-ya">Я</span>
+              <svg class="tf-ya-star" viewBox="0 0 35 35" aria-hidden="true"><path d="M17.5 1l4.4 11.4 12.6.5-10 8 3.4 12.1-10.4-6.6L7.1 33l3.4-12.1-10-8 12.6-.5z" fill="#ffc61b"/></svg>
+              <b class="tf-ya-score">5.0</b><span class="tf-ya-of">/5</span>
+            </div>
+            <div class="tf-ya-strip">Рейтинг организации в Яндексе</div>
+          </div>
+          <a class="tf-ya-btn" href="https://yandex.ru/maps/org/starcomp_igrovyye_kompyutery/141663119214/reviews/" target="_blank" rel="noopener">Смотреть на Яндекс</a>
+          <span class="tf-ya-badge">120+ отзывов</span>
+        </div>
+    </div>
+  </section>'''
+
 # ---------- футер: блок «Контакты» из content/contacts.json ----------
 C=load_content('contacts.json',{})
 _tf_ph=[(p.get('image') if isinstance(p,dict) else p) for p in (C.get('photos') or [])]
@@ -177,6 +217,7 @@ _tf_accent=txt(C.get('title_accent') or '')
 _tf_lead=txt(C.get('lead') or 'Проконсультируем по телефону, в мессенджере или при встрече в мастерской.')
 FOOTER=f'''<footer class="tfooter">
   <div class="wrap">
+    {REVIEWS_HTML}
     <section class="tf-section tf-contacts" aria-label="Контакты">
       <h2 class="tf-title">{_tf_title}{' <em>'+_tf_accent+'</em>' if _tf_accent else ''}</h2>
       <p class="tf-lead">{_tf_lead}</p>
