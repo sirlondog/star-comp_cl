@@ -168,8 +168,9 @@ html{overflow-x:clip}
 /* шапка лежит поверх галереи при первой загрузке (как на макете);
    отступ сверху = такой же, как слева/справа (центрирование контейнера) */
 .header{position:fixed;left:0;right:0;top:max(var(--gutter),calc((100vw - var(--container))/2));padding-block:0}
-/* фото: 70% экрана по высоте, во всю ширину, без скруглений, заходит под полосу шапки */
-.product{gap:0;padding:0}
+/* фото: 70% экрана по высоте, во всю ширину, без скруглений, заходит под полосу шапки;
+   на ширинах 609–1023px галерея тоже во всю ширину экрана (колонка .wrap ограничена 576px) */
+.product{gap:0;padding:0;max-width:none}
 .product__gallery{width:100%;height:70svh;display:flex;flex-direction:column}
 .gallery{height:100%;display:flex;flex-direction:column}
 .gallery__stage{flex:1;min-height:0}
