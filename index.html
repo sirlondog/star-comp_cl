@@ -106,6 +106,7 @@ ul{list-style:none}
 
 /* ---------- Меню ---------- */
 .menu{display:flex;flex-direction:column;width:min(100%,25rem);max-width:none;height:100%;max-height:none;margin:0 0 0 auto;padding:calc(1.25rem + env(safe-area-inset-top,0px)) max(1.5rem,env(safe-area-inset-right,0px)) 2rem 2.125rem;border:0;border-left:1px solid var(--line);background:#0a0a0c;color:var(--fg);overflow-y:auto}
+.menu:not([open]){display:none}
 .menu::backdrop{background:rgba(0,0,0,.6)}
 .menu[open]{animation:menu-in .25s ease-out}
 @keyframes menu-in{from{transform:translateX(2rem);opacity:0}}
