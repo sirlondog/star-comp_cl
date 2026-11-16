@@ -418,6 +418,11 @@ html{scroll-behavior:smooth}
   .spec-grid{grid-template-columns:minmax(0,1fr);grid-auto-flow:row;width:50%;gap:.75rem}
   .flex-note{width:50%}
   .flex-note ul{grid-template-columns:minmax(0,1fr)}
+  /* страницы с горизонтальным видео: «Конфигурация» в две колонки на всю ширину,
+     колонки заполняются сверху вниз, как на Тильде */
+  .section--spec--2col .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:.75rem 2rem;width:auto}
+  .section--spec--2col .flex-note{width:auto}
+  .section--spec--2col .flex-note ul{grid-template-columns:repeat(2,minmax(0,1fr))}
   .gallery--many .gallery__nav{display:grid}
   .lightbox__img{--px:1rem;--py:3rem}
   .lightbox__prev,.lightbox__next{top:calc(50% - 1.5rem);bottom:auto}

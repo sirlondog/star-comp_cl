@@ -519,11 +519,12 @@ def gallery_html(d):
       </div>
     </div>"""
 
+def vcode(x):
+    """Только код ролика: если вставили полную ссылку kinescope.io/…, вытаскиваем её последний сегмент."""
+    x=str(x or '').strip()
+    return x.split('/')[-1].split('?')[0] if x else ''
+
 def video_html(d):
-    def vcode(x):
-        """Только код ролика: если вставили полную ссылку kinescope.io/…, вытаскиваем её последний сегмент."""
-        x=str(x or '').strip()
-        return x.split('/')[-1].split('?')[0] if x else ''
     v=d.get('video') or {}
     h_id=vcode(v.get('horizontal')); v_id=vcode(v.get('vertical'))
     if not (h_id or v_id): return ''
@@ -554,6 +555,9 @@ def body_html(d):
     sub=f' <i class="sr-only">— </i><span>{txt(d["subtitle"])}</span>' if d.get('subtitle') else ''
     note=f'\n      <p class="product__note">{txt(d["note"])}</p>' if d.get('note') else ''
     specs='\n'.join(f'      <div><dt>{esc(x["label"]).rstrip(":")}:</dt><dd>{esc(x["value"])}</dd></div>' for x in d.get('specs') or [])
+    # страницы с горизонтальным видео — блок «Конфигурация» в две колонки (старая вёрстка),
+    # остальные — в одну колонку на половину фрейма; класс-модификатор на секции
+    spec_cols=' section--spec--2col' if vcode((d.get('video') or {}).get('horizontal')) else ''
     # Блок «О сборке»: описание и текст рядом с видео (на мобильном — друг под другом)
     lead=f'\n        <p class="section__lead">{txt(d["lead"])}</p>' if d.get('lead') else ''
     about=f'\n        <div class="seo-text"><p>{txt(d["about"])}</p></div>' if d.get('about') else ''
@@ -587,7 +591,7 @@ def body_html(d):
     </div>
   </section>
 {about_section}
-  <section class="section section--spec wrap" aria-labelledby="spec-title">
+  <section class="section section--spec wrap{spec_cols}" aria-labelledby="spec-title">
     <h2 class="section__title" id="spec-title">Конфигурация</h2>
     <dl class="spec-grid">
 {specs}
