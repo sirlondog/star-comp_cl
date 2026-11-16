@@ -330,6 +330,8 @@ html{scroll-behavior:smooth}
 }
 
 /* ================= Страница сборки ================= */
+/* видео на всю ширину (100vw/50vw) не учитывает вертикальный скроллбар — страхуемся от горизонтального скролла */
+html{overflow-x:clip}
 /* Ритм: 28px внутри блока (gap), 44px (52px на десктопе) между блоками,
    64px (80px на десктопе) между главами — за это отвечают классы section--* */
 .product{display:grid;gap:1.75rem;padding-block:.5rem 0}
@@ -518,8 +520,11 @@ html{scroll-behavior:smooth}
 .about .about__video .video iframe{width:calc(100% + 16px);height:calc(100% + 16px);left:-8px;top:-8px}
 .product__note{width:auto;margin-inline:0;margin-top:20px}
 /* страницы с вертикальным видео: видео перенесено в блок «Конфигурация» —
-   над заголовком, во всю ширину экрана, без рамки (плеер подгружается по клику) */
-.spec--video-v .spec__video{margin-inline:calc(50% - 50vw)}
+   на мобильном поднимаем его над заголовком (порядок: текст → видео → заголовок → плашки),
+   во всю ширину экрана, без рамки (плеер подгружается по клику) */
+.spec--video-v{display:flex;flex-direction:column}
+.spec--video-v .spec__cols{display:contents}
+.spec--video-v .spec__video{order:-1;margin-inline:calc(50% - 50vw)}
 .spec--video-v .spec__video .video{position:static;height:auto;width:100%;max-width:none;border:0;border-radius:0;aspect-ratio:9/16}
 .spec--video-v .spec__video .video iframe{width:calc(100% + 16px);height:calc(100% + 16px);left:-8px;top:-8px}
 /* заголовок «Конфигурация»: тот же размер и начертание, что у названия, заглавными */
