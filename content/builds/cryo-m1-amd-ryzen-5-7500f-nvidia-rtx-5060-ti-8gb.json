@@ -1,6 +1,6 @@
 {
   "name": "CRYO M1",
-  "subtitle": "",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 5 7500F с видеокартой NVIDIA RTX 5060 Ti 8GB",
   "slug": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
   "price": 178000,
   "show_from": true,
@@ -77,5 +77,8 @@
       "value": "JONSBO D34"
     }
   ],
-  "seo": null
+  "seo": {
+    "title": "",
+    "description": ""
+  }
 }
