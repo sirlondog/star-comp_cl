@@ -159,7 +159,7 @@ _quote='<svg class="tf-quote" viewBox="0 0 28 16" aria-hidden="true"><path d="M0
 _reviews_cards=''
 for _n,_r in enumerate(_reviews):
     _name,_date,_text,_ava=_r
-    _reviews_cards+="""        <article class="tf-review2">
+    _reviews_cards+=f"""        <article class="tf-review2">
           <p class="tf-review2__text">{esc(_text)}</p>
           <div class="tf-review2__meta">
             <img class="tf-avatar" src="assets/footer/{_ava}" alt="Аватар: {esc(_name)}" loading="lazy" decoding="async">
