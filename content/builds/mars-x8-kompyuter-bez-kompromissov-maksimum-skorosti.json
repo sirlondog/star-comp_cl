@@ -1,0 +1,77 @@
+{
+  "name": "MARS X8",
+  "subtitle": "",
+  "slug": "mars-x8-kompyuter-bez-kompromissov-maksimum-skorosti",
+  "price": 336000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/mars_x8/1_4x3_3000px.webp",
+      "alt": "общий вид компьютера в корпусе с панорамным стеклом и красной подсветкой"
+    },
+    {
+      "image": "/content/photos/mars_x8/2_4x3_3000px.webp",
+      "alt": "Дисплей на системе охлаждения"
+    },
+    {
+      "image": "/content/photos/mars_x8/3_4x3_3000px.webp",
+      "alt": "Оперативная память KINGSTON FURY"
+    },
+    {
+      "image": "/content/photos/mars_x8/4_4x3_3000px.webp",
+      "alt": "Видеокарта GIGABTYE NVIDIA RTX 5080 16GB"
+    },
+    {
+      "image": "/content/photos/mars_x8/5_4x3_3000px.webp",
+      "alt": "Корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/mars_x8/6_4x3_3000px.webp",
+      "alt": "Блок питания"
+    }
+  ],
+  "video": {
+    "horizontal": "https://kinescope.io/moVjJhAQqKKnbw8LdofmwR",
+    "vertical": "",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "INTEL CORE i7-14700KF"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "NVIDIA RTX 5080 16GB GIGABYTE WINDFORCE"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "32GB DDR5 KINGSTON FURY BEAST"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "ASUS TUF GAMING B760M BTF WIFI"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL PQ850G 850W 80+ GOLD"
+    },
+    {
+      "label": "Охлаждение",
+      "value": "THERMALRIGHT TROFEO VISION"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 1000GB WD GREEN"
+    },
+    {
+      "label": "Корпус",
+      "value": "ARDOR GAMING CF235"
+    }
+  ],
+  "seo": null
+}
