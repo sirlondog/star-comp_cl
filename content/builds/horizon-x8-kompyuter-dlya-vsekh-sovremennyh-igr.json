@@ -1,6 +1,6 @@
 {
   "name": "HORIZON X8",
-  "subtitle": "",
+  "subtitle": "игровой компьютер на процессоре INTEL CORE i7-13700KF с видеокартой NVIDIA RTX 5060 Ti 16GB",
   "slug": "horizon-x8-kompyuter-dlya-vsekh-sovremennyh-igr",
   "price": 179000,
   "show_from": true,
@@ -69,5 +69,8 @@
       "value": "ZALMAN P30 BW"
     }
   ],
-  "seo": null
+  "seo": {
+    "title": "",
+    "description": ""
+  }
 }
