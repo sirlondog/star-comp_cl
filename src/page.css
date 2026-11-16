@@ -208,7 +208,7 @@ html{scroll-behavior:smooth}
 
 /* ---------- Футер: блок контактов ---------- */
 .tfooter{margin-top:2.5rem}
-.tf-section{padding-block:2.5rem}
+.tf-section{padding-block:1.25rem 2.5rem}
 .tf-title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
 .tf-title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .tf-lead{margin-top:.3125rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
@@ -237,7 +237,7 @@ html{scroll-behavior:smooth}
   .tf-value a:hover{color:var(--fg)}
 }
 @media (min-width:64rem){
-  .tf-section{padding-block:3.5rem}
+  .tf-section{padding-block:2.5rem 3.5rem}
   .tf-lead{text-wrap:balance}
   .tf-contacts__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);grid-template-areas:"photos map" "details map";gap:2.5rem}
   .tf-details{margin-top:0}
