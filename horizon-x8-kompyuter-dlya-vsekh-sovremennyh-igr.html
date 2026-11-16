@@ -460,11 +460,6 @@ html{scroll-behavior:smooth}
   /* секция только с видео прижата к первому экрану (галерее) без отступа */
   .section--about.section--flush{padding-top:0}
   .section--other{padding-block:5rem 5rem}
-  /* вертикальное видео слева, текст о сборке справа */
-  .about--video-v{grid-template-columns:minmax(0,1fr);gap:3.25rem;align-items:start}
-  /* если есть только вертикальное видео — на десктопе блок видео не показываем
-     (оно играет на мобильной версии) */
-  .about--video-v .about__video{display:none}
   /* горизонтальное видео — во всю ширину экрана (выходит за пределы контейнера) */
   .about--video-h .about__video .video{width:100vw;max-width:none;aspect-ratio:16/9;border:0;border-radius:0;margin-inline:calc(50% - 50vw)}
   /* шапка лежит поверх галереи при первой загрузке (как на макете), отступ сверху 2%;
@@ -503,6 +498,27 @@ html{scroll-behavior:smooth}
 .product__note{width:auto;margin-inline:0;margin-top:20px}
 /* заголовок «Конфигурация»: тот же размер и начертание, что у названия, заглавными */
 .section--spec .section__title{-webkit-text-stroke:.018em currentColor}
+}
+
+
+/* только вертикальное видео: на мобильном видео во всю ширину над «Конфигурацией» */
+.spec--video-v{padding-top:0}
+.spec--video-v .spec__video{margin-inline:calc(50% - 50vw)}
+.spec--video-v .video--vertical{width:100%;max-width:none;border-radius:0}
+.spec--video-v .spec__body{padding-inline:var(--gutter)}
+.spec--video-v .section__title{padding-inline:var(--gutter)}
+.spec--video-v .section__lead{padding-inline:var(--gutter)}
+@media (min-width:64rem){
+  /* десктоп: заголовок+описание на всю ширину, ниже — конфигурация слева, видео справа, примечание на всю ширину */
+  .spec--video-v{display:grid;grid-template-columns:minmax(0,1fr) 27rem;gap:2.5rem 40px;grid-template-areas:"head head" "list video" "note note";padding-top:3.25rem;align-items:start}
+  .spec--video-v .spec__head{grid-area:head}
+  .spec--video-v .spec__body{grid-area:auto}
+  .spec--video-v .spec__list{grid-area:list}
+  .spec--video-v .spec__video{grid-area:video;align-self:stretch}
+  .spec--video-v .spec__note{grid-area:note}
+  .spec--video-v .spec-grid{grid-template-columns:1fr}
+  /* видео растягивается по высоте ряда (равен блоку конфигурации), ширина по пропорции 9:16 */
+  .spec--video-v .video--vertical{height:100%;aspect-ratio:auto;max-width:none;margin:0}
 }
 
 /* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию.
@@ -602,8 +618,9 @@ html{scroll-behavior:smooth}
       <p class="product__note">Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или&nbsp;подобрать другую конфигурацию, стоимость указана на&nbsp;момент заказа компьютера.</p>
     </div>
   </section>
-  <section class="section section--about wrap section--flush" aria-label="О сборке">
-    <div class="about about--video-v">
+
+  <section class="section section--spec wrap spec--video-v" aria-labelledby="spec-title">
+    <div class="spec__video">
       <div class="about__video">
         <div class=" video video--vertical" id="video" data-h="7fCPQFvH3mXxsiXP53MgGm" data-v="7fCPQFvH3mXxsiXP53MgGm" data-title="Видео о сборке HORIZON X8" style="background:#0a0a0c url('https://kinescope.io/7fCPQFvH3mXxsiXP53MgGm/poster.jpg') center/cover no-repeat">
           <button class="video__play" type="button">
@@ -615,9 +632,7 @@ html{scroll-behavior:smooth}
           </button>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="section section--spec wrap" aria-labelledby="spec-title">
+    </div>    <div class="spec__body">
     <h2 class="section__title" id="spec-title">Конфигурация</h2>
     <dl class="spec-grid">
       <div><dt>Процессор:</dt><dd>INTEL CORE i7-13700KF</dd></div>
@@ -637,6 +652,7 @@ html{scroll-behavior:smooth}
         <li>Замена видеокарты и процессора</li>
         <li>Настроим компьютер под ваши задачи и бюджет</li>
       </ul>
+    </div>
     </div>
   </section>
 </main>
