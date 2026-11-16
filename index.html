@@ -322,10 +322,11 @@ html{scroll-behavior:smooth}
   .tf-reviews__grid{grid-template-columns:repeat(3,1fr);gap:40px;margin-top:34px}
 }
 @media (max-width:63.99rem){
-  /* мобильный: одна карточка в кадре, остальные прокруткой вправо, рейтинг — в конце */
-  .tf-reviews__grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin-inline:calc(50% - 50vw);padding-inline:16px;scroll-padding-inline:16px;scrollbar-width:none}
+  /* мобильный: одна карточка в кадре, остальные прокруткой вправо, рейтинг — в конце;
+     карусель живёт в контентной колонке, а не на всю ширину экрана */
+  .tf-reviews__grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;scrollbar-width:none}
   .tf-reviews__grid::-webkit-scrollbar{display:none}
-  .tf-review2,.tf-ya-cell{flex:0 0 calc(100vw - 76px);scroll-snap-align:center}
+  .tf-review2,.tf-ya-cell{flex:0 0 calc(100% - 60px);scroll-snap-align:center}
 }
 </style>
 </head>
