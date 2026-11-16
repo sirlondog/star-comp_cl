@@ -425,11 +425,9 @@ html{scroll-behavior:smooth}
   .section--other{padding-block:5rem 5rem}
   /* вертикальное видео слева, текст о сборке справа */
   .about--video-v{grid-template-columns:minmax(0,1fr);gap:3.25rem;align-items:start}
-  /* только вертикальное видео: на десктопе показываем у левого края,
-     прижатым к галерее; высота — 100% экрана устройства */
-  .about--video-v{min-height:100svh}
-  .about--video-v .about__video{height:100%}
-  .video--vertical{height:100svh;max-width:none;aspect-ratio:9/16;border:0;border-radius:0}
+  /* если есть только вертикальное видео — на десктопе блок видео не показываем
+     (оно играет на мобильной версии) */
+  .about--video-v .about__video{display:none}
   /* горизонтальное видео — во всю ширину экрана (выходит за пределы контейнера) */
   .about--video-h .about__video .video{width:100vw;max-width:none;aspect-ratio:16/9;border:0;border-radius:0;margin-inline:calc(50% - 50vw)}
   /* шапка лежит поверх галереи при первой загрузке (как на макете), отступ сверху 2%;
