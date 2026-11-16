@@ -1,0 +1,80 @@
+{
+  "name": "CORE R1",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 7 7700 с видеокартой NVIDIA RTX 5060 Ti 16GB",
+  "slug": "core-01-moshch-v-miniatyure",
+  "price": 264000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/core-r1/1_4x3_3000px.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/core-r1/2_4x3_3000px.webp",
+      "alt": "Радиатор материнской платы и вентилятор"
+    },
+    {
+      "image": "/content/photos/core-r1/3_4x3_3000px.webp",
+      "alt": "Видеокарта NVIDIA RTX 5060 Ti 16GB"
+    },
+    {
+      "image": "/content/photos/core-r1/4_4x3_3000px.webp",
+      "alt": "Кнопка включения компьютера"
+    },
+    {
+      "image": "/content/photos/core-r1/5_4x3_3000px.webp",
+      "alt": "Система охлаждения"
+    },
+    {
+      "image": "/content/photos/core-r1/6_4x3_3000px.webp",
+      "alt": "Край видеокарты NVIDIA RTX 5060 Ti 16GB"
+    }
+  ],
+  "video": {
+    "horizontal": "",
+    "vertical": "https://kinescope.io/fqddkriRXqcDtBQX6uPpRR",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "AMD RYZEN 7 7700"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "NVIDIA RTX 5060 Ti 16GB ZOTAC TWIN EDGE"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "ASUS TUF B850i NEO WIFI"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "32GB DDR5 G.SKILL TRIDENT Z"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 1000GB KINGSTON NV3"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL 750W SFX 80+ PLATINUM"
+    },
+    {
+      "label": "Охлаждение",
+      "value": "ID-COOLING IS-67-XT"
+    },
+    {
+      "label": "Корпус",
+      "value": "JONSBO TK-0"
+    }
+  ],
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
