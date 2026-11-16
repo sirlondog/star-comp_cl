@@ -518,9 +518,10 @@ html{scroll-behavior:smooth}
 .spec--video-v .spec__video{margin-inline:calc(50% - 50vw)}
 .spec--video-v .video--vertical{width:100%;max-width:none;border-radius:0}
 @media (min-width:64rem){
-  /* десктоп: Конфигурация в один столбец, вертикальное видео во втором (штатный размер) */
-  .spec--video-v{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2.5rem;align-items:start;padding-top:3.25rem}
+  /* десктоп: Конфигурация в один столбец, вертикальное видео во втором */
+  .spec--video-v{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2.5rem;align-items:stretch;padding-top:3.25rem}
   .spec--video-v .spec-grid{grid-template-columns:1fr}
+  .spec--video-v .video--vertical{height:100%;width:auto;max-width:none}
 }
 </style>
 </head>
