@@ -1,0 +1,73 @@
+{
+  "name": "HORIZON X8",
+  "subtitle": "",
+  "slug": "horizon-x8-kompyuter-dlya-vsekh-sovremennyh-igr",
+  "price": 179000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/25.09.2026_15707_horizon_x8/1_4x3_3000px.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/25.09.2026_15707_horizon_x8/4_4x3_3000px.webp",
+      "alt": "Корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/25.09.2026_15707_horizon_x8/5_4x3_3000px.webp",
+      "alt": "Видеокарта PALIT NVIDIA RTX 5060 Ti 16GB"
+    },
+    {
+      "image": "/content/photos/25.09.2026_15707_horizon_x8/2_4x3_3000px.webp",
+      "alt": "Жидкостная система охлаждения"
+    },
+    {
+      "image": "/content/photos/25.09.2026_15707_horizon_x8/3_4x3_3000px.webp",
+      "alt": "Оперативная память 16GB DDR4 NETAC SHADOW III"
+    }
+  ],
+  "video": {
+    "horizontal": "",
+    "vertical": "https://kinescope.io/7fCPQFvH3mXxsiXP53MgGm",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "INTEL CORE i7-13700KF"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "GAINWARD NVIDIA RTX 5060 Ti 16GB"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "MSI B760M-A PRO WIFI"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "16GB DDR4 NETAC SHADOW III"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 500GB NETAC NV3000"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL 80+ PF700X 700W BRONZE"
+    },
+    {
+      "label": "Охлаждение",
+      "value": "DEEPCOOL LE360 V2"
+    },
+    {
+      "label": "Корпус",
+      "value": "ZALMAN P30 BW"
+    }
+  ],
+  "seo": null
+}
