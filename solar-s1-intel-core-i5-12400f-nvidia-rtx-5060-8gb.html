@@ -462,9 +462,6 @@ html{scroll-behavior:smooth}
   .section--other{padding-block:5rem 5rem}
   /* вертикальное видео слева, текст о сборке справа */
   .about--video-v{grid-template-columns:minmax(0,1fr);gap:3.25rem;align-items:start}
-  /* если есть только вертикальное видео — на десктопе блок видео не показываем
-     (оно играет на мобильной версии) */
-  .about--video-v .about__video{display:none}
   /* горизонтальное видео — во всю ширину экрана (выходит за пределы контейнера) */
   .about--video-h .about__video .video{width:100vw;max-width:none;aspect-ratio:16/9;border:0;border-radius:0;margin-inline:calc(50% - 50vw)}
   /* шапка лежит поверх галереи при первой загрузке (как на макете), отступ сверху 2%;
@@ -498,8 +495,6 @@ html{scroll-behavior:smooth}
 .section--about{padding-inline:0;padding-top:24px}
 .about{gap:.875rem}
 .about .about__text{padding-inline:var(--gutter)}
-.about .about__video .video{width:100%;max-width:none;border:0;border-radius:0;aspect-ratio:9/16}
-.about .about__video .video iframe{width:calc(100% + 16px);height:calc(100% + 16px);left:-8px;top:-8px}
 .product__note{width:auto;margin-inline:0;margin-top:20px}
 /* заголовок «Конфигурация»: тот же размер и начертание, что у названия, заглавными */
 .section--spec .section__title{-webkit-text-stroke:.018em currentColor}
@@ -517,7 +512,18 @@ html{scroll-behavior:smooth}
 @media (min-width:64rem){
   .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
   .video--vertical{height:100%;max-width:none;aspect-ratio:9/16;border:0;border-radius:0}
-}</style>
+}
+/* только вертикальное видео: на мобильном видео во всю ширину над «Конфигурацией» */
+.spec--video-v{padding-top:0}
+.spec--video-v .spec__video{margin-inline:calc(50% - 50vw)}
+.spec--video-v .video--vertical{width:100%;max-width:none;border-radius:0}
+@media (min-width:64rem){
+  /* десктоп: Конфигурация в один столбец, вертикальное видео во втором */
+  .spec--video-v{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2.5rem;align-items:stretch;padding-top:3.25rem}
+  .spec--video-v .spec-grid{grid-template-columns:1fr}
+  .spec--video-v .video--vertical{height:100%;width:auto;max-width:none}
+}
+</style>
 </head>
 <body>
 <header class="header">
@@ -632,6 +638,7 @@ html{scroll-behavior:smooth}
     </div>
   </section>
   <section class="section section--spec wrap" aria-labelledby="spec-title">
+    <div class="spec__body">
     <h2 class="section__title" id="spec-title">Конфигурация</h2>
     <dl class="spec-grid">
       <div><dt>Процессор:</dt><dd>INTEL CORE i5-12400F</dd></div>
@@ -651,6 +658,7 @@ html{scroll-behavior:smooth}
         <li>Замена видеокарты и процессора</li>
         <li>Настроим компьютер под ваши задачи и бюджет</li>
       </ul>
+    </div>
     </div>
   </section>
 </main>
