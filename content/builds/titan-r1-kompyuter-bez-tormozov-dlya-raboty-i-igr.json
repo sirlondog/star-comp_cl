@@ -1,6 +1,6 @@
 {
   "name": "TITAN R1",
-  "subtitle": "",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 5 5600X с видеокартой AMD RADEON RX 9060 8GB",
   "slug": "titan-r1-kompyuter-bez-tormozov-dlya-raboty-i-igr",
   "price": 115000,
   "show_from": true,
@@ -69,5 +69,8 @@
       "value": "OCYPUS GAMMA C52"
     }
   ],
-  "seo": null
+  "seo": {
+    "title": "",
+    "description": ""
+  }
 }
