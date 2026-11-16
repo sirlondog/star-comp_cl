@@ -493,7 +493,7 @@ collections:
         widget: object
         required: false
         collapsed: true
-        hint: 'Если видео нет — оставьте пустым, блок на странице не появится'
+        hint: 'Если видео нет — оставьте пустым, блок на странице не появится. Обложка делается из первого кадра автоматически'
         fields:
           - name: horizontal
             label: Код горизонтального видео
@@ -505,14 +505,6 @@ collections:
             widget: string
             required: false
             hint: 'Показывается на телефоне. Если его нет, будет горизонтальное'
-          - name: cover_h
-            label: Обложка горизонтальная (16:9)
-            widget: image
-            required: false
-          - name: cover_v
-            label: Обложка вертикальная (9:16)
-            widget: image
-            required: false
       - name: lead
         label: Описание сборки
         widget: text
