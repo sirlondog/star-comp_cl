@@ -10,16 +10,10 @@
       },
       "alt": "Компьютер в черном корпусе с деревянной панелью",
       "tag": "",
-      "specs": [
-        {
-          "label": "Процессор",
-          "value": "AMD RYZEN 9 9900X"
-        },
-        {
-          "label": "Видеокарта",
-          "value": "NVIDIA RTX 5070 12GB"
-        }
-      ],
+      "specs": {
+        "cpu": "AMD RYZEN 9 9900X",
+        "gpu": "NVIDIA RTX 5070 12GB"
+      },
       "price_from": 275000,
       "show_from": true,
       "page": "rabochij-kompyuter-golden-v1-amd-ryzen-9-9900x-nvidia-rtx-5070-12gb",
@@ -34,16 +28,10 @@
       },
       "alt": "Компьютер CORONA N6 с желтой подсветкой, черно-желтый корпус аквариум",
       "tag": "",
-      "specs": [
-        {
-          "label": "Процессор",
-          "value": "AMD RYZEN 7 9800X3D"
-        },
-        {
-          "label": "Видеокарта",
-          "value": "NVIDIA RTX 5070 Ti 16GB"
-        }
-      ],
+      "specs": {
+        "cpu": "AMD RYZEN 7 9800X3D",
+        "gpu": "NVIDIA RTX 5070 Ti 16GB"
+      },
       "price_from": 343000,
       "show_from": true,
       "page": "corona-n6-amd-ryzen-7-9800x3d-nvidia-rtx-5080",
@@ -58,16 +46,10 @@
       },
       "alt": "Игровой компьютер в корпусе аквариум с синей подсветкой",
       "tag": "",
-      "specs": [
-        {
-          "label": "Процессор",
-          "value": "AMD RYZEN 5 7500F"
-        },
-        {
-          "label": "Видеокарта",
-          "value": "NVIDIA RTX 5060 Ti 8GB"
-        }
-      ],
+      "specs": {
+        "cpu": "AMD RYZEN 5 7500F",
+        "gpu": "NVIDIA RTX 5060 Ti 8GB"
+      },
       "price_from": 178000,
       "show_from": true,
       "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
@@ -82,16 +64,10 @@
       },
       "alt": "Компьютер в корпусе аквариум с зеленой подсветкой",
       "tag": "",
-      "specs": [
-        {
-          "label": "Процессор",
-          "value": "AMD RYZEN 7 7800X3D"
-        },
-        {
-          "label": "Видеокарта",
-          "value": "NVIDIA RTX 5070 12GB"
-        }
-      ],
+      "specs": {
+        "cpu": "AMD RYZEN 7 7800X3D",
+        "gpu": "NVIDIA RTX 5070 12GB"
+      },
       "price_from": 212000,
       "show_from": true,
       "page": "phantom-f1-amd-ryzen-7-7800x3d-nvidia-rtx-5070-12gb",
@@ -107,16 +83,10 @@
       },
       "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
       "tag": "",
-      "specs": [
-        {
-          "label": "Процессор",
-          "value": "INTEL CORE i7-13700KF"
-        },
-        {
-          "label": "Видеокарта",
-          "value": "NVIDIA RTX 5060 Ti 16GB"
-        }
-      ],
+      "specs": {
+        "cpu": "INTEL CORE i7-13700KF",
+        "gpu": "NVIDIA RTX 5060 Ti 16GB"
+      },
       "price_from": 179000,
       "show_from": true,
       "page": "horizon-x8-kompyuter-dlya-vsekh-sovremennyh-igr",
@@ -132,16 +102,10 @@
       },
       "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
       "tag": "",
-      "specs": [
-        {
-          "label": "Процессор",
-          "value": "AMD RYZEN 5 7500F"
-        },
-        {
-          "label": "Видеокарта",
-          "value": "NVIDIA RTX 5060 8GB"
-        }
-      ],
+      "specs": {
+        "cpu": "AMD RYZEN 5 7500F",
+        "gpu": "NVIDIA RTX 5060 8GB"
+      },
       "price_from": 127000,
       "show_from": true,
       "page": "orion-x1-moshchnyj-igrovoj-kompyuter-dlya-doma",
@@ -157,16 +121,10 @@
       },
       "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
       "tag": "",
-      "specs": [
-        {
-          "label": "Процессор",
-          "value": "AMD RYZEN 5 5600X"
-        },
-        {
-          "label": "Видеокарта",
-          "value": "AMD RADEON RX 9060 8GB"
-        }
-      ],
+      "specs": {
+        "cpu": "AMD RYZEN 5 5600X",
+        "gpu": "AMD RADEON RX 9060 8GB"
+      },
       "price_from": 115000,
       "show_from": true,
       "page": "titan-r1-kompyuter-bez-tormozov-dlya-raboty-i-igr",
@@ -182,16 +140,10 @@
       },
       "alt": "Компьютер в корпусе аквариум с красной подсветкой",
       "tag": "",
-      "specs": [
-        {
-          "label": "Процессор",
-          "value": "INTEL CORE i7-14700KF"
-        },
-        {
-          "label": "Видеокарта",
-          "value": "NVIDIA RTX 5080 16GB"
-        }
-      ],
+      "specs": {
+        "cpu": "INTEL CORE i7-14700KF",
+        "gpu": "NVIDIA RTX 5080 16GB"
+      },
       "price_from": 336000,
       "show_from": true,
       "page": "mars-x8-kompyuter-bez-kompromissov-maksimum-skorosti",

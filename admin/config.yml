@@ -156,18 +156,26 @@ collections:
                 widget: string
                 hint: 'Коротко: «компьютер в чёрном корпусе с деревянной панелью». Нужно поисковикам и незрячим'
               - name: specs
-                label: Комплектующие (кратко)
-                label_singular: строку
-                widget: list
-                summary: '{{label}}: {{value}}'
-                hint: 'Две-три главные строки: Процессор, Видеокарта…'
+                label: Комплектующие
+                widget: object
+                hint: 'Процессор — из «Базы железа» (только процессоры), видеокарта — вручную'
                 fields:
-                  - name: label
-                    label: Что
+                  - name: cpu
+                    label: Процессор
+                    widget: relation
+                    collection: hardware
+                    value_field: model
+                    display_fields: [model, type]
+                    search_fields: [model, type]
+                    filters:
+                      - field: type
+                        values: [Процессор]
+                    required: false
+                    hint: 'Выбор из «Базы железа» — в списке только процессоры'
+                  - name: gpu
+                    label: Видеокарта
                     widget: string
-                  - name: value
-                    label: Модель
-                    widget: string
+                    hint: 'Вписывается вручную: NVIDIA RTX 5060 Ti 8GB …'
               - name: price_from
                 label: Цена от, ₽
                 widget: number

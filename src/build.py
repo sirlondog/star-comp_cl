@@ -338,7 +338,18 @@ def card_html(c,hidden=False):
     stem,ws=card_image(c)
     w0=ws[0]; h0=round(w0*3/4)
     alt=txt(c.get('alt') or c['name'])
-    specs='\n'.join(f'          <div><dt>{esc(s["label"]).rstrip(":")}:</dt><dd>{esc(s["value"])}</dd></div>' for s in c.get('specs') or [])
+    def card_specs(c):
+        sp = c.get('specs')
+        rows = []
+        if isinstance(sp, dict):
+            # новый формат карточек: ровно две строки — процессор и видеокарта
+            if sp.get('cpu'): rows.append(('Процессор', sp['cpu']))
+            if sp.get('gpu'): rows.append(('Видеокарта', sp['gpu']))
+        else:
+            for s in sp or []:
+                if s.get('label') and s.get('value'): rows.append((s['label'], s['value']))
+        return '\n'.join(f'          <div><dt>{esc(l).rstrip(":")}:</dt><dd>{esc(v)}</dd></div>' for l, v in rows)
+    specs = card_specs(c)
     href=esc(c.get('page') or '') or '#podbor'
     extra=' hidden' if hidden else ''
     return f'''      <li class="card"{extra}>
