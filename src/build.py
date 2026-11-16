@@ -168,6 +168,10 @@ for _k,_f,_l in [('telegram','tg-white.svg','Написать в Telegram'),('vk
     _href=_soc.get(_k)
     if _href:
         _tf_social+=f'<a href="{esc(_href)}" target="_blank" rel="noopener" aria-label="{_l}"><img src="assets/footer/{_f}" alt="" loading="lazy" decoding="async"></a>'
+# белые монохромные иконки (как в футере) — для меню
+_social_white_defs=[('max','max-white.svg','Написать в MAX'),('telegram','tg-white.svg','Написать в Telegram'),('vk','vk-white.svg','Группа ВКонтакте')]
+socials_white='\n'.join(f'<a class="social" href="{esc(_soc.get(k,""))}" target="_blank" rel="noopener" aria-label="{label}"><img src="assets/footer/{f}" alt="" loading="lazy" decoding="async"></a>'
+                        for k,f,label in _social_white_defs if _soc.get(k))
 _tf_title=txt(C.get('title') or 'Личная консультация там, где')
 _tf_accent=txt(C.get('title_accent') or '')
 _tf_lead=txt(C.get('lead') or 'Проконсультируем по телефону, в мессенджере или при встрече в мастерской.')
@@ -315,6 +319,9 @@ FILLS={
  '{{LOGO_WORD}}':logo_word,
  '{{SOCIALS}}':socials,
  '{{SOCIALS_MENU}}':socials.replace('mx-','mxm-'),
+ '{{SOCIALS_WHITE}}':socials_white,
+ '{{ADDRESS_FULL}}':txt(S.get('address_full') or 'г. Санкт-Петербург, Заневский пр. 65 к5, 2 этаж.'),
+ '{{MAPS_URL}}':esc(C.get('maps_url') or 'https://yandex.ru/maps/-/CXbR7LiO'),
 }
 def fill_text(x):
     for k,v in FILLS.items(): x=x.replace(k,v)

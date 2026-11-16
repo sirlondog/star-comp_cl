@@ -72,12 +72,12 @@
   <nav>
 {{MENU_LINKS}}
   </nav>
-  <div class="menu__contacts">
-    <a href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a>
-    <span>{{MENU_NOTE}}</span>
-    <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
-  </div>
-  <div class="menu__socials">
-{{SOCIALS_MENU}}
+  <div class="menu__bottom">
+    <a class="menu__phone" href="tel:{{PHONE_TEL}}">{{PHONE_DISPLAY}}</a>
+    <p class="menu__note">{{MENU_NOTE}}</p>
+    <p class="menu__mail">Почта: <a href="mailto:{{EMAIL}}">{{EMAIL}}</a></p>
+    <div class="menu__socials">{{SOCIALS_WHITE}}</div>
+    <p class="menu__address"><b>Адрес:</b> {{ADDRESS_FULL}}</p>
+    <a class="btn" href="{{MAPS_URL}}" target="_blank" rel="noopener">Построить маршрут</a>
   </div>
 </dialog>
