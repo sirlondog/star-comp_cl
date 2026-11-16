@@ -9,7 +9,6 @@
         "zoom": 1.1
       },
       "alt": "Компьютер в черном корпусе с деревянной панелью",
-      "tag": "",
       "specs": {
         "cpu": "AMD RYZEN 9 9900X",
         "gpu": "NVIDIA RTX 5070 12GB"
@@ -17,7 +16,8 @@
       "price_from": 275000,
       "show_from": true,
       "page": "rabochij-kompyuter-golden-v1-amd-ryzen-9-9900x-nvidia-rtx-5070-12gb",
-      "extra": false
+      "extra": false,
+      "tag": ""
     },
     {
       "name": "CORONA N6",
@@ -27,7 +27,6 @@
         "y": 92
       },
       "alt": "Компьютер CORONA N6 с желтой подсветкой, черно-желтый корпус аквариум",
-      "tag": "",
       "specs": {
         "cpu": "AMD RYZEN 7 9800X3D",
         "gpu": "NVIDIA RTX 5070 Ti 16GB"
@@ -35,7 +34,8 @@
       "price_from": 343000,
       "show_from": true,
       "page": "corona-n6-amd-ryzen-7-9800x3d-nvidia-rtx-5080",
-      "extra": false
+      "extra": false,
+      "tag": ""
     },
     {
       "name": "CRYO M1",
@@ -45,7 +45,6 @@
         "y": 76
       },
       "alt": "Игровой компьютер в корпусе аквариум с синей подсветкой",
-      "tag": "",
       "specs": {
         "cpu": "AMD RYZEN 5 7500F",
         "gpu": "NVIDIA RTX 5060 Ti 8GB"
@@ -53,7 +52,8 @@
       "price_from": 178000,
       "show_from": true,
       "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
-      "extra": false
+      "extra": false,
+      "tag": ""
     },
     {
       "name": "PHANTOM F1",
@@ -63,7 +63,6 @@
         "y": 78
       },
       "alt": "Компьютер в корпусе аквариум с зеленой подсветкой",
-      "tag": "",
       "specs": {
         "cpu": "AMD RYZEN 7 7800X3D",
         "gpu": "NVIDIA RTX 5070 12GB"
@@ -71,7 +70,8 @@
       "price_from": 212000,
       "show_from": true,
       "page": "phantom-f1-amd-ryzen-7-7800x3d-nvidia-rtx-5070-12gb",
-      "extra": false
+      "extra": false,
+      "tag": ""
     },
     {
       "name": "HORIZON X8",
@@ -82,7 +82,6 @@
         "zoom": 1
       },
       "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
-      "tag": "",
       "specs": {
         "cpu": "INTEL CORE i7-13700KF",
         "gpu": "NVIDIA RTX 5060 Ti 16GB"
@@ -90,7 +89,8 @@
       "price_from": 179000,
       "show_from": true,
       "page": "horizon-x8-kompyuter-dlya-vsekh-sovremennyh-igr",
-      "extra": false
+      "extra": false,
+      "tag": ""
     },
     {
       "name": "ORION X1",
@@ -101,7 +101,6 @@
         "zoom": 1
       },
       "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
-      "tag": "",
       "specs": {
         "cpu": "AMD RYZEN 5 7500F",
         "gpu": "NVIDIA RTX 5060 8GB"
@@ -109,7 +108,8 @@
       "price_from": 127000,
       "show_from": true,
       "page": "orion-x1-moshchnyj-igrovoj-kompyuter-dlya-doma",
-      "extra": false
+      "extra": false,
+      "tag": ""
     },
     {
       "name": "TITAN R1",
@@ -120,7 +120,6 @@
         "zoom": 1
       },
       "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
-      "tag": "",
       "specs": {
         "cpu": "AMD RYZEN 5 5600X",
         "gpu": "AMD RADEON RX 9060 8GB"
@@ -128,7 +127,8 @@
       "price_from": 115000,
       "show_from": true,
       "page": "titan-r1-kompyuter-bez-tormozov-dlya-raboty-i-igr",
-      "extra": false
+      "extra": false,
+      "tag": ""
     },
     {
       "name": "MARS X8",
@@ -139,7 +139,6 @@
         "zoom": 1
       },
       "alt": "Компьютер в корпусе аквариум с красной подсветкой",
-      "tag": "",
       "specs": {
         "cpu": "INTEL CORE i7-14700KF",
         "gpu": "NVIDIA RTX 5080 16GB"
@@ -147,6 +146,25 @@
       "price_from": 336000,
       "show_from": true,
       "page": "mars-x8-kompyuter-bez-kompromissov-maksimum-skorosti",
+      "extra": false,
+      "tag": ""
+    },
+    {
+      "name": "NEXUS S1",
+      "image": {
+        "path": "/content/photos/nexus-s1/1_4x3_3000px.webp",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i5-14400F",
+        "gpu": "NVIDIA RTX 5060 8GB"
+      },
+      "price_from": 135000,
+      "show_from": true,
+      "page": "nexus-01-bazovyj-minimum-dlya-vsekh-sovremennyh-igr",
       "extra": false
     }
   ]
