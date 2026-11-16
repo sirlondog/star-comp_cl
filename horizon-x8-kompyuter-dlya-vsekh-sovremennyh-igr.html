@@ -418,6 +418,11 @@ html{scroll-behavior:smooth}
   .spec-grid{grid-template-columns:minmax(0,1fr);grid-auto-flow:row;width:50%;gap:.75rem}
   .flex-note{width:50%}
   .flex-note ul{grid-template-columns:minmax(0,1fr)}
+  /* страницы с вертикальным видео: «Конфигурация» — слева плашки, справа видео */
+  .spec--video-v .spec__cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 2.5rem}
+  .spec--video-v .spec__main,.spec--video-v .spec__video{min-width:0}
+  .spec--video-v .spec-grid{width:100%}
+  .spec--video-v .flex-note{width:100%}
   /* страницы с горизонтальным видео: «Конфигурация» в две колонки на всю ширину,
      колонки заполняются сверху вниз, как на Тильде */
   .section--spec--2col .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);grid-auto-flow:column;gap:.75rem 2rem;width:auto}
@@ -509,6 +514,11 @@ html{scroll-behavior:smooth}
 .about .about__video .video{width:100%;max-width:none;border:0;border-radius:0;aspect-ratio:9/16}
 .about .about__video .video iframe{width:calc(100% + 16px);height:calc(100% + 16px);left:-8px;top:-8px}
 .product__note{width:auto;margin-inline:0;margin-top:20px}
+/* страницы с вертикальным видео: видео перенесено в блок «Конфигурация» —
+   над заголовком, во всю ширину экрана, без рамки (плеер подгружается по клику) */
+.spec--video-v .spec__video{margin-inline:calc(50% - 50vw)}
+.spec--video-v .spec__video .video{width:100%;max-width:none;border:0;border-radius:0;aspect-ratio:9/16}
+.spec--video-v .spec__video .video iframe{width:calc(100% + 16px);height:calc(100% + 16px);left:-8px;top:-8px}
 /* заголовок «Конфигурация»: тот же размер и начертание, что у названия, заглавными */
 .section--spec .section__title{-webkit-text-stroke:.018em currentColor}
 }
@@ -610,23 +620,11 @@ html{scroll-behavior:smooth}
       <p class="product__note">Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или&nbsp;подобрать другую конфигурацию, стоимость указана на&nbsp;момент заказа компьютера.</p>
     </div>
   </section>
-  <section class="section section--about wrap section--flush" aria-label="О сборке">
-    <div class="about about--video-v">
-      <div class="about__video">
-        <div class=" video video--vertical" id="video" data-h="7fCPQFvH3mXxsiXP53MgGm" data-v="7fCPQFvH3mXxsiXP53MgGm" data-title="Видео о сборке HORIZON X8" style="background:#0a0a0c url('https://kinescope.io/7fCPQFvH3mXxsiXP53MgGm/poster.jpg') center/cover no-repeat">
-          <button class="video__play" type="button">
-            <picture>
-              
-          <img src="https://kinescope.io/7fCPQFvH3mXxsiXP53MgGm/poster.jpg" alt="Смотреть видео о сборке HORIZON X8" loading="lazy" decoding="async" onerror="this.style.display='none'">
-            </picture>
-            <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.500z"/></svg></span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section section--spec wrap" aria-labelledby="spec-title">
+
+  <section class="section section--spec wrap spec--video-v" aria-labelledby="spec-title">
     <h2 class="section__title" id="spec-title">Конфигурация</h2>
+    <div class="spec__cols">
+      <div class="spec__main">
     <dl class="spec-grid">
       <div><dt>Процессор:</dt><dd>INTEL CORE i7-13700KF</dd></div>
       <div><dt>Видеокарта:</dt><dd>GAINWARD NVIDIA RTX 5060 Ti 16GB</dd></div>
@@ -645,6 +643,21 @@ html{scroll-behavior:smooth}
         <li>Замена видеокарты и процессора</li>
         <li>Настроим компьютер под ваши задачи и бюджет</li>
       </ul>
+    </div>
+      </div>
+      <div class="spec__video">
+      <div class="about__video">
+        <div class=" video video--vertical" id="video" data-h="7fCPQFvH3mXxsiXP53MgGm" data-v="7fCPQFvH3mXxsiXP53MgGm" data-title="Видео о сборке HORIZON X8" style="background:#0a0a0c url('https://kinescope.io/7fCPQFvH3mXxsiXP53MgGm/poster.jpg') center/cover no-repeat">
+          <button class="video__play" type="button">
+            <picture>
+              
+          <img src="https://kinescope.io/7fCPQFvH3mXxsiXP53MgGm/poster.jpg" alt="Смотреть видео о сборке HORIZON X8" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            </picture>
+            <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.500z"/></svg></span>
+          </button>
+        </div>
+      </div>
+      </div>
     </div>
   </section>
 </main>
