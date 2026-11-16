@@ -591,7 +591,7 @@ html{scroll-behavior:smooth}
         <div class="tf-photos">
           <p class="tf-label">Фото нашей мастерской:</p>
           <div class="tf-shop__grid">
-            <img src="content/photos/office/1_9x16.webp" alt="Фото мастерской STAR-COMP" loading="lazy" decoding="async">
+            <img src="assets/office-1_9x16-480.webp" alt="Фото мастерской STAR-COMP" loading="lazy" decoding="async">
             <div class="tf-ph" aria-hidden="true"></div>
             <div class="tf-ph" aria-hidden="true"></div>
           </div>
@@ -789,23 +789,35 @@ html{scroll-behavior:smooth}
     var b = v.querySelector('.video__play');
     if (b) b.remove();
   }
-  window.onKinescopeIframeAPIReady = function (factory) {
-    factory.create('kinescope-slot', {
-      url: 'https://kinescope.io/' + id,
-      behavior: { autoPlay: true, loop: true, muted: true, playsInline: true, preload: 'metadata' }
-    }).then(function (p) {
-      player = p;
-      // на всякий случай даём фрейму право на автоплей (важно для iPhone)
-      var f = v.querySelector('iframe');
-      if (f) f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
-      // как только видео реально играет — обложка убирается (видно замьюченное видео)
-      p.on(p.Events.Playing, function () { playing = true; uncover(); });
-      if (action) { var a = action; action = null; a(); }
-    });
-  };
-  var api = document.createElement('script');
-  api.src = 'https://player.kinescope.io/latest/iframe.player.js';
-  document.head.appendChild(api);
+  function boot() {
+    // плеер и его скрипты грузятся только когда блок видео приближается к экрану —
+    // иначе на телефоне плеер и видеопоток конкурируют с картинками за интернет
+    window.onKinescopeIframeAPIReady = function (factory) {
+      factory.create('kinescope-slot', {
+        url: 'https://kinescope.io/' + id,
+        behavior: { autoPlay: true, loop: true, muted: true, playsInline: true, preload: 'metadata' }
+      }).then(function (p) {
+        player = p;
+        // на всякий случай даём фрейму право на автоплей (важно для iPhone)
+        var f = v.querySelector('iframe');
+        if (f) f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+        // как только видео реально играет — обложка убирается (видно замьюченное видео)
+        p.on(p.Events.Playing, function () { playing = true; uncover(); });
+        if (action) { var a = action; action = null; a(); }
+      });
+    };
+    var api = document.createElement('script');
+    api.src = 'https://player.kinescope.io/latest/iframe.player.js';
+    document.head.appendChild(api);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); boot(); }
+    }, { rootMargin: '400px' });
+    io.observe(v);
+  } else {
+    boot();
+  }
 
   function command(fn) {
     if (player) fn();

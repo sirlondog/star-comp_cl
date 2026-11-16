@@ -155,7 +155,10 @@ _tf_ph=[str(p).strip().lstrip('/') for p in _tf_ph if p and str(p).strip()]
 _tf_cells=''
 for _n in range(3):
     if _n<len(_tf_ph):
-        _tf_cells+=f'\n            <img src="{esc(_tf_ph[_n])}" alt="Фото мастерской STAR-COMP" loading="lazy" decoding="async">'
+        # фото нарезается как все: маленькая ячейка не должна тянуть 300КБ оригинал
+        _stem,_ws=derive(_tf_ph[_n],[240,480],9/16)
+        _src=f'assets/{_stem}-{_ws[-1]}.webp'
+        _tf_cells+=f'\n            <img src="{esc(_src)}" alt="Фото мастерской STAR-COMP" loading="lazy" decoding="async">'
     else:
         _tf_cells+='\n            <div class="tf-ph" aria-hidden="true"></div>'
 _tf_embed=(C.get('map_embed') or '').strip()

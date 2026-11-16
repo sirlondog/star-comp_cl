@@ -123,23 +123,35 @@
     var b = v.querySelector('.video__play');
     if (b) b.remove();
   }
-  window.onKinescopeIframeAPIReady = function (factory) {
-    factory.create('kinescope-slot', {
-      url: 'https://kinescope.io/' + id,
-      behavior: { autoPlay: true, loop: true, muted: true, playsInline: true, preload: 'metadata' }
-    }).then(function (p) {
-      player = p;
-      // на всякий случай даём фрейму право на автоплей (важно для iPhone)
-      var f = v.querySelector('iframe');
-      if (f) f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
-      // как только видео реально играет — обложка убирается (видно замьюченное видео)
-      p.on(p.Events.Playing, function () { playing = true; uncover(); });
-      if (action) { var a = action; action = null; a(); }
-    });
-  };
-  var api = document.createElement('script');
-  api.src = 'https://player.kinescope.io/latest/iframe.player.js';
-  document.head.appendChild(api);
+  function boot() {
+    // плеер и его скрипты грузятся только когда блок видео приближается к экрану —
+    // иначе на телефоне плеер и видеопоток конкурируют с картинками за интернет
+    window.onKinescopeIframeAPIReady = function (factory) {
+      factory.create('kinescope-slot', {
+        url: 'https://kinescope.io/' + id,
+        behavior: { autoPlay: true, loop: true, muted: true, playsInline: true, preload: 'metadata' }
+      }).then(function (p) {
+        player = p;
+        // на всякий случай даём фрейму право на автоплей (важно для iPhone)
+        var f = v.querySelector('iframe');
+        if (f) f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+        // как только видео реально играет — обложка убирается (видно замьюченное видео)
+        p.on(p.Events.Playing, function () { playing = true; uncover(); });
+        if (action) { var a = action; action = null; a(); }
+      });
+    };
+    var api = document.createElement('script');
+    api.src = 'https://player.kinescope.io/latest/iframe.player.js';
+    document.head.appendChild(api);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); boot(); }
+    }, { rootMargin: '400px' });
+    io.observe(v);
+  } else {
+    boot();
+  }
 
   function command(fn) {
     if (player) fn();
