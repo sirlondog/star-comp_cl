@@ -1,0 +1,80 @@
+{
+  "name": "NEXUS S1",
+  "subtitle": "игровой компьютер на процессоре INTEL CORE i5-14400F с видеокартой NVIDIA RTX 5060 8GB",
+  "slug": "nexus-01-bazovyj-minimum-dlya-vsekh-sovremennyh-igr",
+  "price": 135000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/nexus-s1/1_4x3_3000px.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/nexus-s1/2_4x3_3000px.webp",
+      "alt": "Система охлаждения процессора"
+    },
+    {
+      "image": "/content/photos/nexus-s1/3_4x3_3000px.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/nexus-s1/4_4x3_3000px.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/nexus-s1/5_4x3_3000px.webp",
+      "alt": "Корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/nexus-s1/6_4x3_3000px.webp",
+      "alt": "Материнская плата"
+    }
+  ],
+  "video": {
+    "horizontal": "",
+    "vertical": "https://kinescope.io/4nsz8tTex97annS7B2ZkMM",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "INTEL CORE i5-14400F"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "NVIDIA RTX 5060 8GB PALIT DUAL"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "B760M MSI GAMING PLUS WIFI"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "16GB DDR4 KINGSTON FURY BEAST"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 500GB GIGABYTE 2500E"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL PF700X 700W 80+ BRONZE"
+    },
+    {
+      "label": "Охлаждение",
+      "value": "DEEPCOOL AG400"
+    },
+    {
+      "label": "Корпус",
+      "value": "LIAN LI VECTOR V100 MINI"
+    }
+  ],
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
