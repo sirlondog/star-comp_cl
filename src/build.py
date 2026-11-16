@@ -398,7 +398,7 @@ full=f'''<!doctype html>
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://star-comp.ru/assets/og-home.jpg">
-<meta name="theme-color" content="#15171c">
+<meta name="theme-color" content="#0a0a0c">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <script type="application/ld+json">{ld.replace('</','<\\/')}</script>
@@ -478,7 +478,7 @@ def video_html(d):
         poster=f"https://kinescope.io/{(h_id or v_id)}/poster.jpg"
         cover=(f'\n          <img src="{poster}" alt="Смотреть видео о сборке {name}" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">')
     return f"""      <div class="about__video">
-        <div class="{cls}" id="video" data-h="{esc(h_id or v_id)}" data-v="{esc(v_id or h_id)}" data-title="Видео о сборке {name}" style="background:#000 url('{poster}') center/cover no-repeat">
+        <div class="{cls}" id="video" data-h="{esc(h_id or v_id)}" data-v="{esc(v_id or h_id)}" data-title="Видео о сборке {name}" style="background:#0a0a0c url('{poster}') center/cover no-repeat">
           <button class="video__play" type="button">
             <picture>
               {cover}
@@ -570,7 +570,7 @@ def page_html(d):
 <meta property="og:type" content="product">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://star-comp.ru/{og}">
-<meta name="theme-color" content="#15171c">
+<meta name="theme-color" content="#0a0a0c">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <script type="application/ld+json">{json.dumps(ld,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')}</script>
