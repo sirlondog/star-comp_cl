@@ -38,9 +38,9 @@ img{max-width:100%}
   --pink:#ff28b4;
   --font:Gilroy,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   /* Шкала шрифтов: 4 размера — 16, 20, 24 и 38px. Меньше 16px на сайте ничего нет. */
-  --fs-h:clamp(2.125rem,1.5rem + 1.6vw,2.375rem); /* 34–38px: заголовки блоков, цифры */
+  --fs-h:2.125rem;                                 /* 34px на мобильном, 38px на десктопе: заголовки блоков, цифры */
   --fs-h3:1.5rem;                                  /* 24px: названия сборок, цены */
-  --fs-l:clamp(1.125rem,1.05rem + .35vw,1.25rem);  /* 18–20px: подзаголовки, кнопки, меню */
+  --fs-l:1.125rem;                                 /* 18px на мобильном, 20px на десктопе: подзаголовки, кнопки, меню */
   --fs-m:1rem;                                     /* 16px: основной текст и подписи */
   --container:72.5rem;
   --gutter:max(1rem,env(safe-area-inset-left,0px));
@@ -124,7 +124,7 @@ ul{list-style:none}
   .menu nav a:hover,.header__phone a:hover,.note a:hover{color:var(--cyan)}
 }
 @media (min-width:64rem){
-  :root{--gutter:max(1.5rem,env(safe-area-inset-left,0px));--gutter-r:max(1.5rem,env(safe-area-inset-right,0px))}
+  :root{--gutter:max(1.5rem,env(safe-area-inset-left,0px));--gutter-r:max(1.5rem,env(safe-area-inset-right,0px));--fs-h:2.375rem;--fs-l:1.25rem}
   .header{top:2%}
   /* первый экран: смещение шапки 2% + 60px пилюля + 40px зазор */
   .hero{padding-top:calc(2vh + 100px)}
@@ -400,7 +400,7 @@ html{scroll-behavior:smooth}
      не перекрывалось шапкой на невысоких экранах; текст от левого края, шаг 30px */
   /* на экранах уже 1280px колонка уже 380px: блок сужается вместе с ней, название чуть мельче */
   .product__info{display:flex;flex-direction:column;justify-content:center;padding:81px 1.25rem 0;text-align:left}
-  .product__info h1{margin-top:0;margin-inline:auto;width:min(380px,100%);font-size:clamp(44px,4.45vw,57px);line-height:1.21;font-weight:600;-webkit-text-stroke:.018em currentColor}
+  .product__info h1{margin-top:0;margin-inline:auto;width:min(380px,100%);font-size:57px;line-height:1.21;font-weight:600;-webkit-text-stroke:.018em currentColor}
   .product__info h1 span{margin-inline:0;max-width:380px;text-align:left}
   .product__cost{width:min(380px,100%);margin-inline:auto;align-items:flex-start;text-align:left;margin-top:20px}
   .product__label{margin-top:0;font-size:19px;line-height:1.16;color:#808080}

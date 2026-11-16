@@ -37,9 +37,9 @@
   --pink:#ff28b4;
   --font:Gilroy,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   /* Шкала шрифтов: 4 размера — 16, 20, 24 и 38px. Меньше 16px на сайте ничего нет. */
-  --fs-h:clamp(2.125rem,1.5rem + 1.6vw,2.375rem); /* 34–38px: заголовки блоков, цифры */
+  --fs-h:2.125rem;                                 /* 34px на мобильном, 38px на десктопе: заголовки блоков, цифры */
   --fs-h3:1.5rem;                                  /* 24px: названия сборок, цены */
-  --fs-l:clamp(1.125rem,1.05rem + .35vw,1.25rem);  /* 18–20px: подзаголовки, кнопки, меню */
+  --fs-l:1.125rem;                                 /* 18px на мобильном, 20px на десктопе: подзаголовки, кнопки, меню */
   --fs-m:1rem;                                     /* 16px: основной текст и подписи */
   --container:72.5rem;
   --gutter:max(1rem,env(safe-area-inset-left,0px));
@@ -123,7 +123,7 @@ ul{list-style:none}
   .menu nav a:hover,.header__phone a:hover,.note a:hover{color:var(--cyan)}
 }
 @media (min-width:64rem){
-  :root{--gutter:max(1.5rem,env(safe-area-inset-left,0px));--gutter-r:max(1.5rem,env(safe-area-inset-right,0px))}
+  :root{--gutter:max(1.5rem,env(safe-area-inset-left,0px));--gutter-r:max(1.5rem,env(safe-area-inset-right,0px));--fs-h:2.375rem;--fs-l:1.25rem}
   .header{top:2%}
   /* первый экран: смещение шапки 2% + 60px пилюля + 40px зазор */
   .hero{padding-top:calc(2vh + 100px)}

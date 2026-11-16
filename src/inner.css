@@ -114,7 +114,7 @@
      не перекрывалось шапкой на невысоких экранах; текст от левого края, шаг 30px */
   /* на экранах уже 1280px колонка уже 380px: блок сужается вместе с ней, название чуть мельче */
   .product__info{display:flex;flex-direction:column;justify-content:center;padding:81px 1.25rem 0;text-align:left}
-  .product__info h1{margin-top:0;margin-inline:auto;width:min(380px,100%);font-size:clamp(44px,4.45vw,57px);line-height:1.21;font-weight:600;-webkit-text-stroke:.018em currentColor}
+  .product__info h1{margin-top:0;margin-inline:auto;width:min(380px,100%);font-size:57px;line-height:1.21;font-weight:600;-webkit-text-stroke:.018em currentColor}
   .product__info h1 span{margin-inline:0;max-width:380px;text-align:left}
   .product__cost{width:min(380px,100%);margin-inline:auto;align-items:flex-start;text-align:left;margin-top:20px}
   .product__label{margin-top:0;font-size:19px;line-height:1.16;color:#808080}
