@@ -275,6 +275,24 @@
       "show_from": true,
       "page": "volt-z11-topovoe-zhelezo-v-panoramnom-korpuse",
       "extra": true
+    },
+    {
+      "name": "№13392",
+      "image": {
+        "path": "/content/photos/13392/13392_1.webp",
+        "x": 52,
+        "y": 83,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум сжелтой подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 7 9800X3D",
+        "gpu": "NVIDIA RTX 5080 16GB"
+      },
+      "price_from": 314000,
+      "show_from": true,
+      "page": "sborka-13392-amd-ryzen-9-900x3d-rtx-5080",
+      "extra": true
     }
   ]
 }

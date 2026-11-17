@@ -1,0 +1,76 @@
+{
+  "name": "№13392",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 9 9900X3D с видеокартой NVIDIA RTX 5080 16GB",
+  "slug": "sborka-13392-amd-ryzen-9-900x3d-rtx-5080",
+  "price": 314000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/13392/13392_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/13392/13392_2.webp",
+      "alt": "Система охлаждения компьютера с дисплеем"
+    },
+    {
+      "image": "/content/photos/13392/13392_4.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/13392/13392_3.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/13392/13392_5.webp",
+      "alt": "Корпусные вентиляторы"
+    }
+  ],
+  "video": {
+    "horizontal": "",
+    "vertical": "https://kinescope.io/61EEhz4TA73ontzg318UDq",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "AMD RYZEN 9 9900X3D"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "NVIDIA RTX 5080 16GB GIGABYTE WINDFORCE"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "X870 MSI GAMING PLUS WIFI"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "32GB DDR5 G.SKILL TRIDENT Z RGB"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 2000GB KINGSON NV3"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL PQ850G 850W 80+ GOLD"
+    },
+    {
+      "label": "Охлаждение",
+      "value": "DEEPCOOL LT360 VISION"
+    },
+    {
+      "label": "Корпус",
+      "value": "GEOMETRIC FUTURE MODEL 3"
+    }
+  ],
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
