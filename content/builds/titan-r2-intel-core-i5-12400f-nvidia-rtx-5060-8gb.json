@@ -1,0 +1,80 @@
+{
+  "name": "TITAN R2",
+  "subtitle": "игровой компьютер на процессоре INTEL CORE i5-12400F с видеокартой NVIDIA RTX 5060 8GB",
+  "slug": "titan-r2-intel-core-i5-12400f-nvidia-rtx-5060-8gb",
+  "price": 124000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/titan-r2/titan-r2_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/titan-r2/titan-r2_2.webp",
+      "alt": "Корпусные вентиляторы компьютера"
+    },
+    {
+      "image": "/content/photos/titan-r2/titan-r2_3.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/titan-r2/titan-r2_4.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/titan-r2/titan-r2_5.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/titan-r2/titan-r2_6.webp",
+      "alt": "Видеокарта в другом ракурсе"
+    }
+  ],
+  "video": {
+    "horizontal": "",
+    "vertical": "https://kinescope.io/asqRinY5uQa98kMzEsciZm",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "INTEL CORE i5-12400F"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "NVIDIA RTX 5060 8GB ZOTAC TWIN EDGE"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "MSI H610M-G PRO"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "16GB DDR4 NETAC SHADOW III"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 500GB NETAC NV3000"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL PF700X 700W 80+ BRONZE"
+    },
+    {
+      "label": "Охлаждение",
+      "value": "DEEPCOOL AG400"
+    },
+    {
+      "label": "Корпус",
+      "value": "OCYPUS GAMMA C52"
+    }
+  ],
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
