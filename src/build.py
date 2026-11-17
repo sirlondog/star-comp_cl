@@ -516,8 +516,8 @@ full=f'''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <script type="application/ld+json">{ld.replace('</','<\\/')}</script>
-<link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/manrope-var-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/manrope-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/style.css?v={_STAMP}">
 </head>
 <body>
@@ -723,8 +723,8 @@ def page_html(d):
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <script type="application/ld+json">{json.dumps(ld,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')}</script>
-<link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/manrope-var-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/manrope-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/inner.css?v={_STAMP}">
 </head>
 <body>
@@ -780,7 +780,7 @@ print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js
 
 # ---------- чистка assets: удаляем файлы, на которые не ссылается ни одна страница ----------
 # Сюда попадают дубли после переименования фото и нарезки, потерявшие актуальность.
-_STATIC={'favicon.svg','icon-192.png','og-home.jpg','gilroy-regular.woff2','gilroy-semibold.woff2',
+_STATIC={'favicon.svg','icon-192.png','og-home.jpg','manrope-var-cyrillic.woff2','manrope-var-latin.woff2',
          'split-logo.svg','style.css','page.js','inner.css','inner.js',
          # готовые файлы, которые сборщик не создаёт: фото первого экрана и аватарки отзывов
          'hero-600.avif','hero-800.avif','hero-1000.avif','hero-600.webp','hero-800.webp','hero-1000.webp'}
