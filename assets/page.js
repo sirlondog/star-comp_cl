@@ -67,3 +67,33 @@
     if (dlg.open && (e.target === dlg || e.target.closest('.split-info .menu__close'))) dlg.close();
   });
 })();
+
+// Бейджи-фильтры «AMD/INTEL» над карточками на главной: нажатие показывает только
+// сборки на выбранном процессоре, повторное нажатие (или клик по другому бейджу)
+// сбрасывает фильтр. После сброса список возвращается к виду «как при заходе»:
+// видны первые 8 карточек, остальные под кнопкой «Показать ещё».
+(function () {
+  var wrap = document.getElementById('cpu-filters');
+  if (!wrap) return;
+  var buttons = wrap.querySelectorAll('.filters__btn');
+  var cards = document.querySelectorAll('#cards > li');
+  var moreWrap = document.getElementById('cards-more-wrap');
+  var reset = function () {
+    for (var i = 0; i < cards.length; i++) cards[i].hidden = cards[i].classList.contains('card--extra');
+    if (moreWrap) moreWrap.hidden = false;
+  };
+  wrap.addEventListener('click', function (e) {
+    var b = e.target.closest('.filters__btn');
+    if (!b) return;
+    var wasOn = b.getAttribute('aria-pressed') === 'true';
+    for (var i = 0; i < buttons.length; i++) buttons[i].setAttribute('aria-pressed', 'false');
+    if (wasOn) { reset(); return; }
+    b.setAttribute('aria-pressed', 'true');
+    var cpu = (b.dataset.cpu || '').toUpperCase();
+    for (var j = 0; j < cards.length; j++) {
+      var c = cards[j];
+      c.hidden = (c.dataset.cpu || '').toUpperCase() !== cpu;
+    }
+    if (moreWrap) moreWrap.hidden = true;
+  });
+})();

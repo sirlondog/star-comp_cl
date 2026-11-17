@@ -82,6 +82,19 @@ def typo(x):
     return x
 def txt(x): return typo(esc(x))
 def money(n): return f'{int(n):,}'.replace(',','&nbsp;')+'&nbsp;₽'
+
+# бейджи-фильтры по процессору (AMD/INTEL) над карточками на главной:
+# показываются, только если у сборок встречается больше одного бренда
+_brands=[]
+for _c in _cards:
+    _sp=_c.get('specs')
+    _cpu=(_sp.get('cpu') if isinstance(_sp,dict) else '') or ''
+    _b=_cpu.split()[0].upper() if _cpu else ''
+    if _b and _b not in _brands: _brands.append(_b)
+_cpu_filters=('' if len(_brands)<2 else
+    '<div class="filters" id="cpu-filters" aria-label="Фильтр по процессору">'
+    +''.join(f'<button class="filters__btn" type="button" data-cpu="{esc(b)}" aria-pressed="false">{esc(b)}</button>' for b in _brands)
+    +'</div>')
 def money_tr(n):
     """Цена в тысячах рублей, как на старом сайте: 348 т.р."""
     t=n/1000
@@ -110,8 +123,8 @@ def derive(src,widths,ratio):
         im=ImageOps.exif_transpose(Image.open(path)).convert('RGB')
         for w in todo:
             t=ImageOps.fit(im,(w,round(w/ratio)),Image.LANCZOS)
-            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=85,method=6)
-            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=75)
+            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=95,method=6)
+            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=80)
     return stem,ws
 
 def focal_derive(src,widths,ratio,focal,zoom=1):
@@ -395,6 +408,12 @@ CARD_SIZES='(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 102
 ARROW_L='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>'
 ARROW_R='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg>'
 
+def card_cpu(c):
+    """Бренд процессора карточки (AMD/INTEL) — для бейджей-фильтров и атрибута data-cpu."""
+    sp=c.get('specs')
+    cpu=(sp.get('cpu') if isinstance(sp,dict) else '') or ''
+    return cpu.split()[0].upper() if cpu else ''
+
 def card_html(c,hidden=False):
     """Одна карточка конфигурации для главной и для блока «Другие конфигурации»."""
     name=esc(c['name'])
@@ -414,11 +433,13 @@ def card_html(c,hidden=False):
         return '\n'.join(f'          <div><dt>{esc(l).rstrip(":")}:</dt><dd>{esc(v)}</dd></div>' for l, v in rows)
     specs = card_specs(c)
     href=esc(c.get('page') or '') or '#podbor'
-    extra=' hidden' if hidden else ''
+    hidden_cls=' card--extra' if hidden else ''   # метка для «Показать ещё» и фильтра
+    hidden_attr=' hidden' if hidden else ''
     # Яндекс Сплит: максимальный срок — 24 месяца. Платёж в месяц = цена / 24,
     # округляем вверх до сотен, чтобы суммы выглядели аккуратно.
     _split=((c['price_from']+2399)//2400)*100
-    return f'''      <li class="card"{extra}>
+    _cpu=f' data-cpu="{esc(card_cpu(c))}"' if card_cpu(c) else ''
+    return f'''      <li class="card{hidden_cls}"{hidden_attr}{_cpu}>
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="{srcset(stem,ws,'avif')}" sizes="{CARD_SIZES}">
@@ -475,7 +496,7 @@ def stock_section_html():
 
 # ---------- главная страница ----------
 ld=json.dumps({"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":esc(S.get('phone_schema') or '+7-993-984-55-05'),"email":esc(S.get('email') or 'info@star-comp.ru'),"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":esc(S.get('address_full') or 'Заневский пр., 65 к5, 2 этаж'),"addressCountry":"RU"},"openingHours":esc(S.get('opening_hours_schema') or 'Mo-Su 11:00-19:00'),"sameAs":[v for v in (_soc.get('vk'),_soc.get('telegram')) if v]},ensure_ascii=False,separators=(',',':'))
-body=fill_text(_body).replace('{{MENU_LINKS}}',menu_links_html(False))
+body=fill_text(_body).replace('{{CPU_FILTERS}}',_cpu_filters).replace('{{MENU_LINKS}}',menu_links_html(False))
 full=f'''<!doctype html>
 <html lang="ru">
 <head>

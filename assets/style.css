@@ -127,6 +127,12 @@ ul{list-style:none}
   *{animation:none!important;transition:none!important}
 }
 
+/* Бейджи-фильтры по процессору над карточками */
+.filters{display:flex;flex-wrap:wrap;gap:.625rem;margin-top:1.25rem}
+.filters__btn{padding:.5rem 1.25rem;border:1px solid var(--line);border-radius:62.5rem;background:none;color:var(--muted);font:400 var(--fs-m)/1.2 var(--font);cursor:pointer;transition:color .2s,border-color .2s,background-color .2s}
+.filters__btn[aria-pressed="true"]{border-color:var(--cyan);color:var(--cyan);background:rgba(0,217,255,.08)}
+@media(hover:hover){.filters__btn:hover{border-color:var(--cyan);color:var(--cyan)}}
+
 /* ---------- Популярные конфигурации ---------- */
 .section{padding-block:2.5rem 4rem}
 .section__title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}

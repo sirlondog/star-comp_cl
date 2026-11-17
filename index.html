@@ -19,7 +19,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":"+7-993-984-55-05","email":"info@star-comp.ru","address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":"Санкт-Петербург, Заневский пр., 65к5, ТЦ Платформа, 2 этаж","addressCountry":"RU"},"openingHours":"Mo-Su 11:00-19:00","sameAs":["https://vk.com/star_comp_spb","https://t.me/ST_COMP"]}</script>
 <link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/style.css?v=202611172312">
+<link rel="stylesheet" href="assets/style.css?v=202611172319">
 </head>
 <body>
 <header class="header">
@@ -95,8 +95,9 @@
   <section class="section wrap" id="konfiguracii" aria-labelledby="cfg-title">
     <h2 class="section__title" id="cfg-title">Последние проекты нашей <em>мастерской</em></h2>
     <p class="section__lead">Аккуратная сборка и&nbsp;внимание к&nbsp;каждой детали, стоимость указана на&nbsp;момент заказа компьютера.</p>
+<div class="filters" id="cpu-filters" aria-label="Фильтр по процессору"><button class="filters__btn" type="button" data-cpu="AMD" aria-pressed="false">AMD</button><button class="filters__btn" type="button" data-cpu="INTEL" aria-pressed="false">INTEL</button></div>
     <ul class="cards" id="cards">
-      <li class="card">
+      <li class="card" data-cpu="AMD">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/15819_golden_v1-15819_golden_v1_1-f52x62z11-480.avif 480w, assets/15819_golden_v1-15819_golden_v1_1-f52x62z11-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -121,7 +122,7 @@
           </div>
         </div>
       </li>
-      <li class="card">
+      <li class="card" data-cpu="AMD">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/15790_sale_corona_n6-15790_sale_corona_n6_1-f51x92-480.avif 480w, assets/15790_sale_corona_n6-15790_sale_corona_n6_1-f51x92-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -146,7 +147,7 @@
           </div>
         </div>
       </li>
-      <li class="card">
+      <li class="card" data-cpu="AMD">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/06.11.2026_15805_cryo_m1-06_11_2026_15805_cryo_m1_1-f48x76-480.avif 480w, assets/06.11.2026_15805_cryo_m1-06_11_2026_15805_cryo_m1_1-f48x76-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -171,7 +172,7 @@
           </div>
         </div>
       </li>
-      <li class="card">
+      <li class="card" data-cpu="AMD">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/15820_phantom_f1-15820_phantom_f1_1-f52x78-480.avif 480w, assets/15820_phantom_f1-15820_phantom_f1_1-f52x78-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -196,7 +197,7 @@
           </div>
         </div>
       </li>
-      <li class="card">
+      <li class="card" data-cpu="INTEL">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/25.09.2026_15707_horizon_x8-25_09_2026_15707_horizon_x8_1-f50x50-480.avif 480w, assets/25.09.2026_15707_horizon_x8-25_09_2026_15707_horizon_x8_1-f50x50-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -221,7 +222,7 @@
           </div>
         </div>
       </li>
-      <li class="card">
+      <li class="card" data-cpu="AMD">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/titan-r1-titan-r1_1-f50x50-480.avif 480w, assets/titan-r1-titan-r1_1-f50x50-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -246,7 +247,7 @@
           </div>
         </div>
       </li>
-      <li class="card">
+      <li class="card" data-cpu="INTEL">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/nexus-s1-nexus-s1_1-f50x50-480.avif 480w, assets/nexus-s1-nexus-s1_1-f50x50-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -271,7 +272,7 @@
           </div>
         </div>
       </li>
-      <li class="card">
+      <li class="card" data-cpu="AMD">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/core-r1-core-r1_1-f50x50-480.avif 480w, assets/core-r1-core-r1_1-f50x50-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -296,7 +297,7 @@
           </div>
         </div>
       </li>
-      <li class="card" hidden>
+      <li class="card card--extra" hidden data-cpu="INTEL">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/mars_x8-mars_x8_1-f55x97-480.avif 480w, assets/mars_x8-mars_x8_1-f55x97-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -321,7 +322,7 @@
           </div>
         </div>
       </li>
-      <li class="card" hidden>
+      <li class="card card--extra" hidden data-cpu="INTEL">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/titan-r2-titan-r2_1-f57x84-480.avif 480w, assets/titan-r2-titan-r2_1-f57x84-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -346,7 +347,7 @@
           </div>
         </div>
       </li>
-      <li class="card" hidden>
+      <li class="card card--extra" hidden data-cpu="AMD">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/orion_x1-orion_x1_1-f50x50-480.avif 480w, assets/orion_x1-orion_x1_1-f50x50-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -371,7 +372,7 @@
           </div>
         </div>
       </li>
-      <li class="card" hidden>
+      <li class="card card--extra" hidden data-cpu="AMD">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/titan-r3-titan-r3_1-f50x50-480.avif 480w, assets/titan-r3-titan-r3_1-f50x50-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -396,7 +397,7 @@
           </div>
         </div>
       </li>
-      <li class="card" hidden>
+      <li class="card card--extra" hidden data-cpu="INTEL">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/mars-x9-mars-x9_1-f51x66-480.avif 480w, assets/mars-x9-mars-x9_1-f51x66-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -421,7 +422,7 @@
           </div>
         </div>
       </li>
-      <li class="card" hidden>
+      <li class="card card--extra" hidden data-cpu="AMD">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/aurora-g2-aurora-g2_1-f50x50-480.avif 480w, assets/aurora-g2-aurora-g2_1-f50x50-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -446,7 +447,7 @@
           </div>
         </div>
       </li>
-      <li class="card" hidden>
+      <li class="card card--extra" hidden data-cpu="AMD">
         <div class="card__media">
           <picture>
             <source type="image/avif" srcset="assets/volt-z11-volt-z11_1-f56x71-480.avif 480w, assets/volt-z11-volt-z11_1-f56x71-960.avif 960w" sizes="(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)">
@@ -623,6 +624,6 @@
   <p>Для уточнения условия, <a href="tel:+79939845505">свяжитесь с&nbsp;нами</a> — расскажем подробнее об&nbsp;условиях.</p>
 </dialog>
 
-<script src="assets/page.js?v=202611172312"></script>
+<script src="assets/page.js?v=202611172319"></script>
 </body>
 </html>
