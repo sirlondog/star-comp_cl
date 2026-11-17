@@ -420,10 +420,10 @@ def card_html(c,hidden=False):
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></p>
             <a class="card__go" href="{href}" aria-label="Открыть страницу: {name}"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от {money(_split)} в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>'''
 

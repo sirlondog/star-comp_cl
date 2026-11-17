@@ -170,8 +170,20 @@ ul{list-style:none}
 .card__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-top:auto;padding-top:.375rem}
 .card__price{display:flex;flex-direction:column}
 .card__price b{font-weight:600;font-size:var(--fs-h3);line-height:1.25;font-variant-numeric:lining-nums}
-.card__split{display:flex;align-items:center;gap:.5rem;margin:-.375rem 0 0;color:var(--muted);font-size:var(--fs-m);line-height:1.3}
-.card__split-badge{flex:none;width:2.75rem;height:1.25rem;text-rendering:optimizeLegibility}
+.card__split{position:relative;z-index:1;display:flex;align-items:center;gap:.5rem;margin:-.375rem 0 0;padding:0;background:none;border:0;color:var(--cyan);font:inherit;font-size:var(--fs-m);line-height:1.3;text-align:left;cursor:pointer}
+.card__split span{text-decoration:underline dotted;text-underline-offset:.25em;text-decoration-thickness:1px}
+.card__split:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:.5rem}
+@media(hover:hover){.card__split:hover span{text-decoration-style:solid}}
+.card__split-badge{flex:none;width:1.375rem;height:1.375rem}
+
+.split-info{box-sizing:border-box;width:min(calc(100vw - 2rem),32rem);max-height:calc(100vh - 2rem);margin:1rem auto;padding:2rem;border:1px solid var(--line);border-radius:1.25rem;background:#0a0a0c;color:var(--fg);overflow-y:auto}
+.split-info:not([open]){display:none}
+.split-info::backdrop{background:rgba(0,0,0,.6)}
+.split-info[open]{animation:menu-in .25s ease-out}
+.split-info h2{margin:1.25rem 0 0;font-weight:600;font-size:var(--fs-h3);line-height:1.2}
+.split-info ul{display:grid;gap:.5rem;margin:1rem 0 0;padding-left:1.125rem;font-size:var(--fs-m);line-height:1.45}
+.split-info p{margin:1rem 0 0;font-size:var(--fs-m);line-height:1.45;color:var(--muted)}
+.split-info a{color:var(--cyan);text-decoration:underline;text-underline-offset:.2em}
 .card__go{flex:none;display:grid;place-items:center;width:3rem;height:3rem;border-radius:50%;background:var(--cyan);box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:transform .2s;text-decoration:none}
 .card__go svg{width:1.25rem;height:1.25rem;fill:none;stroke:#0a0a0c;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media (hover:hover){
@@ -435,10 +447,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;275&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="rabochij-kompyuter-golden-v1-amd-ryzen-9-9900x-nvidia-rtx-5070-12gb" aria-label="Открыть страницу: GOLDEN V1"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 11&nbsp;500&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card">
@@ -458,10 +470,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;343&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="corona-n6-amd-ryzen-7-9800x3d-nvidia-rtx-5080" aria-label="Открыть страницу: CORONA N6"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 14&nbsp;300&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card">
@@ -481,10 +493,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;178&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb" aria-label="Открыть страницу: CRYO M1"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 7&nbsp;500&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card">
@@ -504,10 +516,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;212&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="phantom-f1-amd-ryzen-7-7800x3d-nvidia-rtx-5070-12gb" aria-label="Открыть страницу: PHANTOM F1"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 8&nbsp;900&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card">
@@ -527,10 +539,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;179&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="horizon-x8-kompyuter-dlya-vsekh-sovremennyh-igr" aria-label="Открыть страницу: HORIZON X8"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 7&nbsp;500&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card">
@@ -550,10 +562,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;115&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="titan-r1-kompyuter-bez-tormozov-dlya-raboty-i-igr" aria-label="Открыть страницу: TITAN R1"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 4&nbsp;800&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card">
@@ -573,10 +585,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;135&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="nexus-01-bazovyj-minimum-dlya-vsekh-sovremennyh-igr" aria-label="Открыть страницу: NEXUS S1"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 5&nbsp;700&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card">
@@ -596,10 +608,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;264&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="core-01-moshch-v-miniatyure" aria-label="Открыть страницу: CORE R1"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 11&nbsp;000&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card" hidden>
@@ -619,10 +631,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;336&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="mars-x8-kompyuter-bez-kompromissov-maksimum-skorosti" aria-label="Открыть страницу: MARS X8"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 14&nbsp;000&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card" hidden>
@@ -642,10 +654,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;124&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="titan-r2-intel-core-i5-12400f-nvidia-rtx-5060-8gb" aria-label="Открыть страницу: TITAN R2"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 5&nbsp;200&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card" hidden>
@@ -665,10 +677,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;127&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="orion-x1-moshchnyj-igrovoj-kompyuter-dlya-doma" aria-label="Открыть страницу: ORION X1"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 5&nbsp;300&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card" hidden>
@@ -688,10 +700,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;184&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb" aria-label="Открыть страницу: TITAN R3"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 7&nbsp;700&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card" hidden>
@@ -711,10 +723,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;218&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="mars-x9-intel-core-i7-14700kf-nvidia-rtx-5070" aria-label="Открыть страницу: MARS X9"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 9&nbsp;100&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
       <li class="card" hidden>
@@ -734,10 +746,10 @@ html{scroll-behavior:smooth}
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>от&nbsp;135&nbsp;000&nbsp;₽</b></p>
             <a class="card__go" href="aurora-g2-amd-ryzen-5-7500f-nvidia-rtx-5060-ti" aria-label="Открыть страницу: AURORA G2"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <p class="card__split">
-            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+            <svg class="card__split-badge" viewBox="0 0 24 24" role="img" aria-label="Яндекс Сплит"><path fill="#7ee600" d="M11 12 19.2 6.3A10 10 0 1 0 19.2 17.7Z"/><circle cx="21" cy="12" r="2.2" fill="#7ee600"/></svg>
             <span>Рассрочка от 5&nbsp;700&nbsp;₽ в&nbsp;месяц</span>
-          </p>
+          </button>
         </div>
       </li>
     </ul>
@@ -881,6 +893,19 @@ html{scroll-behavior:smooth}
   </div>
 </dialog>
 
+<dialog class="split-info" id="split-info" aria-label="Оплата частями через Яндекс Сплит">
+  <button class="menu__close" type="button" aria-label="Закрыть">×</button>
+  <h2>Оплата частями — Яндекс&nbsp;Сплит</h2>
+  <ul>
+    <li>Первый платёж списывается сразу при покупке, остальная сумма делится на равные части — график платежей показывается при оформлении.</li>
+    <li>Срок — до&nbsp;24&nbsp;месяцев; доступная сумма и&nbsp;график формируются индивидуально в&nbsp;приложении Яндекс&nbsp;Пэй.</li>
+    <li>Сплит открывается без&nbsp;заявок и&nbsp;паспортных данных — это не&nbsp;кредит, данные в&nbsp;бюро кредитных историй не&nbsp;передаются.</li>
+    <li>Погасить досрочно можно в&nbsp;любой момент.</li>
+  </ul>
+  <p>Сумма «от&nbsp;…&nbsp;₽&nbsp;в&nbsp;месяц» в&nbsp;карточке — предварительный расчёт: стоимость компьютера, делённая на&nbsp;24&nbsp;месяца и&nbsp;округлённая вверх до&nbsp;сотен.</p>
+  <p><a href="https://yandex.ru/support/split/ru/" target="_blank" rel="noopener">Условия сервиса на&nbsp;сайте Яндекса</a>. Точные суммы и&nbsp;график вы&nbsp;увидите при&nbsp;оформлении заказа.</p>
+</dialog>
+
 <script>
 (function () {
   // Правило главной: видно не более 8 карточек. «Показать ещё» открывает следующую
@@ -929,6 +954,18 @@ html{scroll-behavior:smooth}
   menu.addEventListener('click', function (e) {
     // закрываем по клику на фон, на крестик и на любую ссылку меню
     if (e.target === menu || e.target.closest('a, .menu__close')) menu.close();
+  });
+})();
+
+// Значок рассрочки: открывает окно с краткими условиями Сплита.
+// Закрытие — крестик, клик по фону, Esc (встроено в <dialog>).
+(function () {
+  var dlg = document.getElementById('split-info');
+  if (!dlg || !dlg.showModal) return;
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('.card__split');
+    if (t) { e.preventDefault(); dlg.showModal(); return; }
+    if (dlg.open && (e.target === dlg || e.target.closest('.split-info .menu__close'))) dlg.close();
   });
 })();
 </script>

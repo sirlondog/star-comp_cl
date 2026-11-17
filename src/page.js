@@ -47,3 +47,15 @@
     if (e.target === menu || e.target.closest('a, .menu__close')) menu.close();
   });
 })();
+
+// Значок рассрочки: открывает окно с краткими условиями Сплита.
+// Закрытие — крестик, клик по фону, Esc (встроено в <dialog>).
+(function () {
+  var dlg = document.getElementById('split-info');
+  if (!dlg || !dlg.showModal) return;
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('.card__split');
+    if (t) { e.preventDefault(); dlg.showModal(); return; }
+    if (dlg.open && (e.target === dlg || e.target.closest('.split-info .menu__close'))) dlg.close();
+  });
+})();

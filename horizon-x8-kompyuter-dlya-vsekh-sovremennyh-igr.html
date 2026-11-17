@@ -171,8 +171,20 @@ ul{list-style:none}
 .card__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-top:auto;padding-top:.375rem}
 .card__price{display:flex;flex-direction:column}
 .card__price b{font-weight:600;font-size:var(--fs-h3);line-height:1.25;font-variant-numeric:lining-nums}
-.card__split{display:flex;align-items:center;gap:.5rem;margin:-.375rem 0 0;color:var(--muted);font-size:var(--fs-m);line-height:1.3}
-.card__split-badge{flex:none;width:2.75rem;height:1.25rem;text-rendering:optimizeLegibility}
+.card__split{position:relative;z-index:1;display:flex;align-items:center;gap:.5rem;margin:-.375rem 0 0;padding:0;background:none;border:0;color:var(--cyan);font:inherit;font-size:var(--fs-m);line-height:1.3;text-align:left;cursor:pointer}
+.card__split span{text-decoration:underline dotted;text-underline-offset:.25em;text-decoration-thickness:1px}
+.card__split:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:.5rem}
+@media(hover:hover){.card__split:hover span{text-decoration-style:solid}}
+.card__split-badge{flex:none;width:1.375rem;height:1.375rem}
+
+.split-info{box-sizing:border-box;width:min(calc(100vw - 2rem),32rem);max-height:calc(100vh - 2rem);margin:1rem auto;padding:2rem;border:1px solid var(--line);border-radius:1.25rem;background:#0a0a0c;color:var(--fg);overflow-y:auto}
+.split-info:not([open]){display:none}
+.split-info::backdrop{background:rgba(0,0,0,.6)}
+.split-info[open]{animation:menu-in .25s ease-out}
+.split-info h2{margin:1.25rem 0 0;font-weight:600;font-size:var(--fs-h3);line-height:1.2}
+.split-info ul{display:grid;gap:.5rem;margin:1rem 0 0;padding-left:1.125rem;font-size:var(--fs-m);line-height:1.45}
+.split-info p{margin:1rem 0 0;font-size:var(--fs-m);line-height:1.45;color:var(--muted)}
+.split-info a{color:var(--cyan);text-decoration:underline;text-underline-offset:.2em}
 .card__go{flex:none;display:grid;place-items:center;width:3rem;height:3rem;border-radius:50%;background:var(--cyan);box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:transform .2s;text-decoration:none}
 .card__go svg{width:1.25rem;height:1.25rem;fill:none;stroke:#0a0a0c;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media (hover:hover){
@@ -816,6 +828,19 @@ html{overflow-x:clip}
   </div>
 </dialog>
 
+<dialog class="split-info" id="split-info" aria-label="Оплата частями через Яндекс Сплит">
+  <button class="menu__close" type="button" aria-label="Закрыть">×</button>
+  <h2>Оплата частями — Яндекс&nbsp;Сплит</h2>
+  <ul>
+    <li>Первый платёж списывается сразу при покупке, остальная сумма делится на равные части — график платежей показывается при оформлении.</li>
+    <li>Срок — до&nbsp;24&nbsp;месяцев; доступная сумма и&nbsp;график формируются индивидуально в&nbsp;приложении Яндекс&nbsp;Пэй.</li>
+    <li>Сплит открывается без&nbsp;заявок и&nbsp;паспортных данных — это не&nbsp;кредит, данные в&nbsp;бюро кредитных историй не&nbsp;передаются.</li>
+    <li>Погасить досрочно можно в&nbsp;любой момент.</li>
+  </ul>
+  <p>Сумма «от&nbsp;…&nbsp;₽&nbsp;в&nbsp;месяц» в&nbsp;карточке — предварительный расчёт: стоимость компьютера, делённая на&nbsp;24&nbsp;месяца и&nbsp;округлённая вверх до&nbsp;сотен.</p>
+  <p><a href="https://yandex.ru/support/split/ru/" target="_blank" rel="noopener">Условия сервиса на&nbsp;сайте Яндекса</a>. Точные суммы и&nbsp;график вы&nbsp;увидите при&nbsp;оформлении заказа.</p>
+</dialog>
+
 <script>
 (function () {
   // Галерея: стрелки, точки под фото и крупный просмотр по нажатию на фото
@@ -1012,6 +1037,18 @@ html{overflow-x:clip}
   menu.addEventListener('click', function (e) {
     // закрываем по клику на фон, на крестик и на любую ссылку меню
     if (e.target === menu || e.target.closest('a, .menu__close')) menu.close();
+  });
+})();
+
+// Значок рассрочки: открывает окно с краткими условиями Сплита.
+// Закрытие — крестик, клик по фону, Esc (встроено в <dialog>).
+(function () {
+  var dlg = document.getElementById('split-info');
+  if (!dlg || !dlg.showModal) return;
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('.card__split');
+    if (t) { e.preventDefault(); dlg.showModal(); return; }
+    if (dlg.open && (e.target === dlg || e.target.closest('.split-info .menu__close'))) dlg.close();
   });
 })();
 </script>
