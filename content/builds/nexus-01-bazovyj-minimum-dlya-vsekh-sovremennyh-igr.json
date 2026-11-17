@@ -7,27 +7,27 @@
   "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
   "photos": [
     {
-      "image": "/content/photos/nexus-s1/1_4x3_3000px.webp",
+      "image": "/content/photos/nexus-s1/nexus-s1_1.webp",
       "alt": "Общий вид компьютера"
     },
     {
-      "image": "/content/photos/nexus-s1/2_4x3_3000px.webp",
+      "image": "/content/photos/nexus-s1/nexus-s1_2.webp",
       "alt": "Система охлаждения процессора"
     },
     {
-      "image": "/content/photos/nexus-s1/3_4x3_3000px.webp",
+      "image": "/content/photos/nexus-s1/nexus-s1_3.webp",
       "alt": "Оперативная память"
     },
     {
-      "image": "/content/photos/nexus-s1/4_4x3_3000px.webp",
+      "image": "/content/photos/nexus-s1/nexus-s1_4.webp",
       "alt": "Видеокарта"
     },
     {
-      "image": "/content/photos/nexus-s1/5_4x3_3000px.webp",
+      "image": "/content/photos/nexus-s1/nexus-s1_5.webp",
       "alt": "Корпусные вентиляторы"
     },
     {
-      "image": "/content/photos/nexus-s1/6_4x3_3000px.webp",
+      "image": "/content/photos/nexus-s1/nexus-s1_6.webp",
       "alt": "Материнская плата"
     }
   ],

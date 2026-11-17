@@ -1,7 +1,8 @@
 name: Сборка и публикация сайта
 
 # Запускается после каждого коммита в main (в том числе после сохранений из CMS):
-# пересобирает страницы и нарезки фото, коммитит изменения — GitHub Pages публикует сама.
+# переименовывает фото в <слаг папки>_<номер>, пересобирает страницы и нарезки фото,
+# коммитит изменения — GitHub Pages публикует сама.
 # Также можно запустить вручную: вкладка Actions → «Сборка и публикация сайта» → Run workflow.
 on:
   push:
@@ -20,6 +21,7 @@ jobs:
         with:
           python-version: '3.13'
       - run: pip install "pillow>=11.3"
+      - run: python src/rename_photos.py
       - run: python src/build.py
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:

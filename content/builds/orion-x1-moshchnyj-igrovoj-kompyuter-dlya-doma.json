@@ -7,23 +7,23 @@
   "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
   "photos": [
     {
-      "image": "/content/photos/orion_x1/1_4x3_3000px.webp",
+      "image": "/content/photos/orion_x1/orion_x1_1.webp",
       "alt": "Общий вид компьютера"
     },
     {
-      "image": "/content/photos/orion_x1/2_4x3_3000px.webp",
+      "image": "/content/photos/orion_x1/orion_x1_2.webp",
       "alt": "Жидкостная система охлаждения"
     },
     {
-      "image": "/content/photos/orion_x1/3_4x3_3000px.webp",
+      "image": "/content/photos/orion_x1/orion_x1_3.webp",
       "alt": "Корпусные вентиляторы"
     },
     {
-      "image": "/content/photos/orion_x1/4_4x3_3000px.webp",
+      "image": "/content/photos/orion_x1/orion_x1_4.webp",
       "alt": "Видеокарта NVIDIA RTX 5060"
     },
     {
-      "image": "/content/photos/orion_x1/5_4x3_3000px.webp",
+      "image": "/content/photos/orion_x1/orion_x1_5.webp",
       "alt": "Помпа системы охлаждения"
     }
   ],

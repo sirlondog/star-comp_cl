@@ -7,27 +7,27 @@
   "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
   "photos": [
     {
-      "image": "/content/photos/core-r1/1_4x3_3000px.webp",
+      "image": "/content/photos/core-r1/core-r1_1.webp",
       "alt": "Общий вид компьютера"
     },
     {
-      "image": "/content/photos/core-r1/2_4x3_3000px.webp",
+      "image": "/content/photos/core-r1/core-r1_2.webp",
       "alt": "Радиатор материнской платы и вентилятор"
     },
     {
-      "image": "/content/photos/core-r1/3_4x3_3000px.webp",
+      "image": "/content/photos/core-r1/core-r1_3.webp",
       "alt": "Видеокарта NVIDIA RTX 5060 Ti 16GB"
     },
     {
-      "image": "/content/photos/core-r1/4_4x3_3000px.webp",
+      "image": "/content/photos/core-r1/core-r1_4.webp",
       "alt": "Кнопка включения компьютера"
     },
     {
-      "image": "/content/photos/core-r1/5_4x3_3000px.webp",
+      "image": "/content/photos/core-r1/core-r1_5.webp",
       "alt": "Система охлаждения"
     },
     {
-      "image": "/content/photos/core-r1/6_4x3_3000px.webp",
+      "image": "/content/photos/core-r1/core-r1_6.webp",
       "alt": "Край видеокарты NVIDIA RTX 5060 Ti 16GB"
     }
   ],

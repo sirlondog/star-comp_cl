@@ -7,23 +7,23 @@
   "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
   "photos": [
     {
-      "image": "/content/photos/titan-r1/1_4x3_3000px.webp",
+      "image": "/content/photos/titan-r1/titan-r1_1.webp",
       "alt": "общий вид компьютера в корпусе с панорамным стеклом и фиолетовой подсветкой"
     },
     {
-      "image": "/content/photos/titan-r1/2_4x3_3000px.webp",
+      "image": "/content/photos/titan-r1/titan-r1_2.webp",
       "alt": "Оперативная память с RGB подсветкой"
     },
     {
-      "image": "/content/photos/titan-r1/3_4x3_3000px.webp",
+      "image": "/content/photos/titan-r1/titan-r1_3.webp",
       "alt": "Видеокарта AMD RADEON RX 9060 8GB"
     },
     {
-      "image": "/content/photos/titan-r1/4_4x3_3000px.webp",
+      "image": "/content/photos/titan-r1/titan-r1_4.webp",
       "alt": "Охлаждение процессора DEEPCOOL AG400"
     },
     {
-      "image": "/content/photos/titan-r1/5_4x3_3000px.webp",
+      "image": "/content/photos/titan-r1/titan-r1_5.webp",
       "alt": "Корпусные вентиляторы"
     }
   ],
