@@ -1,5 +1,5 @@
 (function () {
-  // «Показать ещё» открывает по 3 скрытые карточки (их фото грузятся только в этот момент);
+  // «Показать ещё» открывает по 4 скрытые карточки (их фото грузятся только в этот момент);
   // когда открыты все, кнопка превращается в «Скрыть» и возвращает блок в исходный вид
   var more = document.getElementById('cards-more');
   var extra = document.querySelectorAll('#cards > [hidden]');
@@ -7,12 +7,12 @@
     var hidden = document.querySelectorAll('#cards > [hidden]');
     var i;
     if (hidden.length) {
-      for (i = 0; i < hidden.length && i < 3; i++) {
+      for (i = 0; i < hidden.length && i < 4; i++) {
         hidden[i].hidden = false;
         hidden[i].classList.add('card--in');
       }
       hidden[0].querySelector('a').focus({ preventScroll: true });
-      if (hidden.length <= 3) more.textContent = 'Скрыть';
+      if (hidden.length <= 4) more.textContent = 'Скрыть';
     } else {
       for (i = 0; i < extra.length; i++) {
         extra[i].hidden = true;

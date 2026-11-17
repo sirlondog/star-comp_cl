@@ -156,7 +156,7 @@ ul{list-style:none}
 }
 @media (min-width:64rem){
   .section{padding-block:3rem 5rem}
-  .cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.875rem,2vw,1.5rem);margin-top:2.5rem}
+  .cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.875rem,2vw,1.5rem);margin-top:2.5rem}
   .card__media{aspect-ratio:4/3}
 }
 @media (min-width:64rem){
