@@ -93,25 +93,6 @@
       "tag": ""
     },
     {
-      "name": "ORION X1",
-      "image": {
-        "path": "/content/photos/orion_x1/orion_x1_1.webp",
-        "x": 50,
-        "y": 50,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 5 7500F",
-        "gpu": "NVIDIA RTX 5060 8GB"
-      },
-      "price_from": 127000,
-      "show_from": true,
-      "page": "orion-x1-moshchnyj-igrovoj-kompyuter-dlya-doma",
-      "extra": false,
-      "tag": ""
-    },
-    {
       "name": "TITAN R1",
       "image": {
         "path": "/content/photos/titan-r1/titan-r1_1.webp",
@@ -168,24 +149,6 @@
       "tag": ""
     },
     {
-      "name": "TITAN R3",
-      "image": {
-        "path": "/content/photos/titan-r3/titan-r3_1.webp",
-        "x": 50,
-        "y": 50,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 5 5500X3D",
-        "gpu": "NVIDIA RTX 5060 Ti 8GB"
-      },
-      "price_from": 184000,
-      "show_from": true,
-      "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
-      "extra": false
-    },
-    {
       "name": "MARS X8",
       "image": {
         "path": "/content/photos/mars_x8/mars_x8_1.webp",
@@ -223,21 +186,40 @@
       "extra": true
     },
     {
-      "name": "MARS X9",
+      "name": "ORION X1",
       "image": {
-        "path": "/content/photos/mars-x9/mars-x9_1.webp",
-        "x": 51,
-        "y": 66,
+        "path": "/content/photos/orion_x1/orion_x1_1.webp",
+        "x": 50,
+        "y": 50,
         "zoom": 1
       },
-      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
+      "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
       "specs": {
-        "cpu": "INTEL CORE i5-14600KF",
-        "gpu": "NVIDIA RTX 5070 12GB"
+        "cpu": "AMD RYZEN 5 7500F",
+        "gpu": "NVIDIA RTX 5060 8GB"
       },
-      "price_from": 218000,
+      "price_from": 127000,
       "show_from": true,
-      "page": "mars-x9-intel-core-i7-14700kf-nvidia-rtx-5070",
+      "page": "orion-x1-moshchnyj-igrovoj-kompyuter-dlya-doma",
+      "extra": true,
+      "tag": ""
+    },
+    {
+      "name": "TITAN R3",
+      "image": {
+        "path": "/content/photos/titan-r3/titan-r3_1.webp",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 5 5500X3D",
+        "gpu": "NVIDIA RTX 5060 Ti 8GB"
+      },
+      "price_from": 184000,
+      "show_from": true,
+      "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
       "extra": true
     }
   ]
