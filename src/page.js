@@ -67,3 +67,16 @@
     if (dlg.open && (e.target === dlg || e.target.closest('.split-info .menu__close'))) dlg.close();
   });
 })();
+
+// Кнопка «Консультация»: открывает чат.
+// Пока чат-виджет (Re:plain) не подключён, кнопка ведёт в Telegram;
+// когда подключим виджет, заменим на вызов открытия его окна.
+(function () {
+  var TG = '__TELEGRAM_URL__';
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.js-chat');
+    if (!b) return;
+    e.preventDefault();
+    window.open(TG, '_blank', 'noopener');
+  });
+})();
