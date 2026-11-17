@@ -257,6 +257,24 @@
       "show_from": true,
       "page": "aurora-g2-amd-ryzen-5-7500f-nvidia-rtx-5060-ti",
       "extra": true
+    },
+    {
+      "name": "VOLT Z11",
+      "image": {
+        "path": "/content/photos/volt-z11/volt-z11_1.webp",
+        "x": 56,
+        "y": 71,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 7 9800X3D",
+        "gpu": "NVIDIA RTX 5070 Ti 16GB"
+      },
+      "price_from": 294000,
+      "show_from": true,
+      "page": "volt-z11-topovoe-zhelezo-v-panoramnom-korpuse",
+      "extra": true
     }
   ]
 }
