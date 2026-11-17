@@ -63,6 +63,11 @@ def _menu_js_part():
 # ---------- карточки «Популярных конфигураций» из content/cards.json ----------
 _cards=load_content('cards.json',{}).get('cards') or []
 
+# бейджи-фильтры по процессору (AMD/INTEL) над карточками на главной.
+# ВНИМАНИЕ: пока выключены по решению владельца (17.11.2026) — «продолжу с ним работать».
+# Чтобы вернуть фильтр, поставьте _FILTERS_ON=True и пересоберите сайт.
+_FILTERS_ON=False
+
 # ---------- карточки «Компьютеров в наличии» из content/stock.json ----------
 # Ползунок «Скрыть блок» (hidden) в админке прячет весь блок на главной.
 _STK=load_content('stock.json',{})
@@ -91,7 +96,7 @@ for _c in _cards:
     _cpu=(_sp.get('cpu') if isinstance(_sp,dict) else '') or ''
     _b=_cpu.split()[0].upper() if _cpu else ''
     if _b and _b not in _brands: _brands.append(_b)
-_cpu_filters=('' if len(_brands)<2 else
+_cpu_filters=('' if not _FILTERS_ON or len(_brands)<2 else
     '<div class="filters" id="cpu-filters" aria-label="Фильтр по процессору">'
     +''.join(f'<button class="filters__btn" type="button" data-cpu="{esc(b)}" aria-pressed="false">{esc(b)}</button>' for b in _brands)
     +'</div>')
@@ -516,8 +521,8 @@ full=f'''<!doctype html>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <script type="application/ld+json">{ld.replace('</','<\\/')}</script>
-<link rel="preload" href="assets/manrope-var-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/manrope-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/style.css?v={_STAMP}">
 </head>
 <body>
@@ -723,8 +728,8 @@ def page_html(d):
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <script type="application/ld+json">{json.dumps(ld,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')}</script>
-<link rel="preload" href="assets/manrope-var-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/manrope-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/inner.css?v={_STAMP}">
 </head>
 <body>
@@ -780,7 +785,8 @@ print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js
 
 # ---------- чистка assets: удаляем файлы, на которые не ссылается ни одна страница ----------
 # Сюда попадают дубли после переименования фото и нарезки, потерявшие актуальность.
-_STATIC={'favicon.svg','icon-192.png','og-home.jpg','manrope-var-cyrillic.woff2','manrope-var-latin.woff2',
+_STATIC={'favicon.svg','icon-192.png','og-home.jpg','gilroy-regular.woff2','gilroy-semibold.woff2',
+         'manrope-var-cyrillic.woff2','manrope-var-latin.woff2',
          'split-logo.svg','style.css','page.js','inner.css','inner.js',
          # готовые файлы, которые сборщик не создаёт: фото первого экрана и аватарки отзывов
          'hero-600.avif','hero-800.avif','hero-1000.avif','hero-600.webp','hero-800.webp','hero-1000.webp'}
