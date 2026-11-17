@@ -1,0 +1,72 @@
+{
+  "name": "TITAN R3",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 5 5500X3D с видеокартой NVIDIA RTX 5060 Ti 8GB",
+  "slug": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
+  "price": 184000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/titan-r3/1_4x3_3000px.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/titan-r3/2_4x3_3000px.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/titan-r3/3_4x3_3000px.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/titan-r3/4_4x3_3000px.webp",
+      "alt": "Видеокарта"
+    }
+  ],
+  "video": {
+    "horizontal": "https://kinescope.io/jHfQ663QJfLmebyBeBJVgf",
+    "vertical": "https://kinescope.io/i625jPmmmPX8fk16jDDpqo",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "AMD RYZEN 5 5500X3D"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "NVIDIA RTX 5060 Ti 8GB PALIT DUAL"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "MSI B550M PRO-VDH"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "32GB DDR4 NETAC SHADOW III"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 1000GB KINGSTON NV3"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL 750W SFX 80+ PLATINUM"
+    },
+    {
+      "label": "Охлаждение",
+      "value": "DEEPCOOL AG400"
+    },
+    {
+      "label": "Корпус",
+      "value": "OCYPUS GAMMA C52"
+    }
+  ],
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
