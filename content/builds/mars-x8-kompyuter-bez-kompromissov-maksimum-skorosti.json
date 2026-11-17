@@ -34,40 +34,16 @@
   "video": null,
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "INTEL CORE i7-14700KF"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5080 16GB GIGABYTE WINDFORCE"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "32GB DDR5 KINGSTON FURY BEAST"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "ASUS TUF GAMING B760M BTF WIFI"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL PQ850G 850W 80+ GOLD"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "THERMALRIGHT TROFEO VISION"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 1000GB WD GREEN"
-    },
-    {
-      "label": "Корпус",
-      "value": "ARDOR GAMING CF235"
-    }
-  ],
+  "specs": {
+    "cpu": "INTEL CORE i7-14700KF",
+    "gpu": "NVIDIA RTX 5080 16GB GIGABYTE WINDFORCE",
+    "ram": "32GB DDR5 KINGSTON FURY BEAST",
+    "motherboard": "ASUS TUF GAMING B760M BTF WIFI",
+    "psu": "DEEPCOOL PQ850G 850W 80+ GOLD",
+    "cooling": "THERMALRIGHT TROFEO VISION",
+    "storage": "SSD M.2 1000GB WD GREEN",
+    "case": "ARDOR GAMING CF235"
+  },
   "seo": {
     "title": "",
     "description": ""

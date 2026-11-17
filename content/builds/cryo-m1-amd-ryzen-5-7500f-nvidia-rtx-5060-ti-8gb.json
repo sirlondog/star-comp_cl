@@ -43,40 +43,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "AMD RYZEN 5 7500F"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5060 Ti 8GB PALIT DUAL"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "MSI B650M-P PRO"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "16GB DDR5 ADATA LANCR BLADE"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 500GB COLORFUL CN600"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL PF750D V2 80+ SILVER"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "JONSBO TH-240"
-    },
-    {
-      "label": "Корпус",
-      "value": "JONSBO D34"
-    }
-  ],
+  "specs": {
+    "cpu": "AMD RYZEN 5 7500F",
+    "gpu": "NVIDIA RTX 5060 Ti 8GB PALIT DUAL",
+    "motherboard": "MSI B650M-P PRO",
+    "ram": "16GB DDR5 ADATA LANCR BLADE",
+    "storage": "SSD M.2 500GB COLORFUL CN600",
+    "psu": "DEEPCOOL PF750D V2 80+ SILVER",
+    "cooling": "JONSBO TH-240",
+    "case": "JONSBO D34"
+  },
   "seo": {
     "title": "",
     "description": ""

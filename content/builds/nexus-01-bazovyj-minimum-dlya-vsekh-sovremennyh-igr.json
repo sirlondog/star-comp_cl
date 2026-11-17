@@ -39,40 +39,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "INTEL CORE i5-14400F"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5060 8GB PALIT DUAL"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "B760M MSI GAMING PLUS WIFI"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "16GB DDR4 KINGSTON FURY BEAST"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 500GB GIGABYTE 2500E"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL PF700X 700W 80+ BRONZE"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "DEEPCOOL AG400"
-    },
-    {
-      "label": "Корпус",
-      "value": "LIAN LI VECTOR V100 MINI"
-    }
-  ],
+  "specs": {
+    "cpu": "INTEL CORE i5-14400F",
+    "gpu": "NVIDIA RTX 5060 8GB PALIT DUAL",
+    "motherboard": "B760M MSI GAMING PLUS WIFI",
+    "ram": "16GB DDR4 KINGSTON FURY BEAST",
+    "storage": "SSD M.2 500GB GIGABYTE 2500E",
+    "psu": "DEEPCOOL PF700X 700W 80+ BRONZE",
+    "cooling": "DEEPCOOL AG400",
+    "case": "LIAN LI VECTOR V100 MINI"
+  },
   "seo": {
     "title": "",
     "description": ""

@@ -35,40 +35,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "INTEL CORE i7-13700KF"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "GAINWARD NVIDIA RTX 5060 Ti 16GB"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "MSI B760M-A PRO WIFI"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "16GB DDR4 NETAC SHADOW III"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 500GB NETAC NV3000"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL 80+ PF700X 700W BRONZE"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "DEEPCOOL LE360 V2"
-    },
-    {
-      "label": "Корпус",
-      "value": "ZALMAN P30 BW"
-    }
-  ],
+  "specs": {
+    "cpu": "INTEL CORE i7-13700KF",
+    "gpu": "GAINWARD NVIDIA RTX 5060 Ti 16GB",
+    "motherboard": "MSI B760M-A PRO WIFI",
+    "ram": "16GB DDR4 NETAC SHADOW III",
+    "storage": "SSD M.2 500GB NETAC NV3000",
+    "psu": "DEEPCOOL 80+ PF700X 700W BRONZE",
+    "cooling": "DEEPCOOL LE360 V2",
+    "case": "ZALMAN P30 BW"
+  },
   "seo": {
     "title": "",
     "description": ""

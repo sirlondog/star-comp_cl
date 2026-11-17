@@ -43,40 +43,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "INTEL CORE i5-12400F"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5050 8GB ASUS DUAL"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "16GB DDR4 NETAC SHADOW III"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "MSI H610M-G PRO"
-    },
-    {
-      "label": "Блок питания",
-      "value": "650W DEEPCOOL PF600X 80+ BRONZE"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "DEEPCOOL AG400"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 250GB NETAC NV3000"
-    },
-    {
-      "label": "Корпус",
-      "value": "FORMULA Z4M"
-    }
-  ],
+  "specs": {
+    "cpu": "INTEL CORE i5-12400F",
+    "gpu": "NVIDIA RTX 5050 8GB ASUS DUAL",
+    "ram": "16GB DDR4 NETAC SHADOW III",
+    "motherboard": "MSI H610M-G PRO",
+    "psu": "650W DEEPCOOL PF600X 80+ BRONZE",
+    "cooling": "DEEPCOOL AG400",
+    "storage": "SSD M.2 250GB NETAC NV3000",
+    "case": "FORMULA Z4M"
+  },
   "seo": {
     "title": "",
     "description": "Игровой компьютер SOLAR S1: INTEL CORE i5-12400F, NVIDIA RTX 5050 8GB, 16GB DDR4, SSD M.2. Цена от 121 000 ₽. Сборка на заказ в Санкт-Петербурге: привезём, подключим и настроим, оплата после проверки."

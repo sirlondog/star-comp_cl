@@ -326,24 +326,98 @@ collections:
         hint: 'Абзац после описания сборки: на каких настройках идёт, кому подойдёт. Разворачивается на всю ширину'
       - name: specs
         label: Комплектующие
-        label_singular: строку
-        widget: list
-        summary: '{{label}}: {{value}}'
+        widget: object
+        collapsed: false
+        hint: 'Заполняйте только нужные строки. В каждом поле — выбор из «Базы железа» нужной категории (например, в «Процессоре» — только процессоры). Модель нет в базе — сначала добавьте её там'
         fields:
-          - name: label
-            label: Что
-            widget: select
-            options: [Процессор, Видеокарта, Материнская плата, Оперативная память, Накопитель, Блок питания, Охлаждение, Корпус]
-            hint: 'Категория. Нужной нет в списке — добавьте её в разделе «База железа» (пока категория там не выбрана, модель не покажется)'
-          - name: value
-            label: Модель
+          - name: cpu
+            label: Процессор
             widget: relation
             collection: hardware
             value_field: model
             display_fields: [model, type]
             search_fields: [model, type]
+            filters:
+              - field: type
+                values: [Процессор]
             required: false
-            hint: 'Выбор из «Базы железа» с поиском. Нет нужной модели — сначала добавьте её там, затем выберите здесь'
+          - name: gpu
+            label: Видеокарта
+            widget: relation
+            collection: hardware
+            value_field: model
+            display_fields: [model, type]
+            search_fields: [model, type]
+            filters:
+              - field: type
+                values: [Видеокарта]
+            required: false
+          - name: motherboard
+            label: Материнская плата
+            widget: relation
+            collection: hardware
+            value_field: model
+            display_fields: [model, type]
+            search_fields: [model, type]
+            filters:
+              - field: type
+                values: [Материнская плата]
+            required: false
+          - name: ram
+            label: Оперативная память
+            widget: relation
+            collection: hardware
+            value_field: model
+            display_fields: [model, type]
+            search_fields: [model, type]
+            filters:
+              - field: type
+                values: [Оперативная память]
+            required: false
+          - name: storage
+            label: Накопитель
+            widget: relation
+            collection: hardware
+            value_field: model
+            display_fields: [model, type]
+            search_fields: [model, type]
+            filters:
+              - field: type
+                values: [Накопитель]
+            required: false
+          - name: psu
+            label: Блок питания
+            widget: relation
+            collection: hardware
+            value_field: model
+            display_fields: [model, type]
+            search_fields: [model, type]
+            filters:
+              - field: type
+                values: [Блок питания]
+            required: false
+          - name: cooling
+            label: Охлаждение
+            widget: relation
+            collection: hardware
+            value_field: model
+            display_fields: [model, type]
+            search_fields: [model, type]
+            filters:
+              - field: type
+                values: [Охлаждение]
+            required: false
+          - name: case
+            label: Корпус
+            widget: relation
+            collection: hardware
+            value_field: model
+            display_fields: [model, type]
+            search_fields: [model, type]
+            filters:
+              - field: type
+                values: [Корпус]
+            required: false
       - name: seo
         label: Для поисковиков
         widget: object

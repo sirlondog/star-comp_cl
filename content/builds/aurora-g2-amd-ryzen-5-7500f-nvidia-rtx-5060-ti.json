@@ -39,40 +39,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "AMD RYZEN 5 7500F"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5060 Ti 8GB GIGABYTE EAGLE"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "B850-S WIFI MSI PRO"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "16GB DDR5 ADATA LANCR BLADE RGB"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 500GB NETAC NV3000"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL PF750D V2 80+ SILVER"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "DEEPCOOL LE360 V2"
-    },
-    {
-      "label": "Корпус",
-      "value": "FORMULA U9 PA"
-    }
-  ],
+  "specs": {
+    "cpu": "AMD RYZEN 5 7500F",
+    "gpu": "NVIDIA RTX 5060 Ti 8GB GIGABYTE EAGLE",
+    "motherboard": "B850-S WIFI MSI PRO",
+    "ram": "16GB DDR5 ADATA LANCR BLADE RGB",
+    "storage": "SSD M.2 500GB NETAC NV3000",
+    "psu": "DEEPCOOL PF750D V2 80+ SILVER",
+    "cooling": "DEEPCOOL LE360 V2",
+    "case": "FORMULA U9 PA"
+  },
   "seo": {
     "title": "",
     "description": ""

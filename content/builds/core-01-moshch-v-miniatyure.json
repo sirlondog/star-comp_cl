@@ -39,40 +39,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "AMD RYZEN 7 7700"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5060 Ti 16GB ZOTAC TWIN EDGE"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "ASUS TUF B850i NEO WIFI"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "32GB DDR5 G.SKILL TRIDENT Z"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 1000GB KINGSTON NV3"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL 750W SFX 80+ PLATINUM"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "ID-COOLING IS-67-XT"
-    },
-    {
-      "label": "Корпус",
-      "value": "JONSBO TK-0"
-    }
-  ],
+  "specs": {
+    "cpu": "AMD RYZEN 7 7700",
+    "gpu": "NVIDIA RTX 5060 Ti 16GB ZOTAC TWIN EDGE",
+    "motherboard": "ASUS TUF B850i NEO WIFI",
+    "ram": "32GB DDR5 G.SKILL TRIDENT Z",
+    "storage": "SSD M.2 1000GB KINGSTON NV3",
+    "psu": "DEEPCOOL 750W SFX 80+ PLATINUM",
+    "cooling": "ID-COOLING IS-67-XT",
+    "case": "JONSBO TK-0"
+  },
   "seo": {
     "title": "",
     "description": ""

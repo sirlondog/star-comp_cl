@@ -35,39 +35,15 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "AMD RYZEN 5 7500F"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5060 8GB GIGABYTE WINDFORCE"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "MSI A620M-B PRO"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "16GB DDR5 ADATA LANCR BLADE RGB"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 500GB GIGABYTE 2500E"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL PF700X 700W 80+ BRONZE"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "DEEPCOOL LE360 V2"
-    },
-    {
-      "label": "Корпус",
-      "value": "DEEPCOOL CG380"
-    }
-  ],
+  "specs": {
+    "cpu": "AMD RYZEN 5 7500F",
+    "gpu": "NVIDIA RTX 5060 8GB GIGABYTE WINDFORCE",
+    "motherboard": "MSI A620M-B PRO",
+    "ram": "16GB DDR5 ADATA LANCR BLADE RGB",
+    "storage": "SSD M.2 500GB GIGABYTE 2500E",
+    "psu": "DEEPCOOL PF700X 700W 80+ BRONZE",
+    "cooling": "DEEPCOOL LE360 V2",
+    "case": "DEEPCOOL CG380"
+  },
   "seo": null
 }

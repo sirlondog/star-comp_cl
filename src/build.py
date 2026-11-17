@@ -610,7 +610,16 @@ def body_html(d):
     name=esc(d['name'])
     sub=f' <i class="sr-only">— </i><span>{txt(d["subtitle"])}</span>' if d.get('subtitle') else ''
     note=f'\n      <p class="product__note">{txt(d["note"])}</p>' if d.get('note') else ''
-    specs='\n'.join(f'      <div><dt>{esc(x["label"]).rstrip(":")}:</dt><dd>{esc(x["value"])}</dd></div>' for x in d.get('specs') or [])
+    # Комплектующие: новый формат — объект {cpu: '…', gpu: '…', …} (из админки,
+    # каждое поле — своя категория железа). Старый список [{label, value}] тоже читается.
+    _SPEC_FIELDS=[('cpu','Процессор'),('gpu','Видеокарта'),('motherboard','Материнская плата'),
+                  ('ram','Оперативная память'),('storage','Накопитель'),('psu','Блок питания'),
+                  ('cooling','Охлаждение'),('case','Корпус')]
+    def spec_rows(specs):
+        if isinstance(specs, dict):
+            return [(label, specs.get(key)) for key, label in _SPEC_FIELDS if specs.get(key)]
+        return [(x.get('label'), x.get('value')) for x in specs or [] if x.get('label') and x.get('value')]
+    specs='\n'.join(f'      <div><dt>{esc(l).rstrip(":")}:</dt><dd>{esc(v)}</dd></div>' for l, v in spec_rows(d.get('specs')))
     # страницы с горизонтальным видео — блок «Конфигурация» в две колонки (старая вёрстка),
     # остальные — в одну колонку на половину фрейма; класс-модификатор на секции
     spec_cols=' section--spec--2col' if vcode((d.get('video') or {}).get('horizontal')) else ''
@@ -681,7 +690,6 @@ def body_html(d):
           <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
           <span>Рассрочка от {money((d['price']+2399)//2400*100)}</span>
         </button>
-        <a class="btn" href="index.html#konfiguracii">Консультация</a>
       </div>
       {note}
     </div>

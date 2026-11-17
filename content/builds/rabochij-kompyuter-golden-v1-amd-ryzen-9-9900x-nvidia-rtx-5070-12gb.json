@@ -31,40 +31,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "AMD RYZEN 9 9900X"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5070 12GB GIGABYTE GAMING"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "B850M-P MSI PRO WIFI"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "32GB DDR5 G.SKILL TRIDENT Z"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 1000GB KINGSTON NV3"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL PQ850G 850W 80+ GOLD"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "ID-COOLING DX360 GDL"
-    },
-    {
-      "label": "Корпус",
-      "value": "ARDOR GAMING ELEMENT W4"
-    }
-  ],
+  "specs": {
+    "cpu": "AMD RYZEN 9 9900X",
+    "gpu": "NVIDIA RTX 5070 12GB GIGABYTE GAMING",
+    "motherboard": "B850M-P MSI PRO WIFI",
+    "ram": "32GB DDR5 G.SKILL TRIDENT Z",
+    "storage": "SSD M.2 1000GB KINGSTON NV3",
+    "psu": "DEEPCOOL PQ850G 850W 80+ GOLD",
+    "cooling": "ID-COOLING DX360 GDL",
+    "case": "ARDOR GAMING ELEMENT W4"
+  },
   "seo": {
     "title": "",
     "description": ""

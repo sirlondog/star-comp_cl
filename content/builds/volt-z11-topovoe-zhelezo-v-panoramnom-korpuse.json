@@ -39,40 +39,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "AMD RYZEN 7 9800X3D"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5070 Ti 16GB GIGABYTE WIINDFORCE"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "B850M-P MSI PRO WIFI"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "32GB DDR5 KINGSTON FURY RGB"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 1000GB KINGSTON NV3"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL PQ850G 850W 80+ GOLD"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "JONSBO TF3-360SCB"
-    },
-    {
-      "label": "Корпус",
-      "value": "JONSBO D300"
-    }
-  ],
+  "specs": {
+    "cpu": "AMD RYZEN 7 9800X3D",
+    "gpu": "NVIDIA RTX 5070 Ti 16GB GIGABYTE WIINDFORCE",
+    "motherboard": "B850M-P MSI PRO WIFI",
+    "ram": "32GB DDR5 KINGSTON FURY RGB",
+    "storage": "SSD M.2 1000GB KINGSTON NV3",
+    "psu": "DEEPCOOL PQ850G 850W 80+ GOLD",
+    "cooling": "JONSBO TF3-360SCB",
+    "case": "JONSBO D300"
+  },
   "seo": {
     "title": "",
     "description": ""

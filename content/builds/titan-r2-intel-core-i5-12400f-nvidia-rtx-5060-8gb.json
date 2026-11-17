@@ -39,40 +39,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "INTEL CORE i5-12400F"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5060 8GB ZOTAC TWIN EDGE"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "MSI H610M-G PRO"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "16GB DDR4 NETAC SHADOW III"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 500GB NETAC NV3000"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL PF700X 700W 80+ BRONZE"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "DEEPCOOL AG400"
-    },
-    {
-      "label": "Корпус",
-      "value": "OCYPUS GAMMA C52"
-    }
-  ],
+  "specs": {
+    "cpu": "INTEL CORE i5-12400F",
+    "gpu": "NVIDIA RTX 5060 8GB ZOTAC TWIN EDGE",
+    "motherboard": "MSI H610M-G PRO",
+    "ram": "16GB DDR4 NETAC SHADOW III",
+    "storage": "SSD M.2 500GB NETAC NV3000",
+    "psu": "DEEPCOOL PF700X 700W 80+ BRONZE",
+    "cooling": "DEEPCOOL AG400",
+    "case": "OCYPUS GAMMA C52"
+  },
   "seo": {
     "title": "",
     "description": ""

@@ -27,40 +27,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "AMD RYZEN 7 9800X3D"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5070 Ti 16GB GIGABYTE WIINDFORCE"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "B850M-P MSI PRO WIFI"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "32GB DDR5 G.SKILL TRIDENT Z"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 2000GB MSI SPATIUM M461"
-    },
-    {
-      "label": "Блок питания",
-      "value": "1000W DEEPCOOL PN1000D 80+ GOLD"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "DEEPCOOL LT360 VISION"
-    },
-    {
-      "label": "Корпус",
-      "value": "GEOMETRIC FUTURE MODEL 3"
-    }
-  ],
+  "specs": {
+    "cpu": "AMD RYZEN 7 9800X3D",
+    "gpu": "NVIDIA RTX 5070 Ti 16GB GIGABYTE WIINDFORCE",
+    "motherboard": "B850M-P MSI PRO WIFI",
+    "ram": "32GB DDR5 G.SKILL TRIDENT Z",
+    "storage": "SSD M.2 2000GB MSI SPATIUM M461",
+    "psu": "1000W DEEPCOOL PN1000D 80+ GOLD",
+    "cooling": "DEEPCOOL LT360 VISION",
+    "case": "GEOMETRIC FUTURE MODEL 3"
+  },
   "seo": {
     "title": "",
     "description": ""

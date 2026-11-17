@@ -39,40 +39,16 @@
   },
   "lead": "",
   "about": "",
-  "specs": [
-    {
-      "label": "Процессор",
-      "value": "INTEL CORE i5-14600KF"
-    },
-    {
-      "label": "Видеокарта",
-      "value": "NVIDIA RTX 5070 12GB GIGABYTE GAMING"
-    },
-    {
-      "label": "Материнская плата",
-      "value": "ASUS TUF GAMING B760M BTF WIFI"
-    },
-    {
-      "label": "Оперативная память",
-      "value": "16GB DDR5 KINGSTON FURY RGB"
-    },
-    {
-      "label": "Накопитель",
-      "value": "SSD M.2 1000GB WD GREEN"
-    },
-    {
-      "label": "Блок питания",
-      "value": "DEEPCOOL PQ850G 850W 80+ GOLD"
-    },
-    {
-      "label": "Охлаждение",
-      "value": "THERMALRIGHT TROFEO VISION"
-    },
-    {
-      "label": "Корпус",
-      "value": "JONSBO D300"
-    }
-  ],
+  "specs": {
+    "cpu": "INTEL CORE i5-14600KF",
+    "gpu": "NVIDIA RTX 5070 12GB GIGABYTE GAMING",
+    "motherboard": "ASUS TUF GAMING B760M BTF WIFI",
+    "ram": "16GB DDR5 KINGSTON FURY RGB",
+    "storage": "SSD M.2 1000GB WD GREEN",
+    "psu": "DEEPCOOL PQ850G 850W 80+ GOLD",
+    "cooling": "THERMALRIGHT TROFEO VISION",
+    "case": "JONSBO D300"
+  },
   "seo": {
     "title": "",
     "description": ""
