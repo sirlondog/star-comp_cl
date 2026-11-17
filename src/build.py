@@ -310,6 +310,10 @@ def _title_html():
     if H.get('title_after'): h1+=' '+txt(H.get('title_after'))
     return re.sub(r'&nbsp; ',r'&nbsp;',h1)
 
+def _more_hidden():
+    """Флаг «спрятать кнопки "Показать ещё"/"Скрыть"»: когда прятать нечего."""
+    return ' hidden' if not (len(_cards) > 8 or any(c.get('extra') for c in _cards)) else ''
+
 def _cards_title_html():
     """Заголовок блока конфигураций: обычная часть + выделенный акцент <em>."""
     t=txt(H.get('cards_title') or 'Последние проекты нашей')
@@ -413,8 +417,9 @@ def card_html(c,hidden=False):
       </li>'''
 
 def cards_html(cards,with_hidden=False):
-    """Список карточек; with_hidden включает флаг «показывать только по кнопке "Показать ещё"»."""
-    return '\n'.join(card_html(c,c.get('extra') and with_hidden) for c in cards)
+    """Список карточек; with_hidden включает флаг «показывать только по кнопке "Показать ещё"».
+    Правило главной: видно не более 8 карточек (в порядке списка) — остальные под кнопкой."""
+    return '\n'.join(card_html(c,(c.get('extra') or i>=8) and with_hidden) for i,c in enumerate(cards))
 
 def other_builds_html(cards):
     """Блок «Другие конфигурации» внизу страниц сборок — из тех же данных, что и главная."""
@@ -469,7 +474,7 @@ full=f'''<!doctype html>
 {_css}</style>
 </head>
 <body>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden').replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER)}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}',_more_hidden()).replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER)}
 <script>
 {_js}</script>
 </body>
@@ -480,7 +485,7 @@ frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 {_css}</style>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}','' if any(c.get('extra') for c in _cards) else ' hidden').replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER)}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}',_more_hidden()).replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER)}
 <script>
 {_js}</script>
 '''

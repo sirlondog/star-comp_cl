@@ -1,27 +1,41 @@
 (function () {
-  // «Показать ещё» открывает по 4 скрытые карточки (их фото грузятся только в этот момент);
-  // когда открыты все, кнопка превращается в «Скрыть» и возвращает блок в исходный вид
+  // Правило главной: видно не более 8 карточек. «Показать ещё» открывает следующую
+  // порцию (до 8); если остались ещё скрытые — рядом видна и кнопка «Скрыть»,
+  // которая сворачивает блок обратно к первым 8. Когда открыты все карточки,
+  // остаётся только «Скрыть».
+  var BATCH = 8;
   var more = document.getElementById('cards-more');
-  var extra = document.querySelectorAll('#cards > [hidden]');
-  if (more && extra.length) more.addEventListener('click', function () {
-    var hidden = document.querySelectorAll('#cards > [hidden]');
-    var i;
-    if (hidden.length) {
-      for (i = 0; i < hidden.length && i < 4; i++) {
-        hidden[i].hidden = false;
-        hidden[i].classList.add('card--in');
-      }
-      hidden[0].querySelector('a').focus({ preventScroll: true });
-      if (hidden.length <= 4) more.textContent = 'Скрыть';
-    } else {
-      for (i = 0; i < extra.length; i++) {
-        extra[i].hidden = true;
-        extra[i].classList.remove('card--in');
-      }
-      more.textContent = 'Показать ещё';
-      document.getElementById('konfiguracii').scrollIntoView({ block: 'start' });
+  var hide = document.getElementById('cards-hide');
+  var wrap = document.getElementById('cards-more-wrap');
+  if (!more || !hide || !wrap) return;
+  var initial = document.querySelectorAll('#cards > [hidden]');
+  if (!initial.length) { wrap.hidden = true; return; }
+  var expanded = false;
+  var hidden = function () { return document.querySelectorAll('#cards > [hidden]'); };
+  var sync = function () {
+    var remaining = hidden().length;
+    more.hidden = expanded && !remaining;
+    hide.hidden = !expanded;
+    more.setAttribute('aria-expanded', String(expanded && !remaining));
+  };
+  more.addEventListener('click', function () {
+    var h = hidden();
+    for (var i = 0; i < h.length && i < BATCH; i++) {
+      h[i].hidden = false;
+      h[i].classList.add('card--in');
     }
-    more.setAttribute('aria-expanded', String(!document.querySelector('#cards > [hidden]')));
+    if (h.length) h[0].querySelector('a').focus({ preventScroll: true });
+    expanded = true;
+    sync();
+  });
+  hide.addEventListener('click', function () {
+    for (var i = 0; i < initial.length; i++) {
+      initial[i].hidden = true;
+      initial[i].classList.remove('card--in');
+    }
+    expanded = false;
+    sync();
+    document.getElementById('konfiguracii').scrollIntoView({ block: 'start' });
   });
 
   var menu = document.getElementById('menu');

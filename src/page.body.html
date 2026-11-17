@@ -59,7 +59,10 @@
     <ul class="cards" id="cards">
 {{CARDS_LIST}}
     </ul>
-    <button class="more"{{MORE_HIDDEN}} id="cards-more" type="button" aria-controls="cards" aria-expanded="false">Показать ещё</button>
+    <div class="more-buttons"{{MORE_HIDDEN}} id="cards-more-wrap">
+      <button class="more" id="cards-more" type="button" aria-controls="cards" aria-expanded="false">Показать ещё</button>
+      <button class="more more--hide" id="cards-hide" type="button" aria-controls="cards" aria-expanded="true" hidden>Скрыть</button>
+    </div>
   </section>
 
 {{STOCK_SECTION}}
