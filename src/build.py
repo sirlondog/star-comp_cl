@@ -717,3 +717,12 @@ for f in sorted(glob.glob(os.path.join(ROOT,'content','builds','*.json'))):
     out=inject_code(page_html(d))
     open(os.path.join(ROOT,d['slug']+'.html'),'w',encoding='utf-8').write(out)
     print('сборка',d['slug'],len(out))
+
+# sitemap.xml: главная + все страницы сборок. Адреса без .html — ровно как в canonical.
+_urls=['https://star-comp.ru']+['https://star-comp.ru/'+s for s in sorted(_slugs)]
+open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write(
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    +'\n'.join(f'  <url><loc>{u}</loc></url>' for u in _urls)
+    +'\n</urlset>\n')
+print('sitemap:',len(_urls),'адресов')
