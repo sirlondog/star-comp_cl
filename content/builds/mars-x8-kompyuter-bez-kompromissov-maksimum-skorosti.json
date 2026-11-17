@@ -31,12 +31,7 @@
       "alt": "Блок питания"
     }
   ],
-  "video": {
-    "horizontal": "https://kinescope.io/moVjJhAQqKKnbw8LdofmwR",
-    "vertical": "",
-    "cover_h": "",
-    "cover_v": ""
-  },
+  "video": null,
   "lead": "",
   "about": "",
   "specs": [
