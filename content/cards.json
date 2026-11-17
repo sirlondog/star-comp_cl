@@ -149,25 +149,6 @@
       "extra": false
     },
     {
-      "name": "MARS X8",
-      "image": {
-        "path": "/content/photos/mars_x8/1_4x3_3000px.webp",
-        "x": 55,
-        "y": 97,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
-      "specs": {
-        "cpu": "INTEL CORE i7-14700KF",
-        "gpu": "NVIDIA RTX 5080 16GB"
-      },
-      "price_from": 336000,
-      "show_from": true,
-      "page": "mars-x8-kompyuter-bez-kompromissov-maksimum-skorosti",
-      "extra": true,
-      "tag": ""
-    },
-    {
       "name": "CORE R1",
       "image": {
         "path": "/content/photos/core-r1/1_4x3_3000px.webp",
@@ -203,6 +184,25 @@
       "show_from": true,
       "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
       "extra": false
+    },
+    {
+      "name": "MARS X8",
+      "image": {
+        "path": "/content/photos/mars_x8/1_4x3_3000px.webp",
+        "x": 55,
+        "y": 97,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i7-14700KF",
+        "gpu": "NVIDIA RTX 5080 16GB"
+      },
+      "price_from": 336000,
+      "show_from": true,
+      "page": "mars-x8-kompyuter-bez-kompromissov-maksimum-skorosti",
+      "extra": true,
+      "tag": ""
     }
   ]
 }
