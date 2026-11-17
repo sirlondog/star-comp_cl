@@ -401,6 +401,9 @@ def card_html(c,hidden=False):
     specs = card_specs(c)
     href=esc(c.get('page') or '') or '#podbor'
     extra=' hidden' if hidden else ''
+    # Яндекс Сплит: максимальный срок — 24 месяца. Платёж в месяц = цена / 24,
+    # округляем вверх до сотен, чтобы суммы выглядели аккуратно.
+    _split=((c['price_from']+2399)//2400)*100
     return f'''      <li class="card"{extra}>
         <div class="card__media">
           <picture>
@@ -417,6 +420,10 @@ def card_html(c,hidden=False):
             <p class="card__price"><span>Стоимость на момент сборки:</span><b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></p>
             <a class="card__go" href="{href}" aria-label="Открыть страницу: {name}"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
+          <p class="card__split">
+            <svg class="card__split-badge" viewBox="0 0 44 20" role="img" aria-label="Яндекс Сплит"><rect width="44" height="20" rx="10" fill="#ffdb4d"/><text x="22" y="14.5" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0c">Сплит</text></svg>
+            <span>Рассрочка от {money(_split)} в&nbsp;месяц</span>
+          </p>
         </div>
       </li>'''
 
