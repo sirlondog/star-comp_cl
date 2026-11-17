@@ -138,6 +138,7 @@ collections:
             label: Карточки
             label_singular: карточку
             widget: list
+            collapsed: true
             min: 1
             add_to_top: false
             summary: '{{name}} — от {{price_from}} ₽'
