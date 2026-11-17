@@ -89,8 +89,7 @@ ul{list-style:none}
 .hero h1{margin-top:.875rem;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
 .hero h1 em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero__lead{margin-top:.875rem;max-width:29rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
-.btn{display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:3.75rem;margin-top:1.75rem;padding:.5rem 2.125rem;border:0;border-radius:62.5rem;background:var(--cyan);color:#0a0a0c;font-weight:600;font-size:var(--fs-l);text-align:center;text-decoration:none;box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:box-shadow .2s,transform .2s}
-.btn__icon{flex:none;width:1.375rem;height:1.375rem}
+.btn{display:flex;align-items:center;justify-content:center;min-height:3.75rem;margin-top:1.75rem;padding:.5rem 2.125rem;border:0;border-radius:62.5rem;background:var(--cyan);color:#0a0a0c;font-weight:600;font-size:var(--fs-l);text-align:center;text-decoration:none;box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:box-shadow .2s,transform .2s}
 
 .hero__media{position:relative;justify-self:center;width:100%;max-width:31.25rem;aspect-ratio:4/5;border:1px solid var(--line);border-radius:1.25rem;overflow:hidden;background:#0a0a0c;box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,61,174,.18)}
 .hero__media img{width:100%;height:100%;object-fit:cover;background:var(--bg)}
@@ -416,7 +415,7 @@ html{overflow-x:clip}
 /* примечание и кнопка: без разделителя, просто воздух — как на Тильде */
 .product__note{margin-top:1.5rem;max-width:37.5rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-m);line-height:1.4;-webkit-text-stroke:.012em currentColor}
 .product__info .btn{align-self:center;width:18.75rem;margin-top:1.5rem}
-@media (max-width:63.99rem){.product__info .btn{width:100%}}
+@media (max-width:63.99rem){.product__info .btn{width:100%}.product__cost{align-self:stretch}}
 
 /* О сборке + видео: на мобильном текст, затем видео; на десктопе вертикальное видео справа */
 .about{display:grid;gap:1.75rem}
@@ -495,6 +494,7 @@ html{overflow-x:clip}
   .product__price{margin-top:0;font-size:44px;line-height:1.22;font-weight:600;-webkit-text-stroke:.018em currentColor}
   .product__note{margin-inline:auto;width:min(380px,100%);text-wrap:pretty;margin-top:20px;font-size:20px;line-height:1.25;color:#808080;-webkit-text-stroke:.012em currentColor}
   .product__info .btn{width:380px;max-width:100%;align-self:center;margin-inline:auto;margin-top:20px;height:60px}
+  .product__cost .btn{align-self:stretch;width:100%;margin-top:20px;height:60px}
   /* на высоких экранах (2K) шаг между элементами больше — 40px */
   @media (min-height:1200px){
     .product__cost{margin-top:40px}
@@ -663,12 +663,10 @@ html{overflow-x:clip}
           <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
           <span>Рассрочка от 11&nbsp;000&nbsp;₽</span>
         </button>
+        <a class="btn" href="index.html#konfiguracii">Подобрать компьютер</a>
       </div>
       
       <p class="product__note">Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или&nbsp;подобрать другую конфигурацию, стоимость указана на&nbsp;момент заказа компьютера.</p>
-      <button class="btn product__chat js-chat" type="button">
-        <svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3.5c-4.1 0-7.5 2.7-7.5 6.2 0 1.5.6 2.9 1.7 4l-.6 2.8 3-1.5c1 .3 2.2.5 3.4.5 4.1 0 7.5-2.7 7.5-6.3S14.1 3.5 10 3.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="6.8" cy="9.9" r=".9" fill="currentColor"/><circle cx="10" cy="9.9" r=".9" fill="currentColor"/><circle cx="13.2" cy="9.9" r=".9" fill="currentColor"/></svg>Консультация
-      </button>
     </div>
   </section>
 
@@ -1071,19 +1069,6 @@ html{overflow-x:clip}
       return;
     }
     if (dlg.open && (e.target === dlg || e.target.closest('.split-info .menu__close'))) dlg.close();
-  });
-})();
-
-// Кнопка «Консультация»: открывает чат.
-// Пока чат-виджет (Re:plain) не подключён, кнопка ведёт в Telegram;
-// когда подключим виджет, заменим на вызов открытия его окна.
-(function () {
-  var TG = 'https://t.me/ST_COMP';
-  document.addEventListener('click', function (e) {
-    var b = e.target.closest && e.target.closest('.js-chat');
-    if (!b) return;
-    e.preventDefault();
-    window.open(TG, '_blank', 'noopener');
   });
 })();
 </script>

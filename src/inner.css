@@ -58,7 +58,7 @@ html{overflow-x:clip}
 /* примечание и кнопка: без разделителя, просто воздух — как на Тильде */
 .product__note{margin-top:1.5rem;max-width:37.5rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-m);line-height:1.4;-webkit-text-stroke:.012em currentColor}
 .product__info .btn{align-self:center;width:18.75rem;margin-top:1.5rem}
-@media (max-width:63.99rem){.product__info .btn{width:100%}}
+@media (max-width:63.99rem){.product__info .btn{width:100%}.product__cost{align-self:stretch}}
 
 /* О сборке + видео: на мобильном текст, затем видео; на десктопе вертикальное видео справа */
 .about{display:grid;gap:1.75rem}
@@ -137,6 +137,7 @@ html{overflow-x:clip}
   .product__price{margin-top:0;font-size:44px;line-height:1.22;font-weight:600;-webkit-text-stroke:.018em currentColor}
   .product__note{margin-inline:auto;width:min(380px,100%);text-wrap:pretty;margin-top:20px;font-size:20px;line-height:1.25;color:#808080;-webkit-text-stroke:.012em currentColor}
   .product__info .btn{width:380px;max-width:100%;align-self:center;margin-inline:auto;margin-top:20px;height:60px}
+  .product__cost .btn{align-self:stretch;width:100%;margin-top:20px;height:60px}
   /* на высоких экранах (2K) шаг между элементами больше — 40px */
   @media (min-height:1200px){
     .product__cost{margin-top:40px}

@@ -143,7 +143,6 @@ def srcset(stem,ws,ext): return ', '.join(f'assets/{stem}-{w}.{ext} {w}w' for w 
 
 # ---------- контакты, соцсети и преимущества: из content/settings.json и perks.json ----------
 _soc=(S.get('socials') or {})
-_js=_js.replace('__TELEGRAM_URL__',esc(_soc.get('telegram') or 'https://t.me/ST_COMP'))
 _social_defs=[('max',max_svg,'Написать в MAX'),('telegram',tg_svg,'Написать в Telegram'),('vk',vk_svg,'Группа ВКонтакте')]
 socials='\n'.join(f'<a class="social" href="{esc(_soc.get(k,""))}" target="_blank" rel="noopener" aria-label="{label}">{ic}</a>'
                   for k,ic,label in _social_defs if _soc.get(k))
@@ -642,11 +641,9 @@ def body_html(d):
           <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
           <span>Рассрочка от {money((d['price']+2399)//2400*100)}</span>
         </button>
+        <a class="btn" href="index.html#konfiguracii">Подобрать компьютер</a>
       </div>
       {note}
-      <button class="btn product__chat js-chat" type="button">
-        <svg class="btn__icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3.5c-4.1 0-7.5 2.7-7.5 6.2 0 1.5.6 2.9 1.7 4l-.6 2.8 3-1.5c1 .3 2.2.5 3.4.5 4.1 0 7.5-2.7 7.5-6.3S14.1 3.5 10 3.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="6.8" cy="9.9" r=".9" fill="currentColor"/><circle cx="10" cy="9.9" r=".9" fill="currentColor"/><circle cx="13.2" cy="9.9" r=".9" fill="currentColor"/></svg>Консультация
-      </button>
     </div>
   </section>
 {about_section}
