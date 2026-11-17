@@ -221,6 +221,24 @@
       "show_from": true,
       "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
       "extra": true
+    },
+    {
+      "name": "MARS X9",
+      "image": {
+        "path": "/content/photos/mars-x9/mars-x9_1.webp",
+        "x": 51,
+        "y": 66,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i5-14600KF",
+        "gpu": "NVIDIA RTX 5070 12GB"
+      },
+      "price_from": 218000,
+      "show_from": true,
+      "page": "mars-x9-intel-core-i7-14700kf-nvidia-rtx-5070",
+      "extra": true
     }
   ]
 }
