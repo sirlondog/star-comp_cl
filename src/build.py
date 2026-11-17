@@ -45,6 +45,20 @@ def inject_code(html):
 _css=open('page.css',encoding='utf-8').read()
 _body=open('page.body.html',encoding='utf-8').read()
 _js=open('page.js',encoding='utf-8').read()
+_inner_css=open('inner.css',encoding='utf-8').read()
+_inner_js=open('inner.js',encoding='utf-8').read()
+
+# ---------- внешние файлы стилей и скриптов ----------
+# Раньше CSS/JS вшивались в каждую страницу (25–43 КБ на страницу). Теперь они
+# лежат в assets/ отдельными файлами: браузер скачивает их один раз и кэширует
+# при переходах между страницами. Метка времени в адресе (?v=...) сбрасывает
+# кэш после каждой сборки — посетители всегда видят свежие стили.
+import time
+_STAMP=time.strftime('%Y%m%d%H%M')
+_inner_css_full=(':root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}\n'
+                 'img{max-width:100%}\n'+_css+_inner_css)
+def _menu_js_part():
+    return '(function () {\n'+_js[_js.index('  var menu ='):]
 
 # ---------- карточки «Популярных конфигураций» из content/cards.json ----------
 _cards=load_content('cards.json',{}).get('cards') or []
@@ -96,8 +110,8 @@ def derive(src,widths,ratio):
         im=ImageOps.exif_transpose(Image.open(path)).convert('RGB')
         for w in todo:
             t=ImageOps.fit(im,(w,round(w/ratio)),Image.LANCZOS)
-            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=95,method=6)
-            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=80)
+            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=85,method=6)
+            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=75)
     return stem,ws
 
 def focal_derive(src,widths,ratio,focal,zoom=1):
@@ -483,13 +497,11 @@ full=f'''<!doctype html>
 <script type="application/ld+json">{ld.replace('</','<\\/')}</script>
 <link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-{_css}</style>
+<link rel="stylesheet" href="assets/style.css?v={_STAMP}">
 </head>
 <body>
 {body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}',_more_hidden()).replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER)}
-<script>
-{_js}</script>
+<script src="assets/page.js?v={_STAMP}"></script>
 </body>
 </html>
 '''
@@ -658,9 +670,8 @@ menu=src[src.index('<dialog'):]
 def fill(x): return fill_text(x.replace('{{MENU_LINKS}}',menu_links_html(True)).replace('{{LOGO_ICON}}',logo_icon).replace('{{LOGO_WORD}}',logo_word).replace('{{SOCIALS}}',socials).replace('{{SOCIALS_MENU}}',socials.replace('mx-','mxm-')))
 header_i=fill(header).replace('<a class="logo" href="/"','<a class="logo" href="index.html"')
 menu_i=fill(menu)
-menu_js=_js[_js.index("  var menu ="):]
-inner_js=open('inner.js',encoding='utf-8').read()
-css_i=_css+open('inner.css',encoding='utf-8').read()
+# файлы стилей/скриптов для внутренних страниц пишем заранее (см. блок в конце сборки)
+_inner_js_full=_inner_js+_menu_js_part()
 
 def page_html(d):
     slug=d['slug'].strip().strip('/')
@@ -693,10 +704,7 @@ def page_html(d):
 <script type="application/ld+json">{json.dumps(ld,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')}</script>
 <link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-:root{{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}
-img{{max-width:100%}}
-{css_i}</style>
+<link rel="stylesheet" href="assets/inner.css?v={_STAMP}">
 </head>
 <body>
 {header_i}
@@ -705,10 +713,7 @@ img{{max-width:100%}}
 {FOOTER}
 
 {menu_i}
-<script>
-{inner_js}
-(function () {{
-{menu_js}</script>
+<script src="assets/inner.js?v={_STAMP}"></script>
 </body>
 </html>
 """
@@ -744,3 +749,29 @@ open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write(
     +'\n'.join(f'  <url><loc>{u}</loc></url>' for u in _urls)
     +'\n</urlset>\n')
 print('sitemap:',len(_urls),'адресов')
+
+# ---------- внешние стили и скрипты в assets/ (кэшируются между страницами) ----------
+open(os.path.join(ROOT,'assets','style.css'),'w',encoding='utf-8').write(_css)
+open(os.path.join(ROOT,'assets','page.js'),'w',encoding='utf-8').write(_js)
+open(os.path.join(ROOT,'assets','inner.css'),'w',encoding='utf-8').write(_inner_css_full)
+open(os.path.join(ROOT,'assets','inner.js'),'w',encoding='utf-8').write(_inner_js_full)
+print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js (метка',_STAMP+')')
+
+# ---------- чистка assets: удаляем файлы, на которые не ссылается ни одна страница ----------
+# Сюда попадают дубли после переименования фото и нарезки, потерявшие актуальность.
+_STATIC={'favicon.svg','icon-192.png','og-home.jpg','gilroy-regular.woff2','gilroy-semibold.woff2',
+         'split-logo.svg','style.css','page.js','inner.css','inner.js'}
+_referenced=set()
+for _page in glob.glob(os.path.join(ROOT,'*.html'))+glob.glob(os.path.join(ROOT,'.preview','*.html')):
+    _referenced.update(re.findall(r'assets/[A-Za-z0-9._\-/]+',open(_page,encoding='utf-8').read()))
+_used={p[len('assets/'):].rstrip('\'",) ') for p in _referenced}
+_assets_dir=os.path.join(ROOT,'assets')
+_removed=0; _freed=0
+for _dirpath,_dirs,_files in os.walk(_assets_dir,topdown=False):
+    for _fn in _files:
+        _rel=os.path.relpath(os.path.join(_dirpath,_fn),_assets_dir).replace('\\','/')
+        if _rel in _STATIC or _rel in _used: continue
+        _p=os.path.join(_dirpath,_fn)
+        _freed+=os.path.getsize(_p); os.remove(_p); _removed+=1
+    if not os.listdir(_dirpath) and _dirpath!=_assets_dir: os.rmdir(_dirpath)
+print('чистка assets: удалено',_removed,'файлов,',round(_freed/1048576,1),'МБ')
