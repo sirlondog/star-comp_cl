@@ -209,6 +209,10 @@ ul{list-style:none}
   .more:hover{color:var(--cyan);background:rgba(0,217,255,.08);box-shadow:0 0 1rem rgba(0,217,255,.4)}
 }
 .section{scroll-margin-top:5.5rem}
+/* Отступ от кнопки «Показать ещё» до заголовка «Доверие…»: 40px (низ секции сборок)
+   + 0px (верх футера) + 20px (верх блока отзывов) = 60px */
+#konfiguracii{padding-bottom:2.5rem}
+main:has(> #konfiguracii) + .tfooter{margin-top:0}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
@@ -292,8 +296,9 @@ html{scroll-behavior:smooth}
 }
 
 /* ---------- Футер: блок отзывов ---------- */
+.tf-reviews{padding-block-start:1.25rem}
 .tf-reviews .tf-title{font-size:2.125rem}
-.tf-reviews .tf-lead{margin-top:10px;font-size:var(--fs-l);line-height:1.2;color:var(--muted)}
+.tf-reviews .tf-lead{margin-top:10px;font-size:var(--fs-l);line-height:1.2;color:var(--muted);text-wrap:pretty}
 .tf-reviews__grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:20px}
 .tf-review2{display:flex;flex-direction:column;gap:20px;min-height:300px;padding:27px 20px 20px 30px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
 .tf-review2__text{margin:0;font-size:1.125rem;line-height:1.167;color:var(--fg)}
