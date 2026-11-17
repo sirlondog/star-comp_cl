@@ -641,7 +641,7 @@ def body_html(d):
           <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
           <span>Рассрочка от {money((d['price']+2399)//2400*100)}</span>
         </button>
-        <a class="btn" href="index.html#konfiguracii">Подобрать компьютер</a>
+        <a class="btn" href="index.html#konfiguracii">Консультация</a>
       </div>
       {note}
     </div>
