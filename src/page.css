@@ -90,7 +90,7 @@ ul{list-style:none}
 @keyframes menu-in{from{transform:translateX(2rem);opacity:0}}
 .menu__close{display:grid;place-items:center;width:2.875rem;height:2.875rem;margin-left:auto;padding:0;border:1px solid var(--line);border-radius:50%;background:none;color:inherit;font:400 1.5rem/1 var(--font);cursor:pointer}
 .menu nav{display:flex;flex-direction:column;gap:.625rem;margin-top:.75rem}
-.menu nav a{font-weight:600;font-size:1.25rem;line-height:1.3;text-decoration:none}
+.menu nav a{font-weight:400;font-size:1.25rem;line-height:1.3;text-decoration:none}
 .menu__bottom{display:grid;gap:.3125rem;margin-top:auto;padding-top:2.5rem}
 .menu__phone{font-weight:600;font-size:1.25rem;line-height:1.3;color:var(--fg);text-decoration:none}
 .menu__note,.menu__mail{margin:0;font-size:1.125rem;line-height:1.3;color:var(--muted)}
