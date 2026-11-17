@@ -417,13 +417,15 @@ def card_html(c,hidden=False):
 {specs}
           </dl>
           <div class="card__foot">
-            <p class="card__price"><span>Стоимость на момент сборки:</span><b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></p>
+            <div class="card__foot-left">
+              <p class="card__price"><span>Стоимость на момент сборки:</span><b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></p>
+              <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+                <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
+                <span>Рассрочка от {money(_split)}</span>
+              </button>
+            </div>
             <a class="card__go" href="{href}" aria-label="Открыть страницу: {name}"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
-          <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
-            <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
-            <span>Рассрочка от {money(_split)}</span>
-          </button>
         </div>
       </li>'''
 

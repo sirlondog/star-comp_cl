@@ -171,7 +171,8 @@ ul{list-style:none}
 .card__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-top:auto;padding-top:.375rem}
 .card__price{display:flex;flex-direction:column}
 .card__price b{font-weight:600;font-size:var(--fs-h3);line-height:1.25;font-variant-numeric:lining-nums}
-.card__split{position:relative;z-index:1;display:flex;align-items:center;gap:.5rem;margin:-.375rem 0 0;padding:0;background:none;border:0;color:var(--cyan);font:inherit;font-size:var(--fs-m);line-height:1.3;text-align:left;cursor:pointer}
+.card__foot-left{display:flex;flex-direction:column;gap:.375rem;min-width:0}
+.card__split{position:relative;z-index:1;display:flex;align-items:center;gap:.5rem;margin:0;padding:0;background:none;border:0;color:var(--cyan);font:inherit;font-size:var(--fs-m);line-height:1.3;text-align:left;cursor:pointer}
 .card__split span{text-decoration:underline;text-underline-offset:.25em;text-decoration-thickness:1px}
 .card__split:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:.5rem}
 .card__split-badge{flex:none;width:1.375rem;height:1.375rem}
@@ -499,6 +500,7 @@ html{overflow-x:clip}
   @media (min-height:1200px){
     .product__cost{margin-top:40px}
     .product__info .btn{margin-top:40px}
+    .product__cost .btn{margin-top:20px}
   }
   .section--about,.section--spec{padding-block:3.25rem 0}
   /* секция только с видео прижата к первому экрану (галерее) без отступа */
