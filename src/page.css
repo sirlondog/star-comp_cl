@@ -166,7 +166,7 @@ ul{list-style:none}
 /* ---------- Доработки: подсветка карточек, подзаголовок, разделитель ---------- */
 .card{transition:border-color .3s,transform .3s,box-shadow .3s}
 @media (hover:hover){
-  .card:hover{border-color:rgba(255,61,174,.18);box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(255,61,174,.15)}
+  .card:hover{border-color:rgba(0,217,255,.35);box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(0,217,255,.25)}
 }
 @media (min-width:64rem){
   .section__lead{max-width:none}
