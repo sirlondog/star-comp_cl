@@ -637,6 +637,10 @@ def body_html(d):
       <div class="product__cost">
         <p class="product__label">Стоимость:</p>
         <p class="product__price">{'от&nbsp;' if d.get('show_from') is not False else ''}{money(d['price'])}</p>
+        <button class="card__split product__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+          <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
+          <span>Рассрочка от {money((d['price']+2399)//2400*100)}</span>
+        </button>
       </div>
       {note}
     </div>

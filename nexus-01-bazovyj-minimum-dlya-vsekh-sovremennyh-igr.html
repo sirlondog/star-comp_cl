@@ -175,6 +175,7 @@ ul{list-style:none}
 .card__split span{text-decoration:underline;text-underline-offset:.25em;text-decoration-thickness:1px}
 .card__split:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:.5rem}
 .card__split-badge{flex:none;width:1.375rem;height:1.375rem}
+.product__split{margin:.375rem 0 0;font-size:var(--fs-l)}
 .split-info{position:fixed;inset:0;box-sizing:border-box;width:min(calc(100vw - 2rem),32rem);max-height:calc(100vh - 2rem);margin:auto;padding:2rem;border:1px solid var(--line);border-radius:1.25rem;background:#0a0a0c;color:var(--fg);overflow-y:auto}
 .split-info:not([open]){display:none}
 .split-info::backdrop{background:rgba(0,0,0,.6)}
@@ -657,6 +658,10 @@ html{overflow-x:clip}
       <div class="product__cost">
         <p class="product__label">Стоимость:</p>
         <p class="product__price">от&nbsp;135&nbsp;000&nbsp;₽</p>
+        <button class="card__split product__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
+          <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
+          <span>Рассрочка от 5&nbsp;700&nbsp;₽</span>
+        </button>
       </div>
       
       <p class="product__note">Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или&nbsp;подобрать другую конфигурацию, стоимость указана на&nbsp;момент заказа компьютера.</p>
