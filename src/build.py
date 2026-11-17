@@ -781,7 +781,12 @@ print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js
 # ---------- чистка assets: удаляем файлы, на которые не ссылается ни одна страница ----------
 # Сюда попадают дубли после переименования фото и нарезки, потерявшие актуальность.
 _STATIC={'favicon.svg','icon-192.png','og-home.jpg','gilroy-regular.woff2','gilroy-semibold.woff2',
-         'split-logo.svg','style.css','page.js','inner.css','inner.js'}
+         'split-logo.svg','style.css','page.js','inner.css','inner.js',
+         # готовые файлы, которые сборщик не создаёт: фото первого экрана и аватарки отзывов
+         'hero-600.avif','hero-800.avif','hero-1000.avif','hero-600.webp','hero-800.webp','hero-1000.webp'}
+for _ava in ('ava-1','ava-2','ava-3','ava-4','ava-5'):
+    _STATIC.add(f'footer/{_ava}.webp')
+_build_start=time.time()
 _referenced=set()
 for _page in glob.glob(os.path.join(ROOT,'*.html'))+glob.glob(os.path.join(ROOT,'.preview','*.html')):
     _referenced.update(re.findall(r'assets/[A-Za-z0-9._\-/]+',open(_page,encoding='utf-8').read()))
@@ -791,8 +796,10 @@ _removed=0; _freed=0
 for _dirpath,_dirs,_files in os.walk(_assets_dir,topdown=False):
     for _fn in _files:
         _rel=os.path.relpath(os.path.join(_dirpath,_fn),_assets_dir).replace('\\','/')
-        if _rel in _STATIC or _rel in _used: continue
         _p=os.path.join(_dirpath,_fn)
+        # страховка от параллельных сборок: не трогаем файлы, обновлённые после старта сборки
+        if os.path.getmtime(_p)>_build_start: continue
+        if _rel in _STATIC or _rel in _used: continue
         _freed+=os.path.getsize(_p); os.remove(_p); _removed+=1
     if not os.listdir(_dirpath) and _dirpath!=_assets_dir: os.rmdir(_dirpath)
 print('чистка assets: удалено',_removed,'файлов,',round(_freed/1048576,1),'МБ')
