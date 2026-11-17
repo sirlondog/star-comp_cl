@@ -148,6 +148,10 @@ socials='\n'.join(f'<a class="social" href="{esc(_soc.get(k,""))}" target="_blan
                   for k,ic,label in _social_defs if _soc.get(k))
 
 # ---------- футер: блок «Отзывы» ----------
+# Рейтинг организации в Яндексе (виден в блоке отзывов на всех страницах —
+# эти же цифры уходят в разметку aggregateRating у страниц сборок)
+_YA_SCORE='5.0'    # оценка по 5-балльной шкале
+_YA_REVIEWS=120    # число отзывов (в блоке показывается как «120+»)
 _reviews=[
  ('Женя Мележик','24.06.2026','Заказывали два компа с одинаковой сборкой ко дням рождения. Всё супер – сделали и красиво, и быстро, и качественно и очень выгодно по цене. Всем большое спасибо за вашу проделанную работу и, безусловно, доставку и подключение💥💥💥','ava-1.webp'),
  ('Виктория Трофимова','14.06.2026','Сегодня приобрела компьютер сыну, и хочу поделиться своим восторгом от покупки и процесса доставки! Во-первых, сам компьютер превзошел все мои ожидания. Он работает быстро и без сбоев, все программы открываются...','ava-4.webp'),
@@ -177,12 +181,12 @@ REVIEWS_HTML=f'''  <section class="tf-section tf-reviews" aria-label="Отзыв
             <div class="tf-ya-top">
               <span class="tf-ya-ya">Я</span>
               <svg class="tf-ya-star" viewBox="0 0 35 35" aria-hidden="true"><path d="M17.5 1l4.4 11.4 12.6.5-10 8 3.4 12.1-10.4-6.6L7.1 33l3.4-12.1-10-8 12.6-.5z" fill="#ffc61b"/></svg>
-              <b class="tf-ya-score">5.0</b><span class="tf-ya-of">/5</span>
+              <b class="tf-ya-score">{_YA_SCORE}</b><span class="tf-ya-of">/5</span>
             </div>
             <div class="tf-ya-strip">Рейтинг организации в Яндексе</div>
           </div>
           <a class="tf-ya-btn" href="https://yandex.ru/maps/org/starcomp_igrovyye_kompyutery/141663119214/reviews/" target="_blank" rel="noopener">Смотреть на Яндекс</a>
-          <span class="tf-ya-badge">120+ отзывов</span>
+          <span class="tf-ya-badge">{_YA_REVIEWS}+ отзывов</span>
         </div>
     </div>
   </section>'''
@@ -654,7 +658,7 @@ def page_html(d):
     url=f'https://star-comp.ru/{slug}'
     photos=d.get('photos') or []
     og=og_image(photos[0]['image']) if photos else 'assets/og-home.jpg'
-    ld={"@context":"https://schema.org","@type":"Product","name":name,"description":(d.get('lead') or d.get('subtitle') or name),"image":f"https://star-comp.ru/{og}","brand":{"@type":"Brand","name":"STAR-COMP"},"offers":{"@type":"Offer","url":url,"price":str(int(d['price'])),"priceCurrency":"RUB"}}
+    ld={"@context":"https://schema.org","@type":"Product","name":name,"description":(d.get('lead') or d.get('subtitle') or name),"image":f"https://star-comp.ru/{og}","brand":{"@type":"Brand","name":"STAR-COMP"},"offers":{"@type":"Offer","url":url,"price":str(int(d['price'])),"priceCurrency":"RUB"},"aggregateRating":{"@type":"AggregateRating","ratingValue":_YA_SCORE,"bestRating":"5","reviewCount":str(_YA_REVIEWS)}}
     return f"""<!doctype html>
 <html lang="ru">
 <head>
