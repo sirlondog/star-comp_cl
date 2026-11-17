@@ -1,0 +1,80 @@
+{
+  "name": "AURORA G2 - копия",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 5 7500F с видеокартой NVIDIA RTX 5060 Ti 8GB",
+  "slug": "aurora-g2-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-kopiya",
+  "price": 135000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/aurora-g2/aurora-g2_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/aurora-g2/aurora-g2_2.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/aurora-g2/aurora-g2_4.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/aurora-g2/aurora-g2_5.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/aurora-g2/aurora-g2_3.webp",
+      "alt": "Радиатор системы охлаждения"
+    },
+    {
+      "image": "/content/photos/aurora-g2/aurora-g2_6.webp",
+      "alt": "Материнская плата"
+    }
+  ],
+  "video": {
+    "horizontal": "https://kinescope.io/qWGgiY9ZthKV1nrD2Eg3ib",
+    "vertical": "https://kinescope.io/09pS1V4coBUCmU8mPMWYPz",
+    "cover_h": "",
+    "cover_v": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": [
+    {
+      "label": "Процессор",
+      "value": "AMD RYZEN 5 7500F"
+    },
+    {
+      "label": "Видеокарта",
+      "value": "NVIDIA RTX 5060 Ti 8GB GIGABYTE EAGLE"
+    },
+    {
+      "label": "Материнская плата",
+      "value": "B850-S WIFI MSI PRO"
+    },
+    {
+      "label": "Оперативная память",
+      "value": "16GB DDR5 ADATA LANCR BLADE RGB"
+    },
+    {
+      "label": "Накопитель",
+      "value": "SSD M.2 500GB NETAC NV3000"
+    },
+    {
+      "label": "Блок питания",
+      "value": "DEEPCOOL PF750D V2 80+ SILVER"
+    },
+    {
+      "label": "Охлаждение",
+      "value": "DEEPCOOL LE360 V2"
+    },
+    {
+      "label": "Корпус",
+      "value": "FORMULA U9 PA"
+    }
+  ],
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
