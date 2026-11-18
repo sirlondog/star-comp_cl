@@ -328,6 +328,24 @@
       "show_from": true,
       "page": "sborka-13426-intel-core-i7-13700kf-rtx-5060-ti",
       "extra": true
+    },
+    {
+      "name": "№12961",
+      "image": {
+        "path": "/content/photos/13426/13426_1.webp",
+        "x": 51,
+        "y": 79,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i9-14900KF",
+        "gpu": "NVIDIA RTX 5080 16GB"
+      },
+      "price_from": 390000,
+      "show_from": true,
+      "page": "sborka-12961-intel-core-i9-14900kf-nvidia-rtx-5080-16gb",
+      "extra": true
     }
   ]
 }
