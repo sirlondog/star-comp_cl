@@ -329,6 +329,24 @@
       "show_from": true,
       "page": "sborka-13402-intel-core-i5-14400f-rtx-5070-12gb",
       "extra": true
+    },
+    {
+      "name": "№13391",
+      "image": {
+        "path": "/content/photos/13391/13391_1.webp",
+        "x": 54,
+        "y": 88,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с розовой подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 5 7500F",
+        "gpu": "NVIDIA RTX 5060 Ti 8GB"
+      },
+      "price_from": 141000,
+      "show_from": true,
+      "page": "sborka-13391-amd-ryzen-5-7500f-rtx-5060-ti-8gb",
+      "extra": true
     }
   ]
 }
