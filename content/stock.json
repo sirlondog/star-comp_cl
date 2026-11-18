@@ -18,7 +18,7 @@
         "gpu": "NVIDIA RTX 5060 8GB"
       },
       "price_from": 135000,
-      "show_from": true,
+      "show_from": false,
       "page": "nexus-01-bazovyj-minimum-dlya-vsekh-sovremennyh-igr",
       "extra": false
     },
@@ -35,7 +35,7 @@
         "gpu": "NVIDIA RTX 5070 12GB"
       },
       "price_from": 212000,
-      "show_from": true,
+      "show_from": false,
       "page": "phantom-f1-amd-ryzen-7-7800x3d-nvidia-rtx-5070-12gb",
       "extra": false
     },
@@ -55,7 +55,7 @@
       "price_from": 184000,
       "show_from": true,
       "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
-      "extra": true
+      "extra": false
     },
     {
       "name": "CRYO M1",
@@ -70,7 +70,7 @@
         "gpu": "NVIDIA RTX 5060 Ti 8GB"
       },
       "price_from": 178000,
-      "show_from": true,
+      "show_from": false,
       "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
       "extra": false
     },
@@ -88,9 +88,9 @@
         "gpu": "NVIDIA RTX 5070 12GB"
       },
       "price_from": 218000,
-      "show_from": true,
+      "show_from": false,
       "page": "mars-x9-intel-core-i7-14700kf-nvidia-rtx-5070",
-      "extra": true
+      "extra": false
     },
     {
       "name": "CORE R1",
@@ -106,7 +106,7 @@
         "gpu": "NVIDIA RTX 5060 Ti 16GB"
       },
       "price_from": 264000,
-      "show_from": true,
+      "show_from": false,
       "page": "core-01-moshch-v-miniatyure",
       "extra": false
     }
