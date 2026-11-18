@@ -139,6 +139,8 @@ ul{list-style:none}
 
 /* ---------- Популярные конфигурации ---------- */
 .section{padding-block:2.5rem 4rem}
+/* зазор «в наличии» → отзывы на мобильном: 20px + 20px отступов = 40px (решение владельца 18.11.2026) */
+@media (max-width:63.99rem){#v-nalichii{padding-bottom:1.25rem}}
 .section__title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
 .section__title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .section__lead{margin-top:.75rem;max-width:46rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
