@@ -560,6 +560,8 @@ open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(inject_code(ful
 _KUPIT_SLUG='kupit-kompyuter-spb'
 _KUPIT_TITLE='Купить компьютер в Санкт-Петербурге — сборка на заказ с гарантией | STAR-COMP'
 _KUPIT_DESC='Соберём компьютер под ваши задачи в СПб: гарантия и запас мощности на 5 лет, доставка и настройка дома, оплата после проверки. Телефон: 8 (993) 984-55-05.'
+# крупный заголовок страницы (H1) — отличается от главной, запрос «купить компьютер…»
+_KUPIT_H1='Купить компьютер с гарантией <em>и запасом на 5 лет</em>'
 _kupit=full.replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',
     f'<title>{_KUPIT_TITLE}</title>').replace(
@@ -572,7 +574,9 @@ _kupit=full.replace(
     '<meta property="og:title" content="STAR-COMP - сборка компьютеров на заказ">',
     f'<meta property="og:title" content="{_KUPIT_TITLE}">').replace(
     '<meta property="og:description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">',
-    f'<meta property="og:description" content="{_KUPIT_DESC}">')
+    f'<meta property="og:description" content="{_KUPIT_DESC}">').replace(
+    '<h1>'+_title_html()+'</h1>',
+    f'<h1>{_KUPIT_H1}</h1>')
 open(os.path.join(ROOT,_KUPIT_SLUG+'.html'),'w',encoding='utf-8').write(inject_code(_kupit))
 print('SEO-страница',_KUPIT_SLUG,len(_kupit))
 frag=f'''<title>STAR-COMP</title>
