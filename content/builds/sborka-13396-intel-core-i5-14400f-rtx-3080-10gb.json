@@ -1,0 +1,55 @@
+{
+  "name": "№13396",
+  "subtitle": "игровой компьютер на процессоре INTEL CORE i5-14400F с видеокартой NVIDIA RTX 3080 10GB",
+  "slug": "sborka-13396-intel-core-i5-14400f-rtx-3080-10gb",
+  "price": 119000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/13396/13396_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/13396/13396_3.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/13396/13396_6.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/13396/13396_4.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/13396/13396_7.webp",
+      "alt": "Корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/13396/13396_2.webp",
+      "alt": "Часть корпуса"
+    },
+    {
+      "image": "/content/photos/13396/13396_8.webp",
+      "alt": "Видеокарта с другого ракурса"
+    }
+  ],
+  "video": null,
+  "lead": "",
+  "about": "",
+  "specs": {
+    "cpu": "INTEL CORE i5-14400F",
+    "gpu": "ASUS TUF NVIDIA RTX 3080 10GB",
+    "motherboard": "B760M-A WIFI MSI PRO",
+    "ram": "32GB DDR4 CORSAIR DOMINATOR RGB",
+    "storage": "SSD M.2 1000GB KINGSTON NV3",
+    "psu": "DEEPCOOL PF700X 700W 80+ BRONZE",
+    "cooling": "DEEPCOOL LE360 V2",
+    "case": "DEEPCOOL CG530"
+  },
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
