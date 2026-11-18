@@ -209,6 +209,9 @@ html{overflow-x:clip}
 /* Видео: до клика показываем только обложку, плеер Kinescope подгружается по нажатию.
    Прижато к левому краю; в блоке «О сборке»: вертикальное — узкая колонка, горизонтальное — во всю ширину */
 .video{position:relative;width:100%;max-width:24rem;margin:0 auto 0 0;aspect-ratio:9/16;border:1px solid var(--line);border-radius:1.25rem;background:#0a0a0c;overflow:hidden}
+/* тёмный фон под плеером: если плеер Kinescope грузится дольше обычного,
+   вместо его белой «вспышки» по краям виден тёмный фон сайта */
+.video #kinescope-slot,.video iframe{background:#0a0a0c}
 .video__play{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:pointer}
 .video__play img{width:100%;height:100%;object-fit:cover;background:#0a0a0c}
 .video__icon{position:absolute;inset:0;display:grid;place-items:center;width:4.5rem;height:4.5rem;margin:auto;border-radius:50%;background:var(--cyan);box-shadow:0 0 1.5rem rgba(0,217,255,.45);transition:transform .2s}

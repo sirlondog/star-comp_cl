@@ -123,6 +123,12 @@
     var b = v.querySelector('.video__play');
     if (b) b.remove();
   }
+  /* обложка убирается не мгновенно по сигналу «играет», а с небольшой задержкой:
+     новые версии плеера Kinescope рапортуют о старте раньше, чем отрисуют кадр,
+     и без задержки по краям ролика мелькает их белый фон */
+  function uncoverSmooth() {
+    setTimeout(uncover, 1200);
+  }
   function boot() {
     // плеер и его скрипты грузятся только когда блок видео приближается к экрану —
     // иначе на телефоне плеер и видеопоток конкурируют с картинками за интернет
@@ -136,7 +142,7 @@
         var f = v.querySelector('iframe');
         if (f) f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
         // как только видео реально играет — обложка убирается (видно замьюченное видео)
-        p.on(p.Events.Playing, function () { playing = true; uncover(); });
+        p.on(p.Events.Playing, function () { playing = true; uncoverSmooth(); });
         if (action) { var a = action; action = null; a(); }
       });
     };
