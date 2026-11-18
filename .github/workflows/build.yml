@@ -31,16 +31,12 @@ jobs:
       - run: python src/rename_photos.py
       - run: python src/build.py
       # на Pages идут: готовый сайт + админка; исходники и .git не публикуются
+      - run: |
+          mkdir -p _site
+          cp -r *.html robots.txt sitemap.xml assets admin .preview .nojekyll _site/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: |
-            *.html
-            robots.txt
-            sitemap.xml
-            assets
-            admin
-            .preview
-            .nojekyll
+          path: _site
   deploy:
     needs: build
     runs-on: ubuntu-latest
