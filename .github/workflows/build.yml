@@ -28,6 +28,12 @@ jobs:
         with:
           python-version: '3.13'
       - run: pip install "pillow>=11.3"
+      # кэш нарезанных фото: без него каждая сборка пересоздаёт все картинки заново (~10 минут)
+      - uses: actions/cache@v4
+        with:
+          path: assets
+          key: assets-${{ hashFiles('content/photos/**', 'src/build.py', 'content/builds/**', 'content/cards.json', 'content/stock.json') }}
+          restore-keys: assets-
       - run: python src/rename_photos.py
       - run: python src/build.py
       # на Pages идут: готовый сайт + админка; исходники и .git не публикуются

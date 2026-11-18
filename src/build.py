@@ -804,6 +804,15 @@ open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write(
     +'\n</urlset>\n')
 print('sitemap:',len(_urls),'адресов')
 
+# robots.txt: закрываем служебные папки, указываем карту сайта
+open(os.path.join(ROOT,'robots.txt'),'w',encoding='utf-8').write(
+    'User-agent: *\n'
+    'Disallow: /admin/\n'
+    'Disallow: /content/\n'
+    '\n'
+    'Sitemap: https://star-comp.ru/sitemap.xml\n')
+print('robots.txt: готово')
+
 # ---------- внешние стили и скрипты в assets/ (кэшируются между страницами) ----------
 open(os.path.join(ROOT,'assets','style.css'),'w',encoding='utf-8').write(_css)
 open(os.path.join(ROOT,'assets','page.js'),'w',encoding='utf-8').write(_js)
