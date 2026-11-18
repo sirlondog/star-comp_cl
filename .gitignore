@@ -1,4 +1,23 @@
-.preview/
+# Служебные папки
 .DS_Store
 .claude/
 .wrangler/
+
+# Результат сборки: сайт собирается из src/ и content/ автоматически
+# (GitHub Actions), готовые файлы в репозиторий больше не попадают —
+# это убирает конфликты слияния между компьютерами.
+.preview/
+index.html
+/*.html
+robots.txt
+sitemap.xml
+assets/*
+!assets/favicon.svg
+!assets/icon-192.png
+!assets/og-home.jpg
+!assets/gilroy-regular.woff2
+!assets/gilroy-semibold.woff2
+!assets/manrope-var-cyrillic.woff2
+!assets/manrope-var-latin.woff2
+!assets/split-logo.svg
+!assets/footer/

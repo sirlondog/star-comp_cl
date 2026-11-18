@@ -1,16 +1,23 @@
 name: Сборка и публикация сайта
 
-# Запускается после каждого коммита в main (в том числе после сохранений из CMS):
-# переименовывает фото в <слаг папки>_<номер>, пересобирает страницы и нарезки фото,
-# коммитит изменения — GitHub Pages публикует сама.
-# Также можно запустить вручную: вкладка Actions → «Сборка и публикация сайта» → Run workflow.
+# Сборка: сайт собирается из src/ и content/ (правки — из админки Sveltia CMS
+# или напрямую), готовые файлы публикуются на GitHub Pages напрямую, без
+# коммита в ветку main — это убирает конфликты слияния между компьютерами.
+# Запустить вручную можно и без правок: вкладка Actions → Run workflow.
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# одновременные сборки не нужны: новая отменяет старую
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -23,8 +30,23 @@ jobs:
       - run: pip install "pillow>=11.3"
       - run: python src/rename_photos.py
       - run: python src/build.py
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      # на Pages идут: готовый сайт + админка; исходники и .git не публикуются
+      - uses: actions/upload-pages-artifact@v3
         with:
-          commit_message: 'Сборка сайта из исходников (Actions)'
-      # Публикация: GitHub Pages отдаёт содержимое репозитория само,
-      # отдельный шаг деплоя не нужен.
+          path: |
+            *.html
+            robots.txt
+            sitemap.xml
+            assets
+            admin
+            .preview
+            .nojekyll
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
