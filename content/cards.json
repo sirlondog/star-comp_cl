@@ -94,24 +94,6 @@
       "tag": ""
     },
     {
-      "name": "NEXUS S1",
-      "image": {
-        "path": "/content/photos/nexus-s1/nexus-s1_1.webp",
-        "x": 50,
-        "y": 50,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
-      "specs": {
-        "cpu": "INTEL CORE i5-14400F",
-        "gpu": "NVIDIA RTX 5060 8GB"
-      },
-      "price_from": 135000,
-      "show_from": true,
-      "page": "nexus-01-bazovyj-minimum-dlya-vsekh-sovremennyh-igr",
-      "extra": false
-    },
-    {
       "name": "CORE R1",
       "image": {
         "path": "/content/photos/core-r1/core-r1_1.webp",
