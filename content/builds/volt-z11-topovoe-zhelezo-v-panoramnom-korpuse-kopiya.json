@@ -1,5 +1,5 @@
 {
-  "name": "№12859",
+  "name": "№15859",
   "subtitle": "игровой компьютер на процессоре AMD RYZEN 7 7800X3D с видеокартой NVIDIA RTX 5070 12GB",
   "slug": "igrovoj-kompyuter-adm-ryzen-7-7800x3d-nvidia-rtx-5070-12gb",
   "price": 272000,
@@ -42,7 +42,7 @@
     "storage": "SSD M.2 2000GB KINGSON NV3",
     "psu": "1000W DEEPCOOL PN1000D 80+ GOLD",
     "cooling": "DEEPCOOL AG620 V2",
-    "case": "JONSBO D300"
+    "case": "LIAN LI VECTOR V100"
   },
   "seo": {
     "title": "",
