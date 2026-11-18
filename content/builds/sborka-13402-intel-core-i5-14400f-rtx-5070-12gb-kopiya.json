@@ -1,55 +1,47 @@
 {
-  "name": "№13402 - копия",
-  "subtitle": "игровой компьютер на процессоре INTEL CORE i5-14400F с видеокартой NVIDIA RTX 5070 12GB",
-  "slug": "sborka-13402-intel-core-i5-14400f-rtx-5070-12gb-kopiya",
-  "price": 189000,
+  "name": "№13391",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 5 7500F с видеокартой NVIDIA RTX 5060 Ti 8GB",
+  "slug": "sborka-13391-amd-ryzen-5-7500f-rtx-5060-ti-8gb",
+  "price": 141000,
   "show_from": true,
   "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
   "photos": [
     {
-      "image": "/content/photos/13402/13402_1.webp",
+      "image": "/content/photos/13391/13391_1.webp",
       "alt": "Общий вид компьютера"
     },
     {
-      "image": "/content/photos/13402/13402_4.webp",
+      "image": "/content/photos/13391/13391_3.webp",
       "alt": "Система охлаждения компьютера"
     },
     {
-      "image": "/content/photos/13402/13402_5.webp",
+      "image": "/content/photos/13391/13391_5.webp",
       "alt": "Оперативная память"
     },
     {
-      "image": "/content/photos/13402/13402_7.webp",
+      "image": "/content/photos/13391/13391_2.webp",
       "alt": "Видеокарта"
     },
     {
-      "image": "/content/photos/13402/13402_3.webp",
+      "image": "/content/photos/13391/13391_4.webp",
       "alt": "Корпусные вентиляторы"
-    },
-    {
-      "image": "/content/photos/13402/13402_6.webp",
-      "alt": "Часть корпуса"
-    },
-    {
-      "image": "/content/photos/13402/13402_2.webp",
-      "alt": "Жидкостная система охлаждения"
     }
   ],
   "video": {
     "horizontal": "",
-    "vertical": "https://kinescope.io/dZXtz9cnRLbXUWSfJUHSYK"
+    "vertical": "https://kinescope.io/xAEKKoz3phYsQUnikxXjLQ"
   },
   "lead": "",
   "about": "",
   "specs": {
-    "cpu": "INTEL CORE i5-14400F",
-    "gpu": "NVIDIA RTX 5070 12GB GIGABYTE GAMING",
-    "motherboard": "ASUS TUF GAMING B760M BTF WIFI",
-    "ram": "32GB DDR5 CORSAIR DOMINATOR RGB",
-    "storage": "SSD M.2 1000GB KINGSTON NV3",
+    "cpu": "AMD RYZEN 5 7500F",
+    "gpu": "NVIDIA RTX 5060 Ti 8GB GIGABYTE GAMING",
+    "motherboard": "MSI B650M-P PRO",
+    "ram": "32GB DDR5 G.SKILL TRIDENT Z RGB",
+    "storage": "SSD M.2 500GB KINGSTON NV3",
     "psu": "DEEPCOOL PF700X 700W 80+ BRONZE",
     "cooling": "DEEPCOOL LE360 V2",
-    "case": "DEEPCOOL CG380"
+    "case": "DEEPCOOL CG530"
   },
   "seo": {
     "title": "",
