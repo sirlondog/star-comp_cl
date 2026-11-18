@@ -21,3 +21,5 @@ assets/*
 !assets/manrope-var-latin.woff2
 !assets/split-logo.svg
 !assets/footer/
+
+__pycache__/
