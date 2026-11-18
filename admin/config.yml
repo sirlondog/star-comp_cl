@@ -229,6 +229,7 @@ collections:
             label_singular: карточку
             widget: list
             add_to_top: false
+            collapsed: true
             required: false
             summary: '{{name}} — от {{price_from}} ₽'
             hint: 'Порядок в списке = порядок на странице. Кнопками вверх/вниз можно менять карточки местами'
