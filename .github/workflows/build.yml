@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -36,6 +36,12 @@ jobs:
           restore-keys: assets-
       - run: python src/rename_photos.py
       - run: python src/build.py
+      # переименованные фото и обновлённые ссылки коммитим обратно в репозиторий
+      # (только content/ — готовый сайт в репозиторий больше не пишется)
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Сборка: фото приведены к единому именованию'
+          file_pattern: 'content/**'
       # на Pages идут: готовый сайт + админка; исходники и .git не публикуются
       - run: |
           mkdir -p _site
