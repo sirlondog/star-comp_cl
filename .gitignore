@@ -20,6 +20,12 @@ assets/*
 !assets/manrope-var-cyrillic.woff2
 !assets/manrope-var-latin.woff2
 !assets/split-logo.svg
+!assets/hero-600.avif
+!assets/hero-800.avif
+!assets/hero-1000.avif
+!assets/hero-600.webp
+!assets/hero-800.webp
+!assets/hero-1000.webp
 !assets/footer/
 
 __pycache__/
