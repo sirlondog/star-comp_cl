@@ -243,6 +243,42 @@ REVIEWS_HTML=f'''  <section class="tf-section tf-reviews" aria-label="Отзыв
     </div>
   </section>'''
 
+# ---------- блок FAQ: стоит в футере сразу перед контактами ----------
+# Раньше жил в page.body.html между «Наличием» и «7 причинами». Теперь это отдельный
+# фрагмент, который вставляется в FOOTER после отзывов. На страницах сборок
+# (inner-страницы) блок не показываем — там свой набор секций.
+FAQ_SECTION='''    <section class="tf-section faq" id="faq" aria-labelledby="faq-title">
+      <div class="faq__side">
+        <h2 class="section__title" id="faq-title">Остались <em>вопросы?</em></h2>
+        <p class="faq__lead">Ответим на то, что чаще всего спрашивают перед заказом. Если вашего вопроса здесь нет — напишите нам.</p>
+        <a class="btn faq__btn" href="mailto:{{EMAIL}}">Написать нам <span aria-hidden="true">→</span></a>
+        <p class="faq__note">{{SCHEDULE}}</p>
+      </div>
+      <div class="faq__list">
+        <div class="faq__item is-open">
+          <button class="faq__q" type="button" aria-expanded="true" aria-controls="faq-a1">За сколько дней соберёте компьютер?<span class="faq__plus" aria-hidden="true"></span></button>
+          <div class="faq__a" id="faq-a1"><p>Обычно сборка занимает 2 дня после подтверждения заказа. Если все детали в наличии, срок может быть короче — уточним при оформлении.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a2">Какая гарантия на сборку и комплектующие?<span class="faq__plus" aria-hidden="true"></span></button>
+          <div class="faq__a" id="faq-a2"><p>Гарантия на сборку — до 5 лет. На каждую деталь действует гарантия производителя, коробки и документы передаём вместе с компьютером.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a3">Как проходит оплата?<span class="faq__plus" aria-hidden="true"></span></button>
+          <div class="faq__a" id="faq-a3"><p>Оплатить можно после проверки компьютера при получении. Также доступна рассрочка Яндекс Сплит — условия покажем при заказе.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a4">Доставка и настройка включены в стоимость?<span class="faq__plus" aria-hidden="true"></span></button>
+          <div class="faq__a" id="faq-a4"><p>Да: привезём, подключим и настроим компьютер у вас дома. Забрать готовую сборку можно и в мастерской.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a5">Можно ли приехать в мастерскую?<span class="faq__plus" aria-hidden="true"></span></button>
+          <div class="faq__a" id="faq-a5"><p>Конечно, запишитесь заранее — покажем, как проходит сборка, и ответим на вопросы. Адрес и график работы указаны в разделе «Контакты».</p></div>
+        </div>
+      </div>
+    </section>
+'''
+
 # ---------- футер: блок «Контакты» из content/contacts.json ----------
 C=load_content('contacts.json',{})
 _tf_ph=[(p.get('image') if isinstance(p,dict) else p) for p in (C.get('photos') or [])]
@@ -274,7 +310,7 @@ _tf_lead=txt(C.get('lead') or 'Проконсультируем по телеф�
 FOOTER=f'''<footer class="tfooter">
   <div class="wrap">
     {REVIEWS_HTML}
-    <section class="tf-section tf-contacts" aria-label="Контакты">
+    {FAQ_SECTION}    <section class="tf-section tf-contacts" aria-label="Контакты">
       <h2 class="tf-title">{_tf_title}{' <em>'+_tf_accent+'</em>' if _tf_accent else ''}</h2>
       <p class="tf-lead">{_tf_lead}</p>
       <div class="tf-contacts__grid">
@@ -428,6 +464,11 @@ def fill_text(x):
     for k,v in FILLS.items(): x=x.replace(k,v)
     return x
 
+# Общий футер: на главной и её SEO-клоне показываем FAQ перед контактами,
+# на страницах сборок оставляем только отзывы и контакты.
+FOOTER_MAIN=fill_text(FOOTER)
+FOOTER_INNER=FOOTER.replace(FAQ_SECTION,'')
+
 SIZES='(min-width: 1024px) max(66.6667vw, calc(100svh * 1.3334)), max(100vw, calc(70svh * 1.3334))'
 CARD_SIZES='(min-width: 1920px) 24vw, (min-width: 1240px) 380px, (min-width: 1024px) 31vw, (min-width: 608px) 576px, calc(100vw - 32px)'
 ARROW_L='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>'
@@ -556,7 +597,7 @@ full=f'''<!doctype html>
 <link rel="stylesheet" href="assets/style.css?v={_STAMP}">
 </head>
 <body>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}',_more_hidden()).replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER)}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}',_more_hidden()).replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER_MAIN)}
 <script src="assets/page.js?v={_STAMP}"></script>
 </body>
 </html>
@@ -609,7 +650,7 @@ frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 {_css}</style>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}',_more_hidden()).replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER)}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}',_more_hidden()).replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER_MAIN)}
 <script>
 {_js}</script>
 '''
@@ -818,7 +859,7 @@ def page_html(d):
 {header_i}
 {body_html(d)}
 
-{FOOTER}
+{FOOTER_INNER}
 
 {menu_i}
 <script src="assets/inner.js?v={_STAMP}"></script>

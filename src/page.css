@@ -377,7 +377,9 @@ html{scroll-behavior:smooth}
 
 /* ---------- Блок FAQ (вариант «две колонки») ----------
    Мобильный: заголовок и кнопка сверху, список вопросов под ними.
-   Десктоп: левая колонка липкая, справа — вопросы с разделителями. */
+   Десктоп: левая колонка липкая, справа — вопросы с разделителями.
+   Блок живёт в футере (.tf-section задаёт вертикальные отступы). */
+.faq{scroll-margin-top:5.5rem}
 .faq__lead{margin-top:.75rem;max-width:26rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 .faq__btn{margin-top:1.5rem;gap:.75rem}
 .faq__note{margin-top:1rem;color:var(--muted);font-size:var(--fs-m)}
