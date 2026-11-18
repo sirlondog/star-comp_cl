@@ -138,9 +138,8 @@ ul{list-style:none}
 @media(hover:hover){.filters__btn:hover{border-color:var(--cyan);color:var(--cyan)}}
 
 /* ---------- Популярные конфигурации ---------- */
-.section{padding-block:2.5rem 4rem}
-/* зазор «в наличии» → отзывы на мобильном: 20px + 20px отступов = 40px (решение владельца 18.11.2026) */
-@media (max-width:63.99rem){#v-nalichii{padding-bottom:1.25rem}}
+/* зазор между блоками: 40px на мобильном (20px низ + 20px верх), 60px на десктопе (30px + 30px) */
+.section{padding-block:1.25rem}
 .section__title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
 .section__title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .section__lead{margin-top:.75rem;max-width:46rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
@@ -183,7 +182,7 @@ ul{list-style:none}
   .card:hover .card__go{transform:rotate(45deg)}
 }
 @media (min-width:64rem){
-  .section{padding-block:3rem 5rem}
+  .section{padding-block:1.875rem}
   .cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.875rem,2vw,1.5rem);margin-top:2.5rem}
   .card__media{aspect-ratio:4/3}
 }
@@ -221,22 +220,21 @@ ul{list-style:none}
   .more:hover{color:var(--cyan);background:rgba(0,217,255,.08);box-shadow:0 0 1rem rgba(0,217,255,.4)}
 }
 .section{scroll-margin-top:5.5rem}
-/* Отступ от кнопки «Показать ещё» до заголовка «Доверие…»: 40px (низ секции сборок)
-   + 0px (верх футера) + 20px (верх блока отзывов) = 60px */
-#konfiguracii{padding-bottom:2.5rem}
-main:has(> #konfiguracii) + .tfooter{margin-top:0}
+/* зазор «Последние проекты» → «в наличии»: 20px низ секции + 20px верх = 40px на мобильном,
+   30px + 30px = 60px на десктопе */
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 /* ---------- Преимущества под первым экраном ---------- */
-.perks{padding-block:0 3rem}
+/* junction hero→perks: 32px низ героя + 8px верх = 40px мобильный; 32px + 28px = 60px десктопный */
+.perks{padding-block:.5rem 1.25rem}
 .perks__list{display:grid;gap:1rem}
 .perk{min-width:0;padding:1.375rem 1.5rem 1.5rem;border:1px solid var(--line);border-radius:1.25rem;background:#0a0a0c}
 .perk h2{display:flex;align-items:center;gap:.75rem;font-weight:600;font-size:var(--fs-l);line-height:1.25}
 .perk svg{flex:none;width:1.5rem;height:1.5rem;fill:none;stroke:#ff3dae;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .perk p{margin-top:.625rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 @media (min-width:64rem){
-  .perks{padding-block:0 4rem}
+  .perks{padding-block:1.75rem 1.875rem}
   .perks__list{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.875rem,2vw,1.5rem)}
 }
 
@@ -252,8 +250,8 @@ html{scroll-behavior:smooth}
 }
 
 /* ---------- Футер: блок контактов ---------- */
-.tfooter{margin-top:2.5rem}
-.tf-section{padding-block:1.25rem 2.5rem}
+.tfooter{margin-top:0}
+.tf-section{padding-block:1.25rem}
 .tf-title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
 .tf-title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .tf-lead{margin-top:.3125rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
@@ -282,7 +280,7 @@ html{scroll-behavior:smooth}
   .tf-value a:hover{color:var(--fg)}
 }
 @media (min-width:64rem){
-  .tf-section{padding-block:2.5rem 3.5rem}
+  .tf-section{padding-block:1.875rem}
   .tf-lead{text-wrap:balance}
   .tf-contacts__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);grid-template-areas:"photos map" "details map";gap:2.5rem}
   .tf-details{margin-top:0}
@@ -308,7 +306,6 @@ html{scroll-behavior:smooth}
 }
 
 /* ---------- Футер: блок отзывов ---------- */
-.tf-reviews{padding-block-start:1.25rem}
 .tf-reviews .tf-title{font-size:2.125rem}
 .tf-reviews .tf-lead{margin-top:10px;font-size:var(--fs-l);line-height:1.2;color:var(--muted);text-wrap:pretty}
 .tf-reviews__grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:20px}

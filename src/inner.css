@@ -2,12 +2,14 @@
 /* ================= Страница сборки ================= */
 /* видео на всю ширину (100vw/50vw) не учитывает вертикальный скроллбар — страхуемся от горизонтального скролла */
 html{overflow-x:clip}
-/* Ритм: 28px внутри блока (gap), 44px (52px на десктопе) между блоками,
-   64px (80px на десктопе) между главами — за это отвечают классы section--* */
+/* Ритм junction'ов: зазор между любыми соседними блоками = 40px на мобильном
+   (20px низ блока + 20px верх следующего) и 60px на десктопе (30px + 30px).
+   Блоки на страницах сборок используют асимметрию «низ 0, верх = зазор»,
+   потому что у блока-галереи нижний отступ нулевой. */
 .product{display:grid;gap:1.75rem;padding-block:.5rem 0}
 .product__info,.gallery{min-width:0}
-.section--about{padding-block:2.75rem 0}
-.section--spec{padding-block:2.75rem 0}
+.section--about{padding-block:2.5rem 0}
+.section--spec{padding-block:2.5rem 1.25rem}
 .section--other{padding-block:4rem 4rem}
 
 /* Галерея: листается пальцем или стрелками, под ней миниатюры; по нажатию на фото открывается крупный просмотр */
@@ -144,7 +146,8 @@ html{overflow-x:clip}
     .product__info .btn{margin-top:40px}
     .product__cost .btn{margin-top:20px}
   }
-  .section--about,.section--spec{padding-block:3.25rem 0}
+  .section--about{padding-block:3.75rem 0}
+  .section--spec{padding-block:3.75rem 1.875rem}
   /* секция только с видео прижата к первому экрану (галерее) без отступа */
   .section--about.section--flush{padding-top:0}
   .section--other{padding-block:5rem 5rem}
@@ -184,9 +187,8 @@ html{overflow-x:clip}
 .product__info{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:34px var(--gutter) 0;text-align:center}
 .product__info h1{margin-top:0;margin-inline:0;max-width:none;font-size:var(--fs-h)}
 .product__cost{width:auto;margin-inline:0;align-items:center;margin-top:5px}
-/* видео: во всю ширину экрана, без рамки, автоплей без звука в цикле;
-   отступ от примечания 24px (низ панели обнулён, чтобы не было двойного отступа) */
-.section--about{padding-inline:0;padding-top:24px}
+/* зазор галерея/инфо → «О сборке»: 40px на мобильном (низ продукта 0 + верх блока 40px) */
+.section--about{padding-inline:0;padding-top:2.5rem}
 .about{gap:.875rem}
 .about .about__text{padding-inline:var(--gutter)}
 .about .about__video .video{width:100%;max-width:none;border:0;border-radius:0;aspect-ratio:9/16}
