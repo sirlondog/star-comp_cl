@@ -89,9 +89,23 @@ def main():
     rel = lambda d, f: '/'.join(('content/photos', d, f))
     renames = {}
     if os.path.isdir(PHOTOS):
+        # Правило: две папки с одинаковым слагом (например, «TITAN R2» и «titan r2»)
+        # это дубль — переименование в них пропускается, чтобы фото двух сборок
+        # не смешались в одну кучу. Оставьте одну папку, вторую удалите.
+        slugs = {}
         for folder in sorted(os.listdir(PHOTOS)):
             fdir = os.path.join(PHOTOS, folder)
             if os.path.isdir(fdir):
+                slugs.setdefault(slugify(folder), []).append(folder)
+        for slug, folders in sorted(slugs.items()):
+            if len(folders) > 1:
+                print(f'ВНИМАНИЕ: папки {", ".join(folders)} дают один слаг «{slug}» — это дубли.')
+                print('  Переименование в этих папках пропущено, чтобы фото не смешались.')
+                print('  Оставьте одну папку, остальные удалите (или переименуйте по-другому).')
+        for folder in sorted(os.listdir(PHOTOS)):
+            fdir = os.path.join(PHOTOS, folder)
+            # дубли (папки с одинаковым слагом) пропускаем — см. предупреждение выше
+            if os.path.isdir(fdir) and len(slugs[slugify(folder)]) == 1:
                 for old, new in plan_folder(fdir, folder):
                     renames[rel(folder, old)] = rel(folder, new)
     if not renames:
