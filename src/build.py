@@ -506,16 +506,20 @@ def other_builds_html(cards):
     </ul>
   </section>'''
 
-def stock_section_html():
-    """Блок «Компьютеры в наличии» на главной под «Последними проектами» — из content/stock.json.
-    Показывается только когда в админке выключен ползунок «Скрыть блок» и есть карточки."""
+def stock_section_html(exclude_slug=None):
+    """Блок «Компьютеры в наличии» на главной и внизу страниц сборок — из content/stock.json.
+    Показывается только когда в админке выключен ползунок «Скрыть блок» и есть карточки.
+    exclude_slug: на странице сборки прячем карточку этой же сборки, чтобы не было
+    ссылки на саму себя (зацикливание)."""
     if _STK.get('hidden') or not _stk_cards: return ''
+    cards=[c for c in _stk_cards if (c.get('page') or '').replace('.html', '') != (exclude_slug or '')]
+    if not cards: return ''
     lead=f'\n    <p class="section__lead">{txt(_STK.get("lead"))}</p>' if _STK.get('lead') else ''
     return f'''  <section class="section wrap" id="v-nalichii" aria-labelledby="stock-title">
     <h2 class="section__title" id="stock-title">{_stock_title_html()}</h2>{lead}
     <!-- Карточки собираются из content/stock.json — страница «Компьютеры в наличии» в админке -->
     <ul class="cards">
-{cards_html(_stk_cards,False)}
+{cards_html(cards,False)}
     </ul>
   </section>'''
 
@@ -743,7 +747,7 @@ def body_html(d):
   </section>
 {about_section}
 {spec_section}
-{stock_section_html()}
+{stock_section_html(d['slug'])}
 </main>"""
 
 src=open('page.body.html',encoding='utf-8').read()
