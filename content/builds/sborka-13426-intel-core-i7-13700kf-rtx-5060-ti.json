@@ -1,0 +1,58 @@
+{
+  "name": "№13426",
+  "subtitle": "игровой компьютер на процессоре INTEL CORE i7-13700KF с видеокартой NVIDIA RTX 5060 Ti 16GB",
+  "slug": "sborka-13426-intel-core-i7-13700kf-rtx-5060-ti",
+  "price": 166000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/13426/13426_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/13426/13426_2.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/13426/13426_4.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/13426/13426_3.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/13426/13426_6.webp",
+      "alt": "Корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/13426/13426_7.webp",
+      "alt": "Логотип на корпусе"
+    },
+    {
+      "image": "/content/photos/13426/13426_7.webp",
+      "alt": "Логотип корпуса"
+    }
+  ],
+  "video": {
+    "horizontal": "",
+    "vertical": "https://kinescope.io/7uPWx9r3MJrjftqaWNqJUj"
+  },
+  "lead": "",
+  "about": "",
+  "specs": {
+    "cpu": "INTEL CORE i7-13700KF",
+    "gpu": "NVIDIA RTX 5060 Ti 16GB GIGABYTE AORUS",
+    "motherboard": "B760M-A WIFI MSI PRO",
+    "ram": "32GB DDR4 CORSAIR DOMINATOR RGB",
+    "storage": "SSD M.2 1000GB KINGSTON NV3",
+    "psu": "DEEPCOOL PF700X 700W 80+ BRONZE",
+    "cooling": "DEEPCOOL LT360 VISION",
+    "case": "LIAN LI VECTOR V100"
+  },
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
