@@ -274,6 +274,24 @@
       "show_from": true,
       "page": "sborka-13396-intel-core-i5-14400f-rtx-3080-10gb",
       "extra": true
+    },
+    {
+      "name": "№13427",
+      "image": {
+        "path": "/content/photos/13396/13396_1.webp",
+        "x": 52,
+        "y": 78,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 5 7500F",
+        "gpu": "NVIDIA RTX 5060 8GB"
+      },
+      "price_from": 107000,
+      "show_from": true,
+      "page": "sborka-13427-amd-ryzen-5-7500f-rtx-5060",
+      "extra": true
     }
   ]
 }
