@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Disallow: /content/
-
-Sitemap: https://star-comp.ru/sitemap.xml
