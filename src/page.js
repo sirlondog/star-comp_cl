@@ -97,3 +97,17 @@
     if (moreWrap) moreWrap.hidden = true;
   });
 })();
+
+// Блок FAQ: открываем/закрываем ответ по нажатию на вопрос.
+// Вопросы можно открывать независимо друг от друга.
+(function () {
+  var list = document.querySelector('.faq__list');
+  if (!list) return;
+  list.addEventListener('click', function (e) {
+    var btn = e.target.closest('.faq__q');
+    if (!btn) return;
+    var item = btn.closest('.faq__item');
+    var open = item.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+})();
