@@ -1,6 +1,24 @@
 {
   "cards": [
     {
+      "name": "№15829",
+      "image": {
+        "path": "/content/photos/15829/15829_1.webp",
+        "x": 49,
+        "y": 83,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с розовой подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 7 7800X3D",
+        "gpu": "NVIDIA RTX 5070 12GB"
+      },
+      "price_from": 272000,
+      "show_from": true,
+      "page": "igrovoj-kompyuter-adm-ryzen-7-7800x3d-nvidia-rtx-5070-12gb",
+      "extra": false
+    },
+    {
       "name": "GOLDEN V1",
       "image": {
         "path": "/content/photos/15819_golden_v1/15819_golden_v1_1.webp",
@@ -91,7 +109,7 @@
       "price_from": 336000,
       "show_from": true,
       "page": "mars-x8-kompyuter-bez-kompromissov-maksimum-skorosti",
-      "extra": true,
+      "extra": false,
       "tag": ""
     },
     {
@@ -110,7 +128,7 @@
       "price_from": 124000,
       "show_from": true,
       "page": "titan-r2-intel-core-i5-12400f-nvidia-rtx-5060-8gb",
-      "extra": true
+      "extra": false
     },
     {
       "name": "ORION X1",
@@ -128,7 +146,7 @@
       "price_from": 127000,
       "show_from": true,
       "page": "orion-x1-moshchnyj-igrovoj-kompyuter-dlya-doma",
-      "extra": true,
+      "extra": false,
       "tag": ""
     },
     {
@@ -165,7 +183,7 @@
       "price_from": 135000,
       "show_from": true,
       "page": "aurora-g2-amd-ryzen-5-7500f-nvidia-rtx-5060-ti",
-      "extra": true
+      "extra": false
     },
     {
       "name": "VOLT Z11",
@@ -183,7 +201,7 @@
       "price_from": 294000,
       "show_from": true,
       "page": "volt-z11-topovoe-zhelezo-v-panoramnom-korpuse",
-      "extra": true
+      "extra": false
     },
     {
       "name": "№13392",
@@ -201,24 +219,6 @@
       "price_from": 314000,
       "show_from": true,
       "page": "sborka-13392-amd-ryzen-9-900x3d-rtx-5080",
-      "extra": true
-    },
-    {
-      "name": "№15829",
-      "image": {
-        "path": "/content/photos/15829/15829_1.webp",
-        "x": 49,
-        "y": 83,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с розовой подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 7 7800X3D",
-        "gpu": "NVIDIA RTX 5070 12GB"
-      },
-      "price_from": 272000,
-      "show_from": true,
-      "page": "igrovoj-kompyuter-adm-ryzen-7-7800x3d-nvidia-rtx-5070-12gb",
       "extra": true
     },
     {
