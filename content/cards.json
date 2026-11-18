@@ -109,7 +109,7 @@
       "price_from": 336000,
       "show_from": true,
       "page": "mars-x8-kompyuter-bez-kompromissov-maksimum-skorosti",
-      "extra": true,
+      "extra": false,
       "tag": ""
     },
     {
@@ -128,7 +128,7 @@
       "price_from": 124000,
       "show_from": true,
       "page": "titan-r2-intel-core-i5-12400f-nvidia-rtx-5060-8gb",
-      "extra": true
+      "extra": false
     },
     {
       "name": "ORION X1",
