@@ -77,6 +77,26 @@ _stk_cards=_STK.get('cards') or []
 # Данные (название, цена, фото, видео, комплектующие) правятся в админке /admin или прямо в JSON.
 # Фото лежат в content/photos/ в исходном виде; нужные размеры AVIF/WebP сборщик нарезает сам в assets/.
 import json,glob,html
+
+# ---------- контроль дублей в «Базе железа» ----------
+# Владелец может случайно добавить модель, которая уже есть (Sveltia при этом
+# молча создаёт файл с «-1» в имени). Сайт это переживает (значения — обычные
+# строки), но в админке модели будут повторяться — сообщаем в лог сборки.
+_hw={}
+for _hf in glob.glob(os.path.join(ROOT,'content','hardware','*.json')):
+    try:
+        _hd=json.load(open(_hf,encoding='utf-8'))
+    except Exception:
+        continue
+    _hm=(_hd.get('model') or '').strip().lower()
+    if _hm:
+        _hw.setdefault(_hm,[]).append(os.path.basename(_hf))
+_hw_dupes={m:files for m,files in _hw.items() if len(files)>1}
+if _hw_dupes:
+    print('ВНИМАНИЕ: в «Базе железа» дубли моделей — на сайте всё работает, но модели повторяются в админке:')
+    for _hm,_hfiles in _hw_dupes.items():
+        print('  «'+_hm.upper()+'»:', ', '.join(_hfiles))
+    print('  Оставьте один файл, лишние удалите (в админке или на GitHub).')
 from PIL import Image,ImageOps
 
 def esc(x): return html.escape(str(x or '').strip(),quote=True)
