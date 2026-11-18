@@ -1,0 +1,54 @@
+{
+  "name": "№13427",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 5 7500F с видеокартой NVIDIA RTX 5060 8GB",
+  "slug": "sborka-13427-amd-ryzen-5-7500f-rtx-5060",
+  "price": 107000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/13427/13427_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/13427/13427_6.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/13427/13427_4.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/13427/13427_3.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/13427/13427_2.webp",
+      "alt": "Корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/13427/13427_5.webp",
+      "alt": "Логотип видеокарты"
+    }
+  ],
+  "video": {
+    "horizontal": "",
+    "vertical": "https://kinescope.io/e359LuijSHmpdGckf5DaXj"
+  },
+  "lead": "",
+  "about": "",
+  "specs": {
+    "cpu": "AMD RYZEN 5 7500F",
+    "gpu": "NVIDIA RTX 5060 8GB GIGABYTE GAMING",
+    "motherboard": "B840M-P MSI PRO",
+    "ram": "16GB DDR5 G.SKILL TRIDENT Z RGB",
+    "storage": "SSD M.2 500GB KINGSTON NV3",
+    "psu": "DEEPCOOL PF700X 700W 80+ BRONZE",
+    "cooling": "DEEPCOOL AG400",
+    "case": "FORMULA U9 PA"
+  },
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
