@@ -310,6 +310,24 @@
       "show_from": true,
       "page": "sborka-13401-amd-ryzen-5-5500-rx-7660-8gb",
       "extra": true
+    },
+    {
+      "name": "№13426",
+      "image": {
+        "path": "/content/photos/13401/13401_1.webp",
+        "x": 51,
+        "y": 75,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i7-13700KF",
+        "gpu": "NVIDIA RTX 5060 Ti 16GB"
+      },
+      "price_from": 166000,
+      "show_from": true,
+      "page": "sborka-13426-intel-core-i7-13700kf-rtx-5060-ti",
+      "extra": true
     }
   ]
 }
