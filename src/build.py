@@ -525,7 +525,13 @@ def stock_section_html(exclude_slug=None):
 
 # ---------- главная страница ----------
 ld=json.dumps({"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":esc(S.get('phone_schema') or '+7-993-984-55-05'),"email":esc(S.get('email') or 'info@star-comp.ru'),"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":esc(S.get('address_full') or 'Заневский пр., 65 к5, 2 этаж'),"addressCountry":"RU"},"openingHours":esc(S.get('opening_hours_schema') or 'Mo-Su 11:00-19:00'),"sameAs":[v for v in (_soc.get('vk'),_soc.get('telegram')) if v]},ensure_ascii=False,separators=(',',':'))
-body=fill_text(_body).replace('{{CPU_FILTERS}}',_cpu_filters).replace('{{MENU_LINKS}}',menu_links_html(False))
+# фото блока «7 причин» (перенос с Тильды): нарезка под десктопную колонку 23rem
+_why_stem,_why_ws=derive('content/photos/blocktest/blocktest_1.webp',[480,800],5/8)
+_why_photo=(f'      <picture class="why__photo">\n'
+            f'        <source type="image/avif" srcset="{srcset(_why_stem,_why_ws,"avif")}" sizes="(min-width:64rem) 23rem, 1px">\n'
+            f'        <img src="assets/{_why_stem}-{_why_ws[-1]}.webp" srcset="{srcset(_why_stem,_why_ws,"webp")}" sizes="(min-width:64rem) 23rem, 1px" width="{_why_ws[-1]}" height="{round(_why_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
+            f'      </picture>')
+body=fill_text(_body).replace('{{CPU_FILTERS}}',_cpu_filters).replace('{{WHY_PHOTO}}',_why_photo).replace('{{MENU_LINKS}}',menu_links_html(False))
 full=f'''<!doctype html>
 <html lang="ru">
 <head>
@@ -596,11 +602,8 @@ _bt_block=fill_text(open(os.path.join(ROOT,'src','blocktest.body.html'),encoding
 _bt_main=full[full.index('<main>'):full.index('</main>')+len('</main>')]
 _bt=full.replace(_bt_main,'<main>\n'+_bt_block+'</main>').replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',
-    '<title>Тест блока «7 причин» | STAR-COMP</title>\n<meta name="robots" content="noindex, nofollow">').replace(
-    f'<link rel="stylesheet" href="assets/style.css?v={_STAMP}">',
-    f'<link rel="stylesheet" href="assets/style.css?v={_STAMP}">\n<link rel="stylesheet" href="assets/blocktest.css?v={_STAMP}">')
+    '<title>Тест блока «7 причин» | STAR-COMP</title>\n<meta name="robots" content="noindex, nofollow">')
 open(os.path.join(ROOT,'blocktest.html'),'w',encoding='utf-8').write(inject_code(_bt))
-open(os.path.join(ROOT,'assets','blocktest.css'),'w',encoding='utf-8').write(open(os.path.join(ROOT,'src','blocktest.css'),encoding='utf-8').read())
 print('тестовая страница blocktest',len(_bt))
 frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
