@@ -346,6 +346,24 @@
       "show_from": true,
       "page": "sborka-12961-intel-core-i9-14900kf-nvidia-rtx-5080-16gb",
       "extra": true
+    },
+    {
+      "name": "№13030",
+      "image": {
+        "path": "/content/photos/12961/12961_1.webp",
+        "x": 47,
+        "y": 77,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 7 7800X3D",
+        "gpu": "NVIDIA RTX 5070 Ti 16GB"
+      },
+      "price_from": 230000,
+      "show_from": true,
+      "page": "sborka-13030-amd-ryzen-7-7800x3d-nvidia-rtx-5070-ti-16gb",
+      "extra": true
     }
   ]
 }
