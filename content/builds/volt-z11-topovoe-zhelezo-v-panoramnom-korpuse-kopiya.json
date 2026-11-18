@@ -1,52 +1,47 @@
 {
-  "name": "VOLT Z11 - копия",
-  "subtitle": "игровой компьютер на процессоре AMD RYZEN 7 9800X3D с видеокартой NVIDIA RTX 5070 Ti 16GB",
-  "slug": "volt-z11-topovoe-zhelezo-v-panoramnom-korpuse-kopiya",
-  "price": 294000,
+  "name": "№12859",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 7 7800X3D с видеокартой NVIDIA RTX 5070 12GB",
+  "slug": "igrovoj-kompyuter-adm-ryzen-7-7800x3d-nvidia-rtx-5070-12gb",
+  "price": 272000,
   "show_from": true,
   "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
   "photos": [
     {
-      "image": "/content/photos/volt-z11/volt-z11_1.webp",
+      "image": "/content/photos/15829/15829_1.webp",
       "alt": "Общий вид компьютера"
     },
     {
-      "image": "/content/photos/volt-z11/volt-z11_3.webp",
-      "alt": "Система охлаждения компьютера с дисплеем"
+      "image": "/content/photos/15829/15829_2.webp",
+      "alt": "Система охлаждения компьютера"
     },
     {
-      "image": "/content/photos/volt-z11/volt-z11_2.webp",
+      "image": "/content/photos/15829/15829_4.webp",
       "alt": "Оперативная память"
     },
     {
-      "image": "/content/photos/volt-z11/volt-z11_4.webp",
+      "image": "/content/photos/15829/15829_6.webp",
       "alt": "Видеокарта"
     },
     {
-      "image": "/content/photos/volt-z11/volt-z11_5.webp",
+      "image": "/content/photos/15829/15829_3.webp",
       "alt": "Корпусные вентиляторы"
     },
     {
-      "image": "/content/photos/volt-z11/volt-z11_6.webp",
-      "alt": "Система охлаждения с дисплеем"
+      "image": "/content/photos/15829/15829_7.webp",
+      "alt": "Логотип на корпусе"
     }
   ],
-  "video": {
-    "horizontal": "https://kinescope.io/fyMGci21KbgNtH8qub3uqw",
-    "vertical": "",
-    "cover_h": "",
-    "cover_v": ""
-  },
+  "video": null,
   "lead": "",
   "about": "",
   "specs": {
-    "cpu": "AMD RYZEN 7 9800X3D",
-    "gpu": "NVIDIA RTX 5070 Ti 16GB GIGABYTE WIINDFORCE",
-    "motherboard": "B850M-P MSI PRO WIFI",
+    "cpu": "AMD RYZEN 7 7800X3D",
+    "gpu": "NVIDIA RTX 5070 12GB GIGABYTE GAMING",
+    "motherboard": "MSI MAG B850 TOMAHAWK MAX WIFI",
     "ram": "32GB DDR5 KINGSTON FURY RGB",
-    "storage": "SSD M.2 1000GB KINGSTON NV3",
-    "psu": "DEEPCOOL PQ850G 850W 80+ GOLD",
-    "cooling": "JONSBO TF3-360SCB",
+    "storage": "SSD M.2 2000GB KINGSON NV3",
+    "psu": "1000W DEEPCOOL PN1000D 80+ GOLD",
+    "cooling": "DEEPCOOL AG620 V2",
     "case": "JONSBO D300"
   },
   "seo": {
