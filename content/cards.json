@@ -38,24 +38,6 @@
       "tag": ""
     },
     {
-      "name": "CRYO M1",
-      "image": {
-        "path": "/content/photos/06.11.2026_15805_cryo_m1/06_11_2026_15805_cryo_m1_1.webp",
-        "x": 48,
-        "y": 76
-      },
-      "alt": "Игровой компьютер в корпусе аквариум с синей подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 5 7500F",
-        "gpu": "NVIDIA RTX 5060 Ti 8GB"
-      },
-      "price_from": 178000,
-      "show_from": true,
-      "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
-      "extra": false,
-      "tag": ""
-    },
-    {
       "name": "PHANTOM F1",
       "image": {
         "path": "/content/photos/15820_phantom_f1/15820_phantom_f1_1.webp",
