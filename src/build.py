@@ -587,7 +587,7 @@ print('SEO-страница',_KUPIT_SLUG,len(_kupit))
 # ---------- тестовая страница blocktest: блок «7 причин заказать у нас» ----------
 # Шапка, меню и подвал — от главной; вместо содержимого главной — один тестовый блок.
 # Стили блока — assets/blocktest.css (из src/blocktest.css). Страница закрыта от поиска.
-_bt_stem,_bt_ws=derive('content/photos/blocktest/workshop.webp',[480,800],5/8)
+_bt_stem,_bt_ws=derive('content/photos/blocktest/blocktest_1.webp',[480,800],5/8)
 _bt_photo=(f'      <picture class="why__photo">\n'
            f'        <source type="image/avif" srcset="{srcset(_bt_stem,_bt_ws,"avif")}" sizes="(min-width:64rem) 23rem, 1px">\n'
            f'        <img src="assets/{_bt_stem}-{_bt_ws[-1]}.webp" srcset="{srcset(_bt_stem,_bt_ws,"webp")}" sizes="(min-width:64rem) 23rem, 1px" width="{_bt_ws[-1]}" height="{round(_bt_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
