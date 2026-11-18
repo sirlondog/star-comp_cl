@@ -583,6 +583,25 @@ _kupit=full.replace(
     f'<h1>{_KUPIT_H1}</h1>')
 open(os.path.join(ROOT,_KUPIT_SLUG+'.html'),'w',encoding='utf-8').write(inject_code(_kupit))
 print('SEO-страница',_KUPIT_SLUG,len(_kupit))
+
+# ---------- тестовая страница blocktest: блок «7 причин заказать у нас» ----------
+# Шапка, меню и подвал — от главной; вместо содержимого главной — один тестовый блок.
+# Стили блока — assets/blocktest.css (из src/blocktest.css). Страница закрыта от поиска.
+_bt_stem,_bt_ws=derive('content/photos/blocktest/workshop.webp',[480,800],5/8)
+_bt_photo=(f'      <picture class="why__photo">\n'
+           f'        <source type="image/avif" srcset="{srcset(_bt_stem,_bt_ws,"avif")}" sizes="(min-width:64rem) 23rem, 1px">\n'
+           f'        <img src="assets/{_bt_stem}-{_bt_ws[-1]}.webp" srcset="{srcset(_bt_stem,_bt_ws,"webp")}" sizes="(min-width:64rem) 23rem, 1px" width="{_bt_ws[-1]}" height="{round(_bt_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
+           f'      </picture>')
+_bt_block=fill_text(open(os.path.join(ROOT,'src','blocktest.body.html'),encoding='utf-8').read()).replace('{{WHY_PHOTO}}',_bt_photo)
+_bt_main=full[full.index('<main>'):full.index('</main>')+len('</main>')]
+_bt=full.replace(_bt_main,'<main>\n'+_bt_block+'</main>').replace(
+    '<title>STAR-COMP - сборка компьютеров на заказ</title>',
+    '<title>Тест блока «7 причин» | STAR-COMP</title>\n<meta name="robots" content="noindex, nofollow">').replace(
+    f'<link rel="stylesheet" href="assets/style.css?v={_STAMP}">',
+    f'<link rel="stylesheet" href="assets/style.css?v={_STAMP}">\n<link rel="stylesheet" href="assets/blocktest.css?v={_STAMP}">')
+open(os.path.join(ROOT,'blocktest.html'),'w',encoding='utf-8').write(inject_code(_bt))
+open(os.path.join(ROOT,'assets','blocktest.css'),'w',encoding='utf-8').write(open(os.path.join(ROOT,'src','blocktest.css'),encoding='utf-8').read())
+print('тестовая страница blocktest',len(_bt))
 frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
@@ -856,7 +875,7 @@ print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js
 # Сюда попадают дубли после переименования фото и нарезки, потерявшие актуальность.
 _STATIC={'favicon.svg','icon-192.png','og-home.jpg','gilroy-regular.woff2','gilroy-semibold.woff2',
          'manrope-var-cyrillic.woff2','manrope-var-latin.woff2',
-         'split-logo.svg','style.css','page.js','inner.css','inner.js',
+         'split-logo.svg','style.css','page.js','inner.css','inner.js','blocktest.css',
          # готовые файлы, которые сборщик не создаёт: фото первого экрана и аватарки отзывов
          'hero-600.avif','hero-800.avif','hero-1000.avif','hero-600.webp','hero-800.webp','hero-1000.webp'}
 for _ava in ('ava-1','ava-2','ava-3','ava-4','ava-5'):
