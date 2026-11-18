@@ -132,24 +132,6 @@
       "tag": ""
     },
     {
-      "name": "TITAN R3",
-      "image": {
-        "path": "/content/photos/titan-r3/titan-r3_1.webp",
-        "x": 50,
-        "y": 50,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 5 5500X3D",
-        "gpu": "NVIDIA RTX 5060 Ti 8GB"
-      },
-      "price_from": 184000,
-      "show_from": true,
-      "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
-      "extra": true
-    },
-    {
       "name": "MARS X9",
       "image": {
         "path": "/content/photos/mars-x9/mars-x9_1.webp",
