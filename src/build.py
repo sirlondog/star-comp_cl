@@ -552,6 +552,29 @@ full=f'''<!doctype html>
 </html>
 '''
 open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(inject_code(full))
+
+# ---------- SEO-страница «Купить компьютер в СПб»: клон главной ----------
+# Собирается из тех же исходников, что и главная: любое изменение главной
+# автоматически попадает сюда. Отличается только служебная часть для поисковиков
+# (title, description, canonical), чтобы страницы не конкурировали в поиске.
+_KUPIT_SLUG='kupit-kompyuter-spb'
+_KUPIT_TITLE='Купить компьютер в Санкт-Петербурге — сборка на заказ с гарантией | STAR-COMP'
+_KUPIT_DESC='Соберём компьютер под ваши задачи в СПб: гарантия и запас мощности на 5 лет, доставка и настройка дома, оплата после проверки. Телефон: 8 (993) 984-55-05.'
+_kupit=full.replace(
+    '<title>STAR-COMP - сборка компьютеров на заказ</title>',
+    f'<title>{_KUPIT_TITLE}</title>').replace(
+    '<meta name="description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">',
+    f'<meta name="description" content="{_KUPIT_DESC}">').replace(
+    '<link rel="canonical" href="https://star-comp.ru">',
+    f'<link rel="canonical" href="https://star-comp.ru/{_KUPIT_SLUG}">').replace(
+    '<meta property="og:url" content="https://star-comp.ru">',
+    f'<meta property="og:url" content="https://star-comp.ru/{_KUPIT_SLUG}">').replace(
+    '<meta property="og:title" content="STAR-COMP - сборка компьютеров на заказ">',
+    f'<meta property="og:title" content="{_KUPIT_TITLE}">').replace(
+    '<meta property="og:description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">',
+    f'<meta property="og:description" content="{_KUPIT_DESC}">')
+open(os.path.join(ROOT,_KUPIT_SLUG+'.html'),'w',encoding='utf-8').write(inject_code(_kupit))
+print('SEO-страница',_KUPIT_SLUG,len(_kupit))
 frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
@@ -797,7 +820,7 @@ for f in sorted(glob.glob(os.path.join(ROOT,'content','builds','*.json'))):
     print('сборка',d['slug'],len(out))
 
 # sitemap.xml: главная + все страницы сборок. Адреса без .html — ровно как в canonical.
-_urls=['https://star-comp.ru']+['https://star-comp.ru/'+s for s in sorted(_slugs)]
+_urls=['https://star-comp.ru', 'https://star-comp.ru/kupit-kompyuter-spb']+['https://star-comp.ru/'+s for s in sorted(_slugs)]
 open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write(
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
