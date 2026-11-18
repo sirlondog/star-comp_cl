@@ -716,6 +716,7 @@ def body_html(d):
   </section>
 {about_section}
 {spec_section}
+{stock_section_html()}
 </main>"""
 
 src=open('page.body.html',encoding='utf-8').read()
