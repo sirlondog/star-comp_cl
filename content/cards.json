@@ -38,24 +38,6 @@
       "tag": ""
     },
     {
-      "name": "PHANTOM F1",
-      "image": {
-        "path": "/content/photos/15820_phantom_f1/15820_phantom_f1_1.webp",
-        "x": 52,
-        "y": 78
-      },
-      "alt": "Компьютер в корпусе аквариум с зеленой подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 7 7800X3D",
-        "gpu": "NVIDIA RTX 5070 12GB"
-      },
-      "price_from": 212000,
-      "show_from": true,
-      "page": "phantom-f1-amd-ryzen-7-7800x3d-nvidia-rtx-5070-12gb",
-      "extra": false,
-      "tag": ""
-    },
-    {
       "name": "HORIZON X8",
       "image": {
         "path": "/content/photos/25.09.2026_15707_horizon_x8/25_09_2026_15707_horizon_x8_1.webp",
@@ -90,43 +72,6 @@
       "price_from": 115000,
       "show_from": true,
       "page": "titan-r1-kompyuter-bez-tormozov-dlya-raboty-i-igr",
-      "extra": false,
-      "tag": ""
-    },
-    {
-      "name": "NEXUS S1",
-      "image": {
-        "path": "/content/photos/nexus-s1/nexus-s1_1.webp",
-        "x": 50,
-        "y": 50,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
-      "specs": {
-        "cpu": "INTEL CORE i5-14400F",
-        "gpu": "NVIDIA RTX 5060 8GB"
-      },
-      "price_from": 135000,
-      "show_from": true,
-      "page": "nexus-01-bazovyj-minimum-dlya-vsekh-sovremennyh-igr",
-      "extra": false
-    },
-    {
-      "name": "CORE R1",
-      "image": {
-        "path": "/content/photos/core-r1/core-r1_1.webp",
-        "x": 50,
-        "y": 50,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 7 7700",
-        "gpu": "NVIDIA RTX 5060 Ti 16GB"
-      },
-      "price_from": 264000,
-      "show_from": true,
-      "page": "core-01-moshch-v-miniatyure",
       "extra": false,
       "tag": ""
     },
@@ -185,24 +130,6 @@
       "page": "orion-x1-moshchnyj-igrovoj-kompyuter-dlya-doma",
       "extra": true,
       "tag": ""
-    },
-    {
-      "name": "TITAN R3",
-      "image": {
-        "path": "/content/photos/titan-r3/titan-r3_1.webp",
-        "x": 50,
-        "y": 50,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 5 5500X3D",
-        "gpu": "NVIDIA RTX 5060 Ti 8GB"
-      },
-      "price_from": 184000,
-      "show_from": true,
-      "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
-      "extra": true
     },
     {
       "name": "MARS X9",

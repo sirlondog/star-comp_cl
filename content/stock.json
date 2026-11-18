@@ -5,20 +5,21 @@
   "lead": "",
   "cards": [
     {
-      "name": "CRYO M1",
+      "name": "NEXUS S1",
       "image": {
-        "path": "/content/photos/06.11.2026_15805_cryo_m1/06_11_2026_15805_cryo_m1_1.webp",
-        "x": 48,
-        "y": 76
+        "path": "/content/photos/nexus-s1/nexus-s1_1.webp",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
       },
-      "alt": "Игровой компьютер в корпусе аквариум с синей подсветкой",
+      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
       "specs": {
-        "cpu": "AMD RYZEN 5 7500F",
-        "gpu": "NVIDIA RTX 5060 Ti 8GB"
+        "cpu": "INTEL CORE i5-14400F",
+        "gpu": "NVIDIA RTX 5060 8GB"
       },
-      "price_from": 178000,
+      "price_from": 135000,
       "show_from": true,
-      "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
+      "page": "nexus-01-bazovyj-minimum-dlya-vsekh-sovremennyh-igr",
       "extra": false
     },
     {
@@ -54,6 +55,41 @@
       "price_from": 184000,
       "show_from": true,
       "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
+      "extra": true
+    },
+    {
+      "name": "CRYO M1",
+      "image": {
+        "path": "/content/photos/06.11.2026_15805_cryo_m1/06_11_2026_15805_cryo_m1_1.webp",
+        "x": 48,
+        "y": 76
+      },
+      "alt": "Игровой компьютер в корпусе аквариум с синей подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 5 7500F",
+        "gpu": "NVIDIA RTX 5060 Ti 8GB"
+      },
+      "price_from": 178000,
+      "show_from": true,
+      "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
+      "extra": false
+    },
+    {
+      "name": "MARS X9",
+      "image": {
+        "path": "/content/photos/mars-x9/mars-x9_1.webp",
+        "x": 51,
+        "y": 66,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i5-14600KF",
+        "gpu": "NVIDIA RTX 5070 12GB"
+      },
+      "price_from": 218000,
+      "show_from": true,
+      "page": "mars-x9-intel-core-i7-14700kf-nvidia-rtx-5070",
       "extra": true
     },
     {
