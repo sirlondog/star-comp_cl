@@ -1,0 +1,110 @@
+/* Стили тестовой страницы test.html (только новые блоки, прод-страницы не трогаем).
+   Сейчас здесь вариант №8 из .preview/why-variants.html: два столбца, слева
+   фотография во всю высоту блока, прижатая к рамке, белый текст в цифрах. */
+.t8.demo{
+  --pad:clamp(20px,3.4vw,48px);
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:40px;
+  align-items:stretch;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:var(--bg);
+  padding:var(--pad);
+  overflow:hidden;
+}
+.t8 .demo-title{
+  margin:0 0 40px;
+  font-weight:600;
+  font-size:clamp(23px,2.4vw,34px);
+  line-height:1.12;
+  letter-spacing:-.025em;
+}
+.t8 .demo-title em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--cyan),var(--pink));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.t8 .w8__stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:40px}
+.t8 .w8__stat{padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.t8 .w8__stat b{
+  display:block;
+  font-size:clamp(28px,3vw,40px);
+  line-height:1;
+  letter-spacing:-.045em;
+  color:#fff;
+  -webkit-text-fill-color:#fff;
+}
+.t8 .w8__stat span{display:block;margin-top:8px;color:#fff;font-size:13px}
+.t8 .w8__photo{
+  position:relative;
+  height:auto;
+  min-height:560px;
+  margin:calc(-1 * var(--pad)) 0 calc(-1 * var(--pad)) calc(-1 * var(--pad));
+  border-top-left-radius:inherit;
+  border-bottom-left-radius:inherit;
+  border-top-right-radius:0;
+  border-bottom-right-radius:0;
+  overflow:hidden;
+}
+.t8 .w8__photo img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.t8 .w8__photo figcaption{
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:14px;
+  padding:12px 14px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:12px;
+  background:rgba(8,8,10,.72);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  font-size:13px;
+  line-height:1.35;
+}
+.t8 .w8__list{display:grid;grid-template-columns:1fr;gap:0}
+.t8 .w8__li{display:flex;gap:11px;padding:16px 0;border-bottom:1px solid var(--line);font-size:14px}
+.t8 .w8__li em{font-style:normal;color:var(--cyan);font-weight:600}
+.t8 .w8__li span{color:#bdbdc2}
+.t8 .w8__cta{
+  margin-top:40px;
+  padding:18px 22px;
+  border:1px dashed rgba(0,217,255,.4);
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.t8 .w8__cta b{font-size:17px}
+.t8 .w8__cta span{color:#bdbdc2;font-size:14px;flex:1 1 200px}
+.t8 .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:0;
+  margin:0;
+  padding:12px 20px;
+  border:0;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--cyan),#7ceaff);
+  box-shadow:none;
+  color:#041216;
+  font-weight:600;
+  font-size:14px;
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.t8 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,217,255,.18)}
+
+@media (max-width:1040px){
+  .t8.demo{grid-template-columns:1fr}
+  .t8 .w8__photo{height:auto;min-height:0;aspect-ratio:5/8;max-width:420px;margin:0}
+}
+@media (max-width:620px){
+  .t8.demo{--pad:20px;padding:var(--pad);border-radius:16px}
+  .t8 .w8__photo{max-width:100%}
+}

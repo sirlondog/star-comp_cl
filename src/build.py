@@ -646,6 +646,24 @@ _bt=full.replace(_bt_main,'<main>\n'+_bt_block+'</main>').replace(
     '<title>Тест блока «7 причин» | STAR-COMP</title>\n<meta name="robots" content="noindex, nofollow">')
 open(os.path.join(ROOT,'blocktest.html'),'w',encoding='utf-8').write(inject_code(_bt))
 print('тестовая страница blocktest',len(_bt))
+
+# ---------- тестовая страница test: общая площадка для новых блоков сайта ----------
+# Отдельная от blocktest.html страница (noindex), где владелец будет собирать
+# и дорабатывать все новые элементы. Шапка, меню и подвал берём от главной;
+# нововведения живут в src/test.body.html и стилях src/test.css (assets/test.css).
+# Сейчас здесь вариант «7 причин» №8: фото на всю высоту слева, цифры и причины справа.
+_test_photo=(f'        <picture>\n'
+             f'          <source type="image/avif" srcset="{srcset(_bt_stem,_bt_ws,"avif")}" sizes="(min-width:65rem) 44vw, 100vw">\n'
+             f'          <img src="assets/{_bt_stem}-{_bt_ws[-1]}.webp" srcset="{srcset(_bt_stem,_bt_ws,"webp")}" sizes="(min-width:65rem) 44vw, 100vw" width="{_bt_ws[-1]}" height="{round(_bt_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
+             f'        </picture>')
+_test_block=fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read()).replace('{{TEST_PHOTO}}',_test_photo)
+_test=full.replace(_bt_main,'<main>\n'+_test_block+'</main>').replace(
+    '<title>STAR-COMP - сборка компьютеров на заказ</title>',
+    '<title>Тестовые блоки | STAR-COMP</title>\n<meta name="robots" content="noindex, nofollow">').replace(
+    f'<link rel="stylesheet" href="assets/style.css?v={_STAMP}">',
+    f'<link rel="stylesheet" href="assets/style.css?v={_STAMP}">\n<link rel="stylesheet" href="assets/test.css?v={_STAMP}">')
+open(os.path.join(ROOT,'test.html'),'w',encoding='utf-8').write(inject_code(_test))
+print('тестовая страница test',len(_test))
 frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
@@ -913,13 +931,14 @@ open(os.path.join(ROOT,'assets','style.css'),'w',encoding='utf-8').write(_css)
 open(os.path.join(ROOT,'assets','page.js'),'w',encoding='utf-8').write(_js)
 open(os.path.join(ROOT,'assets','inner.css'),'w',encoding='utf-8').write(_inner_css_full)
 open(os.path.join(ROOT,'assets','inner.js'),'w',encoding='utf-8').write(_inner_js_full)
-print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js (метка',_STAMP+')')
+open(os.path.join(ROOT,'assets','test.css'),'w',encoding='utf-8').write(open('test.css',encoding='utf-8').read())
+print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js, test.css (метка',_STAMP+')')
 
 # ---------- чистка assets: удаляем файлы, на которые не ссылается ни одна страница ----------
 # Сюда попадают дубли после переименования фото и нарезки, потерявшие актуальность.
 _STATIC={'favicon.svg','icon-192.png','og-home.jpg','gilroy-regular.woff2','gilroy-semibold.woff2',
          'manrope-var-cyrillic.woff2','manrope-var-latin.woff2',
-         'split-logo.svg','style.css','page.js','inner.css','inner.js','blocktest.css',
+         'split-logo.svg','style.css','page.js','inner.css','inner.js','blocktest.css','test.css',
          # готовые файлы, которые сборщик не создаёт: фото первого экрана и аватарки отзывов
          'hero-600.avif','hero-800.avif','hero-1000.avif','hero-600.webp','hero-800.webp','hero-1000.webp'}
 for _ava in ('ava-1','ava-2','ava-3','ava-4','ava-5'):
