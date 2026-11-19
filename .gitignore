@@ -29,3 +29,6 @@ assets/*
 !assets/footer/
 
 __pycache__/
+
+deploy_host0/
+deploy_host0.zip

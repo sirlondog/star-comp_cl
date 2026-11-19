@@ -27,3 +27,24 @@ ErrorDocument 404 /404.html
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.+)$ $1.html [L]
 </IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # HTML всегда свежий, чтобы после заливки сразу видны правки
+  ExpiresByType text/html "access plus 0 seconds"
+  # CSS и JS имеют метку ?v=... и меняются вместе с ней
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  # Картинки и SVG могут быть перезаписаны под тем же именем, поэтому месяц
+  ExpiresByType image/avif "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  # Шрифты не меняются
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
