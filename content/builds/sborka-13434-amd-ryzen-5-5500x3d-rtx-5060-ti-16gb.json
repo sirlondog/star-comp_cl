@@ -1,0 +1,54 @@
+{
+  "name": "№13434",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 5 5500X3D с видеокартой NVIDIA RTX 5060 Ti 16GB",
+  "slug": "sborka-13434-amd-ryzen-5-5500x3d-rtx-5060-ti-16gb",
+  "price": 119000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/15829/15829_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/15829/15829_2.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/15829/15829_4.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/15829/15829_6.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/15829/15829_3.webp",
+      "alt": "Корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/15829/15829_7.webp",
+      "alt": "Логотип на корпусе"
+    }
+  ],
+  "video": {
+    "horizontal": "https://kinescope.io/73rq8c6y1bELVKnQuwJk37",
+    "vertical": ""
+  },
+  "lead": "",
+  "about": "",
+  "specs": {
+    "cpu": "AMD RYZEN 5 5500X3D",
+    "gpu": "NVIDIA RTX 5060 Ti 16GB GIGABYTE AORUS",
+    "motherboard": "MSI B550M PRO-VDH",
+    "ram": "32GB DDR5 KINGSTON FURY RGB",
+    "storage": "SSD M.2 1000GB KINGSTON NV3",
+    "psu": "DEEPCOOL PF750D V2 80+ SILVER",
+    "cooling": "DEEPCOOL AK500 DIGITAL",
+    "case": "ZALMAN P40 PRIZM"
+  },
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
