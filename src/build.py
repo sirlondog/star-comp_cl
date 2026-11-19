@@ -223,7 +223,7 @@ for _n,_r in enumerate(_reviews):
             {_quote}
           </div>
         </article>"""
-REVIEWS_HTML=f'''  <section class="tf-section tf-reviews" aria-label="Отзывы">
+REVIEWS_HTML=f'''  <section class="tf-section tf-reviews" id="otzivy" aria-label="Отзывы">
     <h2 class="tf-title">Доверие, <em>подтверждённое отзывами</em></h2>
     <p class="tf-lead">Каждый компьютер собирается с вниманием к деталям, а лучшая оценка нашей работы — рекомендации и отзывы клиентов.</p>
     <div class="tf-reviews__grid">
@@ -251,7 +251,7 @@ FAQ_SECTION='''    <section class="tf-section faq" id="faq" aria-labelledby="faq
       <div class="faq__side">
         <h2 class="section__title" id="faq-title">Остались <em>вопросы?</em></h2>
         <p class="faq__lead">Ответим на то, что чаще всего спрашивают перед заказом. Если вашего вопроса здесь нет — напишите нам.</p>
-        <a class="btn faq__btn" href="mailto:{{EMAIL}}">Написать нам <span aria-hidden="true">→</span></a>
+        <a class="btn faq__btn" href="#replain-link">Написать нам <span aria-hidden="true">→</span></a>
         <p class="faq__note">{{SCHEDULE}}</p>
       </div>
       <div class="faq__list">
@@ -310,7 +310,7 @@ _tf_lead=txt(C.get('lead') or 'Проконсультируем по телеф�
 FOOTER=f'''<footer class="tfooter">
   <div class="wrap">
     {REVIEWS_HTML}
-    {FAQ_SECTION}    <section class="tf-section tf-contacts" aria-label="Контакты">
+    {FAQ_SECTION}    <section class="tf-section tf-contacts" id="contakty" aria-label="Контакты">
       <h2 class="tf-title">{_tf_title}{' <em>'+_tf_accent+'</em>' if _tf_accent else ''}</h2>
       <p class="tf-lead">{_tf_lead}</p>
       <div class="tf-contacts__grid">

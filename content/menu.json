@@ -1,20 +1,16 @@
 {
   "links": [
     {
+      "label": "Главная",
+      "url": "index.html"
+    },
+    {
       "label": "Последние проекты",
-      "url": "#works"
+      "url": "#konfiguracii"
     },
     {
       "label": "Компьютеры в наличии",
-      "url": "#nal"
-    },
-    {
-      "label": "Обслуживание",
-      "url": "remont-kompyuterov-spb.html"
-    },
-    {
-      "label": "Акции",
-      "url": "#gift"
+      "url": "#v-nalichii"
     },
     {
       "label": "Отзывы",
