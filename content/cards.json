@@ -384,24 +384,6 @@
       "extra": true
     },
     {
-      "name": "№12879",
-      "image": {
-        "path": "/content/photos/12879/12879_1.webp",
-        "x": 50,
-        "y": 50,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 7 5700X",
-        "gpu": "NVIDIA RTX 5060 Ti 16GB"
-      },
-      "price_from": 137000,
-      "show_from": true,
-      "page": "sborka-12688-amd-ryzen-7-5700x-nvidia-rtx-5060-ti-16gb",
-      "extra": true
-    },
-    {
       "name": "№13434",
       "image": {
         "path": "/content/photos/13434/13434_1.webp",
@@ -417,6 +399,24 @@
       "price_from": 119000,
       "show_from": true,
       "page": "sborka-13434-amd-ryzen-5-5500x3d-rtx-5060-ti-16gb",
+      "extra": true
+    },
+    {
+      "name": "№12879",
+      "image": {
+        "path": "/content/photos/12879/12879_1.webp",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 7 5700X",
+        "gpu": "NVIDIA RTX 5060 Ti 16GB"
+      },
+      "price_from": 137000,
+      "show_from": true,
+      "page": "sborka-12688-amd-ryzen-7-5700x-nvidia-rtx-5060-ti-16gb",
       "extra": true
     }
   ]
