@@ -722,12 +722,12 @@ p.lead{margin:0 auto 32px;max-width:34rem;color:#bdbdc2;font-size:16px;line-heig
   <p class="logo">STAR-COMP</p>
   <h1>Страница не найдена</h1>
   <p class="lead">Видимо информация устарела и мы её убрали. Вернитесь на главную — там все сборки и контакты.</p>
-  <a class="btn" id="home-link" href="index.html">На главную <span aria-hidden="true">&rarr;</span></a>
+  <a class="btn" id="home-link" href="/">На главную <span aria-hidden="true">&rarr;</span></a>
 </main>
 <script>
 (function(){
   var p=location.pathname, m=p.match(/^\/star-comp_cl\//);
-  document.getElementById('home-link').href=(m?m[0]:'/')+'index.html';
+  document.getElementById('home-link').href=(m?m[0]:'/');
 })();
 </script>
 </body>
@@ -906,7 +906,7 @@ src=open('page.body.html',encoding='utf-8').read()
 header=src[:src.index('<main>')]
 menu=src[src.index('<dialog'):]
 def fill(x): return fill_text(x.replace('{{MENU_LINKS}}',menu_links_html(True)).replace('{{LOGO_ICON}}',logo_icon).replace('{{LOGO_WORD}}',logo_word).replace('{{SOCIALS}}',socials).replace('{{SOCIALS_MENU}}',socials.replace('mx-','mxm-')))
-header_i=fill(header).replace('<a class="logo" href="/"','<a class="logo" href="index.html"')
+header_i=fill(header)
 menu_i=fill(menu)
 # файлы стилей/скриптов для внутренних страниц пишем заранее (см. блок в конце сборки)
 _inner_js_full=_inner_js+_menu_js_part()
