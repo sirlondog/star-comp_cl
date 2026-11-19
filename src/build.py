@@ -604,32 +604,48 @@ full=f'''<!doctype html>
 '''
 open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(inject_code(full))
 
-# ---------- SEO-страница «Купить компьютер в СПб»: клон главной ----------
-# Собирается из тех же исходников, что и главная: любое изменение главной
+# ---------- SEO-страницы-клоны главной ----------
+# Собираются из тех же исходников, что и главная: любое изменение главной
 # автоматически попадает сюда. Отличается только служебная часть для поисковиков
-# (title, description, canonical), чтобы страницы не конкурировали в поиске.
-_KUPIT_SLUG='kupit-kompyuter-spb'
+# (title, description, canonical) и заголовок H1, чтобы страницы не конкурировали
+# в поиске друг с другом и с главной. Все SEO-тексты — в этом блоке.
+_SEO_SLUGS=[]
+def seo_clone(slug,title,desc,h1):
+    _SEO_SLUGS.append(slug)
+    return full.replace(
+        '<title>STAR-COMP - сборка компьютеров на заказ</title>',
+        f'<title>{title}</title>').replace(
+        '<meta name="description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">',
+        f'<meta name="description" content="{desc}">').replace(
+        '<link rel="canonical" href="https://star-comp.ru">',
+        f'<link rel="canonical" href="https://star-comp.ru/{slug}">').replace(
+        '<meta property="og:url" content="https://star-comp.ru">',
+        f'<meta property="og:url" content="https://star-comp.ru/{slug}">').replace(
+        '<meta property="og:title" content="STAR-COMP - сборка компьютеров на заказ">',
+        f'<meta property="og:title" content="{title}">').replace(
+        '<meta property="og:description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">',
+        f'<meta property="og:description" content="{desc}">').replace(
+        '<h1>'+_title_html()+'</h1>',
+        f'<h1>{h1}</h1>')
+
+def write_seo_clone(slug,title,desc,h1):
+    html=seo_clone(slug,title,desc,h1)
+    open(os.path.join(ROOT,slug+'.html'),'w',encoding='utf-8').write(inject_code(html))
+    print('SEO-страница',slug,len(html))
+
+# «Купить компьютер в СПб» — запрос «купить компьютер…»
 _KUPIT_TITLE='Купить компьютер в Санкт-Петербурге — сборка на заказ с гарантией | STAR-COMP'
 _KUPIT_DESC='Соберём компьютер под ваши задачи в СПб: гарантия и запас мощности на 5 лет, доставка и настройка дома, оплата после проверки. Телефон: 8 (993) 984-55-05.'
-# крупный заголовок страницы (H1) — отличается от главной, запрос «купить компьютер…»
 _KUPIT_H1='Купить компьютер с гарантией <em>и запасом на 5 лет</em>'
-_kupit=full.replace(
-    '<title>STAR-COMP - сборка компьютеров на заказ</title>',
-    f'<title>{_KUPIT_TITLE}</title>').replace(
-    '<meta name="description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">',
-    f'<meta name="description" content="{_KUPIT_DESC}">').replace(
-    '<link rel="canonical" href="https://star-comp.ru">',
-    f'<link rel="canonical" href="https://star-comp.ru/{_KUPIT_SLUG}">').replace(
-    '<meta property="og:url" content="https://star-comp.ru">',
-    f'<meta property="og:url" content="https://star-comp.ru/{_KUPIT_SLUG}">').replace(
-    '<meta property="og:title" content="STAR-COMP - сборка компьютеров на заказ">',
-    f'<meta property="og:title" content="{_KUPIT_TITLE}">').replace(
-    '<meta property="og:description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">',
-    f'<meta property="og:description" content="{_KUPIT_DESC}">').replace(
-    '<h1>'+_title_html()+'</h1>',
-    f'<h1>{_KUPIT_H1}</h1>')
-open(os.path.join(ROOT,_KUPIT_SLUG+'.html'),'w',encoding='utf-8').write(inject_code(_kupit))
-print('SEO-страница',_KUPIT_SLUG,len(_kupit))
+write_seo_clone('kupit-kompyuter-spb',_KUPIT_TITLE,_KUPIT_DESC,_KUPIT_H1)
+
+# «Сборка компьютеров на заказ» — адрес, который владелец продвигал ссылкой на Тильде.
+# Title и H1 — дословно с тильдовской страницы (из индекса Яндекса), чтобы не сбить позицию.
+# Description — текст с той же страницы, который Яндекс показывает в сниппете.
+_SBORKA_TITLE='STARCOMP - сборка компьютеров на заказ'
+_SBORKA_DESC='Подбор комплектующих, покупка, сборка, кабель менеджмент, установка лицензионного Windows 10/11 PRO, установка драйверов, обновление BIOS, помощь с подключением и настройке.'
+_SBORKA_H1='СБОРКА КОМПЬЮТЕРОВ НА ЗАКАЗ С ГАРАНТИЕЙ ДО 5 ЛЕТ'
+write_seo_clone('sborka-kompyuterov-na-zakaz',_SBORKA_TITLE,_SBORKA_DESC,_SBORKA_H1)
 
 # ---------- тестовая страница blocktest: блок «7 причин заказать у нас» ----------
 # Шапка, меню и подвал — от главной; вместо содержимого главной — один тестовый блок.
@@ -955,8 +971,8 @@ for f in sorted(glob.glob(os.path.join(ROOT,'content','builds','*.json'))):
     open(os.path.join(ROOT,d['slug']+'.html'),'w',encoding='utf-8').write(out)
     print('сборка',d['slug'],len(out))
 
-# sitemap.xml: главная + все страницы сборок. Адреса без .html — ровно как в canonical.
-_urls=['https://star-comp.ru', 'https://star-comp.ru/kupit-kompyuter-spb']+['https://star-comp.ru/'+s for s in sorted(_slugs)]
+# sitemap.xml: главная + SEO-клоны + все страницы сборок. Адреса без .html — ровно как в canonical.
+_urls=['https://star-comp.ru']+['https://star-comp.ru/'+s for s in _SEO_SLUGS]+['https://star-comp.ru/'+s for s in sorted(_slugs)]
 open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write(
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
