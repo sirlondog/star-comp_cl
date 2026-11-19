@@ -222,3 +222,7 @@ html{overflow-x:clip}
   .video{max-width:none;aspect-ratio:16/9;border-radius:1.875rem}
   .video--vertical{height:100%;max-width:none;aspect-ratio:9/16;border:0;border-radius:0}
 }
+
+/* Re:plain: прозрачный фон виджета, чтобы на мобильных не было белого квадрата до загрузки иконки */
+[id^="__replain"]{background:transparent!important;background-color:transparent!important}
+#__replain_widget_iframe{color-scheme:normal!important}

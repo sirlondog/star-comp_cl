@@ -400,3 +400,7 @@ html{scroll-behavior:smooth}
   .faq__side{position:sticky;top:6rem;align-self:start}
   .faq__list{margin-top:0}
 }
+
+/* Re:plain: прозрачный фон виджета, чтобы на мобильных не было белого квадрата до загрузки иконки */
+[id^="__replain"]{background:transparent!important;background-color:transparent!important}
+#__replain_widget_iframe{color-scheme:normal!important}
