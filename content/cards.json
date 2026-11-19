@@ -368,15 +368,15 @@
     {
       "name": "№13031",
       "image": {
-        "path": "/content/photos/13030/13030_1.webp",
-        "x": 50,
-        "y": 76,
+        "path": "/content/photos/13031/13031_1.webp",
+        "x": 51,
+        "y": 78,
         "zoom": 1
       },
       "alt": "Компьютер в корпусе аквариум с синей подсветкой",
       "specs": {
         "cpu": "INTEL CORE i5-13600KF",
-        "gpu": "NVIDIA RTX 5060 Ti 16GB"
+        "gpu": "NVIDIA RTX 5060 Ti 8GB"
       },
       "price_from": 147000,
       "show_from": true,
