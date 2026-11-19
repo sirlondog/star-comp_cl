@@ -231,3 +231,51 @@
   .rv9__panel{grid-template-columns:1fr}
   .rv9__quote{width:280px}
 }
+
+/* Блок «Всего 4 шага до вашего нового компьютера» (перенос с Tilda, test.html) */
+.st4.demo{
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:#0a0a0c;
+  padding:clamp(20px,3vw,40px);
+}
+.st4 .demo-title{margin:0 0 8px}
+.st4 .demo-lead{margin:0 0 24px;color:var(--rmuted,#9b9ca6);font-size:15px;line-height:1.45;max-width:640px}
+.st4__list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.st4__item{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  padding:20px;
+  border:1px solid var(--rline,rgba(255,255,255,.1));
+  border-radius:16px;
+  background:var(--panel,#141418);
+}
+.st4__num{
+  flex:none;
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:linear-gradient(135deg,rgba(0,217,255,.18),rgba(255,40,180,.18));
+  border:1px solid rgba(0,217,255,.35);
+  color:#fff;
+  font-weight:600;
+  font-size:20px;
+  line-height:1;
+}
+.st4__body{min-width:0}
+.st4__text{margin:0;color:#e9e9ee;font-size:16px;line-height:1.45}
+.st4__text a{color:var(--cyan,#00d9ff);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:700px){
+  .st4.demo{border-radius:16px}
+  .st4__list{grid-template-columns:1fr}
+}

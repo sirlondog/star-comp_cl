@@ -126,31 +126,37 @@ def money_tr(n):
     s=f'{t:.0f}' if abs(t-round(t))<0.05 else f'{t:.1f}'.replace('.',',')
     return s+'&nbsp;т.р.'
 
-def stem_of(src):
-    """Уникальное имя нарезки: папка + файл. Одинаковые имена файлов в разных
-    папках (content/photos/golden/1.webp и content/photos/cryo/1.webp) больше
-    не конфликтуют — раньше учитывалось только имя файла."""
+def asset_base(src):
+    """Путь производного файла внутри assets/ (без расширения и суффикса размера), с подпапками как в CMS.
+    content/photos/golden/1.webp -> golden/1, content/photos/cards/foo.webp -> cards/foo."""
     rel=src.lstrip('/').replace('\\','/')
     for p in ('content/photos/','content\\photos\\'):
         if rel.startswith(p): rel=rel[len(p):]
-    return os.path.splitext(rel.replace('/', '-'))[0]
+    return os.path.splitext(rel)[0]
+
+
+def _asset_path(base, suffix):
+    """Полный путь на диске для производного файла; создаёт подпапку при необходимости."""
+    path=os.path.join(ROOT,'assets',base.replace('/',os.sep)+suffix)
+    os.makedirs(os.path.dirname(path),exist_ok=True)
+    return path
 
 def derive(src,widths,ratio):
-    """Нарезает фото под нужные ширины (обрезка по центру до ratio=ширина/высота). Возвращает (имя, [ширины], высота_на_ширину)."""
+    """Нарезает фото под нужные ширины (обрезка по центру до ratio=ширина/высота). Возвращает (базовый путь в assets, [ширины])."""
     path=os.path.join(ROOT,src.lstrip('/'))
-    stem=stem_of(src)
+    base=asset_base(src)
     with Image.open(path) as im:
         W,H=ImageOps.exif_transpose(im).size
     W=min(W,int(H*ratio))  # ширина после обрезки
     ws=[w for w in widths if w<=W] or [widths[0]]
-    todo=[w for w in ws if not all(os.path.exists(os.path.join(ROOT,'assets',f'{stem}-{w}.{e}')) for e in ('avif','webp'))]
+    todo=[w for w in ws if not all(os.path.exists(os.path.join(ROOT,'assets',base.replace('/',os.sep)+f'-{w}.{e}')) for e in ('avif','webp'))]
     if todo:
         im=ImageOps.exif_transpose(Image.open(path)).convert('RGB')
         for w in todo:
             t=ImageOps.fit(im,(w,round(w/ratio)),Image.LANCZOS)
-            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=95,method=6)
-            t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=80)
-    return stem,ws
+            t.save(_asset_path(base,f'-{w}.webp'),quality=95,method=6)
+            t.save(_asset_path(base,f'-{w}.avif'),quality=80)
+    return base,ws
 
 def focal_derive(src,widths,ratio,focal,zoom=1):
     """Обрезка фото вокруг фокусной точки. focal=(x,y) — проценты исходного фото (50/50 — центр).
@@ -162,20 +168,20 @@ def focal_derive(src,widths,ratio,focal,zoom=1):
     Y=int(round(max(0,min(100,focal[1]))))
     try: Z=max(1.0,min(4.0,float(zoom or 1)))
     except (TypeError,ValueError): Z=1.0
-    stem=stem_of(src)+f'-f{X}x{Y}'+(f'z{round(Z*10)}' if Z>1 else '')
+    base=asset_base(src)+f'-f{X}x{Y}'+(f'z{round(Z*10)}' if Z>1 else '')
     with Image.open(path) as im:
         W,H=ImageOps.exif_transpose(im).size
-    cw=round(min(W,int(H*ratio))/Z)  # ширина видимой области
-    ch=round(cw/ratio)               # высота видимой области
-    left=min(max(round(X/100*W-cw/2),0),W-cw)   # видимая область прижата к краям
+    cw=round(min(W,int(H*ratio))/Z)  # ширина рамки кадрирования
+    ch=round(cw/ratio)               # высота рамки кадрирования
+    left=min(max(round(X/100*W-cw/2),0),W-cw)   # верхний левый угол кадра (внутри
     top=min(max(round(Y/100*H-ch/2),0),H-ch)
     ws=[w for w in widths if w<=cw] or [widths[0]]
     crop=ImageOps.exif_transpose(Image.open(path)).convert('RGB').crop((left,top,left+cw,top+ch))
     for w in ws:
         t=crop.resize((w,round(w/ratio)),Image.LANCZOS)
-        t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.webp'),quality=95,method=6)
-        t.save(os.path.join(ROOT,'assets',f'{stem}-{w}.avif'),quality=80)
-    return stem,ws
+        t.save(_asset_path(base,f'-{w}.webp'),quality=95,method=6)
+        t.save(_asset_path(base,f'-{w}.avif'),quality=80)
+    return base,ws
 
 def card_image(c):
     """Картинка карточки: либо строка-путь (центральная обрезка), либо объект {path,x,y,zoom} (обрезка по фокусу с увеличением)."""
@@ -186,11 +192,13 @@ def card_image(c):
 
 def og_image(src):
     path=os.path.join(ROOT,src.lstrip('/'))
-    stem=stem_of(src)
-    out=os.path.join(ROOT,'assets',f'{stem}-og.jpg')
+    base=asset_base(src)
+    rel=f'assets/{base}-og.jpg'
+    out=os.path.join(ROOT,rel.replace('/',os.sep))
     if not os.path.exists(out):
+        os.makedirs(os.path.dirname(out),exist_ok=True)
         ImageOps.fit(ImageOps.exif_transpose(Image.open(path)).convert('RGB'),(1200,630),Image.LANCZOS).save(out,quality=82,optimize=True,progressive=True)
-    return f'assets/{stem}-og.jpg'
+    return rel
 def srcset(stem,ws,ext): return ', '.join(f'assets/{stem}-{w}.{ext} {w}w' for w in ws)
 
 # ---------- контакты, соцсети и преимущества: из content/settings.json и perks.json ----------
