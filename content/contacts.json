@@ -1,12 +1,18 @@
 {
-  "title": "Личная консультация там, где",
-  "title_accent": "удобно вам",
-  "lead": "Проконсультируем по телефону, в мессенджере или при встрече в мастерской.",
-  "maps_url": "https://yandex.ru/maps/-/CXbR7LiO",
-  "map_embed": "https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=101485963947",
   "photos": [
     {
       "image": "/content/photos/office/office_1.webp"
+    },
+    {
+      "image": "/content/photos/office/2-копия_1000px_4x5.webp"
+    },
+    {
+      "image": "/content/photos/office/4-копия_1000px_16x9.webp"
     }
-  ]
+  ],
+  "lead": "Проконсультируем по телефону, в мессенджере или при встрече в мастерской.",
+  "map_embed": "https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=101485963947",
+  "maps_url": "https://yandex.ru/maps/-/CXbR7LiO",
+  "title": "Личная консультация там, где",
+  "title_accent": "удобно вам"
 }
