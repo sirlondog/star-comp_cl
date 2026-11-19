@@ -364,6 +364,24 @@
       "show_from": true,
       "page": "sborka-13030-amd-ryzen-7-7800x3d-nvidia-rtx-5070-ti-16gb",
       "extra": true
+    },
+    {
+      "name": "№13031",
+      "image": {
+        "path": "/content/photos/13030/13030_1.webp",
+        "x": 50,
+        "y": 76,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i5-13600KF",
+        "gpu": "NVIDIA RTX 5060 Ti 16GB"
+      },
+      "price_from": 147000,
+      "show_from": true,
+      "page": "sborka-13031-intel-core-i5-13600kf-nvidia-rtx-5060-ti",
+      "extra": true
     }
   ]
 }
