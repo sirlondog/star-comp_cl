@@ -664,6 +664,53 @@ _test=full.replace(_bt_main,'<main>\n'+_test_block+'</main>').replace(
     f'<link rel="stylesheet" href="assets/style.css?v={_STAMP}">\n<link rel="stylesheet" href="assets/test.css?v={_STAMP}">')
 open(os.path.join(ROOT,'test.html'),'w',encoding='utf-8').write(inject_code(_test))
 print('тестовая страница test',len(_test))
+
+# ---------- страница 404: GitHub Pages отдаёт её для несуществующих адресов ----------
+# Сделана самодостаточной (стили внутри), чтобы работала и из вложенного адреса,
+# где относительные пути к assets/ уже не находятся.
+_404_HTML=r'''<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Страница не найдена — STAR-COMP</title>
+<meta name="description" content="Такой страницы нет. Вернитесь на главную STAR-COMP.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a0c">
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:24px;background:#0a0a0c;color:#fff;font-family:Gilroy,Arial,sans-serif;text-align:center}
+.box{width:min(100%,560px)}
+.code{margin:0 0 12px;font-size:96px;font-weight:600;line-height:1;color:#00d9ff;letter-spacing:-.04em}
+.logo{margin:0 0 24px;font-size:14px;font-weight:600;letter-spacing:.16em;color:#bdbdc2}
+h1{margin:0 0 16px;font-size:32px;line-height:1.2}
+p.lead{margin:0 auto 32px;max-width:34rem;color:#bdbdc2;font-size:16px;line-height:1.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:52px;padding:12px 28px;border-radius:100px;background:#00d9ff;color:#0a0a0c;font-size:18px;font-weight:600;text-decoration:none;transition:transform .2s}
+@media (hover:hover){.btn:hover{transform:translateY(-2px)}}
+@media (max-width:480px){.code{font-size:72px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<main class="box">
+  <p class="code">404</p>
+  <p class="logo">STAR-COMP</p>
+  <h1>Страница не найдена</h1>
+  <p class="lead">Видимо информация устарела и мы её убрали. Вернитесь на главную — там все сборки и контакты.</p>
+  <a class="btn" id="home-link" href="index.html">На главную <span aria-hidden="true">&rarr;</span></a>
+</main>
+<script>
+(function(){
+  var p=location.pathname, m=p.match(/^\/star-comp_cl\//);
+  document.getElementById('home-link').href=(m?m[0]:'/')+'index.html';
+})();
+</script>
+</body>
+</html>
+'''
+open(os.path.join(ROOT,'404.html'),'w',encoding='utf-8').write(inject_code(_404_HTML))
+print('страница 404',len(_404_HTML))
 frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
