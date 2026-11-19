@@ -382,6 +382,24 @@
       "show_from": true,
       "page": "sborka-13031-intel-core-i5-13600kf-nvidia-rtx-5060-ti",
       "extra": true
+    },
+    {
+      "name": "№12879",
+      "image": {
+        "path": "/content/photos/12879/12879_1.webp",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 7 5700X",
+        "gpu": "NVIDIA RTX 5060 Ti 16GB"
+      },
+      "price_from": 137000,
+      "show_from": true,
+      "page": "sborka-12688-amd-ryzen-7-5700x-nvidia-rtx-5060-ti-16gb",
+      "extra": true
     }
   ]
 }
