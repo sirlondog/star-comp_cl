@@ -1,107 +1,198 @@
-  <!-- Тестовая страница test: пробный макет в стиле лендинга с тёмным фоном, крупными
-       заголовками и тонкими карточками. Все тексты и цифры — с сайта, ничего не выдумано. -->
-  <section class="mk-hero wrap" aria-labelledby="test-title">
-    <div class="mk-hero__intro">
-      <p class="mk-badge">Профессиональная сборка</p>
-      <h1 id="test-title">Компьютер на заказ с <em>гарантией</em> и запасом на 5 лет</h1>
-      <p class="mk-lead">Привезём, подключим и настроим у вас дома. Оплата после проверки.</p>
-      <div class="mk-actions">
-        <a class="btn" href="#replain-link">Записаться</a>
-        <a class="mk-ghost" href="#mk-steps">Как это работает</a>
-      </div>
-    </div>
-    <figure class="mk-hero__media">
+  <!-- Тестовая страница test: площадка для новых элементов и блоков сайта.
+       Блоки: «7 причин» (вариант 8 из .preview/why-variants.html) и три варианта
+       «Отзывов» из .preview/reviews-variants.html — 02 карусель, 09 бегущая строка,
+       08 светлый editorial. Реальные отзывы, аватары и рейтинг Яндекса 5.0 / 120+. -->
+  <section class="section wrap" id="test-blocks" aria-labelledby="test-title">
+    <h1 class="sr-only" id="test-title">Тестовая страница блоков STAR-COMP</h1>
+    <div class="t8 demo" id="t8-why">
+      <figure class="w8__photo">
 {{TEST_PHOTO}}
-      <figcaption>Приезжайте посмотреть, как проходит сборка</figcaption>
-    </figure>
-  </section>
-
-  <section class="mk-stats wrap" aria-label="Цифры">
-    <div class="mk-stat"><b>5.0</b><span>рейтинг в Яндексе</span></div>
-    <div class="mk-stat"><b>120+</b><span>отзывов клиентов</span></div>
-    <div class="mk-stat"><b>16 лет</b><span>собираем с 2009 года</span></div>
-    <div class="mk-stat"><b>до 5 лет</b><span>гарантия на сборку</span></div>
-  </section>
-
-  <section class="mk-section wrap" aria-labelledby="mk-why-title">
-    <p class="mk-eyebrow">Почему мы</p>
-    <h2 class="mk-h2" id="mk-why-title">Всё, что нужно, <em>уже включено</em></h2>
-    <ul class="mk-grid">
-      <li class="mk-card"><span class="mk-num">01</span><h3>Бесплатная доставка</h3><p>Привезём и настроим компьютер дома.</p></li>
-      <li class="mk-card"><span class="mk-num">02</span><h3>Гарантия до 5 лет</h3><p>Гарантия на сборку и замена деталей.</p></li>
-      <li class="mk-card"><span class="mk-num">03</span><h3>Только новые детали</h3><p>Коробки от комплектующих — вам.</p></li>
-      <li class="mk-card"><span class="mk-num">04</span><h3>Техподдержка</h3><p>Помогаем и после покупки.</p></li>
-      <li class="mk-card"><span class="mk-num">05</span><h3>Сборка за 2 дня</h3><p>Комплектующие в наличии, сборка быстрая.</p></li>
-      <li class="mk-card"><span class="mk-num">06</span><h3>Windows, антивирус, OFFICE</h3><p>Лицензионные программы уже установлены.</p></li>
-    </ul>
-  </section>
-
-  <section class="mk-section wrap" id="mk-steps" aria-labelledby="mk-steps-title">
-    <p class="mk-eyebrow">Как это работает</p>
-    <h2 class="mk-h2" id="mk-steps-title">Всего <em>4 шага</em> до вашего компьютера</h2>
-    <ol class="mk-steps">
-      <li class="mk-step"><span class="mk-step__num">1</span><p>Оставляете <a href="#replain-link">заявку на сайте</a>, обсуждаем конфигурацию и стоимость.</p></li>
-      <li class="mk-step"><span class="mk-step__num">2</span><p>Оформляем договор удалённо или у нас в мастерской.</p></li>
-      <li class="mk-step"><span class="mk-step__num">3</span><p>Начинаем сборку, в среднем занимает 2 дня.</p></li>
-      <li class="mk-step"><span class="mk-step__num">4</span><p>Привозим и подключаем готовый компьютер. Выдаём гарантийные документы.</p></li>
-    </ol>
-  </section>
-
-  <section class="mk-section wrap" aria-labelledby="mk-rv-title">
-    <p class="mk-eyebrow">Отзывы</p>
-    <h2 class="mk-h2" id="mk-rv-title">Что говорят <em>клиенты</em></h2>
-    <div class="mk-rv" id="mk-rv">
-      <div class="mk-rv__slides">
-        <figure class="mk-rv__slide is-active">
-          <blockquote>Заказывали два компа с одинаковой сборкой ко дням рождения. Всё супер – сделали и красиво, и быстро, и качественно и очень выгодно по цене. Всем большое спасибо за вашу проделанную работу и, безусловно, доставку и подключение.</blockquote>
-          <figcaption><img src="assets/footer/ava-1.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><b>Женя Мележик</b> 24.06.2026</span></figcaption>
-        </figure>
-        <figure class="mk-rv__slide">
-          <blockquote>Сегодня приобрела компьютер сыну, и хочу поделиться своим восторгом от покупки и процесса доставки! Сам компьютер превзошёл все мои ожидания. Он работает быстро и без сбоев.</blockquote>
-          <figcaption><img src="assets/footer/ava-4.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><b>Виктория Трофимова</b> 14.06.2026</span></figcaption>
-        </figure>
-        <figure class="mk-rv__slide">
-          <blockquote>Заказал компьютер, всё сделали быстро и качественно! Собрали отличную конфигурацию! Привезли как мне было удобно, подключили, объяснили! Ребята молодцы. Советую всем!</blockquote>
-          <figcaption><img src="assets/footer/ava-5.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><b>Евгений А.</b> 10.02.2026</span></figcaption>
-        </figure>
-        <figure class="mk-rv__slide">
-          <blockquote>Спасибо большое команде star-comp. Ребята делают на уровне и качественно. Специалисты отзывчивы и оперативны. Только заказал и вечером уже стоял в работе.</blockquote>
-          <figcaption><img src="assets/footer/ava-3.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><b>Александр Михайлов</b> 15.02.2026</span></figcaption>
-        </figure>
-        <figure class="mk-rv__slide">
-          <blockquote>Заказал игровой компьютер с монитором для внуков, оптимально скомплектовали, разъяснили. Доставили по адресу в удобное для меня время, настроили. Итог выше ожиданий.</blockquote>
-          <figcaption><img src="assets/footer/ava-2.webp" alt="" width="48" height="48" loading="lazy" decoding="async"><span><b>Эдуард Дроздов</b> 31.01.2026</span></figcaption>
-        </figure>
-      </div>
-      <div class="mk-rv__ctrl">
-        <button class="mk-rv__btn mk-rv__prev" type="button" aria-label="Предыдущий отзыв">←</button>
-        <button class="mk-rv__btn mk-rv__next" type="button" aria-label="Следующий отзыв">→</button>
-        <span class="mk-rv__count">01 / 05</span>
-        <a class="mk-ghost" href="https://yandex.ru/maps/org/starcomp_igrovyye_kompyutery/141663119214/reviews/" target="_blank" rel="noopener">Все отзывы на Яндексе</a>
+        <figcaption>Приезжайте посмотреть, как проходит сборка — Заневский 65к5, ст. м. Ладожская</figcaption>
+      </figure>
+      <div class="w8__content">
+        <h2 class="demo-title"><em>7 причин</em> заказать у нас</h2>
+        <div class="w8__stats">
+          <div class="w8__stat"><b>2 дня</b><span>сборка после подтверждения</span></div>
+          <div class="w8__stat"><b>до 5 лет</b><span>гарантия на сборку</span></div>
+          <div class="w8__stat"><b>120+</b><span>отзывов, рейтинг 5 звёзд</span></div>
+          <div class="w8__stat"><b>16 лет</b><span>опыта с 2009 года</span></div>
+        </div>
+        <div class="w8__list">
+          <div class="w8__li"><em>01</em><span>Бесплатная доставка и настройка дома</span></div>
+          <div class="w8__li"><em>02</em><span>Гарантия до 5 лет и замена деталей</span></div>
+          <div class="w8__li"><em>03</em><span>Только новые комплектующие, коробки — вам</span></div>
+          <div class="w8__li"><em>04</em><span>Тех поддержка после покупки</span></div>
+          <div class="w8__li"><em>05</em><span>Детали в наличии, сборка за 2 дня</span></div>
+          <div class="w8__li"><em>06</em><span>Лицензионный Windows, антивирус и OFFICE</span></div>
+          <div class="w8__li"><em>07</em><span>120+ отзывов на Яндексе, рейтинг 5</span></div>
+          <div class="w8__li"><em>08</em><span>Приезжайте в мастерскую по записи</span></div>
+        </div>
+        <div class="w8__cta"><b>Хотите посмотреть процесс сборки?</b><span>Приезжайте в удобное время</span><a class="btn" href="#replain-link">Записаться</a></div>
       </div>
     </div>
   </section>
 
-  <section class="mk-cta wrap" aria-labelledby="mk-cta-title">
-    <h2 class="mk-h2" id="mk-cta-title">Приезжайте в <em>мастерскую</em></h2>
-    <p class="mk-lead">Заневский 65к5, ст. м. Ладожская. Ежедневно, 11:00–19:00. Посмотрите, как проходит сборка.</p>
-    <div class="mk-actions">
-      <a class="btn" href="#replain-link">Записаться</a>
+  <section class="section wrap" id="test-reviews" aria-labelledby="reviews-title">
+    <h2 class="sr-only" id="reviews-title">Варианты блока «Отзывы»</h2>
+
+    <!-- Вариант 02: один отзыв крупно, карусель -->
+    <div class="rv rv--carousel demo" id="rv2">
+      <h3 class="demo-title"><em>Отзывы</em> наших клиентов</h3>
+      <p class="demo-lead">Вариант 02 — один отзыв крупно: стрелки, точки и счётчик.</p>
+      <div class="rv2__stage">
+        <div class="rv2__slide is-active">
+          <div class="rv2__q" aria-hidden="true">“</div>
+          <div><p class="rv2__text">Заказывали два компа с одинаковой сборкой ко дням рождения. Всё супер – сделали и красиво, и быстро, и качественно и очень выгодно по цене. Всем большое спасибо за вашу проделанную работу и, безусловно, доставку и подключение💥💥💥</p>
+            <div class="rv2__meta"><img class="rv2__ava" src="assets/footer/ava-1.webp" alt="Аватар: Женя Мележик" loading="lazy" decoding="async"><div class="rv2__who"><b>Женя Мележик</b><span>24.06.2026</span></div></div>
+          </div>
+        </div>
+        <div class="rv2__slide">
+          <div class="rv2__q" aria-hidden="true">“</div>
+          <div><p class="rv2__text">Сегодня приобрела компьютер сыну, и хочу поделиться своим восторгом от покупки и процесса доставки! Во-первых, сам компьютер превзошел все мои ожидания. Он работает быстро и без сбоев, все программы открываются...</p>
+            <div class="rv2__meta"><img class="rv2__ava" src="assets/footer/ava-4.webp" alt="Аватар: Виктория Трофимова" loading="lazy" decoding="async"><div class="rv2__who"><b>Виктория Трофимова</b><span>14.06.2026</span></div></div>
+          </div>
+        </div>
+        <div class="rv2__slide">
+          <div class="rv2__q" aria-hidden="true">“</div>
+          <div><p class="rv2__text">Заказал компьютер, всё сделали быстро и качественно! Собрали отличную конфигурацию! Привезли как мне было удобно, подключили, объяснили! Ребята молодцы. Доставлял и подключал Игорь, ему отдельный респект! Советую всем! Цены ниже чем в DNS и у других...</p>
+            <div class="rv2__meta"><img class="rv2__ava" src="assets/footer/ava-5.webp" alt="Аватар: Евгений А." loading="lazy" decoding="async"><div class="rv2__who"><b>Евгений А.</b><span>10.02.2026</span></div></div>
+          </div>
+        </div>
+        <div class="rv2__slide">
+          <div class="rv2__q" aria-hidden="true">“</div>
+          <div><p class="rv2__text">Спасибо большое команде star-comp. Ребята делают на уровне и качественно Специалисты отзывчевы и оперативны Только заказал и вечром уже стоял в работе Все супер! Еще раз спасибо огромное я доволен работе star-corm 🤝🤝🤝🤝</p>
+            <div class="rv2__meta"><img class="rv2__ava" src="assets/footer/ava-3.webp" alt="Аватар: Александр Михайлов" loading="lazy" decoding="async"><div class="rv2__who"><b>Александр Михайлов</b><span>15.02.2026</span></div></div>
+          </div>
+        </div>
+        <div class="rv2__slide">
+          <div class="rv2__q" aria-hidden="true">“</div>
+          <div><p class="rv2__text">Заказал игровой компьютер с монитором для внуков, оптимально скомплектовали, разъяснили. Доставили по адресу в удобное для меня время, настроили. Компетентно, в разумной достаточности по характеристикам и цене. Итог, выше ожиданий.</p>
+            <div class="rv2__meta"><img class="rv2__ava" src="assets/footer/ava-2.webp" alt="Аватар: Эдуард Дроздов" loading="lazy" decoding="async"><div class="rv2__who"><b>Эдуард Дроздов</b><span>31.01.2026</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="rv2__ctrl">
+        <button class="rv2__circle rv2__prev" type="button" aria-label="Предыдущий отзыв">←</button>
+        <button class="rv2__circle rv2__next" type="button" aria-label="Следующий отзыв">→</button>
+        <span class="rv2__count">01 / 05</span>
+        <span class="rv-ya-inline"><span class="rv-ya-mark">Я</span> 5.0 / 5 · 120+ отзывов</span>
+        <div class="rv2__dots">
+          <button class="rv2__dot is-active" type="button" aria-label="Отзыв 1"></button>
+          <button class="rv2__dot" type="button" aria-label="Отзыв 2"></button>
+          <button class="rv2__dot" type="button" aria-label="Отзыв 3"></button>
+          <button class="rv2__dot" type="button" aria-label="Отзыв 4"></button>
+          <button class="rv2__dot" type="button" aria-label="Отзыв 5"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Вариант 09: бегущая строка коротких цитат -->
+    <div class="rv rv--marquee demo" id="rv9">
+      <h3 class="demo-title"><em>120+ отзывов</em> — и вот что пишут</h3>
+      <p class="demo-lead">Вариант 09 — короткие цитаты плывут справа налево; наведите на строку, чтобы остановить.</p>
+      <div class="rv9__strip"><div class="rv9__track">
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Сделали красиво, быстро и качественно — и очень выгодно по цене</p><span class="rv9__who">Женя Мележик · 24.06.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Компьютер превзошёл все ожидания: работает быстро и без сбоев</p><span class="rv9__who">Виктория Трофимова · 14.06.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Привезли, подключили, объяснили — отдельный респект Игорю!</p><span class="rv9__who">Евгений А. · 10.02.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Специалисты отзывчивые и оперативные — вечером уже стоял в работе</p><span class="rv9__who">Александр Михайлов · 15.02.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Компетентно, в разумной достаточности и выше ожиданий</p><span class="rv9__who">Эдуард Дроздов · 31.01.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Сделали красиво, быстро и качественно — и очень выгодно по цене</p><span class="rv9__who">Женя Мележик · 24.06.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Компьютер превзошёл все ожидания: работает быстро и без сбоев</p><span class="rv9__who">Виктория Трофимова · 14.06.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Привезли, подключили, объяснили — отдельный респект Игорю!</p><span class="rv9__who">Евгений А. · 10.02.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Специалисты отзывчивые и оперативные — вечером уже стоял в работе</p><span class="rv9__who">Александр Михайлов · 15.02.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Компетентно, в разумной достаточности и выше ожиданий</p><span class="rv9__who">Эдуард Дроздов · 31.01.2026</span></div>
+      </div></div>
+      <div class="rv9__strip"><div class="rv9__track rv9__track--rev">
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Заказывали два компа — сделали красиво и быстро</p><span class="rv9__who">Женя Мележик · 24.06.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Работает быстро и без сбоев, все программы открываются</p><span class="rv9__who">Виктория Трофимова · 14.06.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Собрали отличную конфигурацию и привезли удобно</p><span class="rv9__who">Евгений А. · 10.02.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Ещё раз спасибо огромное — доволен работой</p><span class="rv9__who">Александр Михайлов · 15.02.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Оптимально скомплектовали, разъяснили, настроили</p><span class="rv9__who">Эдуард Дроздов · 31.01.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Заказывали два компа — сделали красиво и быстро</p><span class="rv9__who">Женя Мележик · 24.06.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Работает быстро и без сбоев, все программы открываются</p><span class="rv9__who">Виктория Трофимова · 14.06.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Собрали отличную конфигурацию и привезли удобно</p><span class="rv9__who">Евгений А. · 10.02.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Ещё раз спасибо огромное — доволен работой</p><span class="rv9__who">Александр Михайлов · 15.02.2026</span></div>
+        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Оптимально скомплектовали, разъяснили, настроили</p><span class="rv9__who">Эдуард Дроздов · 31.01.2026</span></div>
+      </div></div>
+      <div class="rv9__panel">
+        <div class="rv9__big"><b>5.0</b><span>средняя оценка в Яндексе</span></div>
+        <div class="rv9__fact"><b>120+</b><span>отзывов клиентов</span></div>
+        <div class="rv9__fact"><b>16 лет</b><span>собираем компьютеры с 2009 года</span></div>
+      </div>
+    </div>
+
+    <!-- Вариант 08: светлый журнальный стиль -->
+    <div class="rv rv--paper demo" id="rv8">
+      <h3 class="demo-title"><em>Доверие,</em> подтверждённое отзывами</h3>
+      <p class="demo-lead">Вариант 08 — бежевая бумага, засечный шрифт и тонкие линии вместо карточек.</p>
+      <div class="rv8">
+        <aside class="rv8__aside">
+          <div class="rv8__big" aria-hidden="true">“</div>
+          <div class="rv8__score">5.0<span> / 5</span></div>
+          <p class="rv8__note">Рейтинг организации в Яндексе</p>
+          <p class="rv8__note">120+ отзывов</p>
+          <a class="btn" href="https://yandex.ru/maps/org/starcomp_igrovyye_kompyutery/141663119214/reviews/" target="_blank" rel="noopener">Смотреть на Яндекс</a>
+        </aside>
+        <div>
+          <div class="rv8__row"><span class="rv8__mark" aria-hidden="true">“</span><div><p class="rv8__text">Заказывали два компа с одинаковой сборкой ко дням рождения. Всё супер – сделали и красиво, и быстро, и качественно и очень выгодно по цене. Всем большое спасибо за вашу проделанную работу и, безусловно, доставку и подключение💥💥💥</p><div class="rv8__meta">Женя Мележик · 24.06.2026</div></div></div>
+          <div class="rv8__row"><span class="rv8__mark" aria-hidden="true">“</span><div><p class="rv8__text">Сегодня приобрела компьютер сыну, и хочу поделиться своим восторгом от покупки и процесса доставки! Во-первых, сам компьютер превзошел все мои ожидания. Он работает быстро и без сбоев, все программы открываются...</p><div class="rv8__meta">Виктория Трофимова · 14.06.2026</div></div></div>
+          <div class="rv8__row"><span class="rv8__mark" aria-hidden="true">“</span><div><p class="rv8__text">Заказал компьютер, всё сделали быстро и качественно! Собрали отличную конфигурацию! Привезли как мне было удобно, подключили, объяснили! Ребята молодцы. Доставлял и подключал Игорь, ему отдельный респект! Советую всем! Цены ниже чем в DNS и у других...</p><div class="rv8__meta">Евгений А. · 10.02.2026</div></div></div>
+          <div class="rv8__row"><span class="rv8__mark" aria-hidden="true">“</span><div><p class="rv8__text">Спасибо большое команде star-comp. Ребята делают на уровне и качественно Специалисты отзывчевы и оперативны Только заказал и вечром уже стоял в работе Все супер! Еще раз спасибо огромное я доволен работе star-corm 🤝🤝🤝🤝</p><div class="rv8__meta">Александр Михайлов · 15.02.2026</div></div></div>
+          <div class="rv8__row"><span class="rv8__mark" aria-hidden="true">“</span><div><p class="rv8__text">Заказал игровой компьютер с монитором для внуков, оптимально скомплектовали, разъяснили. Доставили по адресу в удобное для меня время, настроили. Компетентно, в разумной достаточности по характеристикам и цене. Итог, выше ожиданий.</p><div class="rv8__meta">Эдуард Дроздов · 31.01.2026</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="steps-test" aria-labelledby="steps-test-title">
+    <div class="st4 demo">
+      <h2 class="demo-title" id="steps-test-title"><em>Всего 4 шага</em> до вашего нового компьютера</h2>
+      <p class="demo-lead">От консультации и подбора комплектующих до доставки и запуска — сделаем всё под ключ и с гарантией результата.</p>
+      <ol class="st4__list">
+        <li class="st4__item">
+          <span class="st4__num">1</span>
+          <div class="st4__body">
+            <p class="st4__text">Оставляете <a href="#replain-link">заявку на сайте</a>, обсуждаем конфигурацию и стоимость.</p>
+          </div>
+        </li>
+        <li class="st4__item">
+          <span class="st4__num">2</span>
+          <div class="st4__body">
+            <p class="st4__text">Оформляем договор удаленно или у нас в мастерской.</p>
+          </div>
+        </li>
+        <li class="st4__item">
+          <span class="st4__num">3</span>
+          <div class="st4__body">
+            <p class="st4__text">Начинаем сборку, в среднем занимает 2 дня.</p>
+          </div>
+        </li>
+        <li class="st4__item">
+          <span class="st4__num">4</span>
+          <div class="st4__body">
+            <p class="st4__text">Привозим и подключаем готовый компьютер. Выдаем гарантийные документы.</p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
   <script>
   (function () {
-    var box = document.getElementById('mk-rv');
+    var box = document.getElementById('rv2');
     if (!box) return;
-    var slides = box.querySelectorAll('.mk-rv__slide'), cur = 0,
-        count = box.querySelector('.mk-rv__count');
+    var slides = box.querySelectorAll('.rv2__slide'),
+        dots = box.querySelectorAll('.rv2__dot'),
+        count = box.querySelector('.rv2__count'),
+        cur = 0;
     function go(n) {
       cur = (n + slides.length) % slides.length;
       slides.forEach(function (s, k) { s.classList.toggle('is-active', k === cur); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-active', k === cur); });
       count.textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
     }
-    box.querySelector('.mk-rv__prev').addEventListener('click', function () { go(cur - 1); });
-    box.querySelector('.mk-rv__next').addEventListener('click', function () { go(cur + 1); });
+    box.querySelector('.rv2__prev').addEventListener('click', function () { go(cur - 1); });
+    box.querySelector('.rv2__next').addEventListener('click', function () { go(cur + 1); });
+    dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k); }); });
   })();
   </script>
