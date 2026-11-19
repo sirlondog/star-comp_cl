@@ -752,9 +752,6 @@ def body_html(d):
             return [(label, specs.get(key)) for key, label in _SPEC_FIELDS if specs.get(key)]
         return [(x.get('label'), x.get('value')) for x in specs or [] if x.get('label') and x.get('value')]
     specs='\n'.join(f'      <div><dt>{esc(l).rstrip(":")}:</dt><dd>{esc(v)}</dd></div>' for l, v in spec_rows(d.get('specs')))
-    # страницы с горизонтальным видео — блок «Конфигурация» в две колонки (старая вёрстка),
-    # остальные — в одну колонку на половину фрейма; класс-модификатор на секции
-    spec_cols=' section--spec--2col' if vcode((d.get('video') or {}).get('horizontal')) else ''
     # Блок «О сборке»: описание и текст рядом с видео (на мобильном — друг под другом)
     lead=f'\n        <p class="section__lead">{txt(d["lead"])}</p>' if d.get('lead') else ''
     about=f'\n        <div class="seo-text"><p>{txt(d["about"])}</p></div>' if d.get('about') else ''
@@ -762,6 +759,9 @@ def body_html(d):
     text=lead+about
     # только вертикальное видео: на десктопе видео ставится вторым столбцом в блок «Конфигурация»
     vertical_only='video--vertical' in vid
+    # страницы без видео и с горизонтальным видео — блок «Конфигурация» в две колонки
+    # на всю ширину; только с вертикальным видео — плашки слева, видео справа
+    spec_cols='' if vertical_only else ' section--spec--2col'
     flex_note=open('inner.flex-note.html',encoding='utf-8').read().rstrip()
     if vertical_only:
         # блок «О сборке» — только текст, без видео
