@@ -1,7 +1,6 @@
   <!-- Тестовая страница test: площадка для новых элементов и блоков сайта.
-       Блоки: «7 причин» (вариант 8 из .preview/why-variants.html) и три варианта
-       «Отзывов» из .preview/reviews-variants.html — 02 карусель, 09 бегущая строка,
-       08 светлый editorial. Реальные отзывы, аватары и рейтинг Яндекса 5.0 / 120+. -->
+       Сейчас здесь только вариант №8 блока «7 причин» из .preview/why-variants.html:
+       фото на всю высоту слева, цифры и причины справа. Остальные блоки убраны. -->
   <section class="section wrap" id="test-blocks" aria-labelledby="test-title">
     <h1 class="sr-only" id="test-title">Тестовая страница блоков STAR-COMP</h1>
     <div class="t8 demo" id="t8-why">
@@ -32,167 +31,23 @@
     </div>
   </section>
 
-  <section class="section wrap" id="test-reviews" aria-labelledby="reviews-title">
-    <h2 class="sr-only" id="reviews-title">Варианты блока «Отзывы»</h2>
-
-    <!-- Вариант 02: один отзыв крупно, карусель -->
-    <div class="rv rv--carousel demo" id="rv2">
-      <h3 class="demo-title"><em>Отзывы</em> наших клиентов</h3>
-      <p class="demo-lead">Вариант 02 — один отзыв крупно: стрелки, точки и счётчик.</p>
-      <div class="rv2__stage">
-        <div class="rv2__slide is-active">
-          <div class="rv2__q" aria-hidden="true">“</div>
-          <div><p class="rv2__text">Заказывали два компа с одинаковой сборкой ко дням рождения. Всё супер – сделали и красиво, и быстро, и качественно и очень выгодно по цене. Всем большое спасибо за вашу проделанную работу и, безусловно, доставку и подключение💥💥💥</p>
-            <div class="rv2__meta"><img class="rv2__ava" src="assets/footer/ava-1.webp" alt="Аватар: Женя Мележик" loading="lazy" decoding="async"><div class="rv2__who"><b>Женя Мележик</b><span>24.06.2026</span></div></div>
-          </div>
-        </div>
-        <div class="rv2__slide">
-          <div class="rv2__q" aria-hidden="true">“</div>
-          <div><p class="rv2__text">Сегодня приобрела компьютер сыну, и хочу поделиться своим восторгом от покупки и процесса доставки! Во-первых, сам компьютер превзошел все мои ожидания. Он работает быстро и без сбоев, все программы открываются...</p>
-            <div class="rv2__meta"><img class="rv2__ava" src="assets/footer/ava-4.webp" alt="Аватар: Виктория Трофимова" loading="lazy" decoding="async"><div class="rv2__who"><b>Виктория Трофимова</b><span>14.06.2026</span></div></div>
-          </div>
-        </div>
-        <div class="rv2__slide">
-          <div class="rv2__q" aria-hidden="true">“</div>
-          <div><p class="rv2__text">Заказал компьютер, всё сделали быстро и качественно! Собрали отличную конфигурацию! Привезли как мне было удобно, подключили, объяснили! Ребята молодцы. Доставлял и подключал Игорь, ему отдельный респект! Советую всем! Цены ниже чем в DNS и у других...</p>
-            <div class="rv2__meta"><img class="rv2__ava" src="assets/footer/ava-5.webp" alt="Аватар: Евгений А." loading="lazy" decoding="async"><div class="rv2__who"><b>Евгений А.</b><span>10.02.2026</span></div></div>
-          </div>
-        </div>
-        <div class="rv2__slide">
-          <div class="rv2__q" aria-hidden="true">“</div>
-          <div><p class="rv2__text">Спасибо большое команде star-comp. Ребята делают на уровне и качественно Специалисты отзывчевы и оперативны Только заказал и вечром уже стоял в работе Все супер! Еще раз спасибо огромное я доволен работе star-corm 🤝🤝🤝🤝</p>
-            <div class="rv2__meta"><img class="rv2__ava" src="assets/footer/ava-3.webp" alt="Аватар: Александр Михайлов" loading="lazy" decoding="async"><div class="rv2__who"><b>Александр Михайлов</b><span>15.02.2026</span></div></div>
-          </div>
-        </div>
-        <div class="rv2__slide">
-          <div class="rv2__q" aria-hidden="true">“</div>
-          <div><p class="rv2__text">Заказал игровой компьютер с монитором для внуков, оптимально скомплектовали, разъяснили. Доставили по адресу в удобное для меня время, настроили. Компетентно, в разумной достаточности по характеристикам и цене. Итог, выше ожиданий.</p>
-            <div class="rv2__meta"><img class="rv2__ava" src="assets/footer/ava-2.webp" alt="Аватар: Эдуард Дроздов" loading="lazy" decoding="async"><div class="rv2__who"><b>Эдуард Дроздов</b><span>31.01.2026</span></div></div>
-          </div>
-        </div>
+  <section class="section wrap" id="test-status" aria-labelledby="status-title">
+    <div class="sp demo">
+      <h2 class="sp__title" id="status-title">Status <em>Pills</em></h2>
+      <p class="sp__lead">Статусы для карточек сборок: голубой — в наличии, розовый — хит, серый — под заказ.</p>
+      <div class="sp__row">
+        <span class="status-pill status-pill--stock">В наличии</span>
+        <span class="status-pill status-pill--hit">Хит</span>
+        <span class="status-pill status-pill--order">Под заказ</span>
       </div>
-      <div class="rv2__ctrl">
-        <button class="rv2__circle rv2__prev" type="button" aria-label="Предыдущий отзыв">←</button>
-        <button class="rv2__circle rv2__next" type="button" aria-label="Следующий отзыв">→</button>
-        <span class="rv2__count">01 / 05</span>
-        <span class="rv-ya-inline"><span class="rv-ya-mark">Я</span> 5.0 / 5 · 120+ отзывов</span>
-        <div class="rv2__dots">
-          <button class="rv2__dot is-active" type="button" aria-label="Отзыв 1"></button>
-          <button class="rv2__dot" type="button" aria-label="Отзыв 2"></button>
-          <button class="rv2__dot" type="button" aria-label="Отзыв 3"></button>
-          <button class="rv2__dot" type="button" aria-label="Отзыв 4"></button>
-          <button class="rv2__dot" type="button" aria-label="Отзыв 5"></button>
+      <div class="sp__mock">
+        <div class="sp__photo">
+          <div class="sp__status"><span class="status-pill status-pill--stock">В наличии</span></div>
         </div>
-      </div>
-    </div>
-
-    <!-- Вариант 09: бегущая строка коротких цитат -->
-    <div class="rv rv--marquee demo" id="rv9">
-      <h3 class="demo-title"><em>120+ отзывов</em> — и вот что пишут</h3>
-      <p class="demo-lead">Вариант 09 — короткие цитаты плывут справа налево; наведите на строку, чтобы остановить.</p>
-      <div class="rv9__strip"><div class="rv9__track">
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Сделали красиво, быстро и качественно — и очень выгодно по цене</p><span class="rv9__who">Женя Мележик · 24.06.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Компьютер превзошёл все ожидания: работает быстро и без сбоев</p><span class="rv9__who">Виктория Трофимова · 14.06.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Привезли, подключили, объяснили — отдельный респект Игорю!</p><span class="rv9__who">Евгений А. · 10.02.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Специалисты отзывчивые и оперативные — вечером уже стоял в работе</p><span class="rv9__who">Александр Михайлов · 15.02.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Компетентно, в разумной достаточности и выше ожиданий</p><span class="rv9__who">Эдуард Дроздов · 31.01.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Сделали красиво, быстро и качественно — и очень выгодно по цене</p><span class="rv9__who">Женя Мележик · 24.06.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Компьютер превзошёл все ожидания: работает быстро и без сбоев</p><span class="rv9__who">Виктория Трофимова · 14.06.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Привезли, подключили, объяснили — отдельный респект Игорю!</p><span class="rv9__who">Евгений А. · 10.02.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Специалисты отзывчивые и оперативные — вечером уже стоял в работе</p><span class="rv9__who">Александр Михайлов · 15.02.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Компетентно, в разумной достаточности и выше ожиданий</p><span class="rv9__who">Эдуард Дроздов · 31.01.2026</span></div>
-      </div></div>
-      <div class="rv9__strip"><div class="rv9__track rv9__track--rev">
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Заказывали два компа — сделали красиво и быстро</p><span class="rv9__who">Женя Мележик · 24.06.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Работает быстро и без сбоев, все программы открываются</p><span class="rv9__who">Виктория Трофимова · 14.06.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Собрали отличную конфигурацию и привезли удобно</p><span class="rv9__who">Евгений А. · 10.02.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Ещё раз спасибо огромное — доволен работой</p><span class="rv9__who">Александр Михайлов · 15.02.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Оптимально скомплектовали, разъяснили, настроили</p><span class="rv9__who">Эдуард Дроздов · 31.01.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Заказывали два компа — сделали красиво и быстро</p><span class="rv9__who">Женя Мележик · 24.06.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Работает быстро и без сбоев, все программы открываются</p><span class="rv9__who">Виктория Трофимова · 14.06.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Собрали отличную конфигурацию и привезли удобно</p><span class="rv9__who">Евгений А. · 10.02.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Ещё раз спасибо огромное — доволен работой</p><span class="rv9__who">Александр Михайлов · 15.02.2026</span></div>
-        <div class="rv9__quote"><span class="rv9__q" aria-hidden="true">“</span><p class="rv9__text">Оптимально скомплектовали, разъяснили, настроили</p><span class="rv9__who">Эдуард Дроздов · 31.01.2026</span></div>
-      </div></div>
-      <div class="rv9__panel">
-        <div class="rv9__big"><b>5.0</b><span>средняя оценка в Яндексе</span></div>
-        <div class="rv9__fact"><b>120+</b><span>отзывов клиентов</span></div>
-        <div class="rv9__fact"><b>16 лет</b><span>собираем компьютеры с 2009 года</span></div>
-      </div>
-    </div>
-
-    <!-- Вариант 08: светлый журнальный стиль -->
-    <div class="rv rv--paper demo" id="rv8">
-      <h3 class="demo-title"><em>Доверие,</em> подтверждённое отзывами</h3>
-      <p class="demo-lead">Вариант 08 — бежевая бумага, засечный шрифт и тонкие линии вместо карточек.</p>
-      <div class="rv8">
-        <aside class="rv8__aside">
-          <div class="rv8__big" aria-hidden="true">“</div>
-          <div class="rv8__score">5.0<span> / 5</span></div>
-          <p class="rv8__note">Рейтинг организации в Яндексе</p>
-          <p class="rv8__note">120+ отзывов</p>
-          <a class="btn" href="https://yandex.ru/maps/org/starcomp_igrovyye_kompyutery/141663119214/reviews/" target="_blank" rel="noopener">Смотреть на Яндекс</a>
-        </aside>
-        <div>
-          <div class="rv8__row"><span class="rv8__mark" aria-hidden="true">“</span><div><p class="rv8__text">Заказывали два компа с одинаковой сборкой ко дням рождения. Всё супер – сделали и красиво, и быстро, и качественно и очень выгодно по цене. Всем большое спасибо за вашу проделанную работу и, безусловно, доставку и подключение💥💥💥</p><div class="rv8__meta">Женя Мележик · 24.06.2026</div></div></div>
-          <div class="rv8__row"><span class="rv8__mark" aria-hidden="true">“</span><div><p class="rv8__text">Сегодня приобрела компьютер сыну, и хочу поделиться своим восторгом от покупки и процесса доставки! Во-первых, сам компьютер превзошел все мои ожидания. Он работает быстро и без сбоев, все программы открываются...</p><div class="rv8__meta">Виктория Трофимова · 14.06.2026</div></div></div>
-          <div class="rv8__row"><span class="rv8__mark" aria-hidden="true">“</span><div><p class="rv8__text">Заказал компьютер, всё сделали быстро и качественно! Собрали отличную конфигурацию! Привезли как мне было удобно, подключили, объяснили! Ребята молодцы. Доставлял и подключал Игорь, ему отдельный респект! Советую всем! Цены ниже чем в DNS и у других...</p><div class="rv8__meta">Евгений А. · 10.02.2026</div></div></div>
-          <div class="rv8__row"><span class="rv8__mark" aria-hidden="true">“</span><div><p class="rv8__text">Спасибо большое команде star-comp. Ребята делают на уровне и качественно Специалисты отзывчевы и оперативны Только заказал и вечром уже стоял в работе Все супер! Еще раз спасибо огромное я доволен работе star-corm 🤝🤝🤝🤝</p><div class="rv8__meta">Александр Михайлов · 15.02.2026</div></div></div>
-          <div class="rv8__row"><span class="rv8__mark" aria-hidden="true">“</span><div><p class="rv8__text">Заказал игровой компьютер с монитором для внуков, оптимально скомплектовали, разъяснили. Доставили по адресу в удобное для меня время, настроили. Компетентно, в разумной достаточности по характеристикам и цене. Итог, выше ожиданий.</p><div class="rv8__meta">Эдуард Дроздов · 31.01.2026</div></div></div>
+        <div class="sp__info">
+          <b>На карточке</b>
+          <span>Пилюля лежит поверх фото. Клик по ней проходит на всю карточку — ссылка не перехватывается.</span>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="section wrap" id="steps-test" aria-labelledby="steps-test-title">
-    <div class="st4 demo">
-      <h2 class="demo-title" id="steps-test-title"><em>Всего 4 шага</em> до вашего нового компьютера</h2>
-      <p class="demo-lead">От консультации и подбора комплектующих до доставки и запуска — сделаем всё под ключ и с гарантией результата.</p>
-      <ol class="st4__list">
-        <li class="st4__item">
-          <span class="st4__num">1</span>
-          <div class="st4__body">
-            <p class="st4__text">Оставляете <a href="#replain-link">заявку на сайте</a>, обсуждаем конфигурацию и стоимость.</p>
-          </div>
-        </li>
-        <li class="st4__item">
-          <span class="st4__num">2</span>
-          <div class="st4__body">
-            <p class="st4__text">Оформляем договор удаленно или у нас в мастерской.</p>
-          </div>
-        </li>
-        <li class="st4__item">
-          <span class="st4__num">3</span>
-          <div class="st4__body">
-            <p class="st4__text">Начинаем сборку, в среднем занимает 2 дня.</p>
-          </div>
-        </li>
-        <li class="st4__item">
-          <span class="st4__num">4</span>
-          <div class="st4__body">
-            <p class="st4__text">Привозим и подключаем готовый компьютер. Выдаем гарантийные документы.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <script>
-  (function () {
-    var box = document.getElementById('rv2');
-    if (!box) return;
-    var slides = box.querySelectorAll('.rv2__slide'),
-        dots = box.querySelectorAll('.rv2__dot'),
-        count = box.querySelector('.rv2__count'),
-        cur = 0;
-    function go(n) {
-      cur = (n + slides.length) % slides.length;
-      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === cur); });
-      dots.forEach(function (d, k) { d.classList.toggle('is-active', k === cur); });
-      count.textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
-    }
-    box.querySelector('.rv2__prev').addEventListener('click', function () { go(cur - 1); });
-    box.querySelector('.rv2__next').addEventListener('click', function () { go(cur + 1); });
-    dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k); }); });
-  })();
-  </script>

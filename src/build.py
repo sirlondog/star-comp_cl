@@ -683,21 +683,23 @@ _bt=full.replace(_bt_main,'<main>\n'+_bt_block+'</main>').replace(
 open(os.path.join(ROOT,'blocktest.html'),'w',encoding='utf-8').write(inject_code(_bt))
 print('тестовая страница blocktest',len(_bt))
 
-# ---------- тестовая страница test: общая площадка для новых блоков сайта ----------
-# Отдельная от blocktest.html страница (noindex), где владелец будет собирать
-# и дорабатывать все новые элементы. Шапка, меню и подвал берём от главной;
-# нововведения живут в src/test.body.html и стилях src/test.css (assets/test.css).
-# Сейчас здесь вариант «7 причин» №8: фото на всю высоту слева, цифры и причины справа.
+# ---------- тестовая страница test: только блок «7 причин» ----------
+# Отдельная от blocktest.html страница (noindex) для доработки новых блоков.
+# Шапку, меню, отзывы, FAQ и контакты с главной НЕ берём — на странице должен
+# остаться только вариант «7 причин» №8 из src/test.body.html.
+# Стили блока — src/test.css → assets/test.css.
 _test_photo=(f'        <picture>\n'
              f'          <source type="image/avif" srcset="{srcset(_bt_stem,_bt_ws,"avif")}" sizes="(min-width:65rem) 44vw, 100vw">\n'
              f'          <img src="assets/{_bt_stem}-{_bt_ws[-1]}.webp" srcset="{srcset(_bt_stem,_bt_ws,"webp")}" sizes="(min-width:65rem) 44vw, 100vw" width="{_bt_ws[-1]}" height="{round(_bt_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
              f'        </picture>')
 _test_block=fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read()).replace('{{TEST_PHOTO}}',_test_photo)
-_test=full.replace(_bt_main,'<main>\n'+_test_block+'</main>').replace(
+# Берём только <head> от главной, чтобы сохранить шрифты, метатеги и счётчики.
+_test_head=full[:full.index('<body>')].replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',
     '<title>Тестовые блоки | STAR-COMP</title>\n<meta name="robots" content="noindex, nofollow">').replace(
     f'<link rel="stylesheet" href="assets/style.css?v={_STAMP}">',
     f'<link rel="stylesheet" href="assets/style.css?v={_STAMP}">\n<link rel="stylesheet" href="assets/test.css?v={_STAMP}">')
+_test=f'{_test_head}<body>\n<main>\n{_test_block}\n</main>\n</body>\n</html>\n'
 open(os.path.join(ROOT,'test.html'),'w',encoding='utf-8').write(inject_code(_test))
 print('тестовая страница test',len(_test))
 
