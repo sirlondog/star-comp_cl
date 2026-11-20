@@ -351,3 +351,63 @@
   .sg.demo{border-radius:16px}
   .sg__grid,.sg__specs{grid-template-columns:1fr}
 }
+
+/* ==========================================================================
+   «Подарки всем клиентам» — блок из старого сайта, только на тестовой странице.
+   Две карточки: картинка слева, текст и Status Pill справа. Картинки —
+   готовые promo_1/promo_2 из Тильды, нарезку делает сборщик.
+   ========================================================================== */
+.gp__title{
+  margin:0;
+  font-weight:600;
+  font-size:clamp(30px,2.8vw,38px);
+  line-height:1.15;
+  letter-spacing:-.025em;
+}
+.gp__lead{
+  margin:16px 0 0;
+  max-width:62rem;
+  color:var(--muted);
+  font-size:var(--fs-l);
+  line-height:1.4;
+}
+.gp__grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:40px;
+  margin-top:40px;
+}
+.gp__card{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:20px;
+  align-items:center;
+  min-width:0;
+}
+.gp__media{display:flex;align-items:center;justify-content:center;min-width:0}
+.gp__media img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain}
+.gp__body{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.gp__name{
+  margin:0;
+  font-weight:600;
+  font-size:clamp(24px,2.3vw,30px);
+  line-height:1.15;
+  text-wrap:balance;
+}
+.gp__brand{
+  margin:18px 0 0;
+  font-weight:600;
+  font-size:var(--fs-m);
+  line-height:1.2;
+  text-transform:uppercase;
+}
+.gp__note{margin:8px 0 0;color:var(--muted);font-size:var(--fs-m);line-height:1.35}
+.gp__body .status-pill{margin-top:20px}
+
+@media (max-width:63.99rem){
+  .gp__grid{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:40rem){
+  .gp__card{grid-template-columns:1fr;gap:16px}
+  .gp__media img{max-height:240px}
+}

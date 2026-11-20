@@ -689,17 +689,35 @@ print('тестовая страница blocktest',len(_bt))
 # ---------- тестовая страница test: площадка новых блоков ----------
 # Отдельная от blocktest.html страница (noindex) для доработки новых блоков.
 # Шапку, меню, FAQ и контакты с главной НЕ берём. Сейчас на странице:
-# «7 причин» №8 и палитра для Figma. Блок отзывов временно скрыт — чтобы вернуть,
-# поставить _TEST_REVIEWS_ON=True (разметка и стили никуда не делись).
+# «7 причин» №8, палитра для Figma и «Подарки всем клиентам». Блок отзывов
+# временно скрыт — чтобы вернуть, поставить _TEST_REVIEWS_ON=True.
 # Стили новых блоков — src/test.css → assets/test.css.
 _TEST_REVIEWS_ON=False
+
+def _promo_picture(stem,ws,h,alt):
+    """Картинка подарка: те же AVIF/WebP-нарезки, что и у остальных фото."""
+    _sizes='(min-width:64rem) 18rem, 100vw'
+    return (f'          <picture>\n'
+            f'            <source type="image/avif" srcset="{srcset(stem,ws,"avif")}" sizes="{_sizes}">\n'
+            f'            <img src="assets/{stem}-{ws[-1]}.webp" srcset="{srcset(stem,ws,"webp")}" sizes="{_sizes}" width="{ws[-1]}" height="{h}" alt="{alt}" loading="lazy" decoding="async">\n'
+            f'          </picture>')
+
+_gift_av_stem,_gift_av_ws=derive('content/photos/promo/promo_2.webp',[480],1)          # Kaspersky, квадрат
+_gift_ms_stem,_gift_ms_ws=derive('content/photos/promo/promo_1.webp',[480,960],3/2)  # клавиатура и мышь, 3:2
+_gift_antivirus=_promo_picture(_gift_av_stem,_gift_av_ws,480,'Антивирус Kaspersky в подарок — лицензия на 1 год')
+_gift_mouse=_promo_picture(_gift_ms_stem,_gift_ms_ws,320,'Клавиатура и мышь в подарок при заказе от 155 000 ₽')
+
 _test_photo=(f'        <picture>\n'
              f'          <source type="image/avif" srcset="{srcset(_bt_stem,_bt_ws,"avif")}" sizes="(min-width:65rem) 44vw, 100vw">\n'
              f'          <img src="assets/{_bt_stem}-{_bt_ws[-1]}.webp" srcset="{srcset(_bt_stem,_bt_ws,"webp")}" sizes="(min-width:65rem) 44vw, 100vw" width="{_bt_ws[-1]}" height="{round(_bt_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
              f'        </picture>')
 # Отзывы — тот же фрагмент REVIEWS_HTML, что и на основном сайте, только по флагу.
 _test_reviews=f'<div class="wrap">\n{REVIEWS_HTML}\n  </div>' if _TEST_REVIEWS_ON else ''
-_test_block=fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read()).replace('{{TEST_PHOTO}}',_test_photo).replace('{{REVIEWS_BLOCK}}',_test_reviews)
+_test_block=(fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read())
+    .replace('{{TEST_PHOTO}}',_test_photo)
+    .replace('{{GIFT_ANTIVIRUS}}',_gift_antivirus)
+    .replace('{{GIFT_MOUSE}}',_gift_mouse)
+    .replace('{{REVIEWS_BLOCK}}',_test_reviews))
 # Берём только <head> от главной, чтобы сохранить шрифты, метатеги и счётчики.
 _test_head=full[:full.index('<body>')].replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',
