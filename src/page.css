@@ -68,7 +68,7 @@ ul{list-style:none}
 /* «Профессиональная сборка» в первом экране — та же Status Pill (голубой вариант).
    Текст правится в админке: content/home.json → badge. */
 .hero h1{margin-top:.875rem;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
-.hero h1 em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 em{font-style:normal;color:inherit}
 .hero__lead{margin-top:.875rem;max-width:29rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 .btn{display:flex;align-items:center;justify-content:center;min-height:3.75rem;margin-top:1.75rem;padding:.5rem 2.125rem;border:0;border-radius:62.5rem;background:var(--cyan);color:#0a0a0c;font-weight:600;font-size:var(--fs-l);text-align:center;text-decoration:none;box-shadow:0 0 .625rem rgba(0,217,255,.34);transition:box-shadow .2s,transform .2s}
 
@@ -141,7 +141,7 @@ ul{list-style:none}
 /* зазор между блоками: 40px на мобильном (20px низ + 20px верх), 60px на десктопе (30px + 30px) */
 .section{padding-block:1.25rem}
 .section__title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
-.section__title em{font-style:normal;color:var(--cyan)}
+.section__title em{font-style:normal;color:inherit}
 .section__lead{margin-top:.75rem;max-width:46rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 #pochemu-my .section__lead{max-width:none}
 .cards{display:grid;gap:1rem;margin-top:2rem}
@@ -285,7 +285,7 @@ html{scroll-behavior:smooth}
 .tfooter{margin-top:0}
 .tf-section{padding-block:1.25rem}
 .tf-title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
-.tf-title em{font-style:normal;color:var(--cyan)}
+.tf-title em{font-style:normal;color:inherit}
 .tf-lead{margin-top:.3125rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 .tf-contacts__grid{display:grid;gap:1.5rem;margin-top:2.5rem;grid-template-areas:"photos" "details" "map"}
 .tf-photos{grid-area:photos}

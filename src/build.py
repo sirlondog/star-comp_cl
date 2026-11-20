@@ -236,7 +236,7 @@ for _n,_r in enumerate(_reviews):
           </div>
         </article>"""
 REVIEWS_HTML=f'''  <section class="tf-section tf-reviews" id="otzivy" aria-label="Отзывы">
-    <h2 class="tf-title">Доверие, <em>подтверждённое отзывами</em></h2>
+    <h2 class="tf-title">Доверие, подтверждённое отзывами</h2>
     <p class="tf-lead">Каждый компьютер собирается с вниманием к деталям, а лучшая оценка нашей работы — рекомендации и отзывы клиентов.</p>
     <div class="tf-reviews__grid">
 {_reviews_cards}
@@ -261,9 +261,9 @@ REVIEWS_HTML=f'''  <section class="tf-section tf-reviews" id="otzivy" aria-label
 # (inner-страницы) блок не показываем — там свой набор секций.
 # Заголовок, текст кнопки и все вопросы берутся из content/faq.json (правятся в админке).
 _faq_items=F.get('items') or []
-_faq_title=txt(F.get('title') or 'Остались')
-_faq_accent=txt(F.get('title_accent') or 'вопросы?')
-_faq_heading=_faq_title+(' <em>'+_faq_accent+'</em>' if _faq_accent else '')
+_faq_title=txt(F.get('title') or 'Остались вопросы?')
+_faq_accent=txt(F.get('title_accent') or '')
+_faq_heading=(' '.join(x for x in [_faq_title,_faq_accent] if x))
 _faq_lead=txt(F.get('lead') or 'Ответим на то, что чаще всего спрашивают перед заказом. Если вашего вопроса здесь нет — напишите нам.')
 _faq_btn=txt(F.get('button') or 'Написать нам')
 _faq_schedule='{{SCHEDULE}}'   # подставится из «Настроек сайта» ниже, в fill_text()
@@ -327,14 +327,15 @@ for _k,_f,_l in [('telegram','tg-white.svg','Написать в Telegram'),('vk
 _social_white_defs=[('max','max-white.svg','Написать в MAX'),('telegram','tg-white.svg','Написать в Telegram'),('vk','vk-white.svg','Группа ВКонтакте')]
 socials_white='\n'.join(f'<a class="social" href="{esc(_soc.get(k,""))}" target="_blank" rel="noopener" aria-label="{label}"><img src="assets/footer/{f}" alt="" loading="lazy" decoding="async"></a>'
                         for k,f,label in _social_white_defs if _soc.get(k))
-_tf_title=txt(C.get('title') or 'Личная консультация там, где')
+_tf_title=txt(C.get('title') or 'Личная консультация там, где удобно вам')
 _tf_accent=txt(C.get('title_accent') or '')
+_tf_title_full=(' '.join(x for x in [_tf_title,_tf_accent] if x))
 _tf_lead=txt(C.get('lead') or 'Проконсультируем по телефону, в мессенджере или при встрече в мастерской.')
 FOOTER=f'''<footer class="tfooter">
   <div class="wrap">
     {REVIEWS_HTML}
     {FAQ_SECTION}    <section class="tf-section tf-contacts" id="contakty" aria-label="Контакты">
-      <h2 class="tf-title">{_tf_title}{' <em>'+_tf_accent+'</em>' if _tf_accent else ''}</h2>
+      <h2 class="tf-title">{_tf_title_full}</h2>
       <p class="tf-lead">{_tf_lead}</p>
       <div class="tf-contacts__grid">
         <div class="tf-photos">
@@ -419,10 +420,9 @@ def hero_picture():
             f'<img src="assets/hero-600.webp" width="600" height="750" alt="{alt}" fetchpriority="high" decoding="async">')
 
 def _title_html():
-    """Заголовок главной: обычная часть + выделенный акцент <em> + обычное окончание."""
-    h1=txt(H.get('title_before'))
-    if H.get('title_accent'): h1+=' <em>'+txt(H.get('title_accent'))+'</em>'
-    if H.get('title_after'): h1+=' '+txt(H.get('title_after'))
+    """Заголовок главной: все части одной строкой (без цветного акцента)."""
+    parts=[txt(H.get('title_before')), txt(H.get('title_accent')), txt(H.get('title_after'))]
+    h1=' '.join(p for p in parts if p)
     return re.sub(r'&nbsp; ',r'&nbsp;',h1)
 
 def _more_hidden():
@@ -430,15 +430,15 @@ def _more_hidden():
     return ' hidden' if not (len(_cards) > 8 or any(c.get('extra') for c in _cards)) else ''
 
 def _cards_title_html():
-    """Заголовок блока конфигураций: обычная часть + выделенный акцент <em>."""
-    t=txt(H.get('cards_title') or 'Последние проекты нашей')
-    if H.get('cards_title_accent'): t+=' <em>'+txt(H.get('cards_title_accent'))+'</em>'
+    """Заголовок блока конфигураций (без цветного акцента)."""
+    parts=[txt(H.get('cards_title') or 'Последние проекты нашей'), txt(H.get('cards_title_accent'))]
+    t=' '.join(p for p in parts if p)
     return re.sub(r'&nbsp; ',r'&nbsp;',t)
 
 def _stock_title_html():
-    """Заголовок блока «Компьютеры в наличии»: обычная часть + выделенный акцент <em>."""
-    t=txt(_STK.get('title') or 'Компьютеры в наличии')
-    if _STK.get('title_accent'): t+=' <em>'+txt(_STK.get('title_accent'))+'</em>'
+    """Заголовок блока «Компьютеры в наличии» (без цветного акцента)."""
+    parts=[txt(_STK.get('title') or 'Компьютеры в наличии'), txt(_STK.get('title_accent'))]
+    t=' '.join(p for p in parts if p)
     return re.sub(r'&nbsp; ',r'&nbsp;',t)
 
 # ---------- боковое меню из content/menu.json ----------
@@ -680,7 +680,7 @@ def write_seo_clone(slug,title,desc,h1):
 # «Купить компьютер в СПб» — запрос «купить компьютер…»
 _KUPIT_TITLE='Купить компьютер в Санкт-Петербурге — сборка на заказ с гарантией | STAR-COMP'
 _KUPIT_DESC='Соберём компьютер под ваши задачи в СПб: гарантия и запас мощности на 5 лет, доставка и настройка дома, оплата после проверки. Телефон: 8 (993) 984-55-05.'
-_KUPIT_H1='Купить компьютер с гарантией <em>и запасом на 5 лет</em>'
+_KUPIT_H1='Купить компьютер с гарантией и запасом на 5 лет'
 write_seo_clone('kupit-kompyuter-spb',_KUPIT_TITLE,_KUPIT_DESC,_KUPIT_H1)
 
 # «Сборка компьютеров на заказ» — адрес, который владелец продвигал ссылкой на Тильде.
