@@ -1,6 +1,9 @@
 # Сборка сайта: python3 src/build.py
 # Собирает index.html и страницы сборок из исходников в src/ (стили и иконки встраиваются в HTML).
-import os,re
+# Быстрая сборка только тестовой страницы: python3 src/build.py --test-only
+# (секунды вместо ~10 минут: не трогает страницы сборок, sitemap и нарезку фото).
+import os,re,sys
+TEST_ONLY='--test-only' in sys.argv
 SRC=os.path.dirname(os.path.abspath(__file__))
 ROOT=os.path.dirname(SRC)
 os.chdir(SRC)
@@ -683,16 +686,17 @@ _bt=full.replace(_bt_main,'<main>\n'+_bt_block+'</main>').replace(
 open(os.path.join(ROOT,'blocktest.html'),'w',encoding='utf-8').write(inject_code(_bt))
 print('тестовая страница blocktest',len(_bt))
 
-# ---------- тестовая страница test: только блок «7 причин» ----------
+# ---------- тестовая страница test: площадка новых блоков ----------
 # Отдельная от blocktest.html страница (noindex) для доработки новых блоков.
-# Шапку, меню, отзывы, FAQ и контакты с главной НЕ берём — на странице должен
-# остаться только вариант «7 причин» №8 из src/test.body.html.
-# Стили блока — src/test.css → assets/test.css.
+# Шапку, меню, FAQ и контакты с главной НЕ берём. Сейчас на странице:
+# «7 причин» №8, Status Pills, палитра для Figma и точная копия блока отзывов
+# с основного сайта (REVIEWS_HTML) — вставляем тот же фрагмент, что и в футер.
+# Стили новых блоков — src/test.css → assets/test.css; отзывы — assets/style.css.
 _test_photo=(f'        <picture>\n'
              f'          <source type="image/avif" srcset="{srcset(_bt_stem,_bt_ws,"avif")}" sizes="(min-width:65rem) 44vw, 100vw">\n'
              f'          <img src="assets/{_bt_stem}-{_bt_ws[-1]}.webp" srcset="{srcset(_bt_stem,_bt_ws,"webp")}" sizes="(min-width:65rem) 44vw, 100vw" width="{_bt_ws[-1]}" height="{round(_bt_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
              f'        </picture>')
-_test_block=fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read()).replace('{{TEST_PHOTO}}',_test_photo)
+_test_block=fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read()).replace('{{TEST_PHOTO}}',_test_photo).replace('{{REVIEWS_HTML}}',REVIEWS_HTML)
 # Берём только <head> от главной, чтобы сохранить шрифты, метатеги и счётчики.
 _test_head=full[:full.index('<body>')].replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',
@@ -702,6 +706,15 @@ _test_head=full[:full.index('<body>')].replace(
 _test=f'{_test_head}<body>\n<main>\n{_test_block}\n</main>\n</body>\n</html>\n'
 open(os.path.join(ROOT,'test.html'),'w',encoding='utf-8').write(inject_code(_test))
 print('тестовая страница test',len(_test))
+
+# Быстрый режим: дальше идут страницы сборок и нарезка всех фото — самое долгое.
+# Для правок тестовой страницы они не нужны, поэтому выходим сразу, обновив
+# только три внешних файла, от которых зависит test.html.
+if TEST_ONLY:
+    for _f,_data in [('style.css',_css),('page.js',_js),('test.css',open('test.css',encoding='utf-8').read())]:
+        open(os.path.join(ROOT,'assets',_f),'w',encoding='utf-8').write(_data)
+    print('быстрая сборка: готово test.html + assets/style.css, page.js, test.css')
+    raise SystemExit(0)
 
 # ---------- страница 404: GitHub Pages отдаёт её для несуществующих адресов ----------
 # Сделана самодостаточной (стили внутри), чтобы работала и из вложенного адреса,
