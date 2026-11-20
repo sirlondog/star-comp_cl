@@ -3,6 +3,8 @@ name: Сборка и публикация сайта
 # Сборка: сайт собирается из src/ и content/ (правки — из админки Sveltia CMS
 # или напрямую), готовые файлы публикуются на GitHub Pages напрямую, без
 # коммита в ветку main — это убирает конфликты слияния между компьютерами.
+# Сначала обновляется тестовая версия на GitHub Pages, затем тот же сайт
+# заливается на боевой хостинг reg.ru по SFTP.
 # Запустить вручную можно и без правок: вкладка Actions → Run workflow.
 on:
   push:
@@ -14,10 +16,11 @@ permissions:
   pages: write
   id-token: write
 
-# одновременные сборки не нужны: новая отменяет старую
+# Заказы не отменяем: заливка на reg.ru должна всегда доходить до конца.
+# Если за короткое время пришло несколько правок, они встают в очередь.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -46,9 +49,18 @@ jobs:
       - run: |
           mkdir -p _site
           cp -r *.html robots.txt sitemap.xml assets admin .preview .nojekyll _site/
+      # на reg.ru идёт только сайт: без админки и папки превью
+      - run: |
+          mkdir -p _reg
+          cp -r *.html robots.txt sitemap.xml .htaccess assets _reg/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reg-site
+          path: _reg
+          retention-days: 1
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -58,3 +70,25 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+  deploy_reg:
+    # сначала обновляем тестовую версию на GitHub Pages, и только потом — бой
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: reg-site
+          path: _reg
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pip install paramiko
+      - name: Заливка на reg.ru по SFTP
+        env:
+          REG_SFTP_SERVER: ${{ secrets.REG_SFTP_SERVER }}
+          REG_SFTP_PORT: ${{ secrets.REG_SFTP_PORT }}
+          REG_SFTP_USERNAME: ${{ secrets.REG_SFTP_USERNAME }}
+          REG_SFTP_PASSWORD: ${{ secrets.REG_SFTP_PASSWORD }}
+          REG_SFTP_DIR: ${{ secrets.REG_SFTP_DIR }}
+        run: python src/deploy_reg.py _reg
