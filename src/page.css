@@ -545,3 +545,10 @@ html{scroll-behavior:smooth}
   #otzivy + #faq,
   #faq + #contakty{margin-top:3.75rem}
 }
+/* Десктоп: от подзаголовка до контента блока — 40px во всех блоках, кроме первого экрана */
+@media (min-width:64rem){
+  .filters{margin-top:2.5rem}
+  .why__grid{margin-top:2.5rem}
+  .gp__grid{margin-top:2.5rem}
+  .tf-reviews__grid{margin-top:2.5rem}
+}
