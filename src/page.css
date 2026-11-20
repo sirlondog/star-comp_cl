@@ -520,16 +520,15 @@ html{scroll-behavior:smooth}
 .gp__body .status-pill::before{display:none}
 
 @media (max-width:63.99rem){
-  #gift .gp__title,#gift .gp__lead{max-width:300px;margin-left:auto;margin-right:auto}
   .gp__title{font-size:34px;line-height:42px;color:#F2F4F7}
-  .gp__lead{margin-top:10px;font-size:18px;line-height:21px}
-  .gp__grid{grid-template-columns:1fr;justify-items:center;gap:20px;margin-top:40px}
-  .gp__card{width:100%;max-width:300px;height:540px;grid-template-columns:1fr;grid-template-rows:300px 1fr;border:1px solid rgba(255,255,255,.1);border-radius:10px}
+  .gp__lead{margin-top:23px;font-size:18px;line-height:21px}
+  .gp__grid{grid-template-columns:1fr;gap:23px;margin-top:23px}
+  .gp__card{width:100%;height:540px;grid-template-columns:1fr;grid-template-rows:300px 1fr;border:1px solid rgba(255,255,255,.1);border-radius:10px}
   .gp__media{height:300px}
   .gp__media img{width:100%;height:100%;border-radius:10px 10px 0 0}
-  .gp__body{padding:20px 60px 20px 40px}
-  .gp__name{font-size:34px;line-height:38px}
-  .gp__note{margin-top:10px;font-size:18px;line-height:21px;color:#BDBDC2}
+  .gp__body{padding:24px 30px 20px 30px}
+  .gp__name{max-width:200px;font-size:34px;line-height:38px}
+  .gp__note{max-width:200px;margin-top:10px;font-size:18px;line-height:21px;color:#BDBDC2}
   .gp__body .status-pill{width:200px;height:40px;margin-top:20px;border-radius:20px;font-size:14px;line-height:17px}
   #pochemu-my .section__lead{margin-top:10px}
   #pochemu-my .why__grid{margin-top:40px}
