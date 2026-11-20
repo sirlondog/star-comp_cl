@@ -197,7 +197,7 @@ ul{list-style:none}
   .card:hover{border-color:rgba(0,217,255,.35);box-shadow:-1.375rem 1.375rem 6.25rem -.875rem rgba(0,217,255,.25)}
 }
 @media (min-width:64rem){
-  .section__lead{max-width:none}
+  .section__lead{max-width:none;margin-top:10px}
 }
 .divider{display:flex;align-items:center;gap:1rem}
 .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
@@ -313,7 +313,7 @@ html{scroll-behavior:smooth}
 }
 @media (min-width:64rem){
   .tf-section{padding-block:1.875rem}
-  .tf-lead{text-wrap:balance}
+  .tf-lead{margin-top:10px;text-wrap:balance}
   .tf-contacts__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);grid-template-areas:"photos map" "details map";gap:2.5rem}
   .tf-details{margin-top:0}
   /* карта в одном ряду с фото; её верх совпадает с верхом фото (ниже строки-подписи) */
@@ -432,6 +432,7 @@ html{scroll-behavior:smooth}
   .faq__side{position:sticky;top:6rem;align-self:start}
   .faq__list{margin-top:0}
   .faq__a p{font-size:1.125rem;line-height:1.4}
+  .faq__lead{margin-top:10px}
 }
 
 /* Re:plain: прозрачный фон виджета, чтобы на мобильных не было белого квадрата до загрузки иконки */
