@@ -9,6 +9,9 @@
 # - чтобы не гонять 240 МБ каждый раз, рядом с сайтом хранится маленький
 #   файл .deploy-manifest.json с хэшами файлов. Сравниваем хэши и грузим
 #   только то, что реально поменялось.
+# - самый первый запуск: манифеста ещё нет, поэтому файлы, которые уже
+#   лежат на сервере с таким же размером, считаем загруженными и просто
+#   запоминаем их хэш. Так первая выгрузка не копирует весь сайт заново.
 #
 # Параметры подключения берутся из GitHub Secrets:
 #   REG_SFTP_SERVER, REG_SFTP_PORT, REG_SFTP_USERNAME,
@@ -64,6 +67,7 @@ def main():
     server_dir = secret('REG_SFTP_DIR').strip().strip('/')
 
     local = {}
+    sizes = {}
     for dirpath, dirnames, filenames in os.walk(local_root):
         dirnames.sort()
         filenames.sort()
@@ -71,6 +75,7 @@ def main():
             full = os.path.join(dirpath, name)
             rel = os.path.relpath(full, local_root).replace(os.sep, '/')
             local[rel] = sha256(full)
+            sizes[rel] = os.path.getsize(full)
 
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -86,30 +91,49 @@ def main():
             old = json.loads(f.read().decode('utf-8'))
         if not isinstance(old, dict):
             old = {}
+        have_manifest = True
     except (IOError, ValueError):
         old = {}
+        have_manifest = False
 
-    changed = sorted(rel for rel, digest in local.items() if old.get(rel) != digest)
+    def remote_size(rel):
+        try:
+            return sftp.stat(posixpath.join(server_dir, rel)).st_size
+        except IOError:
+            return None
 
-    for rel in changed:
+    changed = []
+    for rel, digest in sorted(local.items()):
+        if old.get(rel) == digest:
+            continue
+        if not have_manifest and remote_size(rel) == sizes[rel]:
+            # файл уже есть на сервере и того же размера — не трогаем
+            continue
+        changed.append(rel)
+
+    print('Файлов в сборке: {}'.format(len(local)), flush=True)
+    print('К загрузке: {}'.format(len(changed)), flush=True)
+
+    for i, rel in enumerate(changed, 1):
         remote = posixpath.join(server_dir, rel)
         parent = posixpath.dirname(remote)
         if parent and parent != server_dir:
             ensure_dir(sftp, parent)
         sftp.put(os.path.join(local_root, rel.replace('/', os.sep)), remote)
+        if i % 25 == 0 or i == len(changed):
+            print('  загружено {}/{}'.format(i, len(changed)), flush=True)
 
     # манифест пишем последним: если заливка прервётся, следующий запуск
     # повторит незагруженные файлы
     with sftp.open(manifest_path, 'w') as f:
         f.write(json.dumps(local, sort_keys=True).encode('utf-8'))
 
-    print('Файлов на сайте: {}'.format(len(local)))
-    print('Загружено сейчас: {}'.format(len(changed)))
+    print('Загружено всего: {}'.format(len(changed)), flush=True)
     for rel in changed[:30]:
-        print('  + ' + rel)
+        print('  + ' + rel, flush=True)
     if len(changed) > 30:
-        print('  ... и ещё {}'.format(len(changed) - 30))
-    print('Старые файлы на сервере не удалялись.')
+        print('  ... и ещё {}'.format(len(changed) - 30), flush=True)
+    print('Старые файлы на сервере не удалялись.', flush=True)
 
     sftp.close()
     client.close()
