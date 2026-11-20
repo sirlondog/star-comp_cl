@@ -412,7 +412,7 @@ html{scroll-behavior:smooth}
    Десктоп: левая колонка липкая, справа — вопросы с разделителями.
    Блок живёт в футере (.tf-section задаёт вертикальные отступы). */
 .faq{scroll-margin-top:5.5rem}
-.faq__lead{margin-top:.75rem;max-width:26rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+.faq__lead{margin-top:.75rem;max-width:none;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 .faq__btn{margin-top:1.5rem;gap:.75rem}
 .faq__note{margin-top:1rem;color:var(--muted);font-size:var(--fs-m)}
 .faq__list{margin-top:2rem}
@@ -430,7 +430,7 @@ html{scroll-behavior:smooth}
 @media (min-width:64rem){
   .faq__list{margin-top:2.5rem}
   .faq__a p{font-size:1.125rem;line-height:1.4}
-  .faq__lead{margin-top:10px}
+  .faq__lead{margin-top:10px;max-width:none}
 }
 
 /* Re:plain: прозрачный фон виджета, чтобы на мобильных не было белого квадрата до загрузки иконки */

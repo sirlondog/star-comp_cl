@@ -291,7 +291,6 @@ FAQ_SECTION='' if not _faq_rows else f'''    <section class="tf-section faq" id=
       <div class="faq__side">
         <h2 class="section__title" id="faq-title">{_faq_heading}</h2>
         <p class="faq__lead">{_faq_lead}</p>
-        <a class="btn faq__btn" href="#replain-link">{_faq_btn} <span aria-hidden="true">→</span></a>
       </div>
       <div class="faq__list">
 {chr(10).join(_faq_rows)}
