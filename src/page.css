@@ -537,13 +537,13 @@ html{scroll-behavior:smooth}
 }
 
 
-/* Десктоп: 120px между указанными блоками (padding секций 30+30 + margin-top 60) */
+/* Десктоп: 100px между указанными блоками (padding секций 30+30 + margin-top 40) */
 @media (min-width:64rem){
   #konfiguracii + #v-nalichii,
   #v-nalichii + #pochemu-my,
   #otzivy,
   #otzivy + #faq,
-  #faq + #contakty{margin-top:3.75rem}
+  #faq + #contakty{margin-top:2.5rem}
 }
 /* Десктоп: от подзаголовка до контента блока — 40px во всех блоках, кроме первого экрана */
 @media (min-width:64rem){
