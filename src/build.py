@@ -28,6 +28,7 @@ def load_content(name,default):
 S=load_content('settings.json',{})            # контакты, соцсети, цифры рейтинга
 H=load_content('home.json',{})                # тексты главной
 P=load_content('perks.json',{}).get('perks') or []  # блок «Наши преимущества»
+F=load_content('faq.json',{})                 # вопросы и ответы (управляется в админке)
 _codes=load_content('codes.json',{})          # коды счётчиков для всех страниц
 
 def inject_code(html):
@@ -255,34 +256,45 @@ REVIEWS_HTML=f'''  <section class="tf-section tf-reviews" id="otzivy" aria-label
 # Раньше жил в page.body.html между «Наличием» и «7 причинами». Теперь это отдельный
 # фрагмент, который вставляется в FOOTER после отзывов. На страницах сборок
 # (inner-страницы) блок не показываем — там свой набор секций.
-FAQ_SECTION='''    <section class="tf-section faq" id="faq" aria-labelledby="faq-title">
+# Заголовок, текст кнопки и все вопросы берутся из content/faq.json (правятся в админке).
+_faq_items=F.get('items') or []
+_faq_title=txt(F.get('title') or 'Остались')
+_faq_accent=txt(F.get('title_accent') or 'вопросы?')
+_faq_heading=_faq_title+(' <em>'+_faq_accent+'</em>' if _faq_accent else '')
+_faq_lead=txt(F.get('lead') or 'Ответим на то, что чаще всего спрашивают перед заказом. Если вашего вопроса здесь нет — напишите нам.')
+_faq_btn=txt(F.get('button') or 'Написать нам')
+_faq_schedule='{{SCHEDULE}}'   # подставится из «Настроек сайта» ниже, в fill_text()
+
+def _faq_answer_html(s):
+    """Один абзац, а если в ответе есть пустая строка — несколько."""
+    parts=[p.strip() for p in re.split(r'\n\s*\n', str(s or '')) if p.strip()]
+    if not parts: parts=[str(s or '')]
+    return ''.join('<p>'+txt(p)+'</p>' for p in parts)
+
+_faq_rows=[]
+for _it in _faq_items:
+    if not isinstance(_it,dict): continue
+    _q=txt(_it.get('question') or '')
+    if not _q: continue
+    _a=_faq_answer_html(_it.get('answer') or '')
+    _i=len(_faq_rows)+1
+    _open=' is-open' if _i==1 else ''
+    _exp='true' if _i==1 else 'false'
+    _faq_rows.append(f'''        <div class="faq__item{_open}">
+          <button class="faq__q" type="button" aria-expanded="{_exp}" aria-controls="faq-a{_i}">{_q}<span class="faq__plus" aria-hidden="true"></span></button>
+          <div class="faq__a" id="faq-a{_i}">{_a}</div>
+        </div>''')
+
+# Если вопросы все удалили — блока на сайте не будет
+FAQ_SECTION='' if not _faq_rows else f'''    <section class="tf-section faq" id="faq" aria-labelledby="faq-title">
       <div class="faq__side">
-        <h2 class="section__title" id="faq-title">Остались <em>вопросы?</em></h2>
-        <p class="faq__lead">Ответим на то, что чаще всего спрашивают перед заказом. Если вашего вопроса здесь нет — напишите нам.</p>
-        <a class="btn faq__btn" href="#replain-link">Написать нам <span aria-hidden="true">→</span></a>
-        <p class="faq__note">{{SCHEDULE}}</p>
+        <h2 class="section__title" id="faq-title">{_faq_heading}</h2>
+        <p class="faq__lead">{_faq_lead}</p>
+        <a class="btn faq__btn" href="#replain-link">{_faq_btn} <span aria-hidden="true">→</span></a>
+        <p class="faq__note">{_faq_schedule}</p>
       </div>
       <div class="faq__list">
-        <div class="faq__item is-open">
-          <button class="faq__q" type="button" aria-expanded="true" aria-controls="faq-a1">За сколько дней соберёте компьютер?<span class="faq__plus" aria-hidden="true"></span></button>
-          <div class="faq__a" id="faq-a1"><p>Обычно сборка занимает 2 дня после подтверждения заказа. Если все детали в наличии, срок может быть короче — уточним при оформлении.</p></div>
-        </div>
-        <div class="faq__item">
-          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a2">Какая гарантия на сборку и комплектующие?<span class="faq__plus" aria-hidden="true"></span></button>
-          <div class="faq__a" id="faq-a2"><p>Гарантия на сборку — до 5 лет. На каждую деталь действует гарантия производителя, коробки и документы передаём вместе с компьютером.</p></div>
-        </div>
-        <div class="faq__item">
-          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a3">Как проходит оплата?<span class="faq__plus" aria-hidden="true"></span></button>
-          <div class="faq__a" id="faq-a3"><p>Оплатить можно после проверки компьютера при получении. Также доступна рассрочка Яндекс Сплит — условия покажем при заказе.</p></div>
-        </div>
-        <div class="faq__item">
-          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a4">Доставка и настройка включены в стоимость?<span class="faq__plus" aria-hidden="true"></span></button>
-          <div class="faq__a" id="faq-a4"><p>Да: привезём, подключим и настроим компьютер у вас дома. Забрать готовую сборку можно и в мастерской.</p></div>
-        </div>
-        <div class="faq__item">
-          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a5">Можно ли приехать в мастерскую?<span class="faq__plus" aria-hidden="true"></span></button>
-          <div class="faq__a" id="faq-a5"><p>Конечно, запишитесь заранее — покажем, как проходит сборка, и ответим на вопросы. Адрес и график работы указаны в разделе «Контакты».</p></div>
-        </div>
+{chr(10).join(_faq_rows)}
       </div>
     </section>
 '''

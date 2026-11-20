@@ -78,6 +78,49 @@ singletons:
             widget: string
             hint: 'Якорь на главной со решёткой (#otzivy) или адрес страницы (remont-kompyuterov-spb.html). На страницах сборок якоря автоматически ведут на главную'
 
+  - name: faq
+    label: Вопросы и ответы (FAQ)
+    icon: help_outline
+    description: 'Блок «Остались вопросы?» внизу главной: меняйте вопросы и ответы, добавляйте и удаляйте пункты. После сохранения сайт пересоберётся сам'
+    file: content/faq.json
+    format: json
+    fields:
+      - name: title
+        label: Начало заголовка
+        widget: string
+        hint: 'Например: Остались. Слово из поля ниже будет цветным'
+      - name: title_accent
+        label: Выделенное слово в заголовке
+        widget: string
+        required: false
+        hint: 'Например: вопросы?. Оставьте пустым, если выделение не нужно'
+      - name: lead
+        label: Текст под заголовком
+        widget: text
+        required: false
+      - name: button
+        label: Надпись на кнопке
+        widget: string
+        hint: 'Кнопка ведёт к чату/форме обратной связи на сайте'
+      - name: items
+        label: Вопросы и ответы
+        label_singular: вопрос
+        widget: list
+        add_to_top: false
+        collapsed: true
+        min: 0
+        summary: '{{question}}'
+        hint: 'Порядок в списке = порядок на сайте. Кнопками вверх/вниз меняются местами, крестиком удаляются. Первый вопрос открыт по умолчанию'
+        fields:
+          - name: question
+            label: Вопрос
+            widget: string
+            hint: 'Например: За сколько дней соберёте компьютер?'
+          - name: answer
+            label: Ответ
+            widget: text
+            hint: 'Можно несколько абзацев — разделяйте их пустой строкой'
+
   - name: codes
     label: Коды и счётчики
     icon: code
