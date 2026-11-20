@@ -65,8 +65,8 @@ ul{list-style:none}
 /* ---------- Первый экран ---------- */
 .hero{display:grid;gap:1.875rem;padding-block:calc(1rem + 100px) 2rem}
 .hero__intro,.hero__meta{min-width:0}
-.badge{display:inline-flex;align-items:center;gap:.625rem;padding:.3125rem .75rem .3125rem .625rem;border:1px solid var(--line);border-radius:62.5rem;color:var(--muted);font-size:var(--fs-m);line-height:1.25}
-.badge::before{content:"";width:.375rem;height:.375rem;border-radius:50%;background:var(--cyan)}
+/* «Профессиональная сборка» в первом экране — та же Status Pill (голубой вариант).
+   Текст правится в админке: content/home.json → badge. */
 .hero h1{margin-top:.875rem;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
 .hero h1 em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero__lead{margin-top:.875rem;max-width:29rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
@@ -276,7 +276,6 @@ html{scroll-behavior:smooth}
   .wrap{max-width:calc(36rem + var(--gutter) + var(--gutter-r))}
 }
 @media (min-width:64rem){
-  .badge{padding:.4375rem 1.5rem .4375rem .75rem}
   .btn{display:inline-flex}
   .more{width:auto;margin-top:2rem}
 }
