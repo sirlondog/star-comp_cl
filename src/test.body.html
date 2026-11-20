@@ -1,8 +1,7 @@
   <!-- Тестовая страница test: площадка для новых элементов и блоков сайта.
-       Сейчас здесь: вариант №8 блока «7 причин», Status Pills, палитра для Figma
-       и блок отзывов, скопированный с основного сайта. -->
-  <section class="section wrap" id="test-blocks" aria-labelledby="test-title">
-    <h1 class="sr-only" id="test-title">Тестовая страница блоков STAR-COMP</h1>
+       Сейчас здесь: вариант №8 блока «7 причин» и палитра для Figma.
+       Блок отзывов временно скрыт — вернуть флагом _TEST_REVIEWS_ON в build.py. -->
+  <section class="section wrap" id="test-blocks">
     <div class="t8 demo" id="t8-why">
       <figure class="w8__photo">
 {{TEST_PHOTO}}
@@ -27,27 +26,6 @@
           <div class="w8__li"><em>08</em><span>Приезжайте в мастерскую по записи</span></div>
         </div>
         <div class="w8__cta"><b>Хотите посмотреть процесс сборки?</b><span>Приезжайте в удобное время</span><a class="btn" href="#replain-link">Записаться</a></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section wrap" id="test-status" aria-labelledby="status-title">
-    <div class="sp demo">
-      <h2 class="sp__title" id="status-title">Status <em>Pills</em></h2>
-      <p class="sp__lead">Статусы для карточек сборок: голубой — в наличии, розовый — хит, серый — под заказ.</p>
-      <div class="sp__row">
-        <span class="status-pill status-pill--stock">В наличии</span>
-        <span class="status-pill status-pill--hit">Хит</span>
-        <span class="status-pill status-pill--order">Под заказ</span>
-      </div>
-      <div class="sp__mock">
-        <div class="sp__photo">
-          <div class="sp__status"><span class="status-pill status-pill--stock">В наличии</span></div>
-        </div>
-        <div class="sp__info">
-          <b>На карточке</b>
-          <span>Пилюля лежит поверх фото. Клик по ней проходит на всю карточку — ссылка не перехватывается.</span>
-        </div>
       </div>
     </div>
   </section>
@@ -89,7 +67,6 @@
     </div>
   </section>
 
-  <!-- Отзывы — точная копия блока с основного сайта (REVIEWS_HTML из build.py). -->
-  <div class="wrap">
-{{REVIEWS_HTML}}
-  </div>
+  <!-- Отзывы — точная копия блока с основного сайта (REVIEWS_HTML из build.py).
+       ВРЕМЕННО СКРЫТО: чтобы вернуть, поставить _TEST_REVIEWS_ON=True в build.py. -->
+{{REVIEWS_BLOCK}}

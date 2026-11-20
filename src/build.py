@@ -689,16 +689,17 @@ print('тестовая страница blocktest',len(_bt))
 # ---------- тестовая страница test: площадка новых блоков ----------
 # Отдельная от blocktest.html страница (noindex) для доработки новых блоков.
 # Шапку, меню, FAQ и контакты с главной НЕ берём. Сейчас на странице:
-# «7 причин» №8, Status Pills, палитра для Figma и точная копия блока отзывов
-# с основного сайта (REVIEWS_HTML) — вставляем тот же фрагмент, что и в футер.
-# Стили новых блоков — src/test.css → assets/test.css; отзывы — assets/style.css.
+# «7 причин» №8 и палитра для Figma. Блок отзывов временно скрыт — чтобы вернуть,
+# поставить _TEST_REVIEWS_ON=True (разметка и стили никуда не делись).
+# Стили новых блоков — src/test.css → assets/test.css.
+_TEST_REVIEWS_ON=False
 _test_photo=(f'        <picture>\n'
              f'          <source type="image/avif" srcset="{srcset(_bt_stem,_bt_ws,"avif")}" sizes="(min-width:65rem) 44vw, 100vw">\n'
              f'          <img src="assets/{_bt_stem}-{_bt_ws[-1]}.webp" srcset="{srcset(_bt_stem,_bt_ws,"webp")}" sizes="(min-width:65rem) 44vw, 100vw" width="{_bt_ws[-1]}" height="{round(_bt_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
              f'        </picture>')
-# Бейдж «120+ отзывов» теперь Status Pill и на основном сайте, поэтому в копию
-# отзывов вставляем тот же фрагмент без оговорок.
-_test_block=fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read()).replace('{{TEST_PHOTO}}',_test_photo).replace('{{REVIEWS_HTML}}',REVIEWS_HTML)
+# Отзывы — тот же фрагмент REVIEWS_HTML, что и на основном сайте, только по флагу.
+_test_reviews=f'<div class="wrap">\n{REVIEWS_HTML}\n  </div>' if _TEST_REVIEWS_ON else ''
+_test_block=fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read()).replace('{{TEST_PHOTO}}',_test_photo).replace('{{REVIEWS_BLOCK}}',_test_reviews)
 # Берём только <head> от главной, чтобы сохранить шрифты, метатеги и счётчики.
 _test_head=full[:full.index('<body>')].replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',
