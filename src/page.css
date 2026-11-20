@@ -132,19 +132,19 @@ ul{list-style:none}
 }
 
 /* Бейджи-фильтры по процессору над карточками */
-.filters{display:flex;flex-wrap:wrap;gap:.625rem;margin-top:1.25rem}
+.filters{display:flex;flex-wrap:wrap;gap:.625rem;margin-top:2.5rem}
 .filters__btn{padding:.5rem 1.25rem;border:1px solid var(--line);border-radius:62.5rem;background:none;color:var(--muted);font:400 var(--fs-m)/1.2 var(--font);cursor:pointer;transition:color .2s,border-color .2s,background-color .2s}
 .filters__btn[aria-pressed="true"]{border-color:var(--cyan);color:var(--cyan);background:rgba(0,217,255,.08)}
 @media(hover:hover){.filters__btn:hover{border-color:var(--cyan);color:var(--cyan)}}
 
 /* ---------- Популярные конфигурации ---------- */
 /* зазор между блоками: 40px на мобильном (20px низ + 20px верх), 60px на десктопе (30px + 30px) */
-.section{padding-block:1.25rem}
+.section{padding-block:1.875rem}
 .section__title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
 .section__title em{font-style:normal;color:inherit}
-.section__lead{margin-top:.75rem;max-width:46rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+.section__lead{margin-top:10px;max-width:46rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 #pochemu-my .section__lead{max-width:none}
-.cards{display:grid;gap:1rem;margin-top:2rem}
+.cards{display:grid;gap:1rem;margin-top:2.5rem}
 .card{position:relative;display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:1.25rem;background:#0a0a0c;overflow:hidden;transition:border-color .2s,transform .2s}
 .card__media{position:relative;aspect-ratio:4/3;background:#0a0a0c}
 .card__media img{width:100%;height:100%;object-fit:cover;background:#0a0a0c}
@@ -233,7 +233,7 @@ html{scroll-behavior:smooth}
 /* ---------- Блок «7 причин заказать у нас» (перенос с Тильды) ----------
    Мобильный (до 1024px): карточки листаются пальцем по горизонтали, фото скрыто — как на Тильде.
    Десктоп: фото слева, справа две колонки карточек (1–4 | 5–7 + «Приезжайте в мастерскую»). */
-.why__grid{margin-top:2rem}
+.why__grid{margin-top:2.5rem}
 .why__photo{display:none}
 .why__list{display:grid;grid-auto-flow:column;grid-auto-columns:min(17rem,82%);gap:1rem;margin-inline:calc(-1 * var(--gutter)) calc(-1 * var(--gutter-r));padding-inline:var(--gutter) var(--gutter-r);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);scrollbar-width:none;counter-reset:none;list-style:none}
 .why__list::-webkit-scrollbar{display:none}
@@ -283,10 +283,10 @@ html{scroll-behavior:smooth}
 
 /* ---------- Футер: блок контактов ---------- */
 .tfooter{margin-top:0}
-.tf-section{padding-block:1.25rem}
+.tf-section{padding-block:1.875rem}
 .tf-title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
 .tf-title em{font-style:normal;color:inherit}
-.tf-lead{margin-top:.3125rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+.tf-lead{margin-top:10px;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 .tf-contacts__grid{display:grid;gap:1.5rem;margin-top:2.5rem;grid-template-areas:"photos" "details" "map"}
 .tf-photos{grid-area:photos}
 .tf-details{grid-area:details;margin-top:1rem}
@@ -340,7 +340,7 @@ html{scroll-behavior:smooth}
 /* ---------- Футер: блок отзывов ---------- */
 .tf-reviews .tf-title{font-size:2.125rem}
 .tf-reviews .tf-lead{margin-top:10px;font-size:var(--fs-l);line-height:1.2;color:var(--muted);text-wrap:pretty}
-.tf-reviews__grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:20px}
+.tf-reviews__grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:2.5rem}
 .tf-review2{display:flex;flex-direction:column;gap:20px;min-height:300px;padding:27px 20px 20px 30px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
 .tf-review2__text{margin:0;font-size:1.125rem;line-height:1.4;color:#bdbdc2}
 .tf-review2__meta{display:flex;align-items:center;gap:20px;margin-top:auto}
@@ -412,10 +412,10 @@ html{scroll-behavior:smooth}
    Десктоп: левая колонка липкая, справа — вопросы с разделителями.
    Блок живёт в футере (.tf-section задаёт вертикальные отступы). */
 .faq{scroll-margin-top:5.5rem}
-.faq__lead{margin-top:.75rem;max-width:none;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
+.faq__lead{margin-top:10px;max-width:none;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 .faq__btn{margin-top:1.5rem;gap:.75rem}
 .faq__note{margin-top:1rem;color:var(--muted);font-size:var(--fs-m)}
-.faq__list{margin-top:2rem}
+.faq__list{margin-top:2.5rem}
 .faq__item{border-bottom:1px solid var(--line)}
 .faq__item:first-child{border-top:1px solid var(--line)}
 .faq__q{display:flex;align-items:center;justify-content:space-between;gap:1rem;width:100%;padding:1.25rem 0;border:0;background:none;color:var(--fg);font:600 var(--fs-l)/1.3 var(--font);text-align:left;cursor:pointer}
@@ -443,7 +443,7 @@ html{scroll-behavior:smooth}
    заголовок 44/54, подзаголовок 20/24, карточки 560×300 с рамкой 10px,
    картинка 300×300, текст 200px, пилюля 144×30.
    ========================================================================== */
-#gift{margin-top:2.5rem}
+#gift{margin-top:0}
 @media (min-width:64rem){#gift{margin-top:3.75rem}}
 
 .gp__title{
@@ -522,7 +522,7 @@ html{scroll-behavior:smooth}
   #gift .gp__title,#gift .gp__lead,#gift .gp__grid,#gift .gp__card{margin-left:0;margin-right:0}
   .gp__title{max-width:none;font-size:34px;line-height:42px;color:#F2F4F7}
   .gp__lead{max-width:none;margin-top:23px;font-size:18px;line-height:21px}
-  .gp__grid{grid-template-columns:1fr;justify-items:stretch;gap:23px;margin-top:23px}
+  .gp__grid{grid-template-columns:1fr;justify-items:stretch;gap:23px;margin-top:2.5rem}
   .gp__card{width:100%;max-width:none;height:540px;grid-template-columns:1fr;grid-template-rows:300px 1fr;border:1px solid rgba(255,255,255,.1);border-radius:10px}
   .gp__media{height:300px}
   .gp__media img{width:100%;height:100%;border-radius:10px 10px 0 0}
