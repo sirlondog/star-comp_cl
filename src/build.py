@@ -696,7 +696,10 @@ _test_photo=(f'        <picture>\n'
              f'          <source type="image/avif" srcset="{srcset(_bt_stem,_bt_ws,"avif")}" sizes="(min-width:65rem) 44vw, 100vw">\n'
              f'          <img src="assets/{_bt_stem}-{_bt_ws[-1]}.webp" srcset="{srcset(_bt_stem,_bt_ws,"webp")}" sizes="(min-width:65rem) 44vw, 100vw" width="{_bt_ws[-1]}" height="{round(_bt_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
              f'        </picture>')
-_test_block=fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read()).replace('{{TEST_PHOTO}}',_test_photo).replace('{{REVIEWS_HTML}}',REVIEWS_HTML)
+# Бейдж «120+ отзывов» в копии отзывов делаем настоящей Status Pill — только
+# на тестовой странице. На основном сайте разметка и стили не меняются.
+_test_reviews=REVIEWS_HTML.replace('class="tf-ya-badge"','class="tf-ya-badge status-pill status-pill--stock"')
+_test_block=fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read()).replace('{{TEST_PHOTO}}',_test_photo).replace('{{REVIEWS_HTML}}',_test_reviews)
 # Берём только <head> от главной, чтобы сохранить шрифты, метатеги и счётчики.
 _test_head=full[:full.index('<body>')].replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',

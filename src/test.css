@@ -334,6 +334,17 @@
 .status-pill--hit{--pill-rgb:255,61,174}
 .status-pill--order{--pill-rgb:128,128,128}
 
+/* Бейдж «120+ отзывов» в скопированном блоке отзывов — тот же голубой пилюль.
+   Старые стили .tf-ya-badge из style.css перебиваем повышенной специфичностью. */
+.tf-reviews .tf-ya-badge.status-pill{
+  padding:.375rem .8125rem;
+  border:1px solid rgba(0,217,255,.35);
+  border-radius:62.5rem;
+  background:rgba(0,217,255,.10);
+  font:600 var(--fs-m)/1.2 var(--font);
+  color:#00d9ff;
+}
+
 .sp__mock{
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);
