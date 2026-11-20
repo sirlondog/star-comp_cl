@@ -543,6 +543,7 @@ html{scroll-behavior:smooth}
 #faq + #contakty{margin-top:2.5rem}
 /* Десктоп: от подзаголовка до контента блока — 40px во всех блоках, кроме первого экрана */
 @media (min-width:64rem){
+  #pochemu-my .section__lead,#gift .gp__lead,#otzivy .tf-lead{white-space:nowrap}
   .filters{margin-top:2.5rem}
   .why__grid{margin-top:2.5rem}
   .gp__grid{margin-top:2.5rem}
