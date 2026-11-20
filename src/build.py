@@ -281,10 +281,8 @@ for _it in _faq_items:
     if not _q: continue
     _a=_faq_answer_html(_it.get('answer') or '')
     _i=len(_faq_rows)+1
-    _open=' is-open' if _i==1 else ''
-    _exp='true' if _i==1 else 'false'
-    _faq_rows.append(f'''        <div class="faq__item{_open}">
-          <button class="faq__q" type="button" aria-expanded="{_exp}" aria-controls="faq-a{_i}">{_q}<span class="faq__plus" aria-hidden="true"></span></button>
+    _faq_rows.append(f'''        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a{_i}">{_q}<span class="faq__plus" aria-hidden="true"></span></button>
           <div class="faq__a" id="faq-a{_i}">{_a}</div>
         </div>''')
 
@@ -294,7 +292,6 @@ FAQ_SECTION='' if not _faq_rows else f'''    <section class="tf-section faq" id=
         <h2 class="section__title" id="faq-title">{_faq_heading}</h2>
         <p class="faq__lead">{_faq_lead}</p>
         <a class="btn faq__btn" href="#replain-link">{_faq_btn} <span aria-hidden="true">→</span></a>
-        <p class="faq__note">{_faq_schedule}</p>
       </div>
       <div class="faq__list">
 {chr(10).join(_faq_rows)}

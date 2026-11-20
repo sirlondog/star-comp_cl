@@ -428,9 +428,7 @@ html{scroll-behavior:smooth}
 .faq__item.is-open .faq__a{max-height:20rem;opacity:1}
 .faq__a p{padding-bottom:1.25rem;color:var(--muted);font-size:var(--fs-m);line-height:1.45}
 @media (min-width:64rem){
-  .faq{display:grid;grid-template-columns:minmax(0,21rem) minmax(0,1fr);gap:clamp(2rem,5vw,5rem)}
-  .faq__side{position:sticky;top:6rem;align-self:start}
-  .faq__list{margin-top:0}
+  .faq__list{margin-top:2.5rem}
   .faq__a p{font-size:1.125rem;line-height:1.4}
   .faq__lead{margin-top:10px}
 }
