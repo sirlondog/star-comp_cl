@@ -141,7 +141,7 @@ ul{list-style:none}
 /* зазор между блоками: 40px на мобильном (20px низ + 20px верх), 60px на десктопе (30px + 30px) */
 .section{padding-block:1.25rem}
 .section__title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
-.section__title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.section__title em{font-style:normal;color:var(--cyan)}
 .section__lead{margin-top:.75rem;max-width:46rem;text-wrap:balance;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 .cards{display:grid;gap:1rem;margin-top:2rem}
 .card{position:relative;display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:1.25rem;background:#0a0a0c;overflow:hidden;transition:border-color .2s,transform .2s}
@@ -284,7 +284,7 @@ html{scroll-behavior:smooth}
 .tfooter{margin-top:0}
 .tf-section{padding-block:1.25rem}
 .tf-title{margin:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-wrap:balance}
-.tf-title em{font-style:normal;color:var(--cyan);background:linear-gradient(.171turn,var(--cyan) 33%,var(--pink) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tf-title em{font-style:normal;color:var(--cyan)}
 .tf-lead{margin-top:.3125rem;color:var(--muted);font-size:var(--fs-l);line-height:1.4}
 .tf-contacts__grid{display:grid;gap:1.5rem;margin-top:2.5rem;grid-template-areas:"photos" "details" "map"}
 .tf-photos{grid-area:photos}
@@ -526,4 +526,14 @@ html{scroll-behavior:smooth}
   .gp__card{grid-template-columns:1fr;height:auto}
   .gp__media img{width:100%;height:auto;aspect-ratio:1/1;border-radius:10px 10px 0 0}
   .gp__body{padding:20px}
+}
+
+
+/* Десктоп: 120px между указанными блоками (padding секций 30+30 + margin-top 60) */
+@media (min-width:64rem){
+  #konfiguracii + #v-nalichii,
+  #v-nalichii + #pochemu-my,
+  #otzivy,
+  #otzivy + #faq,
+  #faq + #contakty{margin-top:3.75rem}
 }
