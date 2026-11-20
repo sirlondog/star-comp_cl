@@ -587,6 +587,26 @@ def stock_section_html(exclude_slug=None):
     </ul>
   </section>'''
 
+# ---------- блок «Подарки всем клиентам»: общий для всех страниц ----------
+# Экспорт Frame 128. Разметка — src/gifts.body.html, картинки — уже скачанные
+# с Тильды promo_1/promo_2, нарезку делает сборщик. Стили — в page.css,
+# поэтому блок попадает и на главную, и на страницы сборок (inner.css = page.css + inner.css).
+def _promo_picture(stem,ws,h,alt):
+    """Картинка подарка: те же AVIF/WebP-нарезки, что и у остальных фото."""
+    _sizes='(min-width:64rem) 18rem, 100vw'
+    return (f'          <picture>\n'
+            f'            <source type="image/avif" srcset="{srcset(stem,ws,"avif")}" sizes="{_sizes}">\n'
+            f'            <img src="assets/{stem}-{ws[-1]}.webp" srcset="{srcset(stem,ws,"webp")}" sizes="{_sizes}" width="{ws[-1]}" height="{h}" alt="{alt}" loading="lazy" decoding="async">\n'
+            f'          </picture>')
+
+_gift_av_stem,_gift_av_ws=derive('content/photos/promo/promo_2.webp',[480],1)          # Kaspersky, квадрат
+_gift_ms_stem,_gift_ms_ws=derive('content/photos/promo/promo_1.webp',[480,960],3/2)    # клавиатура и мышь, 3:2
+_gift_antivirus=_promo_picture(_gift_av_stem,_gift_av_ws,480,'Антивирус Kaspersky в подарок — лицензия на 1 год')
+_gift_mouse=_promo_picture(_gift_ms_stem,_gift_ms_ws,320,'Клавиатура и мышь в подарок при заказе от 155 000 ₽')
+GIFTS_SECTION=(fill_text(open(os.path.join(ROOT,'src','gifts.body.html'),encoding='utf-8').read())
+    .replace('{{GIFT_ANTIVIRUS}}',_gift_antivirus)
+    .replace('{{GIFT_MOUSE}}',_gift_mouse))
+
 # ---------- главная страница ----------
 ld=json.dumps({"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":esc(S.get('phone_schema') or '+7-993-984-55-05'),"email":esc(S.get('email') or 'info@star-comp.ru'),"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":esc(S.get('address_full') or 'Заневский пр., 65 к5, 2 этаж'),"addressCountry":"RU"},"openingHours":esc(S.get('opening_hours_schema') or 'Mo-Su 11:00-19:00'),"sameAs":[v for v in (_soc.get('vk'),_soc.get('telegram')) if v]},ensure_ascii=False,separators=(',',':'))
 # фото блока «7 причин» (перенос с Тильды): нарезка под десктопную колонку 23rem
@@ -595,7 +615,8 @@ _why_photo=(f'      <picture class="why__photo">\n'
             f'        <source type="image/avif" srcset="{srcset(_why_stem,_why_ws,"avif")}" sizes="(min-width:64rem) 23rem, 1px">\n'
             f'        <img src="assets/{_why_stem}-{_why_ws[-1]}.webp" srcset="{srcset(_why_stem,_why_ws,"webp")}" sizes="(min-width:64rem) 23rem, 1px" width="{_why_ws[-1]}" height="{round(_why_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
             f'      </picture>')
-body=fill_text(_body).replace('{{CPU_FILTERS}}',_cpu_filters).replace('{{WHY_PHOTO}}',_why_photo).replace('{{MENU_LINKS}}',menu_links_html(False))
+body=(fill_text(_body).replace('{{CPU_FILTERS}}',_cpu_filters).replace('{{WHY_PHOTO}}',_why_photo)
+      .replace('{{GIFTS_SECTION}}',GIFTS_SECTION).replace('{{MENU_LINKS}}',menu_links_html(False)))
 full=f'''<!doctype html>
 <html lang="ru">
 <head>
@@ -679,6 +700,7 @@ _bt_photo=(f'      <picture class="why__photo">\n'
            f'        <img src="assets/{_bt_stem}-{_bt_ws[-1]}.webp" srcset="{srcset(_bt_stem,_bt_ws,"webp")}" sizes="(min-width:64rem) 23rem, 1px" width="{_bt_ws[-1]}" height="{round(_bt_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
            f'      </picture>')
 _bt_block=fill_text(open(os.path.join(ROOT,'src','blocktest.body.html'),encoding='utf-8').read()).replace('{{WHY_PHOTO}}',_bt_photo)
+_bt_block+= '\n'+GIFTS_SECTION   # подарки показываем и на старой тестовой странице
 _bt_main=full[full.index('<main>'):full.index('</main>')+len('</main>')]
 _bt=full.replace(_bt_main,'<main>\n'+_bt_block+'</main>').replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',
@@ -694,19 +716,6 @@ print('тестовая страница blocktest',len(_bt))
 # Стили новых блоков — src/test.css → assets/test.css.
 _TEST_REVIEWS_ON=False
 
-def _promo_picture(stem,ws,h,alt):
-    """Картинка подарка: те же AVIF/WebP-нарезки, что и у остальных фото."""
-    _sizes='(min-width:64rem) 18rem, 100vw'
-    return (f'          <picture>\n'
-            f'            <source type="image/avif" srcset="{srcset(stem,ws,"avif")}" sizes="{_sizes}">\n'
-            f'            <img src="assets/{stem}-{ws[-1]}.webp" srcset="{srcset(stem,ws,"webp")}" sizes="{_sizes}" width="{ws[-1]}" height="{h}" alt="{alt}" loading="lazy" decoding="async">\n'
-            f'          </picture>')
-
-_gift_av_stem,_gift_av_ws=derive('content/photos/promo/promo_2.webp',[480],1)          # Kaspersky, квадрат
-_gift_ms_stem,_gift_ms_ws=derive('content/photos/promo/promo_1.webp',[480,960],3/2)  # клавиатура и мышь, 3:2
-_gift_antivirus=_promo_picture(_gift_av_stem,_gift_av_ws,480,'Антивирус Kaspersky в подарок — лицензия на 1 год')
-_gift_mouse=_promo_picture(_gift_ms_stem,_gift_ms_ws,320,'Клавиатура и мышь в подарок при заказе от 155 000 ₽')
-
 _test_photo=(f'        <picture>\n'
              f'          <source type="image/avif" srcset="{srcset(_bt_stem,_bt_ws,"avif")}" sizes="(min-width:65rem) 44vw, 100vw">\n'
              f'          <img src="assets/{_bt_stem}-{_bt_ws[-1]}.webp" srcset="{srcset(_bt_stem,_bt_ws,"webp")}" sizes="(min-width:65rem) 44vw, 100vw" width="{_bt_ws[-1]}" height="{round(_bt_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
@@ -715,8 +724,7 @@ _test_photo=(f'        <picture>\n'
 _test_reviews=f'<div class="wrap">\n{REVIEWS_HTML}\n  </div>' if _TEST_REVIEWS_ON else ''
 _test_block=(fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read())
     .replace('{{TEST_PHOTO}}',_test_photo)
-    .replace('{{GIFT_ANTIVIRUS}}',_gift_antivirus)
-    .replace('{{GIFT_MOUSE}}',_gift_mouse)
+    .replace('{{GIFTS_SECTION}}',GIFTS_SECTION)
     .replace('{{REVIEWS_BLOCK}}',_test_reviews))
 # Берём только <head> от главной, чтобы сохранить шрифты, метатеги и счётчики.
 _test_head=full[:full.index('<body>')].replace(
@@ -948,6 +956,7 @@ def body_html(d):
 {about_section}
 {spec_section}
 {stock_section_html(d['slug'])}
+{GIFTS_SECTION}
 </main>"""
 
 src=open('page.body.html',encoding='utf-8').read()

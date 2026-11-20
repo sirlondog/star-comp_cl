@@ -68,37 +68,8 @@
     </div>
   </section>
 
-  <!-- Подарки всем клиентам — блок из старого сайта, пока только на test.
-       Картинки берём из content/photos/promo/ (уже скачаны с Тильды),
-       нарезку делает сборщик, как и для остальных фото. -->
-  <section class="section wrap" id="test-gifts" aria-labelledby="gifts-title">
-    <h2 class="gp__title" id="gifts-title">Подарки всем клиентам</h2>
-    <p class="gp__lead">Мы ценим ваше доверие, поэтому подготовили полезные бонусы к каждой сборке и дополнительные подарки для крупных заказов.</p>
-
-    <div class="gp__grid">
-      <article class="gp__card">
-        <div class="gp__media">
-{{GIFT_ANTIVIRUS}}
-        </div>
-        <div class="gp__body">
-          <h3 class="gp__name">Антивирус в подарок</h3>
-          <p class="gp__note">KASPERSKY ANTIVIRUS<br>лицензия на 1 год</p>
-          <span class="status-pill status-pill--stock">Всем клиентам</span>
-        </div>
-      </article>
-
-      <article class="gp__card">
-        <div class="gp__media">
-{{GIFT_MOUSE}}
-        </div>
-        <div class="gp__body">
-          <h3 class="gp__name">Клавиатура и мышь</h3>
-          <p class="gp__note">механическая, игровая<br>в подарок при заказе</p>
-          <span class="status-pill status-pill--hit">От 155 000₽</span>
-        </div>
-      </article>
-    </div>
-  </section>
+  <!-- Подарки всем клиентам — общий блок, теперь и на всём сайте. -->
+{{GIFTS_SECTION}}
 
   <!-- Отзывы — точная копия блока с основного сайта (REVIEWS_HTML из build.py).
        ВРЕМЕННО СКРЫТО: чтобы вернуть, поставить _TEST_REVIEWS_ON=True в build.py. -->
