@@ -521,10 +521,12 @@ html{scroll-behavior:smooth}
 
 @media (max-width:63.99rem){
   .gp__grid{grid-template-columns:1fr;gap:40px;margin-top:40px}
+  .gp__title{font-size:var(--fs-h);line-height:1.18}
+  .gp__lead{margin-top:10px;font-size:var(--fs-l);line-height:1.4}
+  #pochemu-my .section__lead{margin-top:10px}
+  #pochemu-my .why__grid{margin-top:40px}
 }
 @media (max-width:40rem){
-  .gp__title{font-size:30px}
-  .gp__lead{font-size:16px;line-height:1.5}
   .gp__card{grid-template-columns:1fr;height:auto}
   .gp__media img{width:100%;height:auto;aspect-ratio:1/1;border-radius:10px 10px 0 0}
   .gp__body{padding:20px}
