@@ -431,6 +431,7 @@ html{scroll-behavior:smooth}
   .faq{display:grid;grid-template-columns:minmax(0,21rem) minmax(0,1fr);gap:clamp(2rem,5vw,5rem)}
   .faq__side{position:sticky;top:6rem;align-self:start}
   .faq__list{margin-top:0}
+  .faq__a p{font-size:1.125rem;line-height:1.4}
 }
 
 /* Re:plain: прозрачный фон виджета, чтобы на мобильных не было белого квадрата до загрузки иконки */
@@ -499,7 +500,7 @@ html{scroll-behavior:smooth}
 }
 .gp__note{
   margin:20px 0 0;
-  color:#808080;
+  color:#BDBDC2;
   font-weight:500;
   font-size:18px;
   line-height:22px;
