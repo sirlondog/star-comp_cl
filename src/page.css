@@ -339,7 +339,7 @@ html{scroll-behavior:smooth}
 
 /* ---------- Футер: блок отзывов ---------- */
 .tf-reviews .tf-title{font-size:2.125rem}
-.tf-reviews .tf-lead{margin-top:10px;font-size:var(--fs-l);line-height:1.2;color:var(--muted);text-wrap:pretty}
+.tf-reviews .tf-lead{margin-top:10px;font-size:var(--fs-l);line-height:1.4;color:var(--muted)}
 .tf-reviews__grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:2.5rem}
 .tf-review2{display:flex;flex-direction:column;gap:20px;min-height:300px;padding:27px 20px 20px 30px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
 .tf-review2__text{margin:0;font-size:1.125rem;line-height:1.4;color:#bdbdc2}
@@ -396,7 +396,6 @@ html{scroll-behavior:smooth}
 }
 @media (min-width:64rem){
   .tf-reviews .tf-title{font-size:2.75rem}
-  .tf-reviews .tf-lead{font-size:1.25rem;line-height:1.2}
   .tf-reviews__grid{grid-template-columns:repeat(3,1fr);gap:40px;margin-top:34px}
 }
 @media (max-width:63.99rem){
@@ -443,8 +442,8 @@ html{scroll-behavior:smooth}
    заголовок 44/54, подзаголовок 20/24, карточки 560×300 с рамкой 10px,
    картинка 300×300, текст 200px, пилюля 144×30.
    ========================================================================== */
-#gift{margin-top:0}
-@media (min-width:64rem){#gift{margin-top:3.75rem}}
+#gift{margin-top:2.5rem}
+@media (min-width:64rem){#gift{margin-top:2.5rem}}
 
 .gp__title{
   margin:0;
@@ -455,10 +454,11 @@ html{scroll-behavior:smooth}
 }
 .gp__lead{
   margin:10px 0 0;
-  color:#808080;
-  font-weight:500;
-  font-size:20px;
-  line-height:24px;
+  color:var(--muted);
+  font-weight:400;
+  font-size:var(--fs-l);
+  line-height:1.4;
+  text-wrap:balance;
 }
 .gp__grid{
   display:grid;
@@ -535,14 +535,12 @@ html{scroll-behavior:smooth}
 }
 
 
-/* Десктоп: 100px между указанными блоками (padding секций 30+30 + margin-top 40) */
-@media (min-width:64rem){
-  #konfiguracii + #v-nalichii,
-  #v-nalichii + #pochemu-my,
-  #otzivy,
-  #otzivy + #faq,
-  #faq + #contakty{margin-top:2.5rem}
-}
+/* 100px между указанными блоками на всех ширинах (padding секций 30+30 + margin-top 40) */
+#konfiguracii + #v-nalichii,
+#v-nalichii + #pochemu-my,
+#otzivy,
+#otzivy + #faq,
+#faq + #contakty{margin-top:2.5rem}
 /* Десктоп: от подзаголовка до контента блока — 40px во всех блоках, кроме первого экрана */
 @media (min-width:64rem){
   .filters{margin-top:2.5rem}
