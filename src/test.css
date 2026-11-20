@@ -354,64 +354,89 @@
 
 /* ==========================================================================
    «Подарки всем клиентам» — блок из старого сайта, только на тестовой странице.
-   Две карточки в рамке: картинка слева, текст и Status Pill справа. Картинки —
-   готовые promo_1/promo_2 из Тильды, нарезку делает сборщик.
+   Размеры и отступы по экспорту Frame 128 (1440×587):
+   заголовок 44/54, подзаголовок 20/24, карточки 560×300 с рамкой 10px,
+   картинка 300×300, текст 200px, пилюля 144×30.
    ========================================================================== */
 .gp__title{
   margin:0;
   font-weight:600;
-  font-size:clamp(30px,2.8vw,38px);
-  line-height:1.15;
-  letter-spacing:-.025em;
+  font-size:clamp(30px,3.06vw,44px);
+  line-height:1.2338;
+  color:#f2f4f7;
 }
 .gp__lead{
   margin:10px 0 0;
-  max-width:62rem;
-  color:var(--muted);
-  font-size:var(--fs-l);
-  line-height:1.4;
+  color:#808080;
+  font-weight:500;
+  font-size:20px;
+  line-height:24px;
 }
 .gp__grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:40px;
-  margin-top:40px;
+  margin-top:60px;
 }
 .gp__card{
   display:grid;
-  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
-  gap:20px;
-  align-items:center;
+  grid-template-columns:300px minmax(0,1fr);
   min-width:0;
-  padding:clamp(16px,2vw,24px);
-  border:1px solid var(--line);
-  border-radius:22px;
-  background:var(--bg);
+  height:300px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;
+  overflow:hidden;
 }
-.gp__media{display:flex;align-items:center;justify-content:center;min-width:0}
-.gp__media img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain}
-.gp__body{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.gp__media{min-width:0;height:100%}
+.gp__media img{
+  display:block;
+  width:300px;
+  height:100%;
+  object-fit:cover;
+  border-radius:10px 0 0 10px;
+}
+.gp__body{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  min-width:0;
+  padding:30px;
+}
 .gp__name{
   margin:0;
   font-weight:600;
-  font-size:clamp(24px,2.3vw,30px);
-  line-height:1.15;
-  text-wrap:balance;
+  font-size:clamp(26px,2.36vw,34px);
+  line-height:1.12;
+  color:#f2f4f7;
 }
-.gp__brand{
-  margin:18px 0 0;
-  font-weight:600;
-  font-size:var(--fs-m);
-  line-height:1.2;
-  text-transform:uppercase;
+.gp__note{
+  margin:20px 0 0;
+  color:#808080;
+  font-weight:500;
+  font-size:18px;
+  line-height:22px;
 }
-.gp__note{margin:8px 0 0;color:var(--muted);font-size:var(--fs-m);line-height:1.35}
-.gp__body .status-pill{margin-top:20px}
+/* Пилюли в этом блоке — плоские, как в экспорте: 144×30, радиус 20, текст без точки.
+   Общие .status-pill (с точкой и радиусом 999) на остальных страницах не меняем. */
+.gp__body .status-pill{
+  width:144px;
+  height:30px;
+  margin-top:20px;
+  padding:0;
+  justify-content:center;
+  border-radius:20px;
+  font-size:14px;
+  line-height:17px;
+}
+.gp__body .status-pill::before{display:none}
 
 @media (max-width:63.99rem){
-  .gp__grid{grid-template-columns:1fr;gap:40px}
+  .gp__grid{grid-template-columns:1fr;gap:40px;margin-top:40px}
 }
 @media (max-width:40rem){
-  .gp__card{grid-template-columns:1fr;gap:16px;border-radius:16px}
-  .gp__media img{max-height:240px}
+  .gp__title{font-size:30px}
+  .gp__lead{font-size:16px;line-height:1.5}
+  .gp__card{grid-template-columns:1fr;height:auto}
+  .gp__media img{width:100%;height:auto;aspect-ratio:1/1;border-radius:10px 10px 0 0}
+  .gp__body{padding:20px}
 }
