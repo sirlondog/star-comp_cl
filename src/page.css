@@ -521,7 +521,7 @@ html{scroll-behavior:smooth}
 @media (max-width:63.99rem){
   #gift .gp__title,#gift .gp__lead,#gift .gp__grid,#gift .gp__card{margin-left:0;margin-right:0}
   .gp__title{max-width:none;font-size:34px;line-height:42px;color:#F2F4F7}
-  .gp__lead{max-width:none;margin-top:23px;font-size:18px;line-height:21px}
+  .gp__lead{max-width:none;margin-top:10px;font-size:var(--fs-l);line-height:1.4}
   .gp__grid{grid-template-columns:1fr;justify-items:stretch;gap:23px;margin-top:2.5rem}
   .gp__card{width:100%;max-width:none;height:540px;grid-template-columns:1fr;grid-template-rows:300px 1fr;border:1px solid rgba(255,255,255,.1);border-radius:10px}
   .gp__media{height:300px}
