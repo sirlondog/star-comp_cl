@@ -3,7 +3,7 @@
 .pp::backdrop{background:rgba(0,0,0,.6)}
 .pp[open]{animation:pp-in .25s ease-out}
 @keyframes pp-in{from{opacity:0;transform:translateY(12px)}}
-.pp__card{position:relative;box-sizing:border-box;width:min(400px,calc(100vw - 32px));height:631px;max-height:calc(100dvh - 32px);overflow:auto;border:1px solid rgba(0,217,255,.3);border-radius:30px;background:#0a0a0c}
+.pp__card{position:relative;box-sizing:border-box;padding:20px;width:min(400px,calc(100vw - 32px));height:631px;max-height:calc(100dvh - 32px);overflow:auto;border:1px solid rgba(0,217,255,.3);border-radius:30px;background:#0a0a0c}
 /* Кнопка закрытия — тот же «×» в круге, что в мобильном меню (.menu__close). */
 .pp__close{position:absolute;top:20px;right:20px;z-index:1;margin-left:0}
 .pp__close:hover{border-color:#00d9ff;color:#00d9ff}
