@@ -1,40 +1,158 @@
-/* Попап «Свяжитесь с нами» (400px, поток, поля 20px). Открывается из test.html */
-.pp{border:0;padding:0;margin:auto;background:transparent;color:#F2F4F7;max-width:none;max-height:none;overflow:visible}
-.pp::backdrop{background:rgba(0,0,0,.6)}
-.pp[open]{animation:pp-in .25s ease-out}
-@keyframes pp-in{from{opacity:0;transform:translateY(12px)}}
-.pp__card{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:20px;
-  box-sizing:border-box;
-  width:min(400px,calc(100vw - 32px));
-  max-height:calc(100dvh - 32px);
-  overflow:auto;
-  padding:40px 20px 20px;
-  border:1px solid rgba(0,217,255,.3);
-  border-radius:30px;
-  background:#0a0a0c;
-  text-align:center;
+/* Витрина 10 вариантов попапа (test.html). Старый .pp-диалог заменён на статичный рендер. */
+.pp-showcase{padding-top:56px}
+.pp-showcase__head{margin-bottom:40px}
+.pp-showcase__title{margin:10px 0 0;font-size:clamp(28px,4vw,48px);line-height:1.08;letter-spacing:-.03em}
+.pp-showcase__lead{max-width:760px;margin:16px 0 0;color:var(--muted,#98A2B3);font-size:18px;line-height:1.45}
+.pp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;align-items:start}
+.ppv-case{display:flex;flex-direction:column;gap:16px;min-width:0}
+.ppv-case--wide{grid-column:1/-1}
+.ppv-case__head{display:flex;gap:14px;align-items:flex-start}
+.ppv-case__num{flex:none;display:grid;place-items:center;width:40px;height:40px;border:1px solid rgba(0,217,255,.35);border-radius:12px;color:#00D9FF;font:600 14px/1 "Manrope",sans-serif}
+.ppv-case__head h3{margin:0;font-size:24px;line-height:1.2}
+.ppv-case__head p{margin:6px 0 0;color:var(--muted,#98A2B3);font-size:15px;line-height:1.45}
+
+/* Общая база карточек */
+.ppv{position:relative;box-sizing:border-box;width:min(100%,420px);margin:0 auto;padding:24px;border:1px solid rgba(0,217,255,.25);border-radius:24px;background:#0A0A0C;color:#F2F4F7;overflow:hidden}
+.ppv-case--wide .ppv{width:min(100%,920px)}
+.ppv__close{position:absolute;top:16px;right:16px;z-index:3;margin:0}
+.ppv .ppv__logo{display:block;width:44px;height:44px;flex:none}
+.ppv__title{margin:0;font-weight:600;font-size:32px;line-height:1.1;letter-spacing:-.02em}
+.ppv__lead{margin:0;color:#98A2B3;font-size:16px;line-height:1.45}
+.ppv__socials{display:flex;gap:12px;align-items:center}
+.ppv__socials--left{justify-content:flex-start}
+.ppv__socials a,.ppv3__action,.ppv7__icon{display:inline-flex;align-items:center;justify-content:center;color:inherit;text-decoration:none}
+.ppv__socials a{width:40px;height:40px}
+.ppv__socials svg,.ppv3__action svg,.ppv4__icon svg,.ppv7__icon svg{display:block;width:40px;height:40px}
+.ppv__hr{width:100%;height:1px;background:rgba(255,255,255,.1)}
+.ppv__contacts{display:flex;flex-direction:column;gap:6px;width:100%}
+.ppv__phone{color:#F2F4F7;font-weight:700;font-size:20px;line-height:1.3;text-decoration:none}
+.ppv__mail,.ppv__address,.ppv5__hint,.ppv7__meta p{margin:0;font-size:16px;line-height:1.45;color:#D0D5DD}
+.ppv__mail a,.ppv7__meta a{color:#00D9FF;text-decoration:underline;text-underline-offset:.2em}
+.ppv__address b{color:#F2F4F7}
+.ppv__muted{color:#98A2B3}
+.ppv__route{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;padding:14px 20px;box-sizing:border-box;border:0;border-radius:16px;background:#00D9FF;color:#0A0A0C;font:600 16px/1.2 "Manrope",sans-serif;text-decoration:none;text-align:center;cursor:pointer}
+.ppv__route:hover{filter:brightness(1.06)}
+.ppv__route--ghost{background:rgba(0,217,255,.08);color:#00D9FF;border:1px solid rgba(0,217,255,.35);box-shadow:none}
+.ppv__route--glow{box-shadow:0 0 28px rgba(0,217,255,.28)}
+
+/* 1. Чистая карточка */
+.ppv--1{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+.ppv--1 .ppv__logo{width:44px;height:44px}
+.ppv--1 .ppv__lead{margin-top:-8px}
+
+/* 2. Сплит с картой */
+.ppv--2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:24px;width:min(100%,920px);padding:28px}
+.ppv2__left,.ppv2__right{display:flex;flex-direction:column;gap:20px;min-width:0}
+.ppv2__right{padding:20px;border-radius:20px;background:#11151B;border:1px solid rgba(255,255,255,.06)}
+.ppv2__brand{display:flex;align-items:center;gap:10px;color:#98A2B3;font-weight:600;font-size:14px;letter-spacing:.04em}
+.ppv2__brand .ppv__logo{width:34px;height:34px}
+.ppv2__contacts{display:flex;flex-direction:column;gap:6px;margin-top:auto}
+.ppv2__map{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.ppv2__map svg{display:block;width:100%;height:auto}
+
+/* 3. Bottom sheet */
+.ppv-stage--sheet{display:flex;align-items:flex-end;justify-content:center;min-height:640px;padding:24px 12px 0;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(0,217,255,.05));border:1px dashed rgba(255,255,255,.12)}
+.ppv--3{width:min(100%,420px);margin:0;padding:16px 20px 24px;border-radius:28px 28px 16px 16px;gap:16px;display:flex;flex-direction:column;align-items:stretch}
+.ppv3__handle{width:48px;height:5px;margin:0 auto 4px;border-radius:999px;background:rgba(255,255,255,.22)}
+.ppv--3 .ppv__title,.ppv--3 .ppv__lead,.ppv--3 .ppv__mail--center{text-align:center}
+.ppv3__actions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ppv3__action{flex-direction:column;gap:8px;padding:14px 8px;border-radius:16px;background:#151922;border:1px solid rgba(255,255,255,.08);font-size:13px;color:#D0D5DD}
+.ppv3__action svg{width:32px;height:32px}
+.ppv3__place{display:flex;gap:12px;align-items:flex-end;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+.ppv3__mapbtn{flex:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border-radius:12px;border:1px solid rgba(0,217,255,.35);color:#00D9FF;text-decoration:none;font-weight:600}
+
+/* 4. Action-карточки */
+.ppv--4{display:flex;flex-direction:column;gap:20px;width:min(100%,440px)}
+.ppv4__top{display:flex;gap:14px;align-items:center;padding-right:42px}
+.ppv4__top .ppv__logo{width:40px;height:40px;flex:none}
+.ppv4__top .ppv__lead{margin-top:4px;font-size:15px}
+.ppv4__list{display:flex;flex-direction:column;gap:10px}
+.ppv4__item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:#131720;border:1px solid rgba(255,255,255,.08);color:#F2F4F7;text-decoration:none}
+.ppv4__item:hover{border-color:rgba(0,217,255,.35);background:#161B25}
+.ppv4__item--accent{background:rgba(0,217,255,.08);border-color:rgba(0,217,255,.28)}
+.ppv4__icon{flex:none;display:grid;place-items:center;width:40px;height:40px}
+.ppv4__icon svg{width:32px;height:32px}
+.ppv4__icon--text{border-radius:12px;background:rgba(255,255,255,.06);font-size:20px;color:#00D9FF}
+.ppv4__text{display:flex;flex-direction:column;min-width:0}
+.ppv4__text b{font-size:16px;line-height:1.3}
+.ppv4__text small{color:#98A2B3;font-size:13px;line-height:1.3}
+.ppv4__arr{margin-left:auto;color:#00D9FF;font-size:20px}
+.ppv4__footer{display:flex;gap:16px;align-items:flex-end;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+
+/* 5. Две колонки */
+.ppv--5{display:flex;flex-direction:column;gap:24px;width:min(100%,920px);padding:28px}
+.ppv5__head{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding-right:42px;padding-left:42px}
+.ppv5__head .ppv__logo{width:44px;height:44px}
+.ppv5__cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.ppv5__col{display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:20px;background:#131720;border:1px solid rgba(255,255,255,.08)}
+.ppv5__label{margin:0;color:#98A2B3;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ppv5__hint{color:#98A2B3;font-size:14px}
+
+/* 6. Премиум glow */
+.ppv--6{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;padding-top:32px}
+.ppv6__glow{position:absolute;top:-80px;left:50%;width:280px;height:280px;margin-left:-140px;border-radius:50%;background:radial-gradient(circle,rgba(0,217,255,.22),rgba(0,217,255,0) 68%);pointer-events:none}
+.ppv--6 .ppv__logo,.ppv--6 .ppv__title,.ppv--6 .ppv__lead,.ppv--6 .ppv__socials,.ppv--6 .ppv6__panel,.ppv--6 .ppv__address,.ppv--6 .ppv__route{position:relative;z-index:1}
+.ppv--6 .ppv__logo{width:46px;height:46px}
+.ppv6__panel{width:100%;padding:16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:6px}
+
+/* 7. Мини quick-contact */
+.ppv--7{display:flex;flex-direction:column;gap:16px;width:min(100%,400px);text-align:center}
+.ppv7__icons{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ppv7__icon{flex-direction:column;gap:8px;padding:14px 8px;border-radius:16px;background:#131720;border:1px solid rgba(255,255,255,.08);font-size:13px;color:#D0D5DD}
+.ppv7__icon svg{width:34px;height:34px}
+.ppv7__meta{display:flex;flex-direction:column;gap:6px;padding-top:8px;border-top:1px solid rgba(255,255,255,.1)}
+.ppv7__meta p{font-size:13px;color:#98A2B3}
+
+/* 8. Лид-форма + контакты */
+.ppv--8{display:flex;flex-direction:column;gap:18px;width:min(100%,460px)}
+.ppv8__form{display:flex;flex-direction:column;gap:12px}
+.ppv8__field{display:flex;flex-direction:column;gap:6px}
+.ppv8__field span{font-size:13px;color:#98A2B3}
+.ppv8__field input,.ppv8__field textarea{width:100%;box-sizing:border-box;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#131720;color:#F2F4F7;font:500 15px/1.4 "Manrope",sans-serif}
+.ppv8__field textarea{resize:vertical;min-height:84px}
+.ppv8__field input:focus,.ppv8__field textarea:focus{outline:2px solid rgba(0,217,255,.35);border-color:rgba(0,217,255,.45)}
+.ppv8__alt{display:flex;flex-direction:column;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+.ppv8__row{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+
+/* 9. Структурированные блоки */
+.ppv--9{display:flex;flex-direction:column;gap:16px;width:min(100%,440px)}
+.ppv9__head{display:flex;gap:14px;align-items:center;padding-right:42px}
+.ppv9__head .ppv__logo{width:42px;height:42px;flex:none}
+.ppv9__head .ppv__lead{margin-top:4px;font-size:15px}
+.ppv9__group{display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:16px;background:#131720;border:1px solid rgba(255,255,255,.08)}
+.ppv9__group .ppv__route{min-height:48px}
+
+/* 10. Визитка с фото */
+.ppv--10{padding:0;width:min(100%,440px)}
+.ppv10__hero{position:relative;height:180px;background:#141820}
+.ppv10__hero svg{display:block;width:100%;height:100%}
+.ppv10__hero-fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,.05) 30%,rgba(10,10,12,.88) 100%)}
+.ppv10__hero-brand{position:absolute;left:20px;bottom:20px;display:flex;align-items:center;gap:10px;color:#F2F4F7;font-weight:700;letter-spacing:.03em}
+.ppv10__hero-brand .ppv__logo{width:34px;height:34px}
+.ppv--10 .ppv__close{top:16px;right:16px}
+.ppv10__body{display:flex;flex-direction:column;gap:16px;padding:24px}
+.ppv10__contacts{display:flex;flex-direction:column;gap:4px}
+
+@media (max-width:900px){
+  .pp-grid{grid-template-columns:1fr}
+  .ppv-case--wide{grid-column:auto}
+  .ppv--2,.ppv5__cols{grid-template-columns:1fr}
+  .ppv--2{width:min(100%,520px)}
+  .ppv--5{width:min(100%,520px)}
 }
-.pp__close{position:absolute;top:20px;right:20px;z-index:1;margin:0}
-.pp__close:hover{border-color:#00d9ff;color:#00d9ff}
-.pp__close:focus-visible{outline:2px solid #00d9ff;outline-offset:2px}
-.pp__logo{display:block;width:45px;height:45px}
-.pp__title{margin:0;font-weight:600;font-size:34px;line-height:41px}
-.pp__lead{margin:-10px 0 0;color:#808080;font-weight:500;font-size:18px;line-height:21px}
-.pp__socials{display:flex;justify-content:center;gap:20px}
-.pp__socials a{display:block;width:40px;height:40px}
-.pp__socials svg{display:block;width:40px;height:40px}
-.pp__phone{font-weight:700;font-size:20px;line-height:24px;color:#F2F4F7;text-decoration:none}
-.pp__mail,.pp__address{margin:0;font-size:18px;line-height:22px}
-.pp__mail a{color:#00d9ff;text-decoration:underline;text-underline-offset:.2em}
-.pp__address b{font-weight:700}
-.pp__route{display:flex;align-items:center;justify-content:center;align-self:stretch;height:60px;border-radius:30px;background:#00d9ff;box-shadow:1px 1px 29.3px -10px #00d9ff;color:#000;font-weight:600;font-size:18px;text-decoration:none}
-.pp__route:hover{filter:brightness(1.08)}
-.pp-demo{padding-block:40px}
+@media (max-width:560px){
+  .pp-showcase{padding-top:40px}
+  .pp-showcase__title{font-size:32px}
+  .ppv{padding:20px;border-radius:20px}
+  .ppv__title{font-size:28px}
+  .ppv--2,.ppv--5{padding:20px}
+  .ppv5__head{padding-left:0;padding-right:36px;align-items:flex-start;text-align:left}
+  .ppv4__footer,.ppv3__place,.ppv8__row{flex-direction:column;align-items:stretch}
+  .ppv3__mapbtn{width:100%}
+  .ppv-stage--sheet{min-height:0;padding:12px}
+  .ppv--3{border-radius:24px}
+}
+
 
 /* Стили тестовой страницы test.html (только новые блоки, прод-страницы не трогаем).
    Сейчас здесь вариант №8 из .preview/why-variants.html: два столбца, слева
