@@ -28,12 +28,12 @@
       },
       "alt": "Компьютер в корпусе аквариум с розовой подсветкой",
       "specs": {
-        "cpu": "AMD RYZEN 7 7800X3D",
-        "gpu": "NVIDIA RTX 5070 12GB"
+        "cpu": "AMD RYZEN 9 9950X",
+        "gpu": "NVIDIA RTX 5080 16GB"
       },
-      "price_from": 272000,
+      "price_from": 530000,
       "show_from": true,
-      "page": "igrovoj-kompyuter-adm-ryzen-7-7800x3d-nvidia-rtx-5070-12gb",
+      "page": "igrovoj-kompyuter-amd-ryzen-9-9950x-nvidia-rtx-5080-16gb",
       "extra": false
     },
     {
