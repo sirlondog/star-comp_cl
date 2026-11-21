@@ -224,3 +224,4 @@ html{overflow-x:clip}
 }
 
 /* Re:plain: прозрачный фон виджета, чтобы на мобильных не было белого квадрата до загрузки иконки */
+@media (max-width:63.99rem){#v-nalichii .section__title{font-size:var(--fs-h);line-height:1.18}}
