@@ -49,22 +49,29 @@
 })();
 
 // Значок рассрочки: открывает окно с краткими условиями Сплита.
-// Закрытие — крестик, клик по фону, Esc (встроено в <dialog>).
+// Попап рассрочки: открывает диалог с краткими условиями Яндекс.
 (function () {
   var dlg = document.getElementById('split-info');
   if (!dlg || !dlg.showModal) return;
   document.addEventListener('click', function (e) {
     var t = e.target.closest && e.target.closest('.card__split');
-    if (t) {
-      e.preventDefault();
-      // showModal переводит фокус в диалог внизу страницы — браузер прыгает скроллом; возвращаем позицию
-      var x = window.scrollX, y = window.scrollY;
-      dlg.showModal();
-      window.scrollTo(x, y);
-      requestAnimationFrame(function () { window.scrollTo(x, y); });
-      return;
-    }
+    if (t) { e.preventDefault(); var x=window.scrollX,y=window.scrollY; dlg.showModal(); window.scrollTo(x,y); requestAnimationFrame(function(){window.scrollTo(x,y);}); return; }
     if (dlg.open && (e.target === dlg || e.target.closest('.split-info .menu__close'))) dlg.close();
+  });
+})();
+
+// Попап контактов: вариант 4 (action-карточки), без логотипа.
+(function () {
+  function openCP() {
+    var dlg = document.getElementById('contact-popup');
+    if (!dlg || !dlg.showModal || dlg.open) return;
+    var x=window.scrollX,y=window.scrollY; dlg.showModal(); window.scrollTo(x,y); requestAnimationFrame(function(){window.scrollTo(x,y);});
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest && e.target.closest('[data-contact-popup]');
+    if (t) { e.preventDefault(); var inDlg=t.closest('dialog'); if (inDlg && inDlg.open && inDlg.id!=='contact-popup') inDlg.close(); openCP(); return; }
+    var cp = document.getElementById('contact-popup');
+    if (cp && cp.open && (e.target === cp || e.target.closest('.cp__close'))) cp.close();
   });
 })();
 

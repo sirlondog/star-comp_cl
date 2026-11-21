@@ -23,7 +23,7 @@
       <p class="badge status-pill status-pill--order">{{BADGE}}</p>
       <h1>{{TITLE_HTML}}</h1>
       <p class="hero__lead">{{HERO_LEAD}}</p>
-      <a class="btn" href="#replain-link">{{HERO_BUTTON}}</a>
+      <button class="btn" type="button" data-contact-popup>{{HERO_BUTTON}}</button>
     </div>
 
     <figure class="hero__media">
@@ -81,7 +81,7 @@
         <li class="why__item"><span class="why__num">5</span><h3>Быстрая сборка</h3><p>Детали в&nbsp;наличии, сборка занимает 2&nbsp;дня</p></li>
         <li class="why__item"><span class="why__num">6</span><h3>Лицензионный Windows</h3><p>Антивирус и&nbsp;OFFICE включены в&nbsp;стоимость</p></li>
         <li class="why__item"><span class="why__num">7</span><h3>Отличная репутация</h3><p>120+ отзывов на&nbsp;Яндексе с&nbsp;рейтингом 5&nbsp;звезд</p></li>
-        <li class="why__item why__item--cta"><h3>Приезжайте в&nbsp;мастерскую</h3><p>Запишитесь заранее, и&nbsp;мы встретим вас в&nbsp;удобное время</p><a class="why__btn" href="#replain-link">Записаться</a></li>
+        <li class="why__item why__item--cta"><h3>Приезжайте в&nbsp;мастерскую</h3><p>Запишитесь заранее, и&nbsp;мы встретим вас в&nbsp;удобное время</p><button class="why__btn" type="button" data-contact-popup>Записаться</button></li>
       </ol>
     </div>
   </section>
@@ -106,6 +106,27 @@
   </div>
 </dialog>
 
+
+<dialog class="contact-popup" id="contact-popup" aria-label="Свяжитесь с нами">
+  <div class="cp">
+    <button class="menu__close cp__close" type="button" aria-label="Закрыть">×</button>
+    <div class="cp__top">
+      <h2 class="cp__title">Свяжитесь с нами</h2>
+      <p class="cp__lead">Выберите удобный канал — ответим быстро.</p>
+    </div>
+    <div class="cp__list">
+      <a class="cp__item" href="https://t.me/ST_COMP" target="_blank" rel="noopener"><span class="cp__icon">{{POPUP_TG}}</span><span class="cp__text"><b>Telegram</b><small>Написать в мессенджер</small></span><span class="cp__arr">→</span></a>
+      <a class="cp__item" href="https://max.ru/u/f9LHodD0cOKtu1HrBlDC3p9y0tc3W3w3g-2j9O5jZk0" target="_blank" rel="noopener"><span class="cp__icon">{{POPUP_MAX}}</span><span class="cp__text"><b>MAX</b><small>Написать в MAX</small></span><span class="cp__arr">→</span></a>
+      <a class="cp__item" href="https://vk.com/star_comp_spb" target="_blank" rel="noopener"><span class="cp__icon">{{POPUP_VK}}</span><span class="cp__text"><b>ВКонтакте</b><small>Сообщество STAR-COMP</small></span><span class="cp__arr">→</span></a>
+      <a class="cp__item cp__item--accent" href="tel:+79939845505"><span class="cp__icon cp__icon--text">☎</span><span class="cp__text"><b>8 (993) 984-55-05</b><small>Позвонить</small></span><span class="cp__arr">→</span></a>
+      <a class="cp__item" href="mailto:info@star-comp.ru"><span class="cp__icon cp__icon--text">@</span><span class="cp__text"><b>info@star-comp.ru</b><small>Написать на почту</small></span><span class="cp__arr">→</span></a>
+    </div>
+    <div class="cp__footer">
+      <p class="cp__address"><b>Адрес:</b> Заневский пр., 65 к5, 2 этаж<br><span class="cp__muted">Пн-Вс, 11:00-19:00</span></p>
+      <a class="cp__mapbtn" href="https://yandex.ru/maps/-/CXbR7LiO" target="_blank" rel="noopener">Маршрут</a>
+    </div>
+  </div>
+</dialog>
 <dialog class="split-info" id="split-info" aria-label="Оплата частями через Яндекс Сплит">
   <button class="menu__close" type="button" aria-label="Закрыть">×</button>
   <h2>Оплата частями — Яндекс&nbsp;Сплит</h2>
@@ -114,5 +135,5 @@
     <li>Сплит открывается без&nbsp;заявок и&nbsp;паспортных данных — это не&nbsp;кредит, данные в&nbsp;бюро кредитных историй не&nbsp;передаются.</li>
     <li>Погасить досрочно можно в&nbsp;любой момент.</li>
   </ul>
-  <p>Для уточнения условия, <a href="#replain-link">свяжитесь с&nbsp;нами</a> — расскажем подробнее об&nbsp;условиях.</p>
+  <p>Для уточнения условия, <button class="link-btn" type="button" data-contact-popup>свяжитесь с&nbsp;нами</button> — расскажем подробнее об&nbsp;условиях.</p>
 </dialog>
