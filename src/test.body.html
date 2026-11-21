@@ -74,3 +74,209 @@
   <!-- Отзывы — точная копия блока с основного сайта (REVIEWS_HTML из build.py).
        ВРЕМЕННО СКРЫТО: чтобы вернуть, поставить _TEST_REVIEWS_ON=True в build.py. -->
 {{REVIEWS_BLOCK}}
+
+  <!-- 10 вариантов первого блока главной страницы -->
+  <section class="section wrap hv-showcase" id="hero-variants" aria-label="Варианты первого блока">
+    <div class="pp-showcase__head">
+      <p class="eyebrow">Тест главного блока</p>
+      <h2 class="pp-showcase__title">10 вариантов дизайна</h2>
+      <p class="pp-showcase__lead">Один и тот же смысл и контент, разные компоновка, акценты и иерархия. Все варианты отрендерены на странице для сравнения.</p>
+    </div>
+
+    <div class="hv-grid">
+      <!-- 1 -->
+      <article class="hv-case">
+        <header class="ppv-case__head"><span class="ppv-case__num">01</span><div><h3>Текущий баланс</h3><p>Близко к текущему: текст слева, фото справа, факты и статы снизу.</p></div></header>
+        <div class="hv hv--1">
+          <div class="hv1__intro">
+            <p class="hv__badge">Профессиональная сборка</p>
+            <h2 class="hv__title">Компьютер под <em>задачи</em> с гарантией и запасом на 5 лет</h2>
+            <p class="hv__lead">Привезём, настроим и проверим с вами лично - оплатите после проверки</p>
+            <button class="hv__btn" type="button">Связаться</button>
+          </div>
+          <figure class="hv1__media"><picture>
+  <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w" sizes="(min-width: 64rem) 40vw, 90vw">
+  <img src="assets/hero-800.webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w" sizes="(min-width: 64rem) 40vw, 90vw" width="800" height="1000" alt="Игровой компьютер с розовой подсветкой" loading="lazy">
+</picture><figcaption>Приезжайте посмотреть, как проходят сборки</figcaption></figure>
+          <div class="hv1__meta">
+            <ul class="hv__facts"><li>Ярославский 65к5, м. У. Дыбенко</li><li>Ежедневно, 11:00-19:00</li></ul>
+            <ul class="hv__stats"><li><b>5/5*</b><span>рейтинг</span></li><li><b>120+</b><span>отзывов</span></li><li><b>16+</b><span>лет опыта</span></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="hv-case">
+        <header class="ppv-case__head"><span class="ppv-case__num">02</span><div><h3>Центрированный hero</h3><p>Крупный заголовок по центру, фото фоном/под блоком, одна главная CTA.</p></div></header>
+        <div class="hv hv--2">
+          <div class="hv2__bg"><picture>
+  <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w" sizes="(min-width: 64rem) 40vw, 90vw">
+  <img src="assets/hero-800.webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w" sizes="(min-width: 64rem) 40vw, 90vw" width="800" height="1000" alt="Игровой компьютер с розовой подсветкой" loading="lazy">
+</picture></div>
+          <div class="hv2__content">
+            <p class="hv__badge">Профессиональная сборка</p>
+            <h2 class="hv__title">Компьютер под задачи <em>с гарантией</em> на 5 лет</h2>
+            <p class="hv__lead">Привезём, настроим и проверим с вами лично - оплатите после проверки</p>
+            <div class="hv2__actions"><button class="hv__btn" type="button">Связаться</button><span class="hv2__note">Ярославский 65к5 · Ежедневно 11:00–19:00</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="hv-case">
+        <header class="ppv-case__head"><span class="ppv-case__num">03</span><div><h3>Сплит 50/50</h3><p>Жёсткое разделение: слева контент, справа крупное фото на всю высоту.</p></div></header>
+        <div class="hv hv--3">
+          <div class="hv3__left">
+            <p class="hv__badge">Профессиональная сборка</p>
+            <h2 class="hv__title">Компьютер под задачи с гарантией и запасом на 5 лет</h2>
+            <p class="hv__lead">Привезём, настроим и проверим с вами лично - оплатите после проверки</p>
+            <button class="hv__btn" type="button">Связаться</button>
+            <div class="hv3__trust"><div><b>5/5*</b><span>рейтинг на Яндексе</span></div><div><b>120+</b><span>отзывов</span></div><div><b>16+</b><span>лет опыта</span></div></div>
+          </div>
+          <figure class="hv3__media"><picture>
+  <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w" sizes="(min-width: 64rem) 40vw, 90vw">
+  <img src="assets/hero-800.webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w" sizes="(min-width: 64rem) 40vw, 90vw" width="800" height="1000" alt="Игровой компьютер с розовой подсветкой" loading="lazy">
+</picture></figure>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="hv-case">
+        <header class="ppv-case__head"><span class="ppv-case__num">04</span><div><h3>Карточка доверия</h3><p>Текст и CTA в крупной карточке поверх/рядом с фото, акцент на доверии.</p></div></header>
+        <div class="hv hv--4">
+          <figure class="hv4__media"><picture>
+  <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w" sizes="(min-width: 64rem) 40vw, 90vw">
+  <img src="assets/hero-800.webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w" sizes="(min-width: 64rem) 40vw, 90vw" width="800" height="1000" alt="Игровой компьютер с розовой подсветкой" loading="lazy">
+</picture></figure>
+          <div class="hv4__card">
+            <p class="hv__badge">Профессиональная сборка</p>
+            <h2 class="hv__title">Компьютер под задачи с гарантией на 5 лет</h2>
+            <p class="hv__lead">Привезём, настроим и проверим с вами лично - оплатите после проверки</p>
+            <ul class="hv4__list"><li>Гарантия и запас мощности на 5 лет</li><li>Оплата после проверки</li><li>Мастерская в СПб, можно приехать</li></ul>
+            <button class="hv__btn" type="button">Связаться</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="hv-case">
+        <header class="ppv-case__head"><span class="ppv-case__num">05</span><div><h3>Минималистичный типографический</h3><p>Меньше визуального шума, крупная типографика, фото компактнее.</p></div></header>
+        <div class="hv hv--5">
+          <div class="hv5__top">
+            <p class="hv__badge">STAR-COMP · СПб</p>
+            <h2 class="hv__title">Компьютер под задачи.<br><span>Гарантия и запас на 5 лет.</span></h2>
+          </div>
+          <div class="hv5__bottom">
+            <div class="hv5__copy">
+              <p class="hv__lead">Привезём, настроим и проверим с вами лично - оплатите после проверки.</p>
+              <button class="hv__btn" type="button">Связаться</button>
+              <p class="hv5__meta">Ярославский 65к5 · Ежедневно 11:00–19:00 · 5/5 на Яндексе</p>
+            </div>
+            <figure class="hv5__media"><picture>
+  <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w" sizes="(min-width: 64rem) 40vw, 90vw">
+  <img src="assets/hero-800.webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w" sizes="(min-width: 64rem) 40vw, 90vw" width="800" height="1000" alt="Игровой компьютер с розовой подсветкой" loading="lazy">
+</picture></figure>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="hv-case">
+        <header class="ppv-case__head"><span class="ppv-case__num">06</span><div><h3>Бенто-сетка</h3><p>Hero разбит на блоки: заголовок, фото, статы, CTA/контакты.</p></div></header>
+        <div class="hv hv--6">
+          <div class="hv6__main">
+            <p class="hv__badge">Профессиональная сборка</p>
+            <h2 class="hv__title">Компьютер под задачи с гарантией на 5 лет</h2>
+            <p class="hv__lead">Привезём, настроим и проверим с вами лично - оплатите после проверки</p>
+            <button class="hv__btn" type="button">Связаться</button>
+          </div>
+          <figure class="hv6__media"><picture>
+  <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w" sizes="(min-width: 64rem) 40vw, 90vw">
+  <img src="assets/hero-800.webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w" sizes="(min-width: 64rem) 40vw, 90vw" width="800" height="1000" alt="Игровой компьютер с розовой подсветкой" loading="lazy">
+</picture></figure>
+          <div class="hv6__stat"><b>5/5*</b><span>рейтинг</span></div>
+          <div class="hv6__stat"><b>120+</b><span>отзывов</span></div>
+          <div class="hv6__stat hv6__stat--wide"><b>16+ лет</b><span>собираем компьютеры в СПб</span></div>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="hv-case">
+        <header class="ppv-case__head"><span class="ppv-case__num">07</span><div><h3>Фото-фон с оверлеем</h3><p>Фото на весь блок, контент в тёмном оверлее слева/снизу.</p></div></header>
+        <div class="hv hv--7">
+          <div class="hv7__bg"><picture>
+  <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w" sizes="(min-width: 64rem) 40vw, 90vw">
+  <img src="assets/hero-800.webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w" sizes="(min-width: 64rem) 40vw, 90vw" width="800" height="1000" alt="Игровой компьютер с розовой подсветкой" loading="lazy">
+</picture></div>
+          <div class="hv7__overlay"></div>
+          <div class="hv7__content">
+            <p class="hv__badge">Профессиональная сборка</p>
+            <h2 class="hv__title">Компьютер под задачи с гарантией и запасом на 5 лет</h2>
+            <p class="hv__lead">Привезём, настроим и проверим с вами лично - оплатите после проверки</p>
+            <div class="hv7__row"><button class="hv__btn" type="button">Связаться</button><div class="hv7__stats"><span><b>5/5*</b> рейтинг</span><span><b>120+</b> отзывов</span></div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="hv-case">
+        <header class="ppv-case__head"><span class="ppv-case__num">08</span><div><h3>Продукт + специфика</h3><p>Акцент на результате: фото, ключевые выгоды списком, сильная CTA.</p></div></header>
+        <div class="hv hv--8">
+          <figure class="hv8__media"><picture>
+  <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w" sizes="(min-width: 64rem) 40vw, 90vw">
+  <img src="assets/hero-800.webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w" sizes="(min-width: 64rem) 40vw, 90vw" width="800" height="1000" alt="Игровой компьютер с розовой подсветкой" loading="lazy">
+</picture></figure>
+          <div class="hv8__content">
+            <p class="hv__badge">Профессиональная сборка</p>
+            <h2 class="hv__title">Компьютер под задачи с гарантией и запасом на 5 лет</h2>
+            <ul class="hv8__list">
+              <li><b>Подбор под задачи</b><span>игры, работа, монтаж, стриминг</span></li>
+              <li><b>Проверка перед оплатой</b><span>привезём, настроим, покажем</span></li>
+              <li><b>Гарантия до 5 лет</b><span>на сборку и комплектующие</span></li>
+            </ul>
+            <button class="hv__btn" type="button">Связаться</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="hv-case">
+        <header class="ppv-case__head"><span class="ppv-case__num">09</span><div><h3>Магазин/витрина</h3><p>Hero как витрина: крупное фото, цена-доверие, быстрые метрики, CTA.</p></div></header>
+        <div class="hv hv--9">
+          <div class="hv9__content">
+            <p class="hv__badge">STAR-COMP · Санкт-Петербург</p>
+            <h2 class="hv__title">Соберём компьютер, который не устареет через год</h2>
+            <p class="hv__lead">Гарантия и запас мощности на 5 лет. Привезём, настроим и проверим с вами лично.</p>
+            <div class="hv9__price"><span class="hv9__price-label">Сборки от</span><b>89 900 ₽</b><span class="hv9__price-note">оплата после проверки</span></div>
+            <button class="hv__btn" type="button">Связаться</button>
+          </div>
+          <div class="hv9__visual">
+            <figure class="hv9__media"><picture>
+  <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w" sizes="(min-width: 64rem) 40vw, 90vw">
+  <img src="assets/hero-800.webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w" sizes="(min-width: 64rem) 40vw, 90vw" width="800" height="1000" alt="Игровой компьютер с розовой подсветкой" loading="lazy">
+</picture></figure>
+            <div class="hv9__chips"><span>5/5 на Яндексе</span><span>120+ отзывов</span><span>16 лет опыта</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="hv-case">
+        <header class="ppv-case__head"><span class="ppv-case__num">10</span><div><h3>Премиум-тёмный</h3><p>Тёмный кинематографичный блок, акцентный glow, минимум элементов.</p></div></header>
+        <div class="hv hv--10">
+          <div class="hv10__glow" aria-hidden="true"></div>
+          <div class="hv10__content">
+            <p class="hv__badge">Профессиональная сборка</p>
+            <h2 class="hv__title">Компьютер под задачи<br><em>с запасом на 5 лет</em></h2>
+            <p class="hv__lead">Привезём, настроим и проверим с вами лично - оплатите после проверки</p>
+            <button class="hv__btn hv__btn--glow" type="button">Связаться</button>
+            <div class="hv10__foot"><span>Ярославский 65к5</span><span>Ежедневно 11:00–19:00</span><span>5/5 на Яндексе</span></div>
+          </div>
+          <figure class="hv10__media"><picture>
+  <source type="image/avif" srcset="assets/hero-600.avif 600w, assets/hero-800.avif 800w" sizes="(min-width: 64rem) 40vw, 90vw">
+  <img src="assets/hero-800.webp" srcset="assets/hero-600.webp 600w, assets/hero-800.webp 800w" sizes="(min-width: 64rem) 40vw, 90vw" width="800" height="1000" alt="Игровой компьютер с розовой подсветкой" loading="lazy">
+</picture></figure>
+        </div>
+      </article>
+    </div>
+  </section>
