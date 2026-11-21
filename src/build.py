@@ -8,8 +8,8 @@ SRC=os.path.dirname(os.path.abspath(__file__))
 ROOT=os.path.dirname(SRC)
 os.chdir(SRC)
 A='icons/'
-def svg(name, attrs):
-    s=open(A+name,encoding='utf-8').read()
+def svg(name, attrs, folder=None):
+    s=open((folder or A)+name,encoding='utf-8').read()
     s=re.sub(r'<\?xml[^>]*\?>\s*','',s).strip()
     s=re.sub(r'<metadata>.*?</metadata>','',s)
     s=re.sub(r'></(path|rect|circle|stop)>','/>',s)
@@ -727,9 +727,9 @@ _test_block=(fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='
     .replace('{{GIFTS_SECTION}}',GIFTS_SECTION)
     .replace('{{REVIEWS_BLOCK}}',_test_reviews)
     .replace('{{POPUP_LOGO}}',svg('logo-icon.svg','class="pp__logo" aria-hidden="true"'))
-    .replace('{{POPUP_TG}}',tg_svg)
-    .replace('{{POPUP_MAX}}',max_svg)
-    .replace('{{POPUP_VK}}',vk_svg))
+    .replace('{{POPUP_TG}}',svg('tg-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep))
+    .replace('{{POPUP_MAX}}',svg('max-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep))
+    .replace('{{POPUP_VK}}',svg('vk-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep)))
 # Берём только <head> от главной, чтобы сохранить шрифты, метатеги и счётчики.
 _test_head=full[:full.index('<body>')].replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',
