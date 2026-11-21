@@ -448,6 +448,10 @@ def menu_links_html(inner=False):
         url=(l.get('url') or '').strip()
         if not label or not url: continue
         href=base+url if url.startswith('#') else url
+        # На главной «Главная» = плавная прокрутка наверх (scroll-behavior:smooth),
+        # а не перезагрузка страницы по index.html.
+        if not inner and href=='index.html':
+            href='#top'
         out.append(f'    <a href="{esc(href)}">{txt(label)}</a>')
     return '\n'.join(out)
 
