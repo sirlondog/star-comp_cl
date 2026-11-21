@@ -9,17 +9,17 @@
 .pp__close:hover{border-color:#00d9ff;color:#00d9ff}
 .pp__close:focus-visible{outline:2px solid #00d9ff;outline-offset:2px}
 .pp__logo{position:absolute;top:40px;left:50%;width:45px;height:45px;margin-left:-22.5px}
-.pp__title{position:absolute;top:125px;left:20px;right:20px;margin:0;text-align:center;font-weight:600;font-size:34px;line-height:41px}
-.pp__lead{position:absolute;top:196px;left:20px;right:20px;margin:0;text-align:center;font-weight:500;font-size:18px;line-height:21px;color:#808080}
-.pp__socials{position:absolute;top:320px;left:0;right:0;display:flex;justify-content:center;gap:20px}
+.pp__title{position:absolute;top:105px;left:20px;right:20px;margin:0;text-align:center;font-weight:600;font-size:34px;line-height:41px}
+.pp__lead{position:absolute;top:151px;left:20px;right:20px;margin:0;height:84px;text-align:center;font-weight:500;font-size:18px;line-height:21px;color:#808080}
+.pp__socials{position:absolute;top:255px;left:0;right:0;display:flex;justify-content:center;gap:20px}
 .pp__socials a{display:block;width:40px;height:40px}
 .pp__socials svg{display:block;width:40px;height:40px}
-.pp__phone{position:absolute;top:380px;left:20px;right:20px;text-align:center;font-weight:700;font-size:20px;line-height:24px;color:#F2F4F7;text-decoration:none}
-.pp__mail{position:absolute;top:409px;left:20px;right:20px;margin:0;text-align:center;font-size:18px;line-height:22px}
+.pp__phone{position:absolute;top:315px;left:20px;right:20px;text-align:center;font-weight:700;font-size:20px;line-height:24px;color:#F2F4F7;text-decoration:none}
+.pp__mail{position:absolute;top:344px;left:20px;right:20px;margin:0;text-align:center;font-size:18px;line-height:22px}
 .pp__mail a{color:#00d9ff;text-decoration:underline;text-underline-offset:.2em}
-.pp__address{position:absolute;top:453px;left:20px;right:20px;margin:0;text-align:center;font-size:18px;line-height:22px}
+.pp__address{position:absolute;top:388px;left:20px;right:20px;margin:0;text-align:center;font-size:18px;line-height:22px}
 .pp__address b{font-weight:700}
-.pp__route{position:absolute;top:531px;left:40px;right:40px;display:flex;align-items:center;justify-content:center;height:60px;border-radius:30px;background:#00d9ff;box-shadow:1px 1px 29.3px -10px #00d9ff;color:#000;font-weight:600;font-size:18px;text-decoration:none}
+.pp__route{position:absolute;top:466px;left:40px;right:40px;display:flex;align-items:center;justify-content:center;height:60px;border-radius:30px;background:#00d9ff;box-shadow:1px 1px 29.3px -10px #00d9ff;color:#000;font-weight:600;font-size:18px;text-decoration:none}
 .pp__route:hover{filter:brightness(1.08)}
 .pp-demo{padding-block:40px}
 
