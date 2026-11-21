@@ -36,12 +36,12 @@
   "about": "",
   "specs": {
     "cpu": "AMD RYZEN 9 9950X",
-    "gpu": "NVIDIA RTX 5070 12GB GIGABYTE GAMING",
-    "motherboard": "MSI MAG B850 TOMAHAWK MAX WIFI",
-    "ram": "32GB DDR5 KINGSTON FURY RGB",
-    "storage": "SSD M.2 2000GB KINGSON NV3",
-    "psu": "1000W DEEPCOOL PN1000D 80+ GOLD",
-    "cooling": "DEEPCOOL AG620 V2",
+    "gpu": "NVIDIA RTX 5080 16GB GIGABYTE WINDFORCE",
+    "motherboard": "MSI MPG X870E CARBON WIFI",
+    "ram": "64GB DDR5 ADATA XPG LANCER",
+    "storage": "SSD M.2 SAMSUNG 990 PRO 2000GB",
+    "psu": "DEEPCOOL PN1200M 1200W 80+ GOLD",
+    "cooling": "GEOMETRIC FUTURE ESKIMO PLUS 360",
     "case": "GEOMETRIC FUTURE MODEL 5"
   },
   "seo": {
