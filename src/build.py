@@ -725,7 +725,11 @@ _test_reviews=f'<div class="wrap">\n{REVIEWS_HTML}\n  </div>' if _TEST_REVIEWS_O
 _test_block=(fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='utf-8').read())
     .replace('{{TEST_PHOTO}}',_test_photo)
     .replace('{{GIFTS_SECTION}}',GIFTS_SECTION)
-    .replace('{{REVIEWS_BLOCK}}',_test_reviews))
+    .replace('{{REVIEWS_BLOCK}}',_test_reviews)
+    .replace('{{POPUP_LOGO}}',svg('logo-icon.svg','class="pp__logo" aria-hidden="true"'))
+    .replace('{{POPUP_TG}}',tg_svg)
+    .replace('{{POPUP_MAX}}',max_svg)
+    .replace('{{POPUP_VK}}',vk_svg))
 # Берём только <head> от главной, чтобы сохранить шрифты, метатеги и счётчики.
 _test_head=full[:full.index('<body>')].replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',

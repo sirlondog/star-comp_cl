@@ -74,3 +74,36 @@
   <!-- Отзывы — точная копия блока с основного сайта (REVIEWS_HTML из build.py).
        ВРЕМЕННО СКРЫТО: чтобы вернуть, поставить _TEST_REVIEWS_ON=True в build.py. -->
 {{REVIEWS_BLOCK}}
+
+  <!-- Попап «Свяжитесь с нами» (тест, по макету Figma «Попап_заявка_mobile»). -->
+  <section class="section wrap pp-demo" id="test-popup" aria-label="Попап заявки">
+    <button class="btn pp-open" type="button" id="pp-open" aria-haspopup="dialog" aria-controls="pp">Открыть попап заявки</button>
+  </section>
+
+  <dialog class="pp" id="pp" aria-labelledby="pp-title">
+    <div class="pp__card">
+      <button class="menu__close pp__close" type="button" id="pp-close" aria-label="Закрыть">×</button>
+      {{POPUP_LOGO}}
+      <h2 class="pp__title" id="pp-title">Свяжитесь с нами</h2>
+      <p class="pp__lead">Подберем конфигурацию, ответим на все вопросы, поможем решить проблему, запишем на визит в мастерскую.</p>
+      <div class="pp__socials">
+        <a href="https://t.me/ST_COMP" target="_blank" rel="noopener" aria-label="Написать в Telegram">{{POPUP_TG}}</a>
+        <a href="#" aria-label="Написать в MAX">{{POPUP_MAX}}</a>
+        <a href="https://vk.com/star_comp_spb" target="_blank" rel="noopener" aria-label="Группа ВКонтакте">{{POPUP_VK}}</a>
+      </div>
+      <a class="pp__phone" href="tel:+79939845505">8 (993) 984-55-05</a>
+      <p class="pp__mail">Почта: <a href="mailto:info@star-comp.ru">info@star-comp.ru</a></p>
+      <p class="pp__address"><b>Адрес:</b> Санкт-Петербург, Заневский пр., 65 к5, ТЦ Платформа, 2 этаж<br>Пн-Вс, 11:00–19:00</p>
+      <a class="pp__route" href="https://yandex.ru/maps/-/CXbR7LiO" target="_blank" rel="noopener">Построить маршрут</a>
+    </div>
+  </dialog>
+  <script>
+  (function () {
+    var pp = document.getElementById('pp');
+    document.getElementById('pp-open').addEventListener('click', function () { if (!pp.open) pp.showModal(); });
+    document.getElementById('pp-close').addEventListener('click', function () { pp.close(); });
+    pp.addEventListener('click', function (e) { if (e.target === pp) pp.close(); });
+    // На тестовой странице попап виден сразу — так его сразу видно в рендере.
+    if (!pp.open) pp.showModal();
+  })();
+  </script>
