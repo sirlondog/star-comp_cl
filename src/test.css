@@ -5,13 +5,13 @@
 @keyframes pp-in{from{opacity:0;transform:translateY(12px)}}
 .pp__card{position:relative;box-sizing:border-box;width:min(400px,calc(100vw - 32px));height:631px;max-height:calc(100dvh - 32px);overflow:auto;border:1px solid rgba(0,217,255,.3);border-radius:30px;background:#0a0a0c}
 /* Кнопка закрытия — тот же «×» в круге, что в мобильном меню (.menu__close). */
-.pp__close{position:absolute;top:16px;right:16px;z-index:1;margin-left:0}
+.pp__close{position:absolute;top:20px;right:20px;z-index:1;margin-left:0}
 .pp__close:hover{border-color:#00d9ff;color:#00d9ff}
 .pp__close:focus-visible{outline:2px solid #00d9ff;outline-offset:2px}
 .pp__logo{position:absolute;top:40px;left:50%;width:45px;height:45px;margin-left:-22.5px}
 .pp__title{position:absolute;top:105px;left:20px;right:20px;margin:0;text-align:center;font-weight:600;font-size:34px;line-height:41px}
 .pp__lead{position:absolute;top:151px;left:20px;right:20px;margin:0;height:84px;text-align:center;font-weight:500;font-size:18px;line-height:21px;color:#808080}
-.pp__socials{position:absolute;top:255px;left:0;right:0;display:flex;justify-content:center;gap:20px}
+.pp__socials{position:absolute;top:255px;left:20px;right:20px;display:flex;justify-content:center;gap:20px}
 .pp__socials a{display:block;width:40px;height:40px}
 .pp__socials svg{display:block;width:40px;height:40px}
 .pp__phone{position:absolute;top:315px;left:20px;right:20px;text-align:center;font-weight:700;font-size:20px;line-height:24px;color:#F2F4F7;text-decoration:none}
@@ -19,7 +19,7 @@
 .pp__mail a{color:#00d9ff;text-decoration:underline;text-underline-offset:.2em}
 .pp__address{position:absolute;top:388px;left:20px;right:20px;margin:0;text-align:center;font-size:18px;line-height:22px}
 .pp__address b{font-weight:700}
-.pp__route{position:absolute;top:466px;left:40px;right:40px;display:flex;align-items:center;justify-content:center;height:60px;border-radius:30px;background:#00d9ff;box-shadow:1px 1px 29.3px -10px #00d9ff;color:#000;font-weight:600;font-size:18px;text-decoration:none}
+.pp__route{position:absolute;top:531px;left:20px;right:20px;display:flex;align-items:center;justify-content:center;height:60px;border-radius:30px;background:#00d9ff;box-shadow:1px 1px 29.3px -10px #00d9ff;color:#000;font-weight:600;font-size:18px;text-decoration:none}
 .pp__route:hover{filter:brightness(1.08)}
 .pp-demo{padding-block:40px}
 
