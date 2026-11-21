@@ -1,0 +1,51 @@
+{
+  "name": "№15826",
+  "subtitle": "игровой компьютер на процессоре AMD RYZEN 9 9950X с видеокартой NVIDIA RTX 5080 16GB",
+  "slug": "igrovoj-kompyuter-amd-ryzen-9-9950x-nvidia-rtx-5080-16gb",
+  "price": 530000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/15829/15829_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/15829/15829_2.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/15829/15829_4.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/15829/15829_6.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/15829/15829_3.webp",
+      "alt": "Корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/15829/15829_7.webp",
+      "alt": "Логотип на корпусе"
+    }
+  ],
+  "video": null,
+  "lead": "",
+  "about": "",
+  "specs": {
+    "cpu": "AMD RYZEN 7 7800X3D",
+    "gpu": "NVIDIA RTX 5070 12GB GIGABYTE GAMING",
+    "motherboard": "MSI MAG B850 TOMAHAWK MAX WIFI",
+    "ram": "32GB DDR5 KINGSTON FURY RGB",
+    "storage": "SSD M.2 2000GB KINGSON NV3",
+    "psu": "1000W DEEPCOOL PN1000D 80+ GOLD",
+    "cooling": "DEEPCOOL AG620 V2",
+    "case": "GEOMETRIC FUTURE MODEL 3"
+  },
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
