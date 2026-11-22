@@ -7,28 +7,28 @@
   "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
   "photos": [
     {
-      "image": "/content/photos/15829/15829_1.webp",
+      "image": "/content/photos/13249/13249_1.webp",
       "alt": "Общий вид компьютера"
     },
     {
-      "image": "/content/photos/15829/15829_2.webp",
+      "image": "/content/photos/13249/13249_2.webp",
       "alt": "Система охлаждения компьютера"
     },
     {
-      "image": "/content/photos/15829/15829_4.webp",
+      "image": "/content/photos/13249/13249_4.webp",
       "alt": "Оперативная память"
     },
     {
-      "image": "/content/photos/15829/15829_6.webp",
+      "image": "/content/photos/13249/13249_2.webp",
       "alt": "Видеокарта"
     },
     {
-      "image": "/content/photos/15829/15829_3.webp",
+      "image": "/content/photos/13249/13249_5.webp",
       "alt": "Корпусные вентиляторы"
     },
     {
-      "image": "/content/photos/15829/15829_7.webp",
-      "alt": "Логотип на корпусе"
+      "image": "/content/photos/13249/13249_6.webp",
+      "alt": "Материнская плата"
     }
   ],
   "video": null,
