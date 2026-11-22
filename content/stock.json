@@ -40,7 +40,7 @@
       },
       "price_from": 135000,
       "show_from": false,
-      "discount_enabled": true,
+      "discount_enabled": false,
       "old_price": 150000,
       "discount_percent": 10,
       "discount_until": "01.12.2026",
