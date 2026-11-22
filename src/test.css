@@ -500,9 +500,9 @@
 .sv-grid{display:flex;flex-direction:column;gap:40px}
 .sv{border:1px solid var(--line,#2A2D33);border-radius:24px;background:#0A0A0C;overflow:hidden}
 .sv__block{padding:28px 32px}
-.sv__ey{margin:0 0 10px;color:#00D9FF;font:600 12px/1.2 "Manrope",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.sv__ey{margin:0 0 10px;color:#00D9FF;font:600 12px/1.2 var(--font);letter-spacing:.08em;text-transform:uppercase}
 .sv__ey--pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:rgba(0,217,255,.12);border:1px solid rgba(0,217,255,.25)}
-.sv__h{margin:0;font:600 28px/1.15 "Manrope",sans-serif;letter-spacing:-.02em;color:#F2F4F7}
+.sv__h{margin:0;font:600 28px/1.15 var(--font);color:#F2F4F7}
 .sv__p{margin:10px 0 0;max-width:680px;color:#98A2B3;font-size:16px;line-height:1.5}
 /* 1 */
 .sv1__line{height:1px;margin:0 32px;background:rgba(255,255,255,.12)}
@@ -523,7 +523,7 @@
 /* 7 */
 .sv7__block{display:flex;gap:20px;align-items:flex-start;border-top:1px solid rgba(255,255,255,.08)}
 .sv7__block:first-child{border-top:0}
-.sv7__anchor{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:#151922;color:#00D9FF;font:700 14px/1 "Manrope",sans-serif}
+.sv7__anchor{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:#151922;color:#00D9FF;font:700 14px/1 var(--font)}
 /* 8 */
 .sv8{border:0;background:transparent;display:flex;flex-direction:column;gap:0}
 .sv8__a,.sv8__b{padding:0}
