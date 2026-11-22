@@ -446,7 +446,7 @@ html{scroll-behavior:smooth}
 .cp__close{position:absolute;top:16px;right:16px;z-index:1;margin:0}
 .cp__close:hover{border-color:#00d9ff;color:#00d9ff}
 .cp__top{padding-right:42px}
-.cp__title{margin:0;font:600 32px/1.1 "Manrope",sans-serif;letter-spacing:-.02em}
+.cp__title{margin:0;font:600 32px/1.1 var(--font)}
 .cp__lead{margin:8px 0 0;color:#98A2B3;font-size:15px;line-height:1.45}
 .cp__list{display:flex;flex-direction:column;gap:10px}
 .cp__item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:#131720;border:1px solid rgba(255,255,255,.08);color:#F2F4F7;text-decoration:none}
