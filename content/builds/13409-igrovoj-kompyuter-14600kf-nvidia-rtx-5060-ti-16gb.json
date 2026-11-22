@@ -1,0 +1,55 @@
+{
+  "name": "№13409",
+  "subtitle": "игровой компьютер на процессоре INTEL CORE i5-14600KF с видеокартой NVIDIA RTX 5060 Ti 16GB",
+  "slug": "13409-igrovoj-kompyuter-14600kf-nvidia-rtx-5060-ti-16gb",
+  "price": 179000,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/13401/13401_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/13401/13401_7.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/13401/13401_4.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/13401/13401_5.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/13401/13401_3.webp",
+      "alt": "Корпусные вентиляторы"
+    },
+    {
+      "image": "/content/photos/13401/13401_8.webp",
+      "alt": "Видеокарта другой ракурс"
+    },
+    {
+      "image": "/content/photos/13401/13401_2.webp",
+      "alt": "Логотип на корпусе"
+    }
+  ],
+  "video": null,
+  "lead": "",
+  "about": "",
+  "specs": {
+    "cpu": "INTEL CORE i5-14600KF",
+    "gpu": "NVDIA RTX 5060 Ti 16GB GAMING WHITE",
+    "motherboard": "A520M PRO MSI",
+    "ram": "32GB DDR5 KINGSTON FURY RGB",
+    "storage": "SSD M.2 1000GB KINGSTON NV3",
+    "psu": "1STPLAYER NGDP 750W 80+ GOLD",
+    "cooling": "THERMALRIGHT CORE VISION",
+    "case": "JONSBO D300"
+  },
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
