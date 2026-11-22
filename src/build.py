@@ -970,6 +970,15 @@ def body_html(d):
     </dl>
 {flex_note}
   </section>'''
+    _p_enabled = bool(d.get('discount_enabled'))
+    _p_oldv = d.get('old_price') if _p_enabled else None
+    _p_disc = d.get('discount_percent') if _p_enabled else None
+    if _p_enabled and _p_oldv and not _p_disc:
+        try: _p_disc = round((float(_p_oldv)-float(d['price']))/float(_p_oldv)*100)
+        except Exception: _p_disc = None
+    _p_until = esc(d.get('discount_until') or '01.12.2026')
+    _p_badge = f'<p class="card__badge card__badge--discount product__badge">Скидка {_p_disc}% до {_p_until}</p>' if _p_enabled and _p_disc and _p_oldv else ''
+    _p_old = f'<s class="card__oldprice">{money(int(_p_oldv))}</s>' if _p_enabled and _p_oldv else ''
     return f"""<main>
   <section class="product wrap">
     <div class="product__gallery">
@@ -980,7 +989,8 @@ def body_html(d):
       <h1>{name}{sub}</h1>
       <div class="product__cost">
         <p class="product__label">Стоимость:</p>
-        <p class="product__price">{'от&nbsp;' if d.get('show_from') is not False else ''}{money(d['price'])}</p>
+        {_p_badge}
+        <p class="product__price"><span class="product__price-row"><b class="card__price-now">{'от&nbsp;' if d.get('show_from') is not False else ''}{money(d['price'])}</b>{_p_old}</span></p>
         <button class="card__split product__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
           <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
           <span>Рассрочка от {money((d['price']+2399)//2400*100)}</span>

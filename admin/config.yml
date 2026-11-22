@@ -337,6 +337,33 @@ collections:
         required: false
         default: true
         hint: 'Включено — на странице «от 121 000 ₽» (цена может вырасти). Выключено — просто «121 000 ₽» (фиксированная цена)'
+      - name: discount_enabled
+        label: Включить скидку
+        widget: boolean
+        required: false
+        default: false
+        hint: 'Включите, чтобы показать красную пилюлю со скидкой и зачёркнутую старую цену на странице сборки'
+      - name: old_price
+        label: Старая цена, ₽
+        widget: number
+        value_type: int
+        min: 0
+        required: false
+        hint: 'Старая цена до скидки, показывается зачёркнутой рядом с текущей'
+      - name: discount_percent
+        label: Скидка, %
+        widget: number
+        value_type: int
+        min: 1
+        max: 99
+        required: false
+        hint: 'Процент скидки N для пилюли «Скидка N% до ...»'
+      - name: discount_until
+        label: Дата завершения акции
+        widget: string
+        required: false
+        default: '01.12.2026'
+        hint: 'Дата окончания скидки: «Скидка N% до ДД.ММ.ГГГГ»'
       - name: note
         label: Текст рядом с кнопкой
         widget: text
