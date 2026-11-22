@@ -18,12 +18,12 @@
       },
       "price_from": 121000,
       "show_from": false,
-      "page": "solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb",
-      "extra": false,
+      "discount_enabled": false,
       "old_price": 135000,
       "discount_percent": 10,
       "discount_until": "01.12.2026",
-      "discount_enabled": true
+      "page": "solar-s1-intel-core-i5-12400f-nvidia-rtx-5060-8gb",
+      "extra": false
     },
     {
       "name": "NEXUS S1",
@@ -40,12 +40,12 @@
       },
       "price_from": 135000,
       "show_from": false,
-      "page": "nexus-01-bazovyj-minimum-dlya-vsekh-sovremennyh-igr",
-      "extra": false,
+      "discount_enabled": true,
       "old_price": 150000,
       "discount_percent": 10,
       "discount_until": "01.12.2026",
-      "discount_enabled": true
+      "page": "nexus-01-bazovyj-minimum-dlya-vsekh-sovremennyh-igr",
+      "extra": false
     },
     {
       "name": "CRYO M1",
@@ -61,6 +61,10 @@
       },
       "price_from": 178000,
       "show_from": false,
+      "discount_enabled": false,
+      "old_price": null,
+      "discount_percent": null,
+      "discount_until": "01.12.2026",
       "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
       "extra": false
     },
@@ -79,6 +83,10 @@
       },
       "price_from": 184000,
       "show_from": true,
+      "discount_enabled": false,
+      "old_price": null,
+      "discount_percent": null,
+      "discount_until": "01.12.2026",
       "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
       "extra": false
     },
@@ -96,6 +104,10 @@
       },
       "price_from": 212000,
       "show_from": false,
+      "discount_enabled": false,
+      "old_price": null,
+      "discount_percent": null,
+      "discount_until": "01.12.2026",
       "page": "phantom-f1-amd-ryzen-7-7800x3d-nvidia-rtx-5070-12gb",
       "extra": false
     },
@@ -114,6 +126,10 @@
       },
       "price_from": 218000,
       "show_from": false,
+      "discount_enabled": false,
+      "old_price": null,
+      "discount_percent": null,
+      "discount_until": "01.12.2026",
       "page": "mars-x9-intel-core-i7-14700kf-nvidia-rtx-5070",
       "extra": false
     },
@@ -132,6 +148,10 @@
       },
       "price_from": 264000,
       "show_from": false,
+      "discount_enabled": false,
+      "old_price": null,
+      "discount_percent": null,
+      "discount_until": "01.12.2026",
       "page": "core-01-moshch-v-miniatyure",
       "extra": false
     }
