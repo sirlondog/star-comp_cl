@@ -402,6 +402,24 @@
       "extra": true
     },
     {
+      "name": "№13370",
+      "image": {
+        "path": "/content/photos/13031/13031_1.webp",
+        "x": 51,
+        "y": 78,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с розовой подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 5 9600X",
+        "gpu": "NVIDIA RTX 5060 Ti 16GB"
+      },
+      "price_from": 192000,
+      "show_from": true,
+      "page": "sborka-13370-amd-ryzen-5-9600x-nvidia-rtx-5060-ti",
+      "extra": true
+    },
+    {
       "name": "№13434",
       "image": {
         "path": "/content/photos/13434/13434_1.webp",
