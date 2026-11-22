@@ -317,6 +317,11 @@
   color:#bdbdc2;
   overflow-wrap:anywhere;
 }
+
+.sg__contact-demo{margin-top:16px;padding:20px;border:1px solid var(--line,rgba(242,242,247,.1));border-radius:16px;background:rgba(255,255,255,.02)}
+.sg__contact-sample{margin:0 0 2px;font-size:16px;line-height:1.45;color:var(--fg,#F2F2F7)}
+.sg__contact-demo .cv__label{margin:14px 0 4px}
+.sg__contact-demo .cv__label:first-child{margin-top:0}
 .sg__swatch--bg{background:#0a0a0c}
 .sg__swatch--fg{background:#f2f2f7}
 .sg__swatch--muted{background:#808080}
