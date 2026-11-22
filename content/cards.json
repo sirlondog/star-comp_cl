@@ -436,6 +436,24 @@
       "show_from": true,
       "page": "sborka-12688-amd-ryzen-7-5700x-nvidia-rtx-5060-ti-16gb",
       "extra": true
+    },
+    {
+      "name": "№13245",
+      "image": {
+        "path": "/content/photos/13245/13245_1.webp",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i7-12700KF",
+        "gpu": "NVIDIA RTX 5070 12GB"
+      },
+      "price_from": 164800,
+      "show_from": true,
+      "page": "igrovoj-kompyuter-intel-core-i7-12700kf-nvidia-rtx-5070-12gb",
+      "extra": true
     }
   ]
 }
