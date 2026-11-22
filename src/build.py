@@ -977,7 +977,7 @@ def body_html(d):
     if not _p_enabled:
         # fallback: inherit discount from matching card in stock/cards by slug
         _slug = d.get('slug') or ''
-        for _src in (locals().get('_stock', {}).get('cards', []), locals().get('_cards', [])):
+        for _src in (_STK.get('cards', []) if isinstance(_STK, dict) else [], _cards):
             for _c in _src:
                 if str(_c.get('page') or '') == _slug and _c.get('discount_enabled'):
                     _p_enabled = True
