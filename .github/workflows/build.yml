@@ -43,7 +43,7 @@ jobs:
       # (только content/ — готовый сайт в репозиторий больше не пишется)
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'Сборка: фото приведены к единому именованию'
+          commit_message: 'Сборка: фото приведены к единому именованию [skip ci]'
           file_pattern: 'content/**'
       # на Pages идут: готовый сайт + админка; исходники и .git не публикуются
       - run: |
