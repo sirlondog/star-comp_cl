@@ -146,10 +146,10 @@
         "cpu": "AMD RYZEN 7 7700",
         "gpu": "NVIDIA RTX 5060 Ti 16GB"
       },
-      "price_from": 264000,
+      "price_from": 223000,
       "show_from": false,
-      "discount_enabled": false,
-      "old_price": null,
+      "discount_enabled": true,
+      "old_price": 264000,
       "discount_percent": null,
       "discount_until": "01.12.2026",
       "page": "core-01-moshch-v-miniatyure",
