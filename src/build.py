@@ -973,10 +973,23 @@ def body_html(d):
     _p_enabled = bool(d.get('discount_enabled'))
     _p_oldv = d.get('old_price') if _p_enabled else None
     _p_disc = d.get('discount_percent') if _p_enabled else None
+    _p_until = d.get('discount_until') or '01.12.2026'
+    if not _p_enabled:
+        # fallback: inherit discount from matching card in stock/cards by slug
+        _slug = d.get('slug') or ''
+        for _src in (locals().get('_stock', {}).get('cards', []), locals().get('_cards', [])):
+            for _c in _src:
+                if str(_c.get('page') or '') == _slug and _c.get('discount_enabled'):
+                    _p_enabled = True
+                    _p_oldv = _c.get('old_price')
+                    _p_disc = _c.get('discount_percent')
+                    _p_until = _c.get('discount_until') or _p_until
+                    break
+            if _p_enabled: break
     if _p_enabled and _p_oldv and not _p_disc:
         try: _p_disc = round((float(_p_oldv)-float(d['price']))/float(_p_oldv)*100)
         except Exception: _p_disc = None
-    _p_until = esc(d.get('discount_until') or '01.12.2026')
+    _p_until = esc(_p_until)
     _p_badge = f'<p class="card__badge card__badge--discount product__badge">Скидка {_p_disc}% до {_p_until}</p>' if _p_enabled and _p_disc and _p_oldv else ''
     _p_old = f'<s class="card__oldprice">{money(int(_p_oldv))}</s>' if _p_enabled and _p_oldv else ''
     return f"""<main>
