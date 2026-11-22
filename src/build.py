@@ -528,8 +528,17 @@ def card_html(c,hidden=False):
     # округляем вверх до сотен, чтобы суммы выглядели аккуратно.
     _split=((c['price_from']+2399)//2400)*100
     _cpu=f' data-cpu="{esc(card_cpu(c))}"' if card_cpu(c) else ''
+    _old = c.get('old_price')
+    _disc = c.get('discount_percent')
+    if _old and not _disc:
+        try: _disc = round((float(_old)-float(c['price_from']))/float(_old)*100)
+        except Exception: _disc = None
+    _disc_until = esc(c.get('discount_until') or '01.12.2026')
+    _badge = f'<p class="card__badge card__badge--discount">Скидка {_disc}% до {_disc_until}</p>' if _disc and _old else ''
+    _old_html = f'<s class="card__oldprice">{money(int(_old))}</s>' if _old else ''
     return f'''      <li class="card{hidden_cls}"{hidden_attr}{_cpu}>
         <div class="card__media">
+          {_badge}
           <picture>
             <source type="image/avif" srcset="{srcset(stem,ws,'avif')}" sizes="{CARD_SIZES}">
             <img src="assets/{stem}-{w0}.webp" srcset="{srcset(stem,ws,'webp')}" sizes="{CARD_SIZES}" width="{w0}" height="{h0}" alt="{alt}" loading="lazy" decoding="async">
@@ -542,7 +551,7 @@ def card_html(c,hidden=False):
           </dl>
           <div class="card__foot">
             <div class="card__foot-left">
-              <p class="card__price"><span>Стоимость на момент сборки:</span><b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></p>
+              <p class="card__price"><span>Стоимость на момент сборки:</span><span class="card__price-row">{_old_html}<b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></span></p>
               <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
                 <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
                 <span>Рассрочка от {money(_split)}</span>
