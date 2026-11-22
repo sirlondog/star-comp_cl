@@ -22,7 +22,8 @@
       "extra": false,
       "old_price": 135000,
       "discount_percent": 10,
-      "discount_until": "01.12.2026"
+      "discount_until": "01.12.2026",
+      "discount_enabled": true
     },
     {
       "name": "NEXUS S1",
@@ -43,7 +44,8 @@
       "extra": false,
       "old_price": 150000,
       "discount_percent": 10,
-      "discount_until": "01.12.2026"
+      "discount_until": "01.12.2026",
+      "discount_enabled": true
     },
     {
       "name": "CRYO M1",
