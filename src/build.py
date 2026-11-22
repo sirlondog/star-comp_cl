@@ -615,8 +615,28 @@ _why_photo=(f'      <picture class="why__photo">\n'
             f'        <source type="image/avif" srcset="{srcset(_why_stem,_why_ws,"avif")}" sizes="(min-width:64rem) 23rem, 1px">\n'
             f'        <img src="assets/{_why_stem}-{_why_ws[-1]}.webp" srcset="{srcset(_why_stem,_why_ws,"webp")}" sizes="(min-width:64rem) 23rem, 1px" width="{_why_ws[-1]}" height="{round(_why_ws[-1]*8/5)}" alt="Мастер собирает компьютер в мастерской STAR-COMP" loading="lazy">\n'
             f'      </picture>')
+# popup контактов (вариант 4 без логотипа) — общий для всех страниц
+_soc_links = (S.get('socials') or {})
+_cp_tg = esc(_soc_links.get('telegram') or 'https://t.me/ST_COMP')
+_cp_max = esc(_soc_links.get('max') or '#')
+_cp_vk = esc(_soc_links.get('vk') or 'https://vk.com/star_comp_spb')
+CONTACT_POPUP=f"""<dialog class="contact-popup" id="contact-popup" aria-label="Свяжитесь с нами">
+  <div class="cp">
+    <button class="menu__close cp__close" type="button" aria-label="Закрыть">×</button>
+    <div class="cp__top"><h2 class="cp__title">Свяжитесь с нами</h2><p class="cp__lead">Выберите удобный канал — ответим быстро.</p></div>
+    <div class="cp__list">
+      <a class="cp__item" href="{_cp_tg}" target="_blank" rel="noopener"><span class="cp__icon">{svg('tg-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep)}</span><span class="cp__text"><b>Telegram</b><small>Написать в мессенджер</small></span><span class="cp__arr">→</span></a>
+      <a class="cp__item" href="{_cp_max}" target="_blank" rel="noopener"><span class="cp__icon">{svg('max-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep)}</span><span class="cp__text"><b>MAX</b><small>Написать в MAX</small></span><span class="cp__arr">→</span></a>
+      <a class="cp__item" href="{_cp_vk}" target="_blank" rel="noopener"><span class="cp__icon">{svg('vk-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep)}</span><span class="cp__text"><b>ВКонтакте</b><small>Сообщество STAR-COMP</small></span><span class="cp__arr">→</span></a>
+      <a class="cp__item cp__item--accent" href="tel:{esc(S.get('phone_tel') or '+79939845505')}"><span class="cp__icon cp__icon--text">☎</span><span class="cp__text"><b>{txt(S.get('phone_display') or '8 (993) 984-55-05')}</b><small>Позвонить</small></span><span class="cp__arr">→</span></a>
+      <a class="cp__item" href="mailto:{esc(S.get('email') or 'info@star-comp.ru')}"><span class="cp__icon cp__icon--text">@</span><span class="cp__text"><b>{esc(S.get('email') or 'info@star-comp.ru')}</b><small>Написать на почту</small></span><span class="cp__arr">→</span></a>
+    </div>
+    <div class="cp__footer"><p class="cp__address"><b>Адрес:</b> Заневский пр., 65 к5, 2 этаж<br><span class="cp__muted">Пн-Вс, 11:00-19:00</span></p><a class="cp__mapbtn" href="{esc(S.get('map_url') or 'https://yandex.ru/maps/-/CXbR7LiO')}" target="_blank" rel="noopener">Маршрут</a></div>
+  </div>
+</dialog>"""
 body=(fill_text(_body).replace('{{CPU_FILTERS}}',_cpu_filters).replace('{{WHY_PHOTO}}',_why_photo)
       .replace('{{GIFTS_SECTION}}',GIFTS_SECTION).replace('{{MENU_LINKS}}',menu_links_html(False)))
+
 full=f'''<!doctype html>
 <html lang="ru">
 <head>
@@ -641,8 +661,9 @@ full=f'''<!doctype html>
 <link rel="stylesheet" href="assets/style.css?v={_STAMP}">
 </head>
 <body>
-{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}',_more_hidden()).replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER_MAIN).replace('{{POPUP_TG}}',svg('tg-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep)).replace('{{POPUP_MAX}}',svg('max-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep)).replace('{{POPUP_VK}}',svg('vk-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep))}
+{body.replace('{{CARDS_LIST}}',cards_html(_cards,True)).replace('{{MORE_HIDDEN}}',_more_hidden()).replace('{{STOCK_SECTION}}',stock_section_html()).replace('{{FOOTER}}',FOOTER_MAIN)}
 <script src="assets/page.js?v={_STAMP}"></script>
+{CONTACT_POPUP}
 </body>
 </html>
 '''
@@ -969,25 +990,6 @@ menu=src[src.index('<dialog'):]
 def fill(x): return fill_text(x.replace('{{MENU_LINKS}}',menu_links_html(True)).replace('{{LOGO_ICON}}',logo_icon).replace('{{LOGO_WORD}}',logo_word).replace('{{SOCIALS}}',socials).replace('{{SOCIALS_MENU}}',socials.replace('mx-','mxm-')))
 header_i=fill(header)
 menu_i=fill(menu)
-# popup контактов (вариант 4 без логотипа) — общий для всех страниц
-_soc_links = (S.get('socials') or {})
-_cp_tg = esc(_soc_links.get('telegram') or 'https://t.me/ST_COMP')
-_cp_max = esc(_soc_links.get('max') or '#')
-_cp_vk = esc(_soc_links.get('vk') or 'https://vk.com/star_comp_spb')
-CONTACT_POPUP=f"""<dialog class="contact-popup" id="contact-popup" aria-label="Свяжитесь с нами">
-  <div class="cp">
-    <button class="menu__close cp__close" type="button" aria-label="Закрыть">×</button>
-    <div class="cp__top"><h2 class="cp__title">Свяжитесь с нами</h2><p class="cp__lead">Выберите удобный канал — ответим быстро.</p></div>
-    <div class="cp__list">
-      <a class="cp__item" href="{_cp_tg}" target="_blank" rel="noopener"><span class="cp__icon">{svg('tg-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep)}</span><span class="cp__text"><b>Telegram</b><small>Написать в мессенджер</small></span><span class="cp__arr">→</span></a>
-      <a class="cp__item" href="{_cp_max}" target="_blank" rel="noopener"><span class="cp__icon">{svg('max-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep)}</span><span class="cp__text"><b>MAX</b><small>Написать в MAX</small></span><span class="cp__arr">→</span></a>
-      <a class="cp__item" href="{_cp_vk}" target="_blank" rel="noopener"><span class="cp__icon">{svg('vk-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep)}</span><span class="cp__text"><b>ВКонтакте</b><small>Сообщество STAR-COMP</small></span><span class="cp__arr">→</span></a>
-      <a class="cp__item cp__item--accent" href="tel:{esc(S.get('phone_tel') or '+79939845505')}"><span class="cp__icon cp__icon--text">☎</span><span class="cp__text"><b>{txt(S.get('phone_display') or '8 (993) 984-55-05')}</b><small>Позвонить</small></span><span class="cp__arr">→</span></a>
-      <a class="cp__item" href="mailto:{esc(S.get('email') or 'info@star-comp.ru')}"><span class="cp__icon cp__icon--text">@</span><span class="cp__text"><b>{esc(S.get('email') or 'info@star-comp.ru')}</b><small>Написать на почту</small></span><span class="cp__arr">→</span></a>
-    </div>
-    <div class="cp__footer"><p class="cp__address"><b>Адрес:</b> Заневский пр., 65 к5, 2 этаж<br><span class="cp__muted">Пн-Вс, 11:00-19:00</span></p><a class="cp__mapbtn" href="{esc(S.get('map_url') or 'https://yandex.ru/maps/-/CXbR7LiO')}" target="_blank" rel="noopener">Маршрут</a></div>
-  </div>
-</dialog>"""
 # файлы стилей/скриптов для внутренних страниц пишем заранее (см. блок в конце сборки)
 _inner_js_full=_inner_js+_menu_js_part()
 
