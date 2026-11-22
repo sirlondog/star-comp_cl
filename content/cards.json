@@ -420,6 +420,24 @@
       "extra": true
     },
     {
+      "name": "№13409",
+      "image": {
+        "path": "/content/photos/13434/13434_1.webp",
+        "x": 52,
+        "y": 80,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i5-14600KF",
+        "gpu": "NVIDIA RTX 5060 Ti 16GB"
+      },
+      "price_from": 179000,
+      "show_from": true,
+      "page": "13409-igrovoj-kompyuter-14600kf-nvidia-rtx-5060-ti-16gb",
+      "extra": true
+    },
+    {
       "name": "№13245",
       "image": {
         "path": "/content/photos/13245/13245_1.webp",
