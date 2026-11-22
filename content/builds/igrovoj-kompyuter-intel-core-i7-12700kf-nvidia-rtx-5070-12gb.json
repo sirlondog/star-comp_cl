@@ -1,0 +1,47 @@
+{
+  "name": "№13245",
+  "subtitle": "игровой компьютер на процессоре INTEL CORE i7-12700KF с видеокартой NVIDIA RTX 5070 12GB",
+  "slug": "igrovoj-kompyuter-intel-core-i7-12700kf-nvidia-rtx-5070-12gb",
+  "price": 164800,
+  "show_from": true,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/13245/13245_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/13245/13245_2.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/13245/13245_3.webp",
+      "alt": "Оперативная память"
+    },
+    {
+      "image": "/content/photos/13245/13245_4.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/13245/13245_5.webp",
+      "alt": "Корпусные вентиляторы"
+    }
+  ],
+  "video": null,
+  "lead": "",
+  "about": "",
+  "specs": {
+    "cpu": "INTEL CORE i7-12700KF",
+    "gpu": "NVIDIA RTX 5070 12GB GIGABYTE EAGLE ICE",
+    "motherboard": "MSI B760M-A PRO V2",
+    "ram": "16GB DDR4 3200MHz NETAC SHADOW II WHITE",
+    "storage": "SSD M.2 500GB KINGSTON NV3",
+    "psu": "1STPLAYER NGDP 750W 80+ GOLD",
+    "cooling": "THERMALRIGHT CORE VISION",
+    "case": "THERMALRIGHT M10"
+  },
+  "seo": {
+    "title": "",
+    "description": ""
+  }
+}
