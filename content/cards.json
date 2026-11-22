@@ -112,6 +112,24 @@
       "tag": ""
     },
     {
+      "name": "№13386",
+      "image": {
+        "path": "/content/photos/13386/13386_1.webp",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
+      },
+      "alt": "Компьютер в продуваемом корпусе с желтой подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE ULTRA 9 285K",
+        "gpu": "NVIDIA RTX 5080 16GB"
+      },
+      "price_from": 310000,
+      "show_from": true,
+      "page": "sborka-13386-intel-ultra-9-285k-rtx-5080-16gb",
+      "extra": true
+    },
+    {
       "name": "MARS X8",
       "image": {
         "path": "/content/photos/mars_x8/mars_x8_1.webp",
@@ -146,7 +164,7 @@
       "price_from": 124000,
       "show_from": true,
       "page": "titan-r2-intel-core-i5-12400f-nvidia-rtx-5060-8gb",
-      "extra": false
+      "extra": true
     },
     {
       "name": "ORION X1",
@@ -291,24 +309,6 @@
       "price_from": 119000,
       "show_from": true,
       "page": "sborka-13396-intel-core-i5-14400f-rtx-3080-10gb",
-      "extra": true
-    },
-    {
-      "name": "№13386",
-      "image": {
-        "path": "/content/photos/13386/13386_1.webp",
-        "x": 50,
-        "y": 50,
-        "zoom": 1
-      },
-      "alt": "Компьютер в продуваемом корпусе с желтой подсветкой",
-      "specs": {
-        "cpu": "INTEL CORE ULTRA 9 285K",
-        "gpu": "NVIDIA RTX 5080 16GB"
-      },
-      "price_from": 310000,
-      "show_from": true,
-      "page": "sborka-13386-intel-ultra-9-285k-rtx-5080-16gb",
       "extra": true
     },
     {
