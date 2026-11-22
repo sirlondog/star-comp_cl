@@ -35,13 +35,16 @@
       "alt": "Логотип на корпусе"
     }
   ],
-  "video": null,
+  "video": {
+    "horizontal": "",
+    "vertical": "https://kinescope.io/3FGWAf2aqmyMNzaxuGxXgA"
+  },
   "lead": "",
   "about": "",
   "specs": {
     "cpu": "INTEL CORE i5-14600KF",
     "gpu": "NVDIA RTX 5060 Ti 16GB GAMING WHITE",
-    "motherboard": "A520M PRO MSI",
+    "motherboard": "MSI B760M PROJECT ZERO WIFI",
     "ram": "32GB DDR5 KINGSTON FURY RGB",
     "storage": "SSD M.2 1000GB KINGSTON NV3",
     "psu": "1STPLAYER NGDP 750W 80+ GOLD",
