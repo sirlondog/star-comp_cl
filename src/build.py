@@ -551,7 +551,7 @@ def card_html(c,hidden=False):
           </dl>
           <div class="card__foot">
             <div class="card__foot-left">
-              <p class="card__price"><span>Стоимость на момент сборки:</span><span class="card__price-row">{_old_html}<b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></span></p>
+              <p class="card__price"><span>Стоимость на момент сборки:</span><span class="card__price-row"><b class="card__price-now">{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b>{_old_html}</span></p>
               <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
                 <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
                 <span>Рассрочка от {money(_split)}</span>
