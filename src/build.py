@@ -747,6 +747,7 @@ _test_block=(fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='
     .replace('{{TEST_PHOTO}}',_test_photo)
     .replace('{{GIFTS_SECTION}}',GIFTS_SECTION)
     .replace('{{REVIEWS_BLOCK}}',_test_reviews)
+    .replace('{{STOCK_SECTION}}',stock_section_html())
     .replace('{{POPUP_LOGO}}',svg('logo-icon.svg','class="pp__logo" aria-hidden="true"'))
     .replace('{{POPUP_TG}}',svg('tg-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep))
     .replace('{{POPUP_MAX}}',svg('max-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep))
