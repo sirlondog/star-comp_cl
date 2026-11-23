@@ -720,13 +720,15 @@ open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(inject_code(ful
 # (title, description, canonical) и заголовок H1, чтобы страницы не конкурировали
 # в поиске друг с другом и с главной. Все SEO-тексты — в этом блоке.
 _SEO_SLUGS=[]
-def seo_clone(slug,title,desc,h1):
+def seo_clone(slug,title,desc,h1,keywords=''):
     _SEO_SLUGS.append(slug)
+    kw=esc((keywords or '').strip())
+    kw_tag=f'\n<meta name="keywords" content="{kw}">' if kw else ''
     return full.replace(
         '<title>STAR-COMP - сборка компьютеров на заказ</title>',
         f'<title>{title}</title>').replace(
         '<meta name="description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">',
-        f'<meta name="description" content="{desc}">').replace(
+        f'<meta name="description" content="{desc}">{kw_tag}').replace(
         '<link rel="canonical" href="https://star-comp.ru">',
         f'<link rel="canonical" href="https://star-comp.ru/{slug}">').replace(
         '<meta property="og:url" content="https://star-comp.ru">',
@@ -738,8 +740,8 @@ def seo_clone(slug,title,desc,h1):
         '<h1>'+_title_html()+'</h1>',
         f'<h1>{h1}</h1>')
 
-def write_seo_clone(slug,title,desc,h1):
-    html=seo_clone(slug,title,desc,h1)
+def write_seo_clone(slug,title,desc,h1,keywords=''):
+    html=seo_clone(slug,title,desc,h1,keywords)
     open(os.path.join(ROOT,slug+'.html'),'w',encoding='utf-8').write(inject_code(html))
     print('SEO-страница',slug,len(html))
 
@@ -747,7 +749,7 @@ def write_seo_clone(slug,title,desc,h1):
 _KUPIT_TITLE='Купить компьютер в Санкт-Петербурге — сборка на заказ с гарантией | STAR-COMP'
 _KUPIT_DESC='Соберём компьютер под ваши задачи в СПб: гарантия и запас мощности на 5 лет, доставка и настройка дома, оплата после проверки. Телефон: 8 (993) 984-55-05.'
 _KUPIT_H1='Купить компьютер с гарантией и запасом на 5 лет'
-write_seo_clone('kupit-kompyuter-spb',_KUPIT_TITLE,_KUPIT_DESC,_KUPIT_H1)
+write_seo_clone('kupit-kompyuter-spb',_KUPIT_TITLE,_KUPIT_DESC,_KUPIT_H1,_KUPIT_KEYWORDS)
 
 # «Сборка компьютеров на заказ» — адрес, который владелец продвигал ссылкой на Тильде.
 # Title и H1 — дословно с тильдовской страницы (из индекса Яндекса), чтобы не сбить позицию.
@@ -755,7 +757,7 @@ write_seo_clone('kupit-kompyuter-spb',_KUPIT_TITLE,_KUPIT_DESC,_KUPIT_H1)
 _SBORKA_TITLE='STARCOMP - сборка компьютеров на заказ'
 _SBORKA_DESC='Подбор комплектующих, покупка, сборка, кабель менеджмент, установка лицензионного Windows 10/11 PRO, установка драйверов, обновление BIOS, помощь с подключением и настройке.'
 _SBORKA_H1='СБОРКА КОМПЬЮТЕРОВ НА ЗАКАЗ С ГАРАНТИЕЙ ДО 5 ЛЕТ'
-write_seo_clone('sborka-kompyuterov-na-zakaz',_SBORKA_TITLE,_SBORKA_DESC,_SBORKA_H1)
+write_seo_clone('sborka-kompyuterov-na-zakaz',_SBORKA_TITLE,_SBORKA_DESC,_SBORKA_H1,_SBORKA_KEYWORDS)
 
 # ---------- тестовая страница blocktest: блок «7 причин заказать у нас» ----------
 # Шапка, меню и подвал — от главной; вместо содержимого главной — один тестовый блок.
@@ -1082,6 +1084,8 @@ def page_html(d):
     name=d['name'].strip()
     title=esc(seo.get('title') or (f"{name} — {d['subtitle']}" if d.get('subtitle') else name))
     desc=esc(seo.get('description') or d.get('lead') or d.get('subtitle') or name)
+    keywords=esc((seo.get('keywords') or '').strip())
+    keywords_tag=f'\n<meta name="keywords" content="{keywords}">' if keywords else ''
     url=f'https://star-comp.ru/{slug}'
     photos=d.get('photos') or []
     og=og_image(photos[0]['image']) if photos else 'assets/og-home.jpg'
@@ -1092,7 +1096,7 @@ def page_html(d):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
-<meta name="description" content="{desc}">
+<meta name="description" content="{desc}">{keywords_tag}
 <link rel="canonical" href="{url}">
 <meta property="og:url" content="{url}">
 <meta property="og:title" content="{title}">
