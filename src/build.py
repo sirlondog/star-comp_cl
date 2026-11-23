@@ -1138,13 +1138,35 @@ for f in sorted(glob.glob(os.path.join(ROOT,'content','builds','*.json'))):
     print('сборка',d['slug'],len(out))
 
 # sitemap.xml: главная + SEO-клоны + все страницы сборок. Адреса без .html — ровно как в canonical.
-_urls=['https://star-comp.ru']+['https://star-comp.ru/'+s for s in _SEO_SLUGS]+['https://star-comp.ru/'+s for s in sorted(_slugs)]
+from datetime import date as _date
+_today=_date.today().isoformat()
+def _lastmod(*paths):
+    dates=[]
+    for p in paths:
+        try:
+            dates.append(_date.fromtimestamp(os.path.getmtime(p)).isoformat())
+        except OSError:
+            pass
+    return max(dates) if dates else _today
+
+_common=[os.path.join(ROOT,'src','build.py'),os.path.join(ROOT,'src','page.body.html'),
+         os.path.join(ROOT,'src','page.css'),os.path.join(ROOT,'src','page.js'),
+         os.path.join(ROOT,'content','settings.json'),os.path.join(ROOT,'content','home.json'),
+         os.path.join(ROOT,'content','cards.json'),os.path.join(ROOT,'content','stock.json')]
+_home_last=_lastmod(*_common, os.path.join(ROOT,'content','faq.json'), os.path.join(ROOT,'content','perks.json'),
+                    os.path.join(ROOT,'src','gifts.body.html'))
+_url_dates=[('https://star-comp.ru', _home_last)]
+for s in _SEO_SLUGS:
+    _url_dates.append((f'https://star-comp.ru/{s}', _home_last))
+for s in sorted(_slugs):
+    _url_dates.append((f'https://star-comp.ru/{s}', _lastmod(os.path.join(ROOT,'content','builds',f'{s}.json'),
+                                                             os.path.join(ROOT,'src','inner.css'), os.path.join(ROOT,'src','inner.js'))))
 open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write(
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    +'\n'.join(f'  <url><loc>{u}</loc></url>' for u in _urls)
+    +'\n'.join(f'  <url><loc>{u}</loc><lastmod>{d}</lastmod></url>' for u,d in _url_dates)
     +'\n</urlset>\n')
-print('sitemap:',len(_urls),'адресов')
+print('sitemap:',len(_url_dates),'адресов')
 
 # robots.txt: закрываем служебные папки, указываем карту сайта
 open(os.path.join(ROOT,'robots.txt'),'w',encoding='utf-8').write(
