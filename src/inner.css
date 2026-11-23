@@ -191,6 +191,7 @@ html{overflow-x:clip}
 .product__info{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:34px var(--gutter) 0;text-align:center}
 .product__info h1{margin-top:0;margin-inline:0;max-width:none;font-size:var(--fs-h)}
 .product__cost{width:auto;margin-inline:0;align-items:center;margin-top:5px}
+.product__badge{margin:20px 0 .625rem}
 /* зазор галерея/инфо → «О сборке»: 40px на мобильном (низ продукта 0 + верх блока 40px) */
 .section--about{padding-inline:0;padding-top:2.5rem}
 .about{gap:.875rem}
