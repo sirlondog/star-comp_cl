@@ -642,6 +642,28 @@
       "discount_until": "01.12.2026",
       "page": "sborka-12688-amd-ryzen-7-5700x-nvidia-rtx-5060-ti-16gb",
       "extra": true
+    },
+    {
+      "name": "№13196",
+      "image": {
+        "path": "/content/photos/13196/13196_1.webp",
+        "x": 51,
+        "y": 75,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 7 7700",
+        "gpu": "NVIDIA RTX 5070 12GB"
+      },
+      "price_from": 179000,
+      "show_from": true,
+      "discount_enabled": false,
+      "old_price": null,
+      "discount_percent": null,
+      "discount_until": "01.12.2026",
+      "page": "sborka-13196-amd-ryzen-7-7700-nvidia-rtx-5070-12gb",
+      "extra": true
     }
   ]
 }
