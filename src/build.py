@@ -1168,7 +1168,7 @@ print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js
 _run_enc_queue()
 # Сюда попадают дубли после переименования фото и нарезки, потерявшие актуальность.
 _STATIC={'favicon.svg','icon-192.png','og-home.jpg','gilroy-regular.woff2','gilroy-semibold.woff2',
-         'manrope-var-cyrillic.woff2','manrope-var-latin.woff2',
+
          'split-logo.svg','style.css','page.js','inner.css','inner.js','blocktest.css','test.css',
          # готовые файлы, которые сборщик не создаёт: фото первого экрана и аватарки отзывов
          'hero-600.avif','hero-800.avif','hero-1000.avif','hero-600.webp','hero-800.webp','hero-1000.webp'}
