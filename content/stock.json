@@ -59,10 +59,10 @@
         "cpu": "AMD RYZEN 5 7500F",
         "gpu": "NVIDIA RTX 5060 Ti 8GB"
       },
-      "price_from": 178000,
+      "price_from": 159600,
       "show_from": false,
-      "discount_enabled": false,
-      "old_price": null,
+      "discount_enabled": true,
+      "old_price": 178000,
       "discount_percent": null,
       "discount_until": "01.12.2026",
       "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
