@@ -124,10 +124,10 @@
         "cpu": "INTEL CORE i5-14600KF",
         "gpu": "NVIDIA RTX 5070 12GB"
       },
-      "price_from": 218000,
+      "price_from": 213700,
       "show_from": false,
-      "discount_enabled": false,
-      "old_price": null,
+      "discount_enabled": true,
+      "old_price": 245400,
       "discount_percent": null,
       "discount_until": "01.12.2026",
       "page": "mars-x9-intel-core-i7-14700kf-nvidia-rtx-5070",
