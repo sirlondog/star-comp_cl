@@ -366,7 +366,7 @@ FOOTER=f'''<footer class="tfooter">
         <div class="tf-map">{_tf_map}</div>
         <div class="tf-details">
           <p class="tf-label">Адрес:</p>
-          <p class="tf-value">{txt(S.get('address_full') or 'г. Санкт-Петербург, Заневский пр. 65 к5, 2 этаж.')}
+          <p class="tf-value">{txt(S.get('address_full') or 'г. Санкт-Петербург, Заневский пр. 65 к5, 2 этаж.')}</p>
           <p class="tf-label">Телефон:</p>
           <p class="tf-value"><a href="tel:{esc(S.get('phone_tel') or '+79939845505')}">{txt(S.get('phone_display') or '8 (993) 984-55-05')}</a></p>
           <p class="tf-label">График работы:</p>
