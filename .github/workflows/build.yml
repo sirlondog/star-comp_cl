@@ -41,10 +41,26 @@ jobs:
       - run: python src/build.py
       # переименованные фото и обновлённые ссылки коммитим обратно в репозиторий
       # (только content/ — готовый сайт в репозиторий больше не пишется)
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'Сборка: фото приведены к единому именованию [skip ci]'
-          file_pattern: 'content/**'
+      # Переименования фото коммитим вручную, с ребейзом и повторами: пока идёт
+      # сборка (5-10 минут), владелец может успеть загрузить новые фото из админки,
+      # и обычный push падает (non-fast-forward) — это и были ошибки в Actions.
+      - name: Коммит переименований фото
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content
+          if git diff --cached --quiet; then
+            echo "Переименований нет - коммит не нужен"
+          else
+            git commit -m "Сборка: фото приведены к единому именованию [skip ci]"
+            ok=0
+            for i in 1 2 3; do
+              if git pull --rebase origin main && git push origin main; then ok=1; break; fi
+              echo "Пуш не прошёл (попытка $i), жду и пробую ещё раз после ребейза"
+              sleep 15
+            done
+            [ "$ok" = 1 ] || { echo "Не удалось запушить переименования после 3 попыток"; exit 1; }
+          fi
       # на Pages идут: готовый сайт + админка; исходники и .git не публикуются
       - run: |
           mkdir -p _site
