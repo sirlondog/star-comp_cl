@@ -1013,8 +1013,8 @@ def body_html(d):
     <div class="product__info">
       <h1>{name}{sub}</h1>
       <div class="product__cost">
-        <p class="product__label">Стоимость:</p>
         {_p_badge}
+        <p class="product__label">Стоимость:</p>
         <p class="product__price"><span class="product__price-row"><b class="card__price-now">{'от&nbsp;' if _p_show_from else ''}{money(_p_price)}</b>{_p_old}</span></p>
         <button class="card__split product__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
           <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
