@@ -682,18 +682,22 @@ CONTACT_POPUP=f"""<dialog class="contact-popup" id="contact-popup" aria-label="�
 body=(fill_text(_body).replace('{{CPU_FILTERS}}',_cpu_filters).replace('{{WHY_PHOTO}}',_why_photo)
       .replace('{{GIFTS_SECTION}}',GIFTS_SECTION).replace('{{MENU_LINKS}}',menu_links_html(False)))
 
+_HOME_TITLE='STAR-COMP - сборка компьютеров на заказ'
+_HOME_DESC='Игровые и рабочие компьютеры на заказ в СПб с 2009 года: 20+ готовых ПК в наличии, гарантия до 5 лет, рассрочка 0/24. Шоурум у м. Ладожская, доставка 0 ₽.'
+_HOME_KEYWORDS='компьютеры на заказ СПб, игровые компьютеры СПб, сборка ПК на заказ, готовые игровые ПК, STAR-COMP, Стар Комп'
 full=f'''<!doctype html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>STAR-COMP - сборка компьютеров на заказ</title>
-<meta name="description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">
+<title>{_HOME_TITLE}</title>
+<meta name="description" content="{_HOME_DESC}">
+<meta name="keywords" content="{_HOME_KEYWORDS}">
 <link rel="canonical" href="https://star-comp.ru">
 <meta name="yandex-verification" content="968cf8204a45d4a7">
 <meta property="og:url" content="https://star-comp.ru">
-<meta property="og:title" content="STAR-COMP - сборка компьютеров на заказ">
-<meta property="og:description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">
+<meta property="og:title" content="{_HOME_TITLE}">
+<meta property="og:description" content="{_HOME_DESC}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://star-comp.ru/assets/og-home.jpg">
@@ -725,17 +729,19 @@ def seo_clone(slug,title,desc,h1,keywords=''):
     kw=esc((keywords or '').strip())
     kw_tag=f'\n<meta name="keywords" content="{kw}">' if kw else ''
     return full.replace(
-        '<title>STAR-COMP - сборка компьютеров на заказ</title>',
+        f'<title>{_HOME_TITLE}</title>',
         f'<title>{title}</title>').replace(
-        '<meta name="description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">',
+        f'<meta name="description" content="{_HOME_DESC}">',
         f'<meta name="description" content="{desc}">{kw_tag}').replace(
+        f'<meta name="keywords" content="{_HOME_KEYWORDS}">',
+        '').replace(
         '<link rel="canonical" href="https://star-comp.ru">',
         f'<link rel="canonical" href="https://star-comp.ru/{slug}">').replace(
         '<meta property="og:url" content="https://star-comp.ru">',
         f'<meta property="og:url" content="https://star-comp.ru/{slug}">').replace(
-        '<meta property="og:title" content="STAR-COMP - сборка компьютеров на заказ">',
+        f'<meta property="og:title" content="{_HOME_TITLE}">',
         f'<meta property="og:title" content="{title}">').replace(
-        '<meta property="og:description" content="Продажа и сборка компьютеров на заказ в Санкт-Петербурге.">',
+        f'<meta property="og:description" content="{_HOME_DESC}">',
         f'<meta property="og:description" content="{desc}">').replace(
         '<h1>'+_title_html()+'</h1>',
         f'<h1>{h1}</h1>')
