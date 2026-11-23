@@ -64,11 +64,11 @@ jobs:
       # на Pages идут: готовый сайт + админка; исходники и .git не публикуются
       - run: |
           mkdir -p _site
-          cp -r *.html robots.txt sitemap.xml assets admin .preview .nojekyll _site/
+          cp -r *.html robots.txt sitemap.xml favicon.ico assets admin .preview .nojekyll _site/
       # на reg.ru идёт только сайт: без админки и папки превью
       - run: |
           mkdir -p _reg
-          cp -r *.html robots.txt sitemap.xml .htaccess assets _reg/
+          cp -r *.html robots.txt sitemap.xml favicon.ico .htaccess assets _reg/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
