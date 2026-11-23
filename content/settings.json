@@ -8,6 +8,11 @@
   "email": "info@star-comp.ru",
   "address": "Заневский 65к5, ст. м. Ладожская",
   "address_full": "Санкт-Петербург, Заневский пр., 65к5, ТЦ Платформа, 2 этаж",
+  "street_address": "Заневский пр., 65 к5, 2 этаж",
+  "postal_code": "195112",
+  "geo_lat": 59.932551,
+  "geo_lon": 30.434457,
+  "price_range": "90000-530000 RUB",
   "opening_hours_schema": "Mo-Su 11:00-19:00",
   "socials": {
     "max": "https://max.ru/u/f9LHodD0cOKrboX3imjyg3cBiLspEiRa0Yz4Pb8i89Zd2AoqQNLb-lqSCpU",
