@@ -273,7 +273,7 @@ REVIEWS_HTML=f'''  <section class="tf-section tf-reviews" id="otzivy" aria-label
             </div>
             <div class="tf-ya-strip">Рейтинг организации в Яндексе</div>
           </div>
-          <a class="tf-ya-btn" href="https://yandex.ru/maps/org/starcomp_igrovyye_kompyutery/141663119214/reviews/" target="_blank" rel="noopener">Смотреть на Яндекс</a>
+          <a class="tf-ya-btn" href="https://yandex.ru/maps/org/star_comp/101485963947/reviews/" target="_blank" rel="noopener">Смотреть на Яндекс</a>
           <span class="tf-ya-badge status-pill status-pill--stock">{_YA_REVIEWS}+ отзывов</span>
         </div>
     </div>
