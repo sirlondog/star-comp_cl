@@ -1,0 +1,43 @@
+{
+  "name": "№13188",
+  "subtitle": "рабочий компьютер на процессоре INTEL CORE i7-13700KF с видеокартой NVIDIA RTX 5060 Ti 16GB",
+  "slug": "sborka-13188-intel-core-i7-13700kf-nvidia-rtx-5060-ti-16gb",
+  "price": 173000,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/13188/13188_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/13188/13188_4.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/13188/13188_3.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/13188/13188_2.webp",
+      "alt": "Оперативная память"
+    }
+  ],
+  "video": null,
+  "lead": "",
+  "about": "",
+  "specs": {
+    "cpu": "INTEL CORE i7-13700KF",
+    "gpu": "NVIDIA RTX 5060 Ti 16GB GIGABYTE AORUS",
+    "motherboard": "ASUS TUF GAMING Z790-PLUS WIFI",
+    "ram": "64GB DDR5 ADATA XPG LANCER",
+    "storage": "SSD M.2 1000GB WD BLACK SN770",
+    "psu": "1ST PLAYER NGDP 1000W 80+ GOLD",
+    "cooling": "ASUS TUF GAMING LC II 360 ARGB",
+    "case": "LIAN LI LANCOOL III"
+  },
+  "seo": {
+    "title": "",
+    "description": ""
+  },
+  "show_from": true
+}
