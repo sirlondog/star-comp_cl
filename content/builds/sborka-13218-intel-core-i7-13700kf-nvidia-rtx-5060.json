@@ -1,0 +1,47 @@
+{
+  "name": "№13218",
+  "subtitle": "игровой компьютер на процессоре INTEL CORE i7-13700KF с видеокартой NVIDIA RTX 5060 8GB",
+  "slug": "sborka-13218-intel-core-i7-13700kf-nvidia-rtx-5060",
+  "price": 143800,
+  "note": "Это реальная сборка, выполненная нашей командой. Можем повторить дизайн или подобрать другую конфигурацию, стоимость указана на момент заказа компьютера.",
+  "photos": [
+    {
+      "image": "/content/photos/13218/13218_1.webp",
+      "alt": "Общий вид компьютера"
+    },
+    {
+      "image": "/content/photos/13218/13218_2.webp",
+      "alt": "Система охлаждения компьютера"
+    },
+    {
+      "image": "/content/photos/13218/13218_5.webp",
+      "alt": "Видеокарта"
+    },
+    {
+      "image": "/content/photos/13218/13218_4.webp",
+      "alt": "Логотип корпуса"
+    },
+    {
+      "image": "/content/photos/13218/13218_3.webp",
+      "alt": "Материнская плата"
+    }
+  ],
+  "video": null,
+  "lead": "",
+  "about": "",
+  "specs": {
+    "cpu": "INTEL CORE i7-13700KF",
+    "gpu": "NVIDIA RTX 5060 8GB MSI GAMING",
+    "motherboard": "MSI MORTAR B760M WIFI",
+    "ram": "32GB DDR5 KINGSTON FURY RGB",
+    "storage": "SSD M.2 2000GB KINGSON NV3",
+    "psu": "DEEPCOOL 750W SFX 80+ PLATINUM",
+    "cooling": "DEEPCOOL LE360 V2",
+    "case": "THERMALRIGHT M10"
+  },
+  "seo": {
+    "title": "",
+    "description": ""
+  },
+  "show_from": true
+}
