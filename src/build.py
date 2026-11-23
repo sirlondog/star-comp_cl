@@ -103,6 +103,36 @@ if _hw_dupes:
     print('  Оставьте один файл, лишние удалите (в админке или на GitHub).')
 from PIL import Image,ImageOps
 
+# ---------- очередь кодирования фото ----------
+# Кодирование AVIF медленное (~10-40 сек на крупный кадр). Все кадры нарезки
+# ставятся в очередь, а кодируются пулом потоков в конце сборки — быстрее в ~4 раза.
+import concurrent.futures as _fut
+_enc_jobs=[]
+def _enc(fn,*a):
+    _enc_jobs.append((fn,a))
+def _encode_width(path,base,w,ratio):
+    """Кадр `w` по центру исходника: WebP 95 + AVIF 80."""
+    im=ImageOps.exif_transpose(Image.open(path)).convert('RGB')
+    t=ImageOps.fit(im,(w,round(w/ratio)),Image.LANCZOS)
+    t.save(_asset_path(base,f'-{w}.webp'),quality=95,method=6)
+    t.save(_asset_path(base,f'-{w}.avif'),quality=80)
+def _encode_crop(crop,base,w,ratio):
+    """Кадр `w` из уже вырезанной области (по точке фокуса)."""
+    t=crop.resize((w,round(w/ratio)),Image.LANCZOS)
+    t.save(_asset_path(base,f'-{w}.webp'),quality=95,method=6)
+    t.save(_asset_path(base,f'-{w}.avif'),quality=80)
+def _run_enc_queue():
+    """Кодирует всё, что накопилось в очереди, пулом потоков."""
+    if not _enc_jobs:
+        return
+    n=len(_enc_jobs)
+    t0=time.time()
+    with _fut.ThreadPoolExecutor(max_workers=min(8,n)) as pool:
+        futures=[pool.submit(fn,*a) for fn,a in _enc_jobs]
+        for f in futures: f.result()
+    _enc_jobs.clear()
+    print('нарезка фото:',n,'кадров за',round(time.time()-t0,1),'сек')
+
 def esc(x): return html.escape(str(x or '').strip(),quote=True)
 def typo(x):
     """Неразрывные пробелы после коротких предлогов и перед знаком рубля — чтобы строки не рвались некрасиво."""
@@ -154,12 +184,8 @@ def derive(src,widths,ratio):
     W=min(W,int(H*ratio))  # ширина после обрезки
     ws=[w for w in widths if w<=W] or [widths[0]]
     todo=[w for w in ws if not all(os.path.exists(os.path.join(ROOT,'assets',base.replace('/',os.sep)+f'-{w}.{e}')) for e in ('avif','webp'))]
-    if todo:
-        im=ImageOps.exif_transpose(Image.open(path)).convert('RGB')
-        for w in todo:
-            t=ImageOps.fit(im,(w,round(w/ratio)),Image.LANCZOS)
-            t.save(_asset_path(base,f'-{w}.webp'),quality=95,method=6)
-            t.save(_asset_path(base,f'-{w}.avif'),quality=80)
+    for w in todo:
+        _enc(_encode_width,path,base,w,ratio)
     return base,ws
 
 def focal_derive(src,widths,ratio,focal,zoom=1):
@@ -182,9 +208,7 @@ def focal_derive(src,widths,ratio,focal,zoom=1):
     ws=[w for w in widths if w<=cw] or [widths[0]]
     crop=ImageOps.exif_transpose(Image.open(path)).convert('RGB').crop((left,top,left+cw,top+ch))
     for w in ws:
-        t=crop.resize((w,round(w/ratio)),Image.LANCZOS)
-        t.save(_asset_path(base,f'-{w}.webp'),quality=95,method=6)
-        t.save(_asset_path(base,f'-{w}.avif'),quality=80)
+        _enc(_encode_crop,crop,base,w,ratio)
     return base,ws
 
 def card_image(c):
@@ -1135,6 +1159,8 @@ open(os.path.join(ROOT,'assets','test.css'),'w',encoding='utf-8').write(open('te
 print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js, test.css (метка',_STAMP+')')
 
 # ---------- чистка assets: удаляем файлы, на которые не ссылается ни одна страница ----------
+# Сначала дописываем отложенную нарезку фото (пул потоков) — чистка видит готовые файлы.
+_run_enc_queue()
 # Сюда попадают дубли после переименования фото и нарезки, потерявшие актуальность.
 _STATIC={'favicon.svg','icon-192.png','og-home.jpg','gilroy-regular.woff2','gilroy-semibold.woff2',
          'manrope-var-cyrillic.woff2','manrope-var-latin.woff2',
