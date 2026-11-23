@@ -82,7 +82,7 @@
         "gpu": "NVIDIA RTX 5060 Ti 8GB"
       },
       "price_from": 184000,
-      "show_from": true,
+      "show_from": false,
       "discount_enabled": false,
       "old_price": null,
       "discount_percent": null,
