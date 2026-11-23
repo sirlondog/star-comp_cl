@@ -468,28 +468,6 @@
       "extra": true
     },
     {
-      "name": "№13031",
-      "image": {
-        "path": "/content/photos/13031/13031_1.webp",
-        "x": 51,
-        "y": 78,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
-      "specs": {
-        "cpu": "INTEL CORE i5-13600KF",
-        "gpu": "NVIDIA RTX 5060 Ti 8GB"
-      },
-      "price_from": 147000,
-      "show_from": true,
-      "discount_enabled": false,
-      "old_price": null,
-      "discount_percent": null,
-      "discount_until": "01.12.2026",
-      "page": "sborka-13031-intel-core-i5-13600kf-nvidia-rtx-5060-ti",
-      "extra": true
-    },
-    {
       "name": "№13370",
       "image": {
         "path": "/content/photos/13370/13370_1.webp",
@@ -509,6 +487,28 @@
       "discount_percent": null,
       "discount_until": "01.12.2026",
       "page": "sborka-13370-amd-ryzen-5-9600x-nvidia-rtx-5060-ti",
+      "extra": true
+    },
+    {
+      "name": "№13196",
+      "image": {
+        "path": "/content/photos/13196/13196_1.webp",
+        "x": 51,
+        "y": 75,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 7 7700",
+        "gpu": "NVIDIA RTX 5070 12GB"
+      },
+      "price_from": 179000,
+      "show_from": true,
+      "discount_enabled": false,
+      "old_price": null,
+      "discount_percent": null,
+      "discount_until": "01.12.2026",
+      "page": "sborka-13196-amd-ryzen-7-7700-nvidia-rtx-5070-12gb",
       "extra": true
     },
     {
@@ -600,6 +600,28 @@
       "extra": true
     },
     {
+      "name": "№13031",
+      "image": {
+        "path": "/content/photos/13031/13031_1.webp",
+        "x": 51,
+        "y": 78,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с синей подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i5-13600KF",
+        "gpu": "NVIDIA RTX 5060 Ti 8GB"
+      },
+      "price_from": 147000,
+      "show_from": true,
+      "discount_enabled": false,
+      "old_price": null,
+      "discount_percent": null,
+      "discount_until": "01.12.2026",
+      "page": "sborka-13031-intel-core-i5-13600kf-nvidia-rtx-5060-ti",
+      "extra": true
+    },
+    {
       "name": "№12879",
       "image": {
         "path": "/content/photos/12879/12879_1.webp",
@@ -619,28 +641,6 @@
       "discount_percent": null,
       "discount_until": "01.12.2026",
       "page": "sborka-12688-amd-ryzen-7-5700x-nvidia-rtx-5060-ti-16gb",
-      "extra": true
-    },
-    {
-      "name": "№13196",
-      "image": {
-        "path": "/content/photos/13196/13196_1.webp",
-        "x": 51,
-        "y": 75,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с фиолетовой подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 7 7700",
-        "gpu": "NVIDIA RTX 5070 12GB"
-      },
-      "price_from": 179000,
-      "show_from": true,
-      "discount_enabled": false,
-      "old_price": null,
-      "discount_percent": null,
-      "discount_until": "01.12.2026",
-      "page": "sborka-13196-amd-ryzen-7-7700-nvidia-rtx-5070-12gb",
       "extra": true
     }
   ]
