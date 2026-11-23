@@ -236,8 +236,7 @@ socials='\n'.join(f'<a class="social" href="{esc(_soc.get(k,""))}" target="_blan
                   for k,ic,label in _social_defs if _soc.get(k))
 
 # ---------- футер: блок «Отзывы» ----------
-# Рейтинг организации в Яндексе (виден в блоке отзывов на всех страницах —
-# эти же цифры уходят в разметку aggregateRating у страниц сборок)
+# Рейтинг организации в Яндексе (виден в блоке отзывов; та же оценка уходит в разметку магазина)
 _YA_SCORE='5.0'    # оценка по 5-балльной шкале
 _YA_REVIEWS=120    # число отзывов (в блоке показывается как «120+»)
 _reviews=[
@@ -642,7 +641,7 @@ GIFTS_SECTION=(fill_text(open(os.path.join(ROOT,'src','gifts.body.html'),encodin
     .replace('{{GIFT_MOUSE}}',_gift_mouse))
 
 # ---------- главная страница ----------
-ld=json.dumps({"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":esc(S.get('phone_schema') or '+7-993-984-55-05'),"email":esc(S.get('email') or 'info@star-comp.ru'),"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":esc(S.get('address_full') or 'Заневский пр., 65 к5, 2 этаж'),"addressCountry":"RU"},"openingHours":esc(S.get('opening_hours_schema') or 'Mo-Su 11:00-19:00'),"sameAs":[v for v in (_soc.get('vk'),_soc.get('telegram')) if v]},ensure_ascii=False,separators=(',',':'))
+ld=json.dumps({"@context":"https://schema.org","@type":"ComputerStore","name":"STAR-COMP","url":"https://star-comp.ru","image":"https://star-comp.ru/assets/og-home.jpg","telephone":esc(S.get('phone_schema') or '+7-993-984-55-05'),"email":esc(S.get('email') or 'info@star-comp.ru'),"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","streetAddress":esc(S.get('address_full') or 'Заневский пр., 65 к5, 2 этаж'),"addressCountry":"RU"},"openingHours":esc(S.get('opening_hours_schema') or 'Mo-Su 11:00-19:00'),"sameAs":[v for v in (_soc.get('vk'),_soc.get('telegram')) if v],"aggregateRating":{"@type":"AggregateRating","ratingValue":_YA_SCORE,"bestRating":"5","reviewCount":str(_YA_REVIEWS)}},ensure_ascii=False,separators=(',',':'))
 # фото блока «7 причин» (перенос с Тильды): нарезка под десктопную колонку 23rem
 _why_stem,_why_ws=derive('content/photos/blocktest/blocktest_1.webp',[480,800],5/8)
 _why_photo=(f'      <picture class="why__photo">\n'
@@ -1074,7 +1073,7 @@ def page_html(d):
     url=f'https://star-comp.ru/{slug}'
     photos=d.get('photos') or []
     og=og_image(photos[0]['image']) if photos else 'assets/og-home.jpg'
-    ld={"@context":"https://schema.org","@type":"Product","name":name,"description":(d.get('lead') or d.get('subtitle') or name),"image":f"https://star-comp.ru/{og}","brand":{"@type":"Brand","name":"STAR-COMP"},"offers":{"@type":"Offer","url":url,"price":str(int(d['price'])),"priceCurrency":"RUB"},"aggregateRating":{"@type":"AggregateRating","ratingValue":_YA_SCORE,"bestRating":"5","reviewCount":str(_YA_REVIEWS)}}
+    ld={"@context":"https://schema.org","@type":"Product","name":name,"description":(d.get('lead') or d.get('subtitle') or name),"image":f"https://star-comp.ru/{og}","brand":{"@type":"Brand","name":"STAR-COMP"},"offers":{"@type":"Offer","url":url,"price":str(int(d['price'])),"priceCurrency":"RUB","availability":"https://schema.org/InStock"}}
     return f"""<!doctype html>
 <html lang="ru">
 <head>
