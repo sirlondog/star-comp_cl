@@ -512,6 +512,28 @@
       "extra": true
     },
     {
+      "name": "№13188",
+      "image": {
+        "path": "/content/photos/13188/13188_1.webp",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
+      },
+      "alt": "Компьютер в продуваемом корпусе без подсветки",
+      "specs": {
+        "cpu": "INTEL CORE i7-13700KF",
+        "gpu": "NVIDIA RTX 5060 Ti 16GB"
+      },
+      "price_from": 173000,
+      "show_from": true,
+      "discount_enabled": false,
+      "old_price": null,
+      "discount_percent": null,
+      "discount_until": "01.12.2026",
+      "page": "sborka-13188-intel-core-i7-13700kf-nvidia-rtx-5060-ti-16gb",
+      "extra": true
+    },
+    {
       "name": "№13434",
       "image": {
         "path": "/content/photos/13434/13434_1.webp",
