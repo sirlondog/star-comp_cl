@@ -49,6 +49,10 @@ html{overflow-x:clip}
 /* Название, цена, текст и кнопка — все по центру, одна колонка, как на Тильде */
 .product__info{display:flex;flex-direction:column;align-items:center;text-align:center}
 .product__cost{display:flex;flex-direction:column;align-items:center;min-width:0}
+/* кнопка «Связаться» под стоимостью — стиль как «Связаться» на главной (.tf-ya-btn в page.css) */
+.product__contact{display:flex;align-items:center;justify-content:center;width:250px;max-width:100%;height:60px;margin-top:20px;border:0;border-radius:30px;background:#00d9ff;box-shadow:1px 1px 29.3px -10px #00d9ff;color:#0a0a0c;font:600 var(--fs-l)/1.2 var(--font);text-decoration:none;cursor:pointer;transition:box-shadow .2s,transform .2s}
+@media (max-width:63.99rem){.product__contact{width:100%}}
+@media (hover:hover){.product__contact:hover{box-shadow:0 0 1.5rem rgba(0,217,255,.6);transform:translateY(-1px)}}
 /* жирнее, чем 600: начертания Bold у нас нет, поэтому буквы слегка утолщены обводкой */
 .product__info h1{margin-top:0;font-weight:600;font-size:var(--fs-h);line-height:1.18;text-transform:uppercase;-webkit-text-stroke:.03em currentColor}
 /* вторая строка заголовка: то же h1, но обычным текстом */

@@ -1044,6 +1044,7 @@ def body_html(d):
           <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
           <span>Рассрочка от {money((_p_price+2399)//2400*100)}</span>
         </button>
+        <button class="tf-ya-btn product__contact" type="button" data-contact-popup>Связаться</button>
       </div>
       {note}
     </div>
