@@ -394,8 +394,15 @@ FOOTER+='''
     if (!img) return;
     var box = document.createElement('dialog');
     box.className = 'tf-view';
-    box.innerHTML = '<img src="' + (img.currentSrc || img.src) + '" alt="' + (img.alt || '') + '">'
-      + '<button class="tf-view__close" type="button" aria-label="Закрыть">×</button>';
+    var big = document.createElement('img');
+    big.src = img.currentSrc || img.src;
+    big.alt = img.alt || '';
+    var close = document.createElement('button');
+    close.className = 'tf-view__close';
+    close.type = 'button';
+    close.setAttribute('aria-label', 'Закрыть');
+    close.textContent = '×';
+    box.append(big, close);
     document.body.appendChild(box);
     box.addEventListener('click', function () { box.close(); });
     box.addEventListener('close', function () { box.remove(); });
