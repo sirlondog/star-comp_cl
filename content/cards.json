@@ -355,7 +355,7 @@
       "discount_percent": null,
       "discount_until": "01.12.2026",
       "page": "sborka-13391-amd-ryzen-5-7500f-rtx-5060-ti-8gb",
-      "extra": true
+      "extra": false
     },
     {
       "name": "№13396",
