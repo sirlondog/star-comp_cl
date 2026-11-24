@@ -1,5 +1,63 @@
 
 
+/* Bottom blur effect inspired by Neiden: fixed layered backdrop-filter veil. */
+.bottom-blur{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:120px;
+  pointer-events:none;
+  z-index:40;
+}
+.bottom-blur__layer{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  -webkit-backdrop-filter:saturate(120%);
+  backdrop-filter:saturate(120%);
+}
+.bottom-blur__layer:nth-child(1){
+  -webkit-backdrop-filter:blur(.3px) saturate(120%);
+  backdrop-filter:blur(.3px) saturate(120%);
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 0%, #000 8.75%, #000 100%);
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 0%, #000 8.75%, #000 100%);
+}
+.bottom-blur__layer:nth-child(2){
+  -webkit-backdrop-filter:blur(1.3px) saturate(120%);
+  backdrop-filter:blur(1.3px) saturate(120%);
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8.75%, #000 17.5%, #000 100%);
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8.75%, #000 17.5%, #000 100%);
+}
+.bottom-blur__layer:nth-child(3){
+  -webkit-backdrop-filter:blur(2.8px) saturate(120%);
+  backdrop-filter:blur(2.8px) saturate(120%);
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 17.5%, #000 26.25%, #000 100%);
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 17.5%, #000 26.25%, #000 100%);
+}
+.bottom-blur__layer:nth-child(4){
+  -webkit-backdrop-filter:blur(5px) saturate(120%);
+  backdrop-filter:blur(5px) saturate(120%);
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 26.25%, #000 35%, #000 100%);
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 26.25%, #000 35%, #000 100%);
+}
+.bottom-blur__layer:nth-child(5){
+  -webkit-backdrop-filter:blur(7.8px) saturate(120%);
+  backdrop-filter:blur(7.8px) saturate(120%);
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 35%, #000 43.75%, #000 100%);
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 35%, #000 43.75%, #000 100%);
+}
+.bottom-blur__layer:nth-child(6){
+  -webkit-backdrop-filter:blur(11.3px) saturate(120%);
+  backdrop-filter:blur(11.3px) saturate(120%);
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 43.75%, #000 52.5%, #000 100%);
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 43.75%, #000 52.5%, #000 100%);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .bottom-blur{background:linear-gradient(to bottom, rgba(10,10,12,0), rgba(10,10,12,.85));}
+  .bottom-blur__layer{display:none;}
+}
+
 /* Стили тестовой страницы test.html (только новые блоки, прод-страницы не трогаем).
    Сейчас здесь вариант №8 из .preview/why-variants.html: два столбца, слева
    фотография во всю высоту блока, прижатая к рамке, белый текст в цифрах. */
