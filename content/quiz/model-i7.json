@@ -1,0 +1,110 @@
+{
+  "id": "model-i7",
+  "order": 12,
+  "type": "choice",
+  "style": "list",
+  "title": "Выберите модель процессора INTEL CORE i7",
+  "hint": "Подсказка в поле",
+  "notice": "Предупреждение под полем",
+  "button": "Далее",
+  "next": "",
+  "slider": null,
+  "options": [
+    {
+      "label": "На наше усмотрение",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-12700F",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-12700",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-12700KF",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-12700K",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-13700F",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-13700",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-13700KF",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-13700K",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-14700F",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-14700",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-14700KF",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE i7-14700K",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE ULTRA 7 265F",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE ULTRA 7 265KF",
+      "note": "",
+      "icon": "",
+      "next": ""
+    },
+    {
+      "label": "INTEL CORE ULTRA 7 270K PLUS",
+      "note": "",
+      "icon": "",
+      "next": ""
+    }
+  ]
+}
