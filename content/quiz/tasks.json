@@ -1,0 +1,13 @@
+{
+  "id": "tasks",
+  "order": 2,
+  "type": "text",
+  "style": "",
+  "title": "Укажите, для каких задач нужен компьютер",
+  "hint": "Для игр, 3D-моделирования, для других задач",
+  "notice": "",
+  "button": "Далее",
+  "next": "budget",
+  "slider": null,
+  "options": []
+}

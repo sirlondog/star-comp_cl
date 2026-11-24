@@ -137,6 +137,108 @@ singletons:
         hint: 'То, что сервис просит вставить «перед закрывающим body». Обычно сюда ставят Яндекс Метрику, Top.Mail.Ru и онлайн-чаты. Оставьте пустым, если ничего не нужно'
 
 collections:
+  - name: quiz
+    label: Квиз
+    label_singular: шаг
+    icon: checklist
+    description: 'Шаги квиза «Подобрать компьютер». Каждый шаг — отдельная запись. В вариантах и в поле «Следующий шаг» выбирается, какой шаг откроется дальше. Пусто — квиз заканчивается.'
+    folder: content/quiz
+    format: json
+    extension: json
+    create: true
+    identifier_field: title
+    slug: '{{fields.id}}'
+    sortable_fields: [order, title]
+    editor:
+      preview: false
+    fields:
+      - name: id
+        label: Код шага
+        widget: string
+        hint: 'Латиница без пробелов, например budget или cpu. По нему шаги связываются между собой'
+      - name: order
+        label: Порядок
+        widget: number
+        value_type: int
+        hint: 'Первый по порядку шаг открывает квиз'
+      - name: type
+        label: Тип шага
+        widget: select
+        options:
+          - {label: 'Выбор варианта', value: choice}
+          - {label: 'Текст в поле', value: text}
+          - {label: 'Ползунок (бюджет)', value: slider}
+          - {label: 'Номер телефона', value: phone}
+          - {label: 'Логин мессенджера', value: login}
+      - name: style
+        label: Вид вариантов
+        widget: select
+        required: false
+        options:
+          - {label: 'Карточки', value: cards}
+          - {label: 'Список с кружками', value: list}
+        hint: 'Только для выбора варианта. Карточки сразу ведут на следующий шаг, в списке нужна кнопка «Далее»'
+      - name: title
+        label: Заголовок
+        widget: string
+      - name: hint
+        label: Подсказка в поле
+        widget: string
+        required: false
+      - name: notice
+        label: Предупреждение под полем
+        widget: text
+        required: false
+      - name: button
+        label: Текст кнопки
+        widget: string
+        required: false
+        hint: 'Пусто — «Далее». Для телефона и логина это кнопка отправки заявки'
+      - name: next
+        label: Следующий шаг
+        widget: relation
+        collection: quiz
+        search_fields: [title]
+        value_field: id
+        display_fields: [title]
+        required: false
+        hint: 'Куда перейти после этого шага (для текста, ползунка и списка). Пусто — квиз заканчивается'
+      - name: slider
+        label: Настройки ползунка
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - {name: min, label: Минимум, widget: number, value_type: int}
+          - {name: max, label: Максимум, widget: number, value_type: int}
+          - {name: step, label: Шаг, widget: number, value_type: int}
+          - {name: default, label: Значение по умолчанию, widget: number, value_type: int}
+      - name: options
+        label: Варианты ответа
+        widget: list
+        required: false
+        summary: '{{fields.label}}'
+        fields:
+          - {name: label, label: Текст варианта, widget: string}
+          - {name: note, label: Пояснение, widget: string, required: false}
+          - name: icon
+            label: Значок
+            widget: select
+            required: false
+            options:
+              - {label: 'Без значка', value: ''}
+              - {label: 'Телефон', value: phone}
+              - {label: 'Сообщение', value: chat}
+              - {label: 'Telegram', value: plane}
+          - name: next
+            label: Куда перейти при выборе
+            widget: relation
+            collection: quiz
+            search_fields: [title]
+            value_field: id
+            display_fields: [title]
+            required: false
+
   - name: hardware
     label: База железа
     label_singular: позицию

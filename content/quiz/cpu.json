@@ -1,0 +1,21 @@
+{
+  "id": "cpu",
+  "order": 10,
+  "type": "choice",
+  "style": "list",
+  "title": "Какой хотите процессор?",
+  "hint": "",
+  "notice": "",
+  "button": "Далее",
+  "next": "",
+  "slider": null,
+  "options": [
+    {"label": "На наше усмотрение", "note": "", "icon": "", "next": ""},
+    {"label": "INTEL CORE i5", "note": "", "icon": "", "next": "model-i5"},
+    {"label": "INTEL CORE i7", "note": "", "icon": "", "next": ""},
+    {"label": "INTEL CORE i9", "note": "", "icon": "", "next": ""},
+    {"label": "AMD RYZEN 5", "note": "", "icon": "", "next": ""},
+    {"label": "AMD RYZEN 7", "note": "", "icon": "", "next": ""},
+    {"label": "AMD RYZEN 9", "note": "", "icon": "", "next": ""}
+  ]
+}

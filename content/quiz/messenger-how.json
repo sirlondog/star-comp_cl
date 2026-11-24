@@ -1,0 +1,16 @@
+{
+  "id": "messenger-how",
+  "order": 7,
+  "type": "choice",
+  "style": "cards",
+  "title": "Укажите логин или телефон",
+  "hint": "",
+  "notice": "",
+  "button": "",
+  "next": "",
+  "slider": null,
+  "options": [
+    {"label": "Указать логин", "note": "", "icon": "", "next": "login"},
+    {"label": "Указать телефон", "note": "", "icon": "", "next": "messenger-phone"}
+  ]
+}

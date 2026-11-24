@@ -807,6 +807,9 @@ _test_block=(fill_text(open(os.path.join(ROOT,'src','test.body.html'),encoding='
     .replace('{{POPUP_TG}}',svg('tg-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep))
     .replace('{{POPUP_MAX}}',svg('max-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep))
     .replace('{{POPUP_VK}}',svg('vk-white.svg','aria-hidden="true"',os.path.join(ROOT,'assets','footer')+os.sep)))
+import quiz_build
+quiz_build.build(ROOT)
+_test_block=_test_block+'\n'+quiz_build.test_block(_STAMP)
 # Берём только <head> от главной, чтобы сохранить шрифты, метатеги и счётчики.
 _test_head=full[:full.index('<body>')].replace(
     '<title>STAR-COMP - сборка компьютеров на заказ</title>',

@@ -1,0 +1,13 @@
+{
+  "id": "login",
+  "order": 8,
+  "type": "login",
+  "style": "",
+  "title": "Укажите логин",
+  "hint": "Ваш логин",
+  "notice": "",
+  "button": "Жду сообщения",
+  "next": "",
+  "slider": null,
+  "options": []
+}

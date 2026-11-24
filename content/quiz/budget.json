@@ -1,0 +1,13 @@
+{
+  "id": "budget",
+  "order": 3,
+  "type": "slider",
+  "style": "",
+  "title": "Укажите примерный бюджет на компьютер",
+  "hint": "",
+  "notice": "",
+  "button": "Далее",
+  "next": "contact",
+  "slider": {"min": 100000, "max": 600000, "step": 5000, "default": 155000},
+  "options": []
+}

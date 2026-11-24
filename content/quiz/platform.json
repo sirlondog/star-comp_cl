@@ -1,0 +1,16 @@
+{
+  "id": "platform",
+  "order": 6,
+  "type": "choice",
+  "style": "cards",
+  "title": "Где вам удобнее общаться?",
+  "hint": "",
+  "notice": "",
+  "button": "",
+  "next": "",
+  "slider": null,
+  "options": [
+    {"label": "Telegram", "note": "", "icon": "plane", "next": "messenger-how"},
+    {"label": "MAX", "note": "", "icon": "chat", "next": "messenger-how"}
+  ]
+}

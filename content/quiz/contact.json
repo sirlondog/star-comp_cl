@@ -1,0 +1,16 @@
+{
+  "id": "contact",
+  "order": 4,
+  "type": "choice",
+  "style": "cards",
+  "title": "Как с вами связаться?",
+  "hint": "",
+  "notice": "",
+  "button": "",
+  "next": "",
+  "slider": null,
+  "options": [
+    {"label": "По телефону", "note": "Перезвоним", "icon": "phone", "next": "phone"},
+    {"label": "Мессенджер", "note": "Напишем в Telegram или MAX", "icon": "chat", "next": "platform"}
+  ]
+}

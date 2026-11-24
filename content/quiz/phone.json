@@ -1,0 +1,13 @@
+{
+  "id": "phone",
+  "order": 5,
+  "type": "phone",
+  "style": "",
+  "title": "Введите номер телефона",
+  "hint": "000 000 00 00",
+  "notice": "",
+  "button": "Жду звонка",
+  "next": "",
+  "slider": null,
+  "options": []
+}
