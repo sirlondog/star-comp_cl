@@ -875,6 +875,8 @@ p.lead{margin:0 auto 32px;max-width:34rem;color:#bdbdc2;font-size:16px;line-heig
 '''
 open(os.path.join(ROOT,'404.html'),'w',encoding='utf-8').write(inject_code(_404_HTML))
 print('страница 404',len(_404_HTML))
+import thanks_build
+thanks_build.build(ROOT,inject_code)
 frag=f'''<title>STAR-COMP</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>

@@ -8,6 +8,8 @@ import json
 import os
 import shutil
 
+import thanks_build
+
 TYPES = {'choice', 'text', 'slider', 'phone', 'login'}
 
 
@@ -63,8 +65,10 @@ def build(root):
 
     data = json.dumps(steps, ensure_ascii=False, indent=1)
     os.makedirs(os.path.join(root, 'assets'), exist_ok=True)
+    thanks = thanks_build.load(root)['slug']
     with open(os.path.join(root, 'assets', 'quiz-data.js'), 'w', encoding='utf-8') as f:
         f.write('window.QUIZ_STEPS = ' + data + ';\n')
+        f.write('window.QUIZ_THANKS_URL = ' + json.dumps(thanks) + ';\n')
     shutil.copyfile(os.path.join(root, 'src', 'quiz.js'), os.path.join(root, 'assets', 'quiz.js'))
     shutil.copyfile(os.path.join(root, 'src', 'quiz.css'), os.path.join(root, 'assets', 'quiz.css'))
     print('квиз: шагов', len(steps))

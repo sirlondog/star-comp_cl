@@ -274,6 +274,10 @@
       data[id] = answers[id];
     });
     document.dispatchEvent(new CustomEvent('quiz:submit', { detail: { answers: data, path: history.slice() } }));
+    if (window.QUIZ_THANKS_URL) {
+      window.location.href = window.QUIZ_THANKS_URL;
+      return;
+    }
     dialog.close();
   }
 

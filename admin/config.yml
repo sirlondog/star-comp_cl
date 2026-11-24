@@ -116,6 +116,32 @@ singletons:
             widget: text
             hint: 'Можно несколько абзацев — разделяйте их пустой строкой'
 
+  - name: thanks
+    label: Страница спасибо
+    icon: check_circle
+    description: 'Страница, которая открывается после отправки заявки из квиза. Здесь меняется текст и адрес страницы.'
+    file: content/thanks.json
+    format: json
+    fields:
+      - name: slug
+        label: Адрес страницы
+        widget: string
+        hint: 'Латиница без пробелов. Например spasibo — страница будет открываться по адресу сайта/spasibo'
+      - name: title
+        label: Заголовок
+        widget: string
+      - name: text
+        label: Текст
+        widget: text
+      - name: button
+        label: Текст кнопки
+        widget: string
+        hint: 'По кнопке посетитель возвращается на предыдущую страницу'
+      - name: fallback_url
+        label: Куда вести кнопку, если открыли страницу напрямую
+        widget: string
+        hint: 'Например / — главная страница'
+
   - name: codes
     label: Коды и счётчики
     icon: code
