@@ -2,8 +2,7 @@
   "name": "NEXUS S1",
   "subtitle": "игровой компьютер на процессоре INTEL CORE i5-14400F с видеокартой NVIDIA RTX 5060 8GB",
   "slug": "nexus-01-bazovyj-minimum-dlya-vsekh-sovremennyh-igr",
-  "price": 135000,
-  "show_from": true,
+  "price": 153500,
   "note": "Собран, настроен и протестирован. Можно изменить или дополнить конфигурацию. Забирайте сегодня или закажите доставку с подключением.",
   "photos": [
     {
@@ -53,5 +52,6 @@
     "title": "",
     "description": "NEXUS S1: Intel Core i5-14400F + NVIDIA RTX 5060 8GB, 135 000 ₽. Протестируйте ПК в шоуруме у м. Ладожская и платите после проверки.",
     "keywords": "NEXUS S1, игровой компьютер i5-14400F, игровой ПК RTX 5060 8GB, компьютер 14400F RTX 5060, игровой компьютер за 140 тысяч"
-  }
+  },
+  "show_from": true
 }
