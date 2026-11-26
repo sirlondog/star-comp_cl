@@ -558,18 +558,8 @@ def card_html(c,hidden=False):
     # округляем вверх до сотен, чтобы суммы выглядели аккуратно.
     _split=((c['price_from']+2399)//2400)*100
     _cpu=f' data-cpu="{esc(card_cpu(c))}"' if card_cpu(c) else ''
-    _disc_enabled = bool(c.get('discount_enabled'))
-    _old = c.get('old_price') if _disc_enabled else None
-    _disc = c.get('discount_percent') if _disc_enabled else None
-    if _disc_enabled and _old and not _disc:
-        try: _disc = round((float(_old)-float(c['price_from']))/float(_old)*100)
-        except Exception: _disc = None
-    _disc_until = esc(c.get('discount_until') or '01.12.2026')
-    _badge = f'<p class="card__badge card__badge--discount">Скидка {_disc}% до {_disc_until}</p>' if _disc_enabled and _disc and _old else ''
-    _old_html = f'<s class="card__oldprice">{money(int(_old))}</s>' if _disc_enabled and _old else ''
     return f'''      <li class="card{hidden_cls}"{hidden_attr}{_cpu}>
         <div class="card__media">
-          {_badge}
           <picture>
             <source type="image/avif" srcset="{srcset(stem,ws,'avif')}" sizes="{CARD_SIZES}">
             <img src="assets/{stem}-{w0}.webp" srcset="{srcset(stem,ws,'webp')}" sizes="{CARD_SIZES}" width="{w0}" height="{h0}" alt="{alt}" loading="lazy" decoding="async">
@@ -582,7 +572,7 @@ def card_html(c,hidden=False):
           </dl>
           <div class="card__foot">
             <div class="card__foot-left">
-              <p class="card__price"><span>Стоимость:</span><span class="card__price-row"><b class="card__price-now">{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b>{_old_html}</span></p>
+              <p class="card__price"><span>Стоимость:</span><b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></p>
               <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
                 <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
                 <span>Рассрочка от {money(_split)}</span>
@@ -1022,11 +1012,7 @@ def body_html(d):
   </section>'''
     _p_price = d['price']
     _p_show_from = d.get('show_from') is not False
-    _p_enabled = False
-    _p_oldv = None
-    _p_disc = None
-    _p_until = '01.12.2026'
-    # Price/discount source of truth: card in "Блоки на главной" (stock/cards), fallback to build json.
+    # Price source of truth: card in "Блоки на главной" (stock/cards), fallback to build json.
     _slug = d.get('slug') or ''
     for _src in (_STK.get('cards', []) if isinstance(_STK, dict) else [], _cards):
         for _c in _src:
@@ -1035,25 +1021,10 @@ def body_html(d):
                     try: _p_price = int(_c['price_from'])
                     except Exception: pass
                 _p_show_from = _c.get('show_from') is not False
-                if _c.get('discount_enabled'):
-                    _p_enabled = True
-                    _p_oldv = _c.get('old_price')
-                    _p_disc = _c.get('discount_percent')
-                    _p_until = _c.get('discount_until') or _p_until
                 break
         else:
             continue
         break
-    if _p_enabled and _p_oldv and not _p_disc:
-        try: _p_disc = round((float(_p_oldv)-float(_p_price))/float(_p_oldv)*100)
-        except Exception: _p_disc = None
-    if _p_disc is not None:
-        try:
-            if float(_p_disc) <= 0: _p_disc = None
-        except Exception: pass
-    _p_until = esc(_p_until)
-    _p_badge = f'<p class="card__badge card__badge--discount product__badge">Скидка {int(_p_disc)}% до {_p_until}</p>' if _p_enabled and _p_disc and _p_oldv else ''
-    _p_old = f'<s class="card__oldprice">{money(int(_p_oldv))}</s>' if _p_enabled and _p_oldv and _p_disc else ''
     return f"""<main>
   <section class="product wrap">
     <div class="product__gallery">
@@ -1063,9 +1034,8 @@ def body_html(d):
     <div class="product__info">
       <h1>{name}{sub}</h1>
       <div class="product__cost">
-        {_p_badge}
         <p class="product__label">Стоимость:</p>
-        <p class="product__price"><span class="product__price-row"><b class="card__price-now">{'от&nbsp;' if _p_show_from else ''}{money(_p_price)}</b>{_p_old}</span></p>
+        <p class="product__price">{'от&nbsp;' if _p_show_from else ''}{money(_p_price)}</p>
         <button class="card__split product__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
           <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
           <span>Рассрочка от {money((_p_price+2399)//2400*100)}</span>

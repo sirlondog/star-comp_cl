@@ -367,33 +367,6 @@ collections:
                 required: false
                 default: true
                 hint: 'Включено — на карточке «от 99 800 ₽» (цена может вырасти). Выключено — просто «99 800 ₽» (фиксированная цена)'
-              - name: discount_enabled
-                label: Включить скидку
-                widget: boolean
-                required: false
-                default: false
-                hint: 'Включите, чтобы показать на карточке красную пилюлю со скидкой и зачёркнутую старую цену'
-              - name: old_price
-                label: Старая цена, ₽
-                widget: number
-                value_type: int
-                min: 0
-                required: false
-                hint: 'Старая цена до скидки. Показывается зачёркнутой рядом с текущей ценой'
-              - name: discount_percent
-                label: Скидка, %
-                widget: number
-                value_type: int
-                min: 1
-                max: 99
-                required: false
-                hint: 'Процент скидки N для пилюли «Скидка N% до ...». Если не указать, посчитается от старой и текущей цены'
-              - name: discount_until
-                label: Дата завершения акции
-                widget: string
-                required: false
-                default: '01.12.2026'
-                hint: 'Дата окончания скидки, показывается в пилюле: «Скидка N% до ДД.ММ.ГГГГ»'
               - name: page
                 label: Ссылка на страницу сборки
                 widget: string
@@ -470,7 +443,7 @@ collections:
         widget: number
         value_type: int
         min: 0
-        hint: 'Используется только если у этой сборки нет карточки в «Блоки на главной». Основная цена/скидка задаётся в карточке блока.'
+        hint: 'Используется только если у этой сборки нет карточки в «Блоки на главной». Основная цена задаётся в карточке блока.'
       - name: note
         label: Текст рядом с кнопкой
         widget: text
