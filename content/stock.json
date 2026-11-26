@@ -40,23 +40,6 @@
       "extra": false
     },
     {
-      "name": "CRYO M1",
-      "image": {
-        "path": "/content/photos/06.11.2026_15805_cryo_m1/06_11_2026_15805_cryo_m1_1.webp",
-        "x": 48,
-        "y": 76
-      },
-      "alt": "Игровой компьютер в корпусе аквариум с синей подсветкой",
-      "specs": {
-        "cpu": "AMD RYZEN 5 7500F",
-        "gpu": "NVIDIA RTX 5060 Ti 8GB"
-      },
-      "price_from": 219600,
-      "show_from": false,
-      "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
-      "extra": false
-    },
-    {
       "name": "TITAN R3",
       "image": {
         "path": "/content/photos/titan-r3/titan-r3_1.webp",
@@ -72,6 +55,23 @@
       "price_from": 212000,
       "show_from": false,
       "page": "titan-r3-amd-ryzen-5-5500x3d-nvidia-rtx-5060-8gb",
+      "extra": false
+    },
+    {
+      "name": "CRYO M1",
+      "image": {
+        "path": "/content/photos/06.11.2026_15805_cryo_m1/06_11_2026_15805_cryo_m1_1.webp",
+        "x": 48,
+        "y": 76
+      },
+      "alt": "Игровой компьютер в корпусе аквариум с синей подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 5 7500F",
+        "gpu": "NVIDIA RTX 5060 Ti 8GB"
+      },
+      "price_from": 219600,
+      "show_from": false,
+      "page": "cryo-m1-amd-ryzen-5-7500f-nvidia-rtx-5060-ti-8gb",
       "extra": false
     },
     {
