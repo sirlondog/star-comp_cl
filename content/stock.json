@@ -92,24 +92,6 @@
       "extra": false
     },
     {
-      "name": "MARS X9",
-      "image": {
-        "path": "/content/photos/mars-x9/mars-x9_1.webp",
-        "x": 51,
-        "y": 66,
-        "zoom": 1
-      },
-      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
-      "specs": {
-        "cpu": "INTEL CORE i5-14600KF",
-        "gpu": "NVIDIA RTX 5070 12GB"
-      },
-      "price_from": 322700,
-      "show_from": false,
-      "page": "mars-x9-intel-core-i7-14700kf-nvidia-rtx-5070",
-      "extra": false
-    },
-    {
       "name": "CORE R1",
       "image": {
         "path": "/content/photos/core-r1/core-r1_1.webp",
@@ -125,6 +107,24 @@
       "price_from": 285000,
       "show_from": false,
       "page": "core-01-moshch-v-miniatyure",
+      "extra": false
+    },
+    {
+      "name": "MARS X9",
+      "image": {
+        "path": "/content/photos/mars-x9/mars-x9_1.webp",
+        "x": 51,
+        "y": 66,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе аквариум с красной подсветкой",
+      "specs": {
+        "cpu": "INTEL CORE i5-14600KF",
+        "gpu": "NVIDIA RTX 5070 12GB"
+      },
+      "price_from": 322700,
+      "show_from": false,
+      "page": "mars-x9-intel-core-i7-14700kf-nvidia-rtx-5070",
       "extra": false
     }
   ]
