@@ -48,18 +48,6 @@
   });
 })();
 
-// Значок рассрочки: открывает окно с краткими условиями Сплита.
-// Попап рассрочки: открывает диалог с краткими условиями Яндекс.
-(function () {
-  var dlg = document.getElementById('split-info');
-  if (!dlg || !dlg.showModal) return;
-  document.addEventListener('click', function (e) {
-    var t = e.target.closest && e.target.closest('.card__split');
-    if (t) { e.preventDefault(); var x=window.scrollX,y=window.scrollY; dlg.showModal(); window.scrollTo(x,y); requestAnimationFrame(function(){window.scrollTo(x,y);}); return; }
-    if (dlg.open && (e.target === dlg || e.target.closest('.split-info .menu__close'))) dlg.close();
-  });
-})();
-
 // Попап контактов: вариант 4 (action-карточки), без логотипа.
 (function () {
   function openCP() {

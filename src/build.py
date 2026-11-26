@@ -554,9 +554,6 @@ def card_html(c,hidden=False):
     href=esc(c.get('page') or '') or '#podbor'
     hidden_cls=' card--extra' if hidden else ''   # метка для «Показать ещё» и фильтра
     hidden_attr=' hidden' if hidden else ''
-    # Яндекс Сплит: максимальный срок — 24 месяца. Платёж в месяц = цена / 24,
-    # округляем вверх до сотен, чтобы суммы выглядели аккуратно.
-    _split=((c['price_from']+2399)//2400)*100
     _cpu=f' data-cpu="{esc(card_cpu(c))}"' if card_cpu(c) else ''
     return f'''      <li class="card{hidden_cls}"{hidden_attr}{_cpu}>
         <div class="card__media">
@@ -573,10 +570,6 @@ def card_html(c,hidden=False):
           <div class="card__foot">
             <div class="card__foot-left">
               <p class="card__price"><span>Стоимость:</span><b>{'от&nbsp;' if c.get('show_from') is not False else ''}{money(c['price_from'])}</b></p>
-              <button class="card__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
-                <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
-                <span>Рассрочка от {money(_split)}</span>
-              </button>
             </div>
             <a class="card__go" href="{href}" aria-label="Открыть страницу: {name}"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
           </div>
@@ -673,7 +666,7 @@ body=(fill_text(_body).replace('{{CPU_FILTERS}}',_cpu_filters).replace('{{WHY_PH
       .replace('{{GIFTS_SECTION}}',GIFTS_SECTION).replace('{{MENU_LINKS}}',menu_links_html(False)))
 
 _HOME_TITLE='STAR-COMP - сборка компьютеров на заказ'
-_HOME_DESC='Игровые и рабочие компьютеры на заказ в СПб с 2009 года: 20+ готовых ПК в наличии, гарантия до 5 лет, рассрочка 0/24. Шоурум у м. Ладожская, доставка 0 ₽.'
+_HOME_DESC='Игровые и рабочие компьютеры на заказ в СПб с 2009 года: 20+ готовых ПК в наличии, гарантия до 5 лет. Шоурум у м. Ладожская, доставка 0 ₽.'
 _HOME_KEYWORDS='компьютеры на заказ СПб, игровые компьютеры СПб, сборка ПК на заказ, готовые игровые ПК, STAR-COMP, Стар Комп'
 full=f'''<!doctype html>
 <html lang="ru">
@@ -743,8 +736,8 @@ def write_seo_clone(slug,title,desc,h1,keywords=''):
 
 # «Купить компьютер в СПб» — запрос «купить компьютер…»
 _KUPIT_TITLE='Купить компьютер в Санкт-Петербурге — сборка на заказ с гарантией | STAR-COMP'
-_KUPIT_DESC='Купить компьютер в СПб с гарантией до 5 лет: 20+ готовых ПК в наличии, рассрочка 0/24, без предоплаты. Шоурум у м. Ладожская, доставка и подключение 0 ₽.'
-_KUPIT_KEYWORDS='купить компьютер СПб, купить игровой компьютер в Санкт-Петербурге, магазин компьютеров СПб, компьютер в рассрочку, готовые игровые ПК'
+_KUPIT_DESC='Купить компьютер в СПб с гарантией до 5 лет: 20+ готовых ПК в наличии, без предоплаты. Шоурум у м. Ладожская, доставка и подключение 0 ₽.'
+_KUPIT_KEYWORDS='купить компьютер СПб, купить игровой компьютер в Санкт-Петербурге, магазин компьютеров СПб, готовые игровые ПК'
 _KUPIT_H1='Купить компьютер с гарантией и запасом на 5 лет'
 write_seo_clone('kupit-kompyuter-spb',_KUPIT_TITLE,_KUPIT_DESC,_KUPIT_H1,_KUPIT_KEYWORDS)
 
@@ -1036,10 +1029,6 @@ def body_html(d):
       <div class="product__cost">
         <p class="product__label">Стоимость:</p>
         <p class="product__price">{'от&nbsp;' if _p_show_from else ''}{money(_p_price)}</p>
-        <button class="card__split product__split" type="button" aria-haspopup="dialog" aria-controls="split-info">
-          <img class="card__split-badge" src="assets/split-logo.svg" alt="" width="22" height="22" decoding="async">
-          <span>Рассрочка от {money((_p_price+2399)//2400*100)}</span>
-        </button>
         <button class="tf-ya-btn product__contact" type="button" data-contact-popup>Связаться</button>
       </div>
       {note}
@@ -1185,7 +1174,7 @@ _run_enc_queue()
 # Сюда попадают дубли после переименования фото и нарезки, потерявшие актуальность.
 _STATIC={'favicon.svg','icon-192.png','og-home.jpg','gilroy-regular.woff2','gilroy-semibold.woff2',
 
-         'split-logo.svg','style.css','page.js','inner.css','inner.js','blocktest.css','test.css',
+         'style.css','page.js','inner.css','inner.js','blocktest.css','test.css',
          # готовые файлы, которые сборщик не создаёт: фото первого экрана и аватарки отзывов
          'hero-600.avif','hero-800.avif','hero-1000.avif','hero-600.webp','hero-800.webp','hero-1000.webp'}
 for _ava in ('ava-1','ava-2','ava-3','ava-4','ava-5'):
