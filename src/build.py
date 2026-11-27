@@ -67,7 +67,7 @@ def _copy_v1_assets():
     """Шрифты и фото тестовой страницы v1 лежат в исходниках, в assets их кладёт сборка."""
     for _fn in _V1_FONTS:
         shutil.copy2(os.path.join(SRC,'fonts',_fn),os.path.join(ROOT,'assets',_fn))
-    shutil.copy2(os.path.join(ROOT,'content','photos','v1','hero.webp'),
+    shutil.copy2(os.path.join(ROOT,'content','photos','v1','v1_1.webp'),
                  os.path.join(ROOT,'assets','v1-hero.webp'))
 _inner_css_full=(':root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}\n'
                  'img{max-width:100%}\n'+_css+_inner_css)
