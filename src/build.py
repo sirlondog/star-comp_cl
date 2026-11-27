@@ -51,14 +51,24 @@ _body=open('page.body.html',encoding='utf-8').read()
 _js=open('page.js',encoding='utf-8').read()
 _inner_css=open('inner.css',encoding='utf-8').read()
 _inner_js=open('inner.js',encoding='utf-8').read()
+_v1_css=open('v1.css',encoding='utf-8').read()
+_v1_body=open('v1.body.html',encoding='utf-8').read()
 
 # ---------- внешние файлы стилей и скриптов ----------
 # Раньше CSS/JS вшивались в каждую страницу (25–43 КБ на страницу). Теперь они
 # лежат в assets/ отдельными файлами: браузер скачивает их один раз и кэширует
 # при переходах между страницами. Метка времени в адресе (?v=...) сбрасывает
 # кэш после каждой сборки — посетители всегда видят свежие стили.
-import time
+import time,shutil
 _STAMP=time.strftime('%Y%m%d%H%M')
+_V1_FONTS=('InterDisplay-Light.woff2','InterDisplay-Regular.woff2','InterDisplay-Medium.woff2',
+           'InterDisplay-SemiBold.woff2','InterDisplay-Bold.woff2','orbitron-bold.ttf')
+def _copy_v1_assets():
+    """Шрифты и фото тестовой страницы v1 лежат в исходниках, в assets их кладёт сборка."""
+    for _fn in _V1_FONTS:
+        shutil.copy2(os.path.join(SRC,'fonts',_fn),os.path.join(ROOT,'assets',_fn))
+    shutil.copy2(os.path.join(ROOT,'content','photos','v1','hero.webp'),
+                 os.path.join(ROOT,'assets','v1-hero.webp'))
 _inner_css_full=(':root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}\n'
                  'img{max-width:100%}\n'+_css+_inner_css)
 def _menu_js_part():
@@ -803,13 +813,52 @@ _test=f'{_test_head}<body>\n<main>\n{_test_block}\n</main>\n</body>\n</html>\n'
 open(os.path.join(ROOT,'test.html'),'w',encoding='utf-8').write(inject_code(_test))
 print('тестовая страница test',len(_test))
 
+# ---------- страница v1: первый блок нового редизайна ----------
+# Отдельная noindex-страница, не наследует стили старого сайта. Верстка лежит в
+# src/v1.body.html и src/v1.css; страница масштабируется до ширины окна, сохраняя
+# геометрию макета 1440x1332. Шрифты и фото копируются в assets/ при сборке.
+_copy_v1_assets()
+_v1_head=f'''<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Верстка редизайна v1 | STAR-COMP</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0A0A0C">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preload" href="assets/InterDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/InterDisplay-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/v1.css?v={_STAMP}">
+</head>
+'''
+_v1=f'''{_v1_head}<body>
+<main class="v1-stage">
+{_v1_body}
+</main>
+<script>
+(function(){{
+  function fit(){{
+    var scale=Math.min(1,window.innerWidth/1440);
+    document.documentElement.style.setProperty('--v1-scale',scale);
+  }}
+  fit();
+  window.addEventListener('resize',fit,{{passive:true}});
+}})();
+</script>
+</body>
+</html>
+'''
+open(os.path.join(ROOT,'v1.html'),'w',encoding='utf-8').write(inject_code(_v1))
+print('страница редизайна v1',len(_v1))
+
 # Быстрый режим: дальше идут страницы сборок и нарезка всех фото — самое долгое.
 # Для правок тестовой страницы они не нужны, поэтому выходим сразу, обновив
 # только три внешних файла, от которых зависит test.html.
 if TEST_ONLY:
-    for _f,_data in [('style.css',_css),('page.js',_js),('test.css',open('test.css',encoding='utf-8').read())]:
+    for _f,_data in [('style.css',_css),('page.js',_js),('test.css',open('test.css',encoding='utf-8').read()),('v1.css',_v1_css)]:
         open(os.path.join(ROOT,'assets',_f),'w',encoding='utf-8').write(_data)
-    print('быстрая сборка: готово test.html + assets/style.css, page.js, test.css')
+    print('быстрая сборка: готово test.html, v1.html + assets/style.css, page.js, test.css, v1.css')
     raise SystemExit(0)
 
 # ---------- страница 404: GitHub Pages отдаёт её для несуществующих адресов ----------
@@ -1166,7 +1215,8 @@ open(os.path.join(ROOT,'assets','page.js'),'w',encoding='utf-8').write(_js)
 open(os.path.join(ROOT,'assets','inner.css'),'w',encoding='utf-8').write(_inner_css_full)
 open(os.path.join(ROOT,'assets','inner.js'),'w',encoding='utf-8').write(_inner_js_full)
 open(os.path.join(ROOT,'assets','test.css'),'w',encoding='utf-8').write(open('test.css',encoding='utf-8').read())
-print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js, test.css (метка',_STAMP+')')
+open(os.path.join(ROOT,'assets','v1.css'),'w',encoding='utf-8').write(_v1_css)
+print('стили/скрипты: assets/style.css, page.js, inner.css, inner.js, test.css, v1.css (метка',_STAMP+')')
 
 # ---------- чистка assets: удаляем файлы, на которые не ссылается ни одна страница ----------
 # Сначала дописываем отложенную нарезку фото (пул потоков) — чистка видит готовые файлы.
@@ -1174,7 +1224,8 @@ _run_enc_queue()
 # Сюда попадают дубли после переименования фото и нарезки, потерявшие актуальность.
 _STATIC={'favicon.svg','icon-192.png','og-home.jpg','gilroy-regular.woff2','gilroy-semibold.woff2',
 
-         'style.css','page.js','inner.css','inner.js','blocktest.css','test.css',
+         'style.css','page.js','inner.css','inner.js','blocktest.css','test.css','v1.css',
+         'v1-hero.webp',*_V1_FONTS,
          # готовые файлы, которые сборщик не создаёт: фото первого экрана и аватарки отзывов
          'hero-600.avif','hero-800.avif','hero-1000.avif','hero-600.webp','hero-800.webp','hero-1000.webp'}
 for _ava in ('ava-1','ava-2','ava-3','ava-4','ava-5'):

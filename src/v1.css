@@ -1,0 +1,70 @@
+/* Первый блок редизайна: страница v1.html.
+   Геометрия и цвета — дословно из макета 1440x1332. Страница масштабируется
+   по ширине окна через --v1-scale, поэтому на узких экранах пропорции не едут. */
+
+@font-face{font-family:'Inter Display';src:url('InterDisplay-Light.woff2') format('woff2');font-style:normal;font-weight:300;font-display:swap}
+@font-face{font-family:'Inter Display';src:url('InterDisplay-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Inter Display';src:url('InterDisplay-Medium.woff2') format('woff2');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:'Inter Display';src:url('InterDisplay-SemiBold.woff2') format('woff2');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:'Inter Display';src:url('InterDisplay-Bold.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:'Orbitron';src:url('orbitron-bold.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+
+*{box-sizing:border-box}
+html,body{margin:0;background:#0A0A0C}
+body{color:#F2F4F7;font-family:'Inter Display',Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit}
+
+.v1-stage{position:relative;min-height:100svh;min-height:calc(1332px * var(--v1-scale,1));overflow:hidden;background:#0A0A0C}
+.v1-canvas{position:absolute;top:0;left:50%;width:1440px;height:1332px;margin-left:-720px;transform:scale(var(--v1-scale,1));transform-origin:top center;background:#0A0A0C}
+.v1-hero{position:absolute;inset:0;overflow:hidden;background:#0A0A0C}
+
+/* Верхняя панель */
+.v1-nav{position:absolute;width:1200px;height:62px;left:120px;top:44px;background:rgba(217,217,217,.05);border-radius:30px}
+.v1-mark{position:absolute;width:70px;height:70px;left:115px;top:40px}
+.v1-mark i{position:absolute;display:block}
+.v1-mark i:nth-child(1){left:32.79%;right:32.79%;top:34.41%;bottom:37.42%;background:#fff}
+.v1-mark i:nth-child(2){left:42.76%;right:42.76%;top:57.9%;bottom:38.59%;background:#fff}
+.v1-mark i:nth-child(3){left:61.99%;right:33.58%;top:30.93%;bottom:64.75%;background:#00D9FF}
+.v1-mark i:nth-child(4){left:36.34%;right:59.62%;top:68.41%;bottom:27.63%;background:#fff}
+.v1-mark i:nth-child(5){left:25.75%;right:73.45%;top:55.88%;bottom:43.32%;background:#fff}
+.v1-mark i:nth-child(6){left:26.76%;right:72.44%;top:39.89%;bottom:59.31%;background:#00D9FF}
+.v1-mark i:nth-child(7){left:57.24%;right:41.96%;top:27.28%;bottom:71.92%;background:#fff}
+.v1-mark i:nth-child(8){left:39.98%;right:58.98%;top:27.16%;bottom:71.8%;background:#fff}
+.v1-mark i:nth-child(9){left:71.9%;right:27.3%;top:40.69%;bottom:58.51%;background:#fff}
+.v1-mark i:nth-child(10){left:59.29%;right:39.91%;top:70.23%;bottom:28.97%;background:#FF28B4}
+.v1-mark i:nth-child(11){left:73.42%;right:25.78%;top:55.06%;bottom:44.14%;background:#fff}
+.v1-mark i:nth-child(12){left:66.63%;right:20.58%;top:19.8%;bottom:67.4%;background:#FF28B4}
+.v1-mark i:nth-child(13){left:17.09%;right:17.1%;top:17.06%;bottom:17.14%;background:#00D9FF}
+
+.v1-logo-word{position:absolute;left:185px;top:62px;width:155px;height:25px;font-family:'Orbitron','Inter Display',sans-serif;font-weight:700;font-size:20px;line-height:25px;color:#fff;white-space:nowrap}
+.v1-nav-link{position:absolute;top:66px;height:19px;font-weight:500;font-size:16px;line-height:19px;text-align:center;color:#808080;text-decoration:none;transition:color .2s}
+.v1-nav-link:hover{color:#F2F4F7}
+.v1-nav-link:nth-of-type(1){left:533px;width:103px}
+.v1-nav-link:nth-of-type(2){left:636px;width:99px}
+.v1-nav-link:nth-of-type(3){left:735px;width:97px}
+.v1-nav-link:nth-of-type(4){left:832px;width:97px}
+.v1-nav-link:nth-of-type(5){left:942px;width:84px}
+.v1-avatar{position:absolute;width:44px;height:44px;left:1262px;top:53px;border-radius:50%;background:#D9D9D9;overflow:hidden}
+.v1-avatar img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* Заголовочные тексты */
+.v1-badge{position:absolute;width:330px;height:35px;left:555px;top:186px;display:flex;align-items:center;justify-content:center;background:rgba(76,76,76,.2);border:1px solid rgba(76,76,76,.2);border-radius:30px;font-weight:400;font-size:12px;line-height:15px;color:#737373;white-space:nowrap}
+.v1-title{position:absolute;width:1033px;height:132px;left:203px;top:226px;margin:0;font-weight:600;font-size:66px;line-height:100%;letter-spacing:-.03em;text-align:center;color:#F2F4F7}
+.v1-title span{display:block}
+.v1-subtitle{position:absolute;width:1000px;height:27px;left:220px;top:378px;margin:0;font-weight:400;font-size:22px;line-height:27px;text-align:center;color:#808080}
+.v1-rating{position:absolute;width:693px;height:19px;left:373px;top:433px;font-weight:300;font-size:16px;line-height:19px;text-align:center;color:#FFCC33;white-space:nowrap}
+
+/* Кнопки */
+.v1-btn{position:absolute;width:300px;height:65px;top:500px;display:flex;align-items:center;justify-content:center;border-radius:40px;font-weight:600;font-size:18px;line-height:28px;text-align:center;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.v1-btn:hover{transform:translateY(-2px)}
+.v1-btn--primary{left:410px;background:#00D9FF;box-shadow:1px 1px 29.3px -10px #00D9FF;color:#000}
+.v1-btn--secondary{left:730px;border:1px solid rgba(0,217,255,.2);color:#fff}
+.v1-btn--secondary:hover{border-color:rgba(0,217,255,.5);box-shadow:0 0 24px -8px rgba(0,217,255,.45)}
+
+/* Фото и подпись */
+.v1-photo{position:absolute;width:969px;height:726px;left:235px;top:606px;background:url('v1-hero.webp') center center/cover no-repeat;border-radius:20px 20px 0 0;z-index:1}
+.v1-caption{position:absolute;width:1200px;height:21px;left:120px;top:701px;margin:0;font-weight:400;font-size:14px;line-height:17px;letter-spacing:-.01em;text-align:center;text-transform:uppercase;color:#808080;z-index:2}
+
+@media (prefers-reduced-motion:reduce){
+  .v1-btn{transition:none}
+}
