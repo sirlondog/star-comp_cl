@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Верстка редизайна v1 | STAR-COMP</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0A0A0C">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preload" href="assets/InterDisplay-Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/InterDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/InterDisplay-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/InterDisplay-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/InterDisplay-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/orbitron-bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/v1-hero.webp" as="image" type="image/webp">
+<link rel="stylesheet" href="assets/v1.css">
+</head>
+<body>
+<main class="v1-stage">
+  <section class="v1-hero" aria-labelledby="v1-title">
+    <nav class="v1-nav" aria-label="Основное меню">
+      <span class="v1-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="v1-logo-word">STAR&bull;COMP</span>
+      <a class="v1-nav-link" href="#v1-photo">Портфолио</a>
+      <a class="v1-nav-link" href="/kupit-kompyuter-spb.html">В наличии</a>
+      <a class="v1-nav-link" href="/index.html#reviews">Отзывы</a>
+      <a class="v1-nav-link" href="/index.html#gifts">Акции</a>
+      <a class="v1-nav-link" href="/index.html#contacts">Контакты</a>
+      <span class="v1-avatar" aria-hidden="true"><img src="assets/footer/ava-1.webp" alt="" width="44" height="44"></span>
+    </nav>
+
+    <p class="v1-badge">Компьютерная мастерская в Санкт-Петербурге</p>
+
+    <h1 class="v1-title" id="v1-title">
+      <span>Компьютер с запасом мощности</span>
+      <span>на 5 лет — соберём за 2 дня</span>
+    </h1>
+
+    <p class="v1-subtitle">Бесплатно привезём, подключим и настроим. Оплата после проверки.</p>
+    <p class="v1-rating">★★★★★ 5.0 на Яндекс &middot; 130+ отзывов &middot; 17 лет опыта, с 2009 года</p>
+
+    <a class="v1-btn v1-btn--primary" href="/kupit-kompyuter-spb.html">Подобрать компьютер</a>
+    <a class="v1-btn v1-btn--secondary" href="/index.html#stock">Компьютеры в наличии</a>
+
+    <div class="v1-photo" id="v1-photo" role="img" aria-label="Компьютерная мастерская STAR-COMP"></div>
+    <p class="v1-caption">Стартует видос по сборке, загрузить на хостинг сжать, несколько видосов подряд</p>
+  </section>
+</main>
+<script>
+(function(){
+  function fit(){
+    var scale=Math.min(1,window.innerWidth/1440);
+    document.documentElement.style.setProperty('--v1-scale',scale);
+  }
+  fit();
+  window.addEventListener('resize',fit,{passive:true});
+})();
+</script>
+</body>
+</html>

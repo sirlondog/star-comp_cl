@@ -23,6 +23,16 @@ assets/*
 !assets/hero-600.webp
 !assets/hero-800.webp
 !assets/hero-1000.webp
+# Статическая страница редизайна v1 (не генерируется сборщиком)
+!v1.html
+!assets/v1.css
+!assets/v1-hero.webp
+!assets/InterDisplay-Light.woff2
+!assets/InterDisplay-Regular.woff2
+!assets/InterDisplay-Medium.woff2
+!assets/InterDisplay-SemiBold.woff2
+!assets/InterDisplay-Bold.woff2
+!assets/orbitron-bold.ttf
 !assets/footer/
 
 __pycache__/
