@@ -14,21 +14,33 @@
 <link rel="preload" href="assets/InterDisplay-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/orbitron-bold.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="assets/v1-hero.webp" as="image" type="image/webp">
+<link rel="preload" href="assets/gilroy-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/gilroy-semibold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/v1.css">
 </head>
 <body>
 <main class="v1-stage">
   <section class="v1-hero" aria-labelledby="v1-title">
-    <nav class="v1-nav" aria-label="Основное меню">
-      <span class="v1-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-      <span class="v1-logo-word">STAR&bull;COMP</span>
-      <a class="v1-nav-link" href="#v1-photo">Портфолио</a>
-      <a class="v1-nav-link" href="/kupit-kompyuter-spb.html">В наличии</a>
-      <a class="v1-nav-link" href="/index.html#reviews">Отзывы</a>
-      <a class="v1-nav-link" href="/index.html#gifts">Акции</a>
-      <a class="v1-nav-link" href="/index.html#contacts">Контакты</a>
-      <span class="v1-avatar" aria-hidden="true"><img src="assets/footer/ava-1.webp" alt="" width="44" height="44"></span>
-    </nav>
+    <header class="header">
+      <div class="wrap">
+        <div class="header__bar">
+          <a class="logo" href="/" aria-label="STAR-COMP — на главную">
+            <svg class="logo__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="41" height="41" fill="none" viewBox="0 0 41 41"><path fill="#fff" d="m30.462 26.561-8.766-15.05a1.87 1.87 0 0 0-1.621-.932c-.66 0-1.277.359-1.621.933L9.688 26.56a.8.8 0 0 0 .689 1.205h.502c.53 0 1.019-.287 1.277-.732l7.79-13.37c.057-.1.2-.1.258 0l7.79 13.37c.273.46.76.732 1.277.732h.502a.797.797 0 0 0 .689-1.205"/><path fill="#fff" d="M24.006 25.428a1.03 1.03 0 0 0-.89-.517h-6.082c-.373 0-.703.201-.89.517l-.401.688a.618.618 0 0 0 .53.933h7.604a.618.618 0 0 0 .53-.933z"/><path fill="#00D9FF" d="M29.056 9.46c-.086-.086-.316-1.004-.316-1.004s-.23.904-.316 1.004c-.086.086-1.032.316-1.032.316s.946.23 1.032.316.316 1.004.316 1.004.23-.904.316-1.005c.086-.086 1.033-.315 1.033-.315s-.947-.215-1.033-.316"/><path fill="#fff" d="M13.26 32.242c-.085-.086-.286-.918-.286-.918s-.201.832-.287.918-.947.287-.947.287.86.2.947.287.287.918.287.918.2-.832.287-.918.947-.287.947-.287-.861-.2-.947-.287m-7.733-8.077a.244.244 0 1 0 0-.489.244.244 0 0 0 0 .489"/><path fill="#00D9FF" d="M6.145 14.41a.244.244 0 1 0 0-.489.244.244 0 0 0 0 .489"/><path fill="#fff" d="M24.738 6.72a.243.243 0 1 0-.001-.487.243.243 0 0 0 .001.487m-10.458.072a.315.315 0 1 0-.001 0m19.396 8.105a.243.243 0 1 0 .001-.487.243.243 0 0 0-.001.487"/><path fill="#FF28B4" d="M25.986 32.916a.244.244 0 0 0 .244-.244.244.244 0 0 0-.488 0c0 .135.109.244.244.244"/><path fill="#fff" d="M34.608 23.663a.244.244 0 1 0 0-.489.244.244 0 0 0 0 .489"/><path fill="#FF28B4" d="M35.928 5.314c-.675-.072-1.335-.1-1.42-.66-.101-.617-.388-2.984-.388-2.984s-.287 2.367-.387 2.984c-.086.56-.746.588-1.42.66-.675.072-2.095.258-2.095.258s1.42.201 2.094.259c.675.071 1.335.1 1.42.66.101.616.388 2.984.388 2.984s.287-2.368.387-2.984c.086-.56.746-.589 1.42-.66.675-.072 2.095-.259 2.095-.259s-1.42-.186-2.094-.258"/><path fill="#00D9FF" d="M35.354 7.681c0 .46.143.904.416 1.263a19.14 19.14 0 0 1 3.558 11.72c-.302 10.2-8.622 18.45-18.822 18.665C9.688 39.573.808 30.822.823 20.048.837 9.56 9.344.953 19.83.824a19.13 19.13 0 0 1 10.502 2.97c.487.3 1.033.473 1.606.473h.058c.143 0 .186-.172.086-.258A19.96 19.96 0 0 0 19.559.006C8.899.28.234 8.958.005 19.617-.24 30.88 8.842 40.132 20.06 40.132a20 20 0 0 0 20.084-20.07c0-4.749-1.65-9.11-4.418-12.538-.115-.13-.373-.044-.373.157"/></svg>
+            <svg class="logo__word" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="111" height="12" fill="none" viewBox="0 0 111 12"><path fill="#fff" d="M2.22 11.52q-.6 0-1.12-.3-.5-.3-.8-.8Q0 9.9 0 9.3v-.88h2.11v.78q0 .08.05.14.07.05.14.05h6.9q.08 0 .13-.05t.06-.14V7q0-.07-.06-.12t-.13-.05H2.22q-.6 0-1.12-.3-.5-.3-.8-.8Q0 5.22 0 4.59V2.22q0-.6.3-1.1T1.1.3Q1.62 0 2.22 0H9.3q.6 0 1.1.3t.82.82q.3.5.3 1.1v.88H9.39v-.78q0-.08-.06-.13t-.13-.06H2.3q-.08 0-.14.06-.05.05-.05.13v2.2q0 .07.05.12.07.05.14.05h7q.6 0 1.1.3t.82.82q.3.5.3 1.12V9.3q0 .6-.3 1.12-.3.5-.82.8-.5.3-1.1.3zm15.17 0v-9.4h-4.7V0h11.52v2.13h-4.69v9.39zm8.05 0v-9.3q0-.6.3-1.1t.8-.82q.52-.3 1.12-.3h7.06q.6 0 1.12.3.5.3.82.82.3.5.3 1.1v9.3h-2.13V7.65h-7.28v3.87zm2.11-5.98h7.28V2.32q0-.08-.06-.13-.07-.06-.15-.06h-6.88q-.08 0-.14.06-.05.05-.05.13zm20.42 5.98-3.48-4.14h2.77l3.01 3.55v.59zm-9.19 0V.02h9.28q.6 0 1.12.3t.82.82q.3.5.3 1.1v3.1q0 .6-.3 1.12t-.82.82q-.5.3-1.12.29l-7.17.01v3.94zm2.3-6.08h6.89q.08 0 .14-.05.06-.04.06-.13V2.32q0-.08-.06-.13t-.14-.06h-6.88q-.08 0-.15.06-.05.05-.05.13v2.94q0 .09.05.13.07.05.15.05m12.78 1.4q-.87 0-.87-.87v-.3q0-.87.87-.87h.37q.88 0 .88.86v.3q0 .87-.88.87zm6.29 4.68q-.6 0-1.12-.3-.5-.3-.8-.8-.3-.52-.3-1.12V2.22q0-.6.3-1.1t.8-.82q.5-.3 1.12-.3h9.26v2.13H60.6q-.26 0-.42.14t-.15.42v6.14q0 .25.15.42.15.14.41.14h8.82v2.13zm13.12 0q-.6 0-1.12-.3-.5-.3-.8-.8-.3-.52-.3-1.12V2.22q0-.6.3-1.1t.8-.82q.52-.3 1.12-.3h7.07q.61 0 1.1.3.52.3.82.82.3.5.3 1.1V9.3q0 .6-.3 1.12-.3.5-.81.8-.5.3-1.1.3zm.08-2.13h6.88q.07 0 .15-.05.06-.06.06-.14V2.32q0-.08-.06-.13-.07-.06-.15-.06h-6.88q-.08 0-.14.06-.05.05-.05.13V9.2q0 .08.05.14.06.05.14.05m10.98 2.13V0h2.32l4.18 4.98L94.99 0h2.33v11.52H95.2V3.07l-4.36 5.2-4.39-5.18v8.43zm14.84 0V.02h9.28q.6 0 1.12.3t.82.82q.3.5.3 1.1v3.1q0 .6-.3 1.12t-.82.82q-.5.3-1.12.29l-7.17.01v3.94zm2.3-6.08h6.89q.08 0 .14-.05.06-.04.06-.13V2.32q0-.08-.06-.13t-.14-.06h-6.88q-.08 0-.15.06-.05.05-.05.13v2.94q0 .09.05.13.07.05.15.05"/></svg>
+          </a>
+          <div class="header__socials">
+    <a class="social" href="https://max.ru/u/f9LHodD0cOKrboX3imjyg3cBiLspEiRa0Yz4Pb8i89Zd2AoqQNLb-lqSCpU" target="_blank" rel="noopener" aria-label="Написать в MAX"><svg width="35" height="35" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="mx-b"><stop offset="0" stop-color="#00f"/><stop offset="1" stop-opacity="0"/></linearGradient><linearGradient id="mx-a"><stop offset="0" stop-color="#4cf"/><stop offset=".662" stop-color="#53e"/><stop offset="1" stop-color="#93d"/></linearGradient><linearGradient id="mx-c" x1="117.847" x2="1000" y1="760.536" y2="500" gradientUnits="userSpaceOnUse" href="#mx-a"/><radialGradient id="mx-d" cx="-87.392" cy="1166.116" r="500" fx="-87.392" fy="1166.116" gradientTransform="rotate(51.356 1551.476 559.302)scale(2.42703 1)" gradientUnits="userSpaceOnUse" href="#mx-b"/></defs><rect width="1000" height="1000" fill="url(#mx-c)" ry="249.681"/><rect width="1000" height="1000" fill="url(#mx-d)" ry="249.681"/><path fill="#fff" fill-rule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z" clip-rule="evenodd"/></svg></a>
+    <a class="social" href="https://t.me/ST_COMP" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg width="35" height="35" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#fff"/><path fill="#29a9eb" fill-rule="evenodd" d="M50 100c27.614 0 50-22.386 50-50S77.614 0 50 0 0 22.386 0 50s22.386 50 50 50Zm21.977-68.056c.386-4.38-4.24-2.576-4.24-2.576-3.415 1.414-6.937 2.85-10.497 4.302-11.04 4.503-22.444 9.155-32.159 13.734-5.268 1.932-2.184 3.864-2.184 3.864l8.351 2.577c3.855 1.16 5.91-.129 5.91-.129l17.988-12.238c6.424-4.38 4.882-.773 3.34.773l-13.49 12.882c-2.056 1.804-1.028 3.35-.129 4.123 2.55 2.249 8.82 6.364 11.557 8.16.712.467 1.185.778 1.292.858.642.515 4.111 2.834 6.424 2.319 2.313-.516 2.57-3.479 2.57-3.479l3.083-20.226c.462-3.511.993-6.886 1.417-9.582.4-2.546.705-4.485.767-5.362Z"/></svg></a>
+    <a class="social" href="https://vk.com/star_comp_spb" target="_blank" rel="noopener" aria-label="Группа ВКонтакте"><svg width="35" height="35" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 1024 1024"><circle cx="512" cy="512" r="512" style="fill:#2787f5"/><path d="M585.83 271.5H438.17c-134.76 0-166.67 31.91-166.67 166.67v147.66c0 134.76 31.91 166.67 166.67 166.67h147.66c134.76 0 166.67-31.91 166.67-166.67V438.17c0-134.76-32.25-166.67-166.67-166.67m74 343.18h-35c-13.24 0-17.31-10.52-41.07-34.62-20.71-20-29.87-22.74-35-22.74-7.13 0-9.17 2-9.17 11.88v31.57c0 8.49-2.72 13.58-25.12 13.58-37 0-78.07-22.4-106.93-64.16-43.45-61.1-55.33-106.93-55.33-116.43 0-5.09 2-9.84 11.88-9.84h35c8.83 0 12.22 4.07 15.61 13.58 17.31 49.9 46.17 93.69 58 93.69 4.41 0 6.45-2 6.45-13.24v-51.6c-1.36-23.76-13.92-25.8-13.92-34.28 0-4.07 3.39-8.15 8.83-8.15h55c7.47 0 10.18 4.07 10.18 12.9v69.58c0 7.47 3.39 10.18 5.43 10.18 4.41 0 8.15-2.72 16.29-10.86 25.12-28.17 43.11-71.62 43.11-71.62 2.38-5.09 6.45-9.84 15.28-9.84h35c10.52 0 12.9 5.43 10.52 12.9-4.41 20.37-47.18 80.79-47.18 80.79-3.73 6.11-5.09 8.83 0 15.61 3.73 5.09 16 15.61 24.1 25.12 14.94 17 26.48 31.23 29.53 41.07 3.45 9.84-1.65 14.93-11.49 14.93" style="fill:#fff"/></svg></a>
+          </div>
+          <div class="header__phone">
+            <a href="tel:+79939845505">8 (993) 984-55-05</a>
+            <span>Без выходных, 11:00 до&nbsp;19:00</span>
+          </div>
+          <button class="burger" id="menu-open" type="button" aria-label="Открыть меню" aria-haspopup="dialog"><i></i></button>
+        </div>
+      </div>
+    </header>
 
     <p class="v1-badge">Компьютерная мастерская в Санкт-Петербурге</p>
 
@@ -38,15 +50,35 @@
     </h1>
 
     <p class="v1-subtitle">Бесплатно привезём, подключим и настроим. Оплата после проверки.</p>
-    <p class="v1-rating">★★★★★ 5.0 на Яндекс &middot; 130+ отзывов &middot; 17 лет опыта, с 2009 года</p>
+    <p class="v1-rating"><span class="v1-stars">★★★★★</span> 5.0 на Яндекс &middot; 130+ отзывов &middot; 17 лет опыта, с 2009 года</p>
 
     <a class="v1-btn v1-btn--primary" href="/kupit-kompyuter-spb.html">Подобрать компьютер</a>
     <a class="v1-btn v1-btn--secondary" href="/index.html#stock">Компьютеры в наличии</a>
 
     <div class="v1-photo" id="v1-photo" role="img" aria-label="Компьютерная мастерская STAR-COMP"></div>
-    <p class="v1-caption">Стартует видос по сборке, загрузить на хостинг сжать, несколько видосов подряд</p>
   </section>
 </main>
+  <dialog class="menu" id="menu" aria-label="Меню">
+    <button class="menu__close" type="button" aria-label="Закрыть меню">×</button>
+    <nav>
+      <a href="#top">Главная</a>
+      <a href="#konfiguracii">Последние проекты</a>
+      <a href="#v-nalichii">Компьютеры в&nbsp;наличии</a>
+      <a href="#gift">Акции</a>
+      <a href="#otzivy">Отзывы</a>
+      <a href="#contakty">Контакты</a>
+    </nav>
+    <div class="menu__bottom">
+      <a class="menu__phone" href="tel:+79939845505">8 (993) 984-55-05</a>
+      <p class="menu__note">Пн-Вс, 11:00 до&nbsp;19:00</p>
+      <p class="menu__mail">Почта: <a href="mailto:info@star-comp.ru">info@star-comp.ru</a></p>
+      <div class="menu__socials"><a class="social" href="https://max.ru/u/f9LHodD0cOKrboX3imjyg3cBiLspEiRa0Yz4Pb8i89Zd2AoqQNLb-lqSCpU" target="_blank" rel="noopener" aria-label="Написать в MAX"><img src="assets/footer/max-white.svg" alt="" loading="lazy" decoding="async"></a>
+  <a class="social" href="https://t.me/ST_COMP" target="_blank" rel="noopener" aria-label="Написать в Telegram"><img src="assets/footer/tg-white.svg" alt="" loading="lazy" decoding="async"></a>
+  <a class="social" href="https://vk.com/star_comp_spb" target="_blank" rel="noopener" aria-label="Группа ВКонтакте"><img src="assets/footer/vk-white.svg" alt="" loading="lazy" decoding="async"></a></div>
+      <p class="menu__address"><b>Адрес:</b> Санкт-Петербург, Заневский пр., 65к5, ТЦ Платформа, 2 этаж</p>
+      <a class="btn" href="https://yandex.ru/maps/-/CXbR7LiO" target="_blank" rel="noopener">Построить маршрут</a>
+    </div>
+  </dialog>
 <script>
 (function(){
   function fit(){
@@ -55,6 +87,15 @@
   }
   fit();
   window.addEventListener('resize',fit,{passive:true});
+})();
+(function(){
+  var menu=document.getElementById('menu');
+  var open=document.getElementById('menu-open');
+  if(!menu||!open||!menu.showModal) return;
+  open.addEventListener('click',function(){menu.showModal();});
+  menu.addEventListener('click',function(e){
+    if(e.target===menu||e.target.closest('a, .menu__close')) menu.close();
+  });
 })();
 </script>
 </body>
