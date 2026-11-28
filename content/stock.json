@@ -110,6 +110,24 @@
       "extra": false
     },
     {
+      "name": "CORE R1",
+      "image": {
+        "path": "/content/photos/nexus-s6/nexus-s6_1.webp",
+        "x": 55,
+        "y": 74,
+        "zoom": 1
+      },
+      "alt": "Компьютер в корпусе с оранжевой подсветкой",
+      "specs": {
+        "cpu": "AMD RYZEN 7 7700",
+        "gpu": "NVIDIA RTX 5060 8GB"
+      },
+      "price_from": 160400,
+      "show_from": false,
+      "page": "igrovoj-kompyuter-nexus-s6-adm-ryzen7-7700-nvidia-rtx-5060",
+      "extra": false
+    },
+    {
       "name": "MARS X9",
       "image": {
         "path": "/content/photos/mars-x9/mars-x9_1.webp",
